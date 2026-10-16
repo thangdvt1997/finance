@@ -1,0 +1,172 @@
+# Luật cảnh báo trading-system. Vi phạm -> Alertmanager -> POST alert-service:8000/webhook/alertmanager -> alerts.out -> Telegram.
+groups:
+  - name: tradingsys-availability
+    rules:
+      - alert: ServiceDown
+        expr: up{job="services"} == 0
+        for: 2m
+        labels: { severity: critical }
+        annotations:
+          summary: "Service {{ $labels.service }} không phản hồi /metrics"
+          description: "{{ $labels.instance }} down > 2 phút."
+      - alert: ServiceFlapping
+        expr: changes(up{job="services"}[15m]) >= 4
+        labels: { severity: warning }
+        annotations:
+          summary: "Service {{ $labels.service }} bật/tắt liên tục"
+          description: "up đổi trạng thái {{ $value }} lần trong 15 phút (crash loop?)."
+      - alert: PrometheusTargetMissing
+        expr: absent(up{job="services",service="storage-writer"})
+        for: 5m
+        labels: { severity: critical }
+        annotations: { summary: "Prometheus không còn thấy target storage-writer", description: "Cấu hình scrape hỏng hoặc service bị gỡ." }
+
+  - name: tradingsys-pipeline
+    rules:
+      - alert: StreamUnconsumedNearTrim
+        # Bus trim theo thời gian (BUS_RETENTION_S=24h): tin chưa xử lý cũ hơn 12h sắp bị xoá => mất dữ liệu nếu writer không bắt kịp
+        expr: sw_stream_lag_age_seconds > 43200
+        for: 2m
+        labels: { severity: critical }
+        annotations: { summary: "Stream {{ $labels.stream }}: tin chưa xử lý đã {{ $value | humanizeDuration }} tuổi (sắp bị trim)", description: "storage-writer tụt xa; kiểm tra DB/writer. Retention 24h (BUS_RETENTION_S)." }
+      - alert: StorageWriterDbDown
+        expr: sw_db_down == 1
+        for: 2m
+        labels: { severity: critical }
+        annotations: { summary: "storage-writer tạm dừng vì DB không khả dụng", description: "Tin giữ trong PEL (không vào DLQ); tự ghi lại khi DB hồi phục." }
+      - alert: StreamLagHigh
+        expr: sw_stream_lag > 1000
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: "Stream {{ $labels.stream }} lag {{ $value }}"
+          description: "storage-writer xử lý chậm hơn tốc độ phát (lag > 1000 trong 5 phút)."
+      - alert: StreamPendingStuck
+        expr: sw_stream_pending > 100
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: "Stream {{ $labels.stream }} có {{ $value }} message chưa ack"
+          description: "Message đã giao nhưng chưa ack > 5 phút (consumer treo?)."
+      - alert: StreamLagGrowing
+        expr: deriv(sw_stream_lag[10m]) > 1 and sw_stream_lag > 200
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Lag stream {{ $labels.stream }} tăng đều", description: "Lag {{ $value }} đang tăng liên tục 10 phút." }
+      - alert: NoNewBars
+        # Thị trường đóng cuối tuần (day_of_week 0=CN, 6=T7) nên chỉ cảnh báo T2-T6. Loại crypto (24/7) khỏi tổng, nếu không nến crypto che mất sự im lặng của FX/cổ phiếu.
+        expr: (sum(increase(mc_bars_published_total{provider!="crypto_ccxt"}[1h])) == 0) and on() (day_of_week() > 0 < 6)
+        for: 15m
+        labels: { severity: warning }
+        annotations: { summary: "Không có md.bars mới > 1 giờ", description: "market-collector không phát nến nào (nguồn lỗi hoặc bị chặn)." }
+      - alert: NoNewCryptoBars
+        # Crypto giao dịch 24/7 (kể cả T7/CN): im lặng > 15 phút là lỗi nguồn (mọi sàn ccxt chặn/lỗi). Chỉ xét khi provider đang chạy.
+        expr: (sum(increase(mc_bars_published_total{provider="crypto_ccxt"}[15m])) == 0) and on() (max(mc_provider_loop_alive{provider="crypto_ccxt"}) == 1)
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Không có nến crypto mới > 25 phút (24/7)", description: "crypto_ccxt không phát nến (các sàn okx/kucoin/gate/bitfinex đều lỗi hoặc bị chặn từ VPS?)." }
+      - alert: NoNewsFetched
+        expr: time() - max(nc_last_success_timestamp) > 3 * 3600
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "news-collector không lấy được tin > 3 giờ", description: "nc_last_success_timestamp quá cũ." }
+
+  - name: tradingsys-errors
+    rules:
+      - alert: DatabaseWriteErrors
+        # DB down/chậm -> storage-writer retry rồi dead-letter.
+        expr: sum(increase(sw_errors_total{kind="db"}[5m])) > 3
+        for: 1m
+        labels: { severity: critical }
+        annotations: { summary: "TimescaleDB lỗi ghi ({{ $value }} lỗi/5 phút)", description: "DB down hoặc quá tải; event có nguy cơ vào dlq." }
+      - alert: RedisErrors
+        expr: sum(increase(sw_errors_total{kind="redis"}[5m])) > 3
+        for: 1m
+        labels: { severity: critical }
+        annotations: { summary: "Redis lỗi ({{ $value }} lỗi/5 phút)", description: "storage-writer không đọc được bus." }
+      - alert: DeadLetterEvents
+        expr: sum(increase(sw_events_total{result="dlq"}[15m])) > 0
+        labels: { severity: warning }
+        annotations: { summary: "{{ $value }} event vào dead-letter trong 15 phút", description: "Xem stream dlq (payload sai hoặc DB lỗi)." }
+      - alert: CollectorFetchErrors
+        expr: sum by (provider) (increase(mc_fetch_errors_total[15m])) > 20
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "market-collector lỗi nguồn {{ $labels.provider }} ({{ $value }}/15 phút)", description: "Kiểm tra rate-limit/chặn IP." }
+      - alert: GatewayServerErrors
+        expr: sum(increase(gateway_http_requests_total{status=~"5.."}[5m])) > 10
+        for: 2m
+        labels: { severity: warning }
+        annotations: { summary: "api-gateway trả 5xx ({{ $value }}/5 phút)", description: "Kiểm tra log api-gateway/DB." }
+      - alert: MtAccountDisconnected
+        # chỉ cảnh báo tài khoản ĐÃ từng gửi dữ liệu trong 24h qua (EA lab/demo tắt lâu không gây cảnh báo giả; tài khoản thật mới rớt vẫn báo)
+        expr: mtbridge_account_connected == 0 and on(account) (time() - mtbridge_account_last_seen_timestamp < 86400)
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Tài khoản MT {{ $labels.account }} mất kết nối", description: "mt-bridge không nhận được dữ liệu > 10 phút." }
+      - alert: MtRangeJobCfgStale
+        # job-mt5.cfg tồn tại > 15 phút = terminal live mtlab-mt5 đang chạy SCRIPT thay EA (canon M1 khuyết). data-keeper tự xoá sau 30 phút; sau đó cần docker restart mtlab-mt5.
+        expr: dk_range_job_cfg_age_seconds > 900
+        for: 1m
+        labels: { severity: warning }
+        annotations: { summary: "job-mt5.cfg bị bỏ quên ({{ $value }} s)", description: "Terminal mtlab-mt5 chạy script thay EA đọc live. Xem docs/DATA_KEEPER.md (Chạy range an toàn)." }
+
+  - name: tradingsys-host
+    rules:
+      - alert: HostDown
+        expr: up{job="node"} == 0
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "Không scrape được node_exporter của host", description: "Thiếu ufw allow 9100 từ subnet tradingsys hoặc node_exporter dừng." }
+      - alert: HostDiskLow
+        expr: node_filesystem_avail_bytes{job="node",mountpoint="/",fstype!~"tmpfs|overlay"} / node_filesystem_size_bytes{job="node",mountpoint="/",fstype!~"tmpfs|overlay"} < 0.10
+        for: 10m
+        labels: { severity: critical }
+        annotations: { summary: "Ổ đĩa host còn dưới 10%", description: "Còn {{ $value | humanizePercentage }}." }
+      - alert: HostMemoryLow
+        expr: node_memory_MemAvailable_bytes{job="node"} / node_memory_MemTotal_bytes{job="node"} < 0.08
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "RAM khả dụng host dưới 8%", description: "Còn {{ $value | humanizePercentage }}." }
+  - name: tradingsys-vn-market
+    rules:
+      - alert: VnMarketStale
+        # phiên VN mới nhất trong DB cũ hơn 5 ngày lịch (cuối tuần + lễ ngắn là bình thường) -> nguồn VNDirect có thể đã đổi/chặn
+        expr: vn_last_session_age_days > 5
+        for: 1h
+        labels: { severity: warning }
+        annotations: { summary: "Dữ liệu chứng khoán VN không cập nhật", description: "Phiên mới nhất cách {{ $value }} ngày; kiểm tra docker logs tradingsys-vn-market (VNDirect finfo đổi API hoặc chặn?)." }
+
+  - name: tradingsys-briefing
+    rules:
+      - alert: BriefingStale
+        # bản tin AI tạo 2 lần/ngày (06:15 và 16:30 giờ VN): quá 30 giờ không có bản tin intl nào thành công => LLM/pipeline hỏng
+        expr: time() - max(briefing_last_success_timestamp{scope="intl"}) > 108000
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Bản tin AI không được tạo > 30 giờ", description: "Kiểm tra briefing-llm (llama.cpp) và service briefing; xem docker logs tradingsys-briefing." }
+
+  - name: tradingsys-gateway-cache
+    rules:
+      - alert: GatewayCacheHitRatioLow
+        # tỉ lệ hit+stale < 30% trong 15 phút khi vẫn có tải: khoá/TTL/invalidation sai, Redis cache bị flush liên tục hoặc cache đang tắt/bypass
+        expr: (sum(rate(gateway_cache_requests_total{result=~"hit|stale"}[15m])) / clamp_min(sum(rate(gateway_cache_requests_total{result=~"hit|stale|miss"}[15m])), 1e-9)) < 0.3 and sum(rate(gateway_cache_requests_total[15m])) > 0.5
+        for: 15m
+        labels: { severity: warning }
+        annotations: { summary: "Hit ratio cache gateway thấp ({{ $value | humanizePercentage }})", description: "Xem dashboard 'Cache & Latency' (ts-cache-latency): theo policy/kết quả; kiểm tra gateway_cache_errors_total, gateway_cache_circuit_open, redis-cache (docker logs tradingsys-redis-cache-1)." }
+      - alert: GatewayCacheErrors
+        # lỗi Redis cache (mget/set/bump): API vẫn chạy (fail-open) nhưng mất lợi ích cache + tải DB tăng
+        expr: sum(rate(gateway_cache_errors_total{kind=~"mget|set|bump"}[5m])) > 0.1
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "Lỗi Redis cache gateway ({{ $value | humanize }}/s)", description: "redis-cache không phản hồi/ACL ts_cache sai? Chạy infra/ops/redis_acl_render.sh + recreate redis-cache; gateway tự bỏ qua cache (fail-open)." }
+      - alert: GatewayCacheCircuitOpen
+        expr: max(gateway_cache_circuit_open) == 1
+        for: 3m
+        labels: { severity: warning }
+        annotations: { summary: "Gateway đang bỏ qua cache (mạch hở > 3 phút)", description: "Redis cache không dùng được; mọi request đi thẳng DB. Kiểm tra tradingsys-redis-cache-1." }
+      - alert: GatewayCacheDisabled
+        expr: max(gateway_cache_enabled) == 0
+        for: 30m
+        labels: { severity: info }
+        annotations: { summary: "Cache gateway đang TẮT (CACHE_ENABLED=0 hoặc thiếu REDIS_CACHE_PASSWORD)", description: "Bình thường nếu vừa bật cờ tắt khẩn cấp; bật lại: CACHE_ENABLED=1 + recreate api-gateway." }

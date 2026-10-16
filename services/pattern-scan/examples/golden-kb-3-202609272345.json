@@ -1,0 +1,57 @@
+{
+ "kind": "golden",
+ "pattern": "KB-3",
+ "title": "KB-3 · XAUUSD M15 (mẫu chuẩn)",
+ "symbol": "XAUUSD",
+ "tf": "M15",
+ "ts": "2026-09-28T00:00:00+00:00",
+ "note": "Ảnh mẫu 3: sóng giảm - đi ngang - vai-đầu-vai - cụm nến nén ở đường cổ.",
+ "levels": {
+  "neckline": 4289.75,
+  "head": 4351.6,
+  "left_shoulder": 4331.0,
+  "right_shoulder": 4336.0,
+  "range_high": 4351.6,
+  "range_low": 4279.5,
+  "measured_move": 4227.9,
+  "entry": 4294.6,
+  "sl": 4353.37076,
+  "r": 58.77076,
+  "atr": 7.08304,
+  "tp_1r": 4235.82924,
+  "tp_2r": 4177.05848,
+  "tp_3r": 4118.28772
+ },
+ "steps": [
+  {
+   "id": 1,
+   "label": "(1) Sóng giảm dẫn hướng mạnh",
+   "ok": true,
+   "detail": "sóng dẫn 13.9 ATR, 18 nến đỏ dài, xanh 40%"
+  },
+  {
+   "id": 2,
+   "label": "(2) Đi ngang biên độ đều, nến thân vừa",
+   "ok": true,
+   "detail": "đi ngang 140 nến, biên 10.2 ATR"
+  },
+  {
+   "id": 3,
+   "label": "(3-7) Vai-đầu-vai (vai ≈ nhau, đầu cao hơn, đường cổ phẳng)",
+   "ok": true,
+   "detail": "vai-đầu-vai: vai 4331.00/4336.00, đầu 4351.60, cổ 4289.75"
+  },
+  {
+   "id": 4,
+   "label": "(7) Giá giảm về sát đường cổ",
+   "ok": true,
+   "detail": "giá 4294.70 về gần đường cổ 4289.75"
+  },
+  {
+   "id": 5,
+   "label": "(8) Cụm 3 nến thân nhỏ nén ở đường cổ (đóng nến)",
+   "ok": true,
+   "detail": "cụm 3 nến thân nhỏ (<= 0.41 ATR) sát đường cổ 4289.75"
+  }
+ ]
+}

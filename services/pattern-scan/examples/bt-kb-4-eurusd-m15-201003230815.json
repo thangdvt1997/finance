@@ -1,0 +1,96 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-4",
+ "title": "KB-4 · EURUSD M15 (backtest, thắng +2.00R)",
+ "symbol": "EURUSD",
+ "tf": "M15",
+ "ts": "2010-03-23T08:15:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát chốt lời (TP) sau 79 nến. tiếp diễn sau phá đáy. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "thang",
+ "result": {
+  "outcome": "tp",
+  "r": 2.0,
+  "entry_ts": "2010-03-23 08:30:00",
+  "exit_ts": "2010-03-24 04:00:00",
+  "entry": 1.35276,
+  "sl": 1.357125,
+  "tp": 1.34403,
+  "exit": 1.34403
+ },
+ "score": 93.3,
+ "levels": {
+  "box_low": 1.36472,
+  "wave_high": 1.36938,
+  "wave_low": 1.34629,
+  "high_1": 1.35687,
+  "high_last": 1.35333,
+  "entry": 1.35289,
+  "sl": 1.357125,
+  "r": 0.004235,
+  "atr": 0.00102,
+  "tp_1r": 1.348655,
+  "tp_2r": 1.34442,
+  "tp_3r": 1.340185,
+  "prev_low": 1.34629
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "đi ngang trước: biên 6.7 ATR, lệch ròng 52%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "nến phá đáy thân 2.4 ATR"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "3 nến đỏ liên tiếp; sóng dẫn 18.3 ATR"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "3 đỉnh trong vùng đi ngang mới"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "3 đỉnh giảm dần"
+  },
+  {
+   "id": 6,
+   "ok": true,
+   "detail": "cụm 3 nến nén dưới đỉnh thứ 3 1.35"
+  }
+ ],
+ "points": [
+  {
+   "label": "",
+   "t": "2010-03-18T13:00:00+00:00",
+   "p": 1.36938
+  },
+  {
+   "label": "(1)",
+   "t": "2010-03-22T12:00:00+00:00",
+   "p": 1.34629
+  },
+  {
+   "label": "H1",
+   "t": "2010-03-22T22:45:00+00:00",
+   "p": 1.35687
+  },
+  {
+   "label": "H2",
+   "t": "2010-03-23T02:15:00+00:00",
+   "p": 1.35617
+  },
+  {
+   "label": "H3",
+   "t": "2010-03-23T08:00:00+00:00",
+   "p": 1.35333
+  }
+ ]
+}

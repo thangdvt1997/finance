@@ -1,0 +1,20 @@
+# Luật đầu tiên khớp được dùng. channels: telegram | apprise | log (telegram thiếu token => rơi về log)
+routes:
+  - name: crit-all
+    min_level: crit
+    channels: [telegram, apprise, log]
+  - name: risk-window        # cua so rui ro tin (T-30 sap vao / dang trong / het) -> ntfy qua apprise + log
+    min_level: info
+    tags_any: [risk-window]
+    channels: [apprise, log]
+  - name: data-quality
+    min_level: warn
+    tags_any: [data-silence]
+    channels: [telegram, apprise]
+  - name: quality            # gap/outlier chat luong du lieu theo ma: chi log + bang alerts (khong ntfy/Telegram)
+    min_level: info
+    tags_any: [quality]
+    channels: [log]
+  - name: default
+    min_level: info
+    channels: [telegram, apprise]

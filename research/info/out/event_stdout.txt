@@ -1,0 +1,112 @@
+rows 257 {('FOMC', 'control'): 92, ('FOMC', 'event'): 16, ('NFP', 'control'): 126, ('NFP', 'event'): 23}
+                     range_pre30  range_0_5  range_0_30  range_0_60  day_range  calm_min
+kind sym    role                                                                        
+FOMC EURUSD control          6.9        3.1         6.4         7.7       46.3       1.0
+            event            8.2       39.9        45.6        61.2      101.0      12.0
+     GBPUSD control          8.2        3.4         7.9         8.9       68.9       1.0
+            event            9.6       45.4        54.2        71.5      117.9      35.5
+     USDJPY control          8.3        4.7         9.0        11.3       58.0       1.0
+            event           10.4       32.2        34.2        42.5       81.8      27.0
+     XAUUSD control        115.3       53.6       106.8       164.7      994.4       1.0
+            event          166.5      485.1       529.0       892.6     1261.5      22.5
+NFP  EURUSD control          7.0        5.2        11.1        14.0       54.0       1.0
+            event            8.0       33.0        45.2        46.4       63.4      31.0
+     GBPUSD control         10.3        6.7        15.7        20.1       73.1       1.0
+            event            8.0       39.1        54.8        56.4       81.3      20.0
+     USDJPY control          8.7        5.3        11.5        14.4       55.8       1.0
+            event            8.2       52.3        62.3        72.4      103.7      25.0
+     XAUUSD control        150.6       77.9       158.9       213.0      960.2       1.0
+            event          142.7      556.4       631.5       655.3     1253.2      12.0
+    kind     sym       metric  n_e  n_c    med_e   med_c  ratio    lo     hi
+0   FOMC  EURUSD  range_pre30    4   23     8.20    6.90   1.19  0.83   1.44
+1   FOMC  EURUSD    range_0_1    4   23    29.75    1.30  22.88  8.43  36.15
+2   FOMC  EURUSD    range_0_5    4   23    39.90    3.10  12.87  4.77  17.54
+3   FOMC  EURUSD   range_0_30    4   23    45.60    6.40   7.13  3.02  10.36
+4   FOMC  EURUSD   range_0_60    4   23    61.25    7.70   7.95  3.58   9.99
+5   FOMC  EURUSD    day_range    4   23   101.00   46.30   2.18  1.28   3.00
+6   FOMC  GBPUSD  range_pre30    4   23     9.65    8.20   1.18  0.78   1.83
+7   FOMC  GBPUSD    range_0_1    4   23    33.70    1.80  18.72  6.61  31.50
+8   FOMC  GBPUSD    range_0_5    4   23    45.35    3.40  13.34  4.94  17.48
+9   FOMC  GBPUSD   range_0_30    4   23    54.20    7.90   6.86  3.25   9.45
+10  FOMC  GBPUSD   range_0_60    4   23    71.45    8.90   8.03  3.77   9.29
+11  FOMC  GBPUSD    day_range    4   23   117.85   68.90   1.71  1.01   2.65
+12  FOMC  USDJPY  range_pre30    4   23    10.40    8.30   1.25  0.37   2.15
+13  FOMC  USDJPY    range_0_1    4   23    25.55    2.00  12.78  7.86  25.77
+14  FOMC  USDJPY    range_0_5    4   23    32.20    4.70   6.85  4.28  15.31
+15  FOMC  USDJPY   range_0_30    4   23    34.20    9.00   3.80  2.51   8.47
+16  FOMC  USDJPY   range_0_60    4   23    42.50   11.30   3.76  2.29  11.80
+17  FOMC  USDJPY    day_range    4   23    81.85   58.00   1.41  0.90   2.72
+18  FOMC  XAUUSD  range_pre30    4   23   166.50  115.30   1.44  0.61   2.74
+19  FOMC  XAUUSD    range_0_1    4   23   366.95   22.30  16.46  4.00  19.83
+20  FOMC  XAUUSD    range_0_5    4   23   485.10   53.60   9.05  2.76  15.15
+21  FOMC  XAUUSD   range_0_30    4   23   529.00  106.80   4.95  2.65   9.61
+22  FOMC  XAUUSD   range_0_60    4   23   892.60  164.70   5.42  2.10   9.10
+23  FOMC  XAUUSD    day_range    4   23  1261.55  994.40   1.27  0.89   1.72
+24   NFP  EURUSD  range_pre30    6   30     8.05    7.00   1.15  0.75   1.45
+25   NFP  EURUSD    range_0_1    6   30    31.70    2.15  14.74  7.32  23.56
+26   NFP  EURUSD    range_0_5    6   30    32.95    5.25   6.28  4.29  10.06
+27   NFP  EURUSD   range_0_30    6   30    45.20   11.15   4.05  2.05   5.71
+28   NFP  EURUSD   range_0_60    6   30    46.40   14.00   3.31  1.58   4.57
+29   NFP  EURUSD    day_range    6   30    63.40   54.05   1.17  0.78   2.03
+30   NFP  GBPUSD  range_pre30    6   32     8.00   10.35   0.77  0.62   1.29
+31   NFP  GBPUSD    range_0_1    6   32    35.80    3.25  11.02  5.70  21.12
+32   NFP  GBPUSD    range_0_5    6   32    39.10    6.70   5.84  3.62   9.35
+33   NFP  GBPUSD   range_0_30    6   32    54.80   15.70   3.49  1.54   4.48
+34   NFP  GBPUSD   range_0_60    6   32    56.40   20.05   2.81  1.19   3.56
+35   NFP  GBPUSD    day_range    6   32    81.30   73.10   1.11  0.85   1.80
+36   NFP  USDJPY  range_pre30    6   32     8.20    8.65   0.95  0.42   2.37
+37   NFP  USDJPY    range_0_1    6   32    43.40    2.40  18.08  5.68  37.85
+38   NFP  USDJPY    range_0_5    6   32    52.30    5.30   9.87  3.65  26.79
+39   NFP  USDJPY   range_0_30    6   32    62.25   11.50   5.41  2.15  16.78
+40   NFP  USDJPY   range_0_60    6   32    72.35   14.45   5.01  2.31  11.19
+41   NFP  USDJPY    day_range    6   32   103.75   55.75   1.86  0.65   3.57
+42   NFP  XAUUSD  range_pre30    5   32   142.70  150.60   0.95  0.68   1.64
+43   NFP  XAUUSD    range_0_1    5   32   459.60   47.75   9.63  2.89  17.82
+44   NFP  XAUUSD    range_0_5    5   32   556.40   77.85   7.15  2.39  12.69
+45   NFP  XAUUSD   range_0_30    5   32   631.50  158.90   3.97  1.89   6.17
+46   NFP  XAUUSD   range_0_60    5   32   655.30  213.00   3.08  1.40   5.00
+47   NFP  XAUUSD    day_range    5   32  1253.20  960.20   1.31  0.57   1.73
+
+fade dau move5 != move30:
+      mean  count
+kind             
+FOMC  0.00     16
+NFP   0.04     23
+
+retrace30 trung vi (spike hoi lai bao nhieu trong 30p) event vs control:
+kind  role   
+FOMC  control    0.31
+      event      0.25
+NFP   control    0.38
+      event      0.30
+
+calm_min (phut den khi bien do 1 phut <=2x binh thuong) event: {'FOMC': 25.0, 'NFP': 22.5}
+
+POOLED 4 ma:
+                  gmean_ratio    min    max
+kind metric                                
+FOMC day_range           1.61   1.27   2.18
+     range_0_1          17.32  12.78  22.88
+     range_0_30          5.51   3.80   7.13
+     range_0_5          10.16   6.85  13.34
+     range_0_60          6.01   3.76   8.03
+     range_pre30         1.26   1.18   1.44
+NFP  day_range           1.33   1.11   1.86
+     range_0_1          12.97   9.63  18.08
+     range_0_30          4.18   3.49   5.41
+     range_0_5           7.13   5.84   9.87
+     range_0_60          3.46   2.81   5.01
+     range_pre30         0.95   0.77   1.15
+
+EURUSD range_0_5 / median control theo ngay su kien:
+    kind        date  range_0_5  x_ctrl
+0    NFP  2026-04-03       24.6    4.69
+4    NFP  2026-05-08       21.8    4.15
+10   NFP  2026-06-05       24.0    4.57
+16   NFP  2026-07-02       52.3    9.96
+23   NFP  2026-08-07       45.2    8.61
+30   NFP  2026-09-04       41.3    7.87
+36  FOMC  2026-04-29       14.8    4.77
+43  FOMC  2026-06-17       49.1   15.84
+50  FOMC  2026-07-29       41.2   13.29
+57  FOMC  2026-09-16       38.6   12.45

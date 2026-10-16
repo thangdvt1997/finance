@@ -1,0 +1,12 @@
+rules:
+  - name: fx-bars-silence
+    type: stream_silence      # không có md.bars mới > N phút
+    symbols: [EURUSD, XAUUSD]
+    tf: M1                    # tuỳ chọn; bỏ trống = mọi tf
+    max_silence_minutes: 15
+    weekdays: [0, 1, 2, 3, 4] # UTC, T2..T6
+    level: warn
+  - name: heartbeat-daily
+    type: heartbeat           # 'hệ thống còn sống' mỗi ngày
+    at: "01:00"               # UTC
+    level: info

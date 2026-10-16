@@ -1,0 +1,8 @@
+# Ưu tiên TỐC ĐỘ giá realtime (2026-10-15): đường feed MT5 -> bus được nâng trần CPU + trọng số lập lịch.
+# VPS 64 nhân, dùng chung; cpu_shares 4096 (mặc định 1024) khiến các container này thắng khi tranh CPU với backfill/hệ thống khác.
+# Ghi đè giá trị cpus của anchor x-svc / redis (2/4). Bật qua COMPOSE_FILE trong infra/.env (…:docker-compose.perf.yml).
+services:
+  mt-bridge:      { cpus: 32, cpu_shares: 4096 }
+  storage-writer: { cpus: 32, cpu_shares: 4096 }
+  api-gateway:    { cpus: 32, cpu_shares: 4096 }
+  redis:          { cpus: 32, cpu_shares: 4096 }

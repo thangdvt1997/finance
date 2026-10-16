@@ -1,0 +1,50 @@
+# Mẫu điền sẵn 2: kịch bản xuất phát từ ẢNH (hồi giảm nhẹ - 2 đỉnh giảm dần rồi phá đáy) -> Sell, XAUUSD H1
+# Quy trình dịch ảnh: (1) nhìn ảnh, liệt kê điều kiện bằng lời; (2) ánh xạ từng điều kiện sang DSL; (3) runner chỉ dùng DSL.
+# Lưu ý: bản DSL này là XẤP XỈ của KB-1 (pattern-engine có detector sóng riêng); chỉ để minh hoạ cơ chế.
+schema_version: 1
+id: KB-EX-IMG-2DINH
+name: "2 đỉnh giảm dần rồi phá đáy - Sell XAUUSD H1 (mẫu từ ảnh)"
+description: "Sau nhịp giảm, giá hồi tạo đỉnh thấp dần (đỉnh 20 nến gần < đỉnh 20 nến trước đó) rồi đóng cửa phá đáy 10 nến."
+hypothesis:
+  direction: short
+  expected_edge: "tiếp diễn xu hướng giảm sau hồi yếu"
+  falsifier: "kỳ vọng OOS <= 0 hoặc p so với ngẫu nhiên > 0.10"
+market: {symbols: [XAUUSD], timeframe: H1}
+params:
+  w: {default: 20, sweep: [12, 20, 30]}
+  b: {default: 10}
+  atrn: {default: 14}
+entry:
+  long: null                      # kịch bản chỉ Sell
+  short: "(highest(high, $w) < shift(highest(high, $w), $w)) & (close < shift(lowest(low, $b), 1)) & (close < ema(close, 100))"
+  filter: null
+  one_position: true
+exit:
+  stop_loss: {type: level, expr: "highest(high, $w) + 0.2 * atr($atrn)"}
+  take_profit: {type: r_multiple, r: 2.0}
+  time_stop_bars: 48
+  exit_expr: {long: null, short: null}
+  intrabar_priority: sl_first
+illustrations:
+  - path: docs/research/pattern_sell/samples/mau_kb1.png    # ảnh mẫu của người dùng (đặt tại đây; runner không đọc)
+    caption: "Hồi - giảm nhẹ - 2 đỉnh giảm dần"
+    transcribed_rules: |
+      1. Có nhịp giảm trước đó và nhịp hồi lên.            -> ema(close,100) lọc xu hướng giảm
+      2. Hai đỉnh, đỉnh sau thấp hơn đỉnh trước.            -> highest(high,w) < shift(highest(high,w), w)
+      3. Giá đóng cửa phá đáy của nhịp hồi.                 -> close < shift(lowest(low,b),1)
+      4. SL trên đỉnh thứ hai, TP 2R.                       -> stop_loss.level, take_profit.r_multiple
+costs: {spread_bps: 1.5, slippage_bps: 1, commission_bps: 0.5, funding_bps_per_day: 0.5}
+validation:
+  data_scope: dev
+  walk_forward: {folds: 5, min_train_frac: 0.40, embargo_bars: 5, select_by: expectancy_r, min_trades_is: 15}
+  random_baseline: {runs: 300, seed: 7}
+  bootstrap: {runs: 2000, seed: 11}
+  pbo_blocks: 8
+acceptance:
+  min_oos_trades: 60
+  min_expectancy_r: 0.10
+  ci_low_gt: 0.0
+  max_p_vs_random: 0.05
+  max_pbo: 0.50
+  min_dsr: 0.50
+  min_positive_folds_frac: 0.60

@@ -1,0 +1,23 @@
+; MTAgentMarketFeed - KHONG chua secret. PairCode do master cap, dien khi trien khai.
+BridgeUrl=http://bridge.lab/ingest/v1
+AccountId=
+Token=
+PairCode=
+HmacSecret=
+IncludeForex=true
+IncludeMetals=true
+IncludeIndexes=true
+ExcludeSymbols=
+SymbolsFile=feed_symbols.txt
+ExtraSymbols=
+MaxSymbols=200
+ScanMs=40
+FlushMs=250
+MaxMsgPerSec=4
+MaxQuotesPerBatch=400
+WarmPerTimer=8
+BackfillM1=120
+HeartbeatSec=5
+TimeoutMs=1500
+AllowInsecureHttp=true
+StartDelaySec=0

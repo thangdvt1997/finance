@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="reporter {{ version }}">
+<title>{{ r.kind_vi }} {{ r.period }} · Trạm theo dõi thị trường</title>
+<style>
+@page { size: A4; margin: 16mm 13mm 18mm 13mm;
+  @bottom-left { content: "Chỉ đọc / mô phỏng, không phải lời khuyên đầu tư · {{ r.code }}"; font: 7.5pt "DejaVu Sans", sans-serif; color: #5b6570; }
+  @bottom-right { content: "Trang " counter(page) "/" counter(pages); font: 7.5pt "DejaVu Sans", sans-serif; color: #5b6570; } }
+:root { --ink:#1f2328; --mute:#5b6570; --line:#d0d4d9; --soft:#f4f6f8; --pos:#2a78d6; --neg:#eb6834; --warn:#eda100; }
+* { box-sizing: border-box; }
+html { font-family: "DejaVu Sans", "Noto Sans", Arial, sans-serif; color: var(--ink); background: #fff; }
+body { margin: 0 auto; max-width: 190mm; font-size: 8.2pt; line-height: 1.3; padding: 4mm; }
+@media print { body { padding: 0; max-width: none; } }
+h1 { font-size: 17pt; margin: 0; letter-spacing: -.2pt; }
+h2 { font-size: 10.6pt; margin: 0 0 4px; padding-bottom: 2px; border-bottom: 1.5px solid var(--ink); }
+h3 { font-size: 8.8pt; margin: 8px 0 3px; color: var(--ink); }
+.head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; border-bottom: 3px solid var(--ink); padding-bottom: 6px; }
+.meta { font-size: 7.6pt; color: var(--mute); text-align: right; line-height: 1.5; }
+.stamp { display: inline-block; border: 1.5px solid var(--ink); padding: 0 5px; font-weight: 700; font-size: 7.4pt; letter-spacing: .6pt; border-radius: 3px; }
+.sub { color: var(--mute); font-size: 8pt; margin: 2px 0 0; }
+.summary { background: var(--soft); border-left: 4px solid var(--pos); padding: 5px 9px; margin: 8px 0; break-inside: avoid; }
+.summary ol { margin: 2px 0 0; padding-left: 16px; }
+.toc { font-size: 7.8pt; color: var(--mute); margin: 4px 0 6px; }
+.toc a { color: var(--ink); text-decoration: none; margin-right: 8px; }
+section { margin: 9px 0 7px; break-inside: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 7.9pt; margin: 2px 0 4px; }
+th { text-align: left; font-weight: 700; border-bottom: 1.2px solid var(--ink); padding: 2px 4px; background: var(--soft); }
+td { padding: 1px 4px; border-bottom: .6px solid var(--line); vertical-align: middle; }
+tr { break-inside: avoid; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.lab { white-space: nowrap; }
+.muted { color: var(--mute); }
+.nodata { border: 1px dashed var(--mute); color: var(--mute); padding: 5px 8px; border-radius: 3px; background: #fafafa; }
+.tag { display: inline-block; padding: 0 4px; border: 1px solid var(--mute); border-radius: 3px; font-size: 7pt; color: var(--mute); white-space: nowrap; }
+.tag.ref { border-style: dashed; }
+.imp-high { font-weight: 700; } .imp-high::before { content: "●●● "; } .imp-med::before { content: "●●○ "; }
+.up { color: #1a5fb4; } .down { color: #b4410f; }
+.warnbox { border-left: 4px solid var(--warn); background: #fff8e6; padding: 3px 8px; margin: 3px 0; }
+.grid2 { display: flex; gap: 12px; align-items: flex-start; } .grid2 > * { flex: 1; min-width: 0; } .grid2 > :first-child { flex: 1.5; }
+.meter { display: inline-flex; align-items: center; gap: 4px; } .meter b { font-size: 7.4pt; white-space: nowrap; }
+.note { font-size: 7.4pt; color: var(--mute); margin: 2px 0; }
+footer { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 4px; font-size: 7.4pt; color: var(--mute); }
+svg { max-width: 100%; vertical-align: middle; }
+.pagebreak { break-before: page; }
+</style>
+</head>
+<body>
+{% set S = r.sections %}
+{% macro nodata(sec) %}<div class="nodata">Chưa có dữ liệu{% if sec.error %} — {{ sec.error }}{% endif %}.</div>{% endmacro %}
+{% macro sentcls(v) %}{{ 'up' if v > 0 else 'down' if v < 0 else '' }}{% endmacro %}
+
+<div class="head">
+  <div>
+    <span class="stamp">READ-ONLY · CHỈ ĐỌC</span>
+    <h1>{{ r.kind_vi }} · {{ r.period }}</h1>
+    <p class="sub">Trạm theo dõi thị trường — kỳ dữ liệu: {{ r.window }}</p>
+  </div>
+  <div class="meta">
+    Mã báo cáo: <b>{{ r.code }}</b><br>
+    Tạo lúc: {{ r.generated_utc }}<br>{{ r.generated_vn }}<br>
+    Mục thành công: {{ r.ok|length }}/{{ r.order|length }}
+  </div>
+</div>
+
+<div class="summary">
+  <b>Tóm tắt 5 dòng</b>
+  <ol>{% for l in r.summary %}<li>{{ l }}</li>{% endfor %}</ol>
+</div>
+<div class="toc"><b>Mục lục:</b>
+  {% for k in r.order %}<a href="#s-{{ k }}">{{ loop.index }}. {{ r.titles[k] }}{% if not S[k].ok %} (chưa có dữ liệu){% endif %}</a>{% endfor %}
+</div>
+
+{# 1. THỊ TRƯỜNG #}
+{% set s = S.market %}
+<section id="s-market"><h2>1. {{ r.titles.market }}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% else %}
+<div class="grid2"><div>
+<table><thead><tr><th>Mã</th><th class="n">Giá cuối</th><th class="n">Δ phiên</th><th class="n">Δ 7 ngày</th><th>30 phiên</th><th>Ngày</th></tr></thead><tbody>
+{% for g, rows in s.groups.items() %}<tr><td colspan="6"><b>{{ g }}</b></td></tr>
+{% for x in rows %}<tr><td class="lab">{{ x.label }}</td><td class="n">{{ x.last }}</td>
+<td class="n {{ 'up' if x.d1 is not none and x.d1 >= 0 else 'down' }}">{{ '▲' if x.d1 is not none and x.d1 >= 0 else '▼' if x.d1 is not none else '' }} {{ x.d1s }}</td>
+<td class="n {{ 'up' if x.w1 is not none and x.w1 >= 0 else 'down' }}">{{ x.w1s }}</td><td>{{ x.spark }}</td><td class="muted">{{ x.asof }}</td></tr>{% endfor %}{% endfor %}
+</tbody></table>
+</div><div><h3>{{ s.chart_title }}</h3>{{ s.chart }}</div></div>
+<p class="note">Giá theo nến ngày (D1). Giá FX là tỷ giá tham chiếu cuối ngày.</p>
+{% endif %}</section>
+
+{# 2. LỊCH #}
+{% set s = S.calendar %}
+<section id="s-calendar"><h2>2. {{ r.titles.calendar }}{% if s.ok %} — {{ s.title }}{% endif %}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% elif not s.rows %}<div class="nodata">Không có sự kiện tác động cao/trung bình trong khoảng này.</div>{% else %}
+<table><thead><tr><th>Ngày</th><th>Giờ VN</th><th>QG</th><th>Sự kiện</th><th>Tác động</th><th class="n">Dự báo</th><th class="n">Trước</th></tr></thead><tbody>
+{% for x in s.rows %}<tr><td>{{ x.day }}</td><td>{{ x.time }}</td><td>{{ x.country }}</td><td>{{ x.title }}</td><td class="imp-{{ x.impact }}">{{ x.impact_vi }}</td><td class="n">{{ x.forecast }}</td><td class="n">{{ x.previous }}</td></tr>{% endfor %}
+</tbody></table>
+{% if s.hidden %}<p class="note">Còn {{ s.hidden }} sự kiện tác động trung bình không hiển thị (ưu tiên tác động cao).</p>{% endif %}
+{% endif %}</section>
+
+{# 3. TIN #}
+{% set s = S.news %}
+<section id="s-news"><h2>3. {{ r.titles.news }}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% elif not s.rows %}<div class="nodata">Chưa có tin có điểm tình cảm trong kỳ ({{ s.total }} bài).</div>{% else %}
+<p class="note">{{ s.total }} bài trong kỳ, {{ s.scored }} bài có điểm tình cảm tự động (−1…+1; mô hình NLP, chỉ tham khảo). Tích cực {{ s.pos }} · Trung lập {{ s.neu }} · Tiêu cực {{ s.neg }}. {{ s.share }}</p>
+<table><thead><tr><th>Giờ VN</th><th>Tiêu đề</th><th>Mã</th><th class="n">Tình cảm</th></tr></thead><tbody>
+{% for x in s.rows %}<tr><td class="muted">{{ x.time }}</td><td>{{ x.title }}</td><td class="muted">{{ x.symbols }}</td>
+<td class="n {{ sentcls(x.sent) }}">{{ '▲' if x.sent > 0 else '▼' }} {{ '%+.2f'|format(x.sent) }}</td></tr>{% endfor %}
+</tbody></table>
+{% if s.avg_chart %}<h3>Tình cảm trung bình theo mã (≥ 2 bài)</h3>{{ s.avg_chart }}{% endif %}
+{% endif %}</section>
+
+{# 4. CHUYÊN GIA #}
+{% set s = S.experts %}
+<section id="s-experts"><h2>4. {{ r.titles.experts }} <span class="tag ref">Tham khảo - không phải khuyến nghị</span></h2>
+{% if not s.ok %}{{ nodata(s) }}{% elif s.empty %}<div class="nodata">Chưa có tín hiệu chuyên gia đang mở (chưa thu được dữ liệu công khai).</div>{% else %}
+<table><thead><tr><th>Mã</th><th class="n">Mua</th><th class="n">Bán</th><th>Nghiêng</th></tr></thead><tbody>
+{% for x in s.rows %}<tr><td>{{ x.symbol }}</td><td class="n">{{ x.buy }}</td><td class="n">{{ x.sell }}</td><td>{{ x.lean }}</td></tr>{% endfor %}</tbody></table>
+<p class="note">{{ s.total }} tín hiệu đang mở. Chỉ là thống kê dữ liệu công khai của các chuyên gia, không phải khuyến nghị.</p>
+{% endif %}</section>
+
+{# 5. MT #}
+{% set s = S.mt %}
+<section id="s-mt"><h2>5. {{ r.titles.mt }}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% else %}
+{% if s.mode == 'none' %}<div class="nodata">{{ s.empty_msg }}</div>
+{% elif s.mode == 'acc' %}
+<table><thead><tr><th>Tài khoản</th><th>Nền tảng</th><th class="n">Equity</th><th class="n">Balance</th><th class="n">Margin</th><th class="n">Vị thế</th></tr></thead><tbody>
+{% for x in s.rows %}<tr><td>{{ x.id }}</td><td>{{ x.platform }}</td><td class="n">{{ x.equity }}</td><td class="n">{{ x.balance }}</td><td class="n">{{ x.margin }}</td><td class="n">{{ x.pos }}</td></tr>{% endfor %}</tbody></table>
+{% else %}
+<table><thead><tr><th>Tài khoản</th><th class="n">Equity</th><th class="n">Margin lvl</th><th class="n">Đòn bẩy</th><th class="n">P&amp;L ngày</th><th class="n">DD</th><th class="n">VaR95</th><th class="n">ES97.5</th><th>Stress xấu nhất</th><th>Ngân sách</th></tr></thead><tbody>
+{% for x in s.rows %}<tr><td>{{ x.id }}{% if x.stale %} <span class="tag">cũ</span>{% endif %}</td><td class="n">{{ x.equity }} {{ x.currency }}</td><td class="n">{{ x.margin }}</td><td class="n">{{ x.lev }}</td><td class="n">{{ x.day }}</td><td class="n">{{ x.dd }}</td><td class="n">{{ x.var }}</td><td class="n">{{ x.es }}</td><td>{{ x.stress }}</td>
+<td>{{ {'ok':'✓ ổn','warn':'! cảnh báo','crit':'✕ vượt'}.get(x.budget, x.budget) }}</td></tr>
+{% for w in x.warnings %}<tr><td></td><td colspan="9" class="muted">↳ {{ w }}</td></tr>{% endfor %}{% endfor %}</tbody></table>
+{% endif %}
+{% if s.risk_note %}<p class="note">{{ s.risk_note }}</p>{% endif %}
+{% endif %}</section>
+
+{# 6. PAPER #}
+{% set s = S.paper %}
+<section id="s-paper"><h2>6. {{ r.titles.paper }} <span class="tag">MÔ PHỎNG — không phải tiền thật</span></h2>
+{% if not s.ok %}{{ nodata(s) }}{% else %}
+<table><thead><tr><th>Tài khoản</th><th class="n">Equity</th><th class="n">Tổng lợi nhuận</th><th class="n">Δ {{ s.period_label }}</th><th class="n">vs benchmark</th><th class="n">DD</th><th class="n">DD tối đa</th><th class="n">Sharpe</th><th>Chỉ số vốn</th><th>DD / giới hạn</th></tr></thead><tbody>
+{% for x in s.rows %}<tr><td>{{ x.id }}{% if r.kind == "weekly" %}<br><span class="muted">{{ x.name }}</span>{% endif %}</td><td class="n">{{ x.equity }} {{ x.ccy }}</td><td class="n">{{ x.rets }}</td><td class="n">{{ x.period_ch }}</td>
+<td class="n">{% if x.bench %}{{ x.excess }}<br><span class="muted">{{ x.bench }} {{ x.bench_ch }}</span>{% else %}—{% endif %}</td>
+<td class="n">{{ x.dd }}</td><td class="n">{{ x.maxdd }}</td><td class="n">{{ x.sharpe }}</td><td>{{ x.spark }}</td><td>{{ x.dd_use }}</td></tr>{% endfor %}</tbody></table>
+<h3>Thay đổi {{ s.period_label }} theo tài khoản</h3>{{ s.chart }}
+<p class="note">{{ s.n }} tài khoản mô phỏng (đã loại tài khoản replay/ngừng dùng).{% if s.n_short %} {{ s.n_short }} tài khoản có mẫu còn ngắn (&lt; 60 ngày): Sharpe hiện "n/a", các chỉ số chưa có ý nghĩa thống kê.{% endif %} Hiệu suất mô phỏng không đảm bảo kết quả tương lai.</p>
+{% endif %}</section>
+
+{# 7. NHẬT KÝ (tuần) #}
+{% if 'journal' in r.order %}{% set s = S.journal %}
+<section id="s-journal"><h2>{{ r.order.index('journal') + 1 }}. {{ r.titles.journal }} <span class="tag ref">Tự soi lại, không phải khuyến nghị</span></h2>
+{% if not s.ok %}{{ nodata(s) }}{% elif s.empty %}<div class="nodata">{{ s.empty_msg }}</div>{% else %}
+<p class="note">Tuần {{ s.week }} — thống kê trên lệnh ĐÃ ĐÓNG. Kỷ luật = tỷ lệ lệnh không vi phạm quy tắc (tin, vào lại sau lệnh thua, tăng volume, nhồi lệnh, overtrading, thiếu SL).</p>
+<table><thead><tr><th>Tài khoản</th><th class="n">Lệnh</th><th class="n">P/L</th><th class="n">vs tuần trước</th><th class="n">Thắng</th><th class="n">PF</th><th class="n">Expectancy</th><th class="n">R TB</th><th class="n">Chuỗi thua</th><th class="n">Kỷ luật</th><th class="n">P/L lệnh vi phạm</th></tr></thead><tbody>
+{% for x in s.rows %}<tr><td>{{ x.id }}</td><td class="n">{{ x.n }}</td><td class="n">{{ x.net }}</td><td class="n">{{ x.d_net }}</td><td class="n">{{ x.wr }}</td><td class="n">{{ x.pf }}</td><td class="n">{{ x.exp }}</td><td class="n">{{ x.avg_r }}</td><td class="n">{{ x.streak }}</td><td class="n">{{ x.score }}</td><td class="n">{{ x.net_flagged }} ({{ x.flagged }})</td></tr>
+{% for t in x.insights %}<tr><td></td><td colspan="10" class="muted">↳ {{ t }}</td></tr>{% endfor %}{% endfor %}</tbody></table>
+{% endif %}</section>{% endif %}
+
+{# 8. RỦI RO (tuần) #}
+{% if 'risk' in r.order %}{% set s = S.risk %}
+<section id="s-risk"><h2>{{ r.order.index('risk') + 1 }}. {{ r.titles.risk }}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% elif s.empty %}<div class="nodata">Chưa có tài khoản nào trong báo cáo rủi ro.</div>{% else %}
+{% for x in s.flagged %}<div class="warnbox"><b>{{ x.id }}</b> — ngân sách: {{ x.budget }}{% for w in x.warnings %}; {{ w }}{% endfor %}</div>{% endfor %}
+{% if not s.flagged %}<p class="note">✓ Không có tài khoản nào vượt hoặc gần ngưỡng ngân sách rủi ro trong kỳ.</p>{% endif %}
+<table><thead><tr><th>Tài khoản</th><th class="n">DD</th><th class="n">VaR95</th><th class="n">ES97.5</th><th>Stress xấu nhất</th></tr></thead><tbody>
+{% for x in s.rows %}<tr><td>{{ x.id }}</td><td class="n">{{ x.dd }}</td><td class="n">{{ x.var }}</td><td class="n">{{ x.es }}</td><td>{{ x.stress }}</td></tr>{% endfor %}</tbody></table>
+{% if s.stress_chart %}<h3>Kịch bản stress xấu nhất (P&amp;L %)</h3>{{ s.stress_chart }}{% endif %}
+{% endif %}</section>{% endif %}
+
+{# BẢN TIN AI (ngày) #}
+{% if 'briefing' in r.order %}{% set s = S.briefing %}
+<section id="s-briefing"><h2>{{ r.order.index('briefing') + 1 }}. {{ r.titles.briefing }} <span class="tag ref">Tạo bởi AI, tham khảo, không phải khuyến nghị đầu tư</span></h2>
+{% if not s.ok %}{{ nodata(s) }}{% elif s.empty %}<div class="nodata">Chưa có bản tin nào trong 36 giờ qua (bản tin tự động tạo lúc 06:15 và 16:30 giờ VN).</div>{% else %}
+{% for b in s.rows %}<h3>{{ b.title }} <span class="muted">· {{ b.when }} (giờ VN) · {% if b.ai %}AI {{ b.model }}{% else %}bản mẫu, không AI{% endif %}</span></h3>
+<p><b>{{ b.headline }}</b></p>
+<ol>{% for p in b.points %}<li>{{ p.text }} <span class="muted">{% for n in p.cites %}[{{ n }}]{% endfor %}</span></li>{% endfor %}</ol>
+{% if b.mood %}<p class="note">Tâm lý chung: {{ b.mood }}</p>{% endif %}
+{% for w in b.watch %}<div class="warnbox">Cần theo dõi: {{ w }}</div>{% endfor %}
+{% if b.refs %}<p class="note">Căn cứ: {% for x in b.refs %}[{{ x.n }}] {{ x.title }}{% if not loop.last %}; {% endif %}{% endfor %}.</p>{% endif %}
+{% endfor %}
+<p class="note">Bản tin do mô hình AI chạy cục bộ tóm tắt từ dữ liệu hệ thống và đã qua hậu kiểm tự động (số liệu, trích dẫn); đầy đủ liên kết bài gốc ở trang "Bản tin" của giao diện web.</p>
+{% endif %}</section>{% endif %}
+
+{# KỸ THUẬT #}
+{% set s = S.tech %}{% set n_tech = r.order.index('tech') + 1 %}
+<section id="s-tech"><h2>{{ n_tech }}. {{ r.titles.tech }} <span class="tag ref">Chỉ báo, không phải khuyến nghị</span></h2>
+{% if not s.ok %}{{ nodata(s) }}{% elif s.empty %}<div class="nodata">Chưa có dữ liệu phân tích D1.</div>{% else %}
+<table><thead><tr><th>Mã</th><th class="n">Heat</th><th>Xu hướng</th><th class="n">RSI</th><th class="n">ADX</th><th class="n">Bias</th></tr></thead><tbody>
+{% for x in s.rows %}<tr><td>{{ x.symbol }}</td><td class="n">{{ x.heat }}</td><td>{{ x.trend }}</td><td class="n">{{ x.rsi }}</td><td class="n">{{ x.adx }}</td><td class="n">{{ x.bias }}</td></tr>{% endfor %}</tbody></table>
+<p class="note">Heat 0–100 = độ "nóng" của biến động/xu hướng (không có hướng); bias −100…+100 = độ nghiêng của chỉ báo.</p>
+{% endif %}</section>
+
+{# HỆ THỐNG #}
+{% set s = S.system %}{% set n_sys = r.order.index('system') + 1 %}
+<section id="s-system"><h2>{{ n_sys }}. {{ r.titles.system }}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% else %}
+{% for n in s.notes %}<p class="note">{{ n }}.</p>{% endfor %}
+<div class="grid2">
+ <div>
+  {% if s.svc_total is defined %}<h3>Service</h3>
+  <p>{{ s.svc_up }}/{{ s.svc_total }} service hoạt động {{ s.svc_meter }}{% if s.svc_down %}<br><b>Ngừng:</b> {{ s.svc_down|join(', ') }}{% endif %}</p>
+  {% if r.kind == "weekly" %}<table><thead><tr><th>Luồng sự kiện</th><th class="n">Độ dài</th><th>Sự kiện cuối (UTC)</th></tr></thead><tbody>
+  {% for x in s.streams %}<tr><td>{{ x.name }}</td><td class="n">{{ x.len }}</td><td class="muted">{{ x.last }}</td></tr>{% endfor %}</tbody></table>{% endif %}{% endif %}
+ </div>
+ <div>
+  {% if s.ds_summary is defined %}<h3>Trạng thái dữ liệu thị trường</h3>
+  <p class="note">Luồng dữ liệu giá đang hoạt động {{ s.ds_summary.active }}/{{ s.ds_summary.total }}{% if s.ds_summary.age %} · cập nhật gần nhất {{ s.ds_summary.age }}{% endif %}{% if s.reconcile %} · đối chiếu giá OK {{ s.reconcile.get('ok', 0) }}{% endif %}. Tình trạng: <b>{{ s.ds_summary.state }}</b>.</p>{% endif %}
+ </div>
+</div>
+{% if r.kind == "weekly" and s.sources is defined and s.sources %}<h3>Độ trễ dữ liệu theo loại</h3>
+<table><thead><tr><th>Loại dữ liệu</th><th class="n">Tuổi bản ghi cuối</th><th class="n">Số bản ghi 24h</th></tr></thead><tbody>
+{% for x in s.sources %}<tr><td>{{ x.name }}</td><td class="n">{{ '%.1f'|format(x.age_h) }} giờ</td><td class="n">{{ x.n24 }}</td></tr>{% endfor %}</tbody></table>{% endif %}
+{% if s.alerts is defined %}<h3>Cảnh báo {{ 'trong tuần' if r.kind == 'weekly' else '24 giờ qua' }}</h3>
+<p>Tổng {{ s.alerts.total }}: nghiêm trọng <b>{{ s.alerts.crit }}</b> · cảnh báo <b>{{ s.alerts.warn }}</b> · thông tin {{ s.alerts.info }}{% if s.alerts.truncated %} <span class="muted">(chỉ đọc 500 cảnh báo gần nhất)</span>{% endif %}</p>
+{% for a in s.alerts.notable %}<div class="warnbox">{{ '✕' if a.level == 'crit' else '!' }} {{ a.ts }} — {{ a.title }}</div>{% endfor %}{% endif %}
+{% endif %}</section>
+
+<footer>
+  Chỉ đọc / mô phỏng, không phải lời khuyên đầu tư. Hệ thống không đặt lệnh; mọi tài khoản MT ở chế độ READ-ONLY; thông tin chuyên gia và chỉ báo chỉ để tham khảo.
+  Báo cáo tạo tự động bởi service reporter {{ version }} từ api-gateway — {{ r.generated_utc }}.
+  {% if r.fail %}<br>Mục chưa có dữ liệu: {% for k in r.fail %}{{ r.titles[k] }}{% if not loop.last %}, {% endif %}{% endfor %}.{% endif %}
+</footer>
+</body>
+</html>

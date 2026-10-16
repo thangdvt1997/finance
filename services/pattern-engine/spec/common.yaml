@@ -1,0 +1,31 @@
+# Tham số dùng chung cho mọi kịch bản. MỌI ngưỡng chuẩn hoá theo ATR14 hoặc độ dài sóng (không dùng pip/giá cố định).
+# Hệ thống CHỈ thông tin / paper: SL/TP là gợi ý, KHÔNG phải lệnh.
+version: 1
+params:
+  atr_period: 14
+  warmup_bars: 60              # số nến tối thiểu trước khi bắt đầu phát hiện
+  zigzag_atr: [2.0, 3.0]       # swing ZigZag đa thang: đảo chiều khi giá đi ngược >= k × ATR (pivot xác nhận trễ, không repaint)
+  long_body_atr: 1.5           # "nến thân dài": thân > 1.5 × ATR14 (giả định mặc định số 1) — dùng cho nến KÍCH HOẠT (trigger_body_atr)
+  lead_long_body_atr: 0.8      # [HIỆU CHỈNH GOLDEN] "nến đỏ thân dài" TRONG SÓNG DẪN: 1.5 ATR không có sóng mẫu nào đạt (xem docs/PATTERNS_SELL.md §Hiệu chỉnh)
+  small_body_atr: 0.5          # "nến thân nhỏ": thân <= 0.5 × ATR14
+  # --- sóng dẫn hướng giảm (giả định mặc định số 2)
+  lead_min_atr: 6.0            # độ dài sóng >= 6 ATR
+  lead_min_long_red: 3         # >= 3 nến đỏ thân dài (ngưỡng thân: lead_long_body_atr)
+  lead_max_green: 0.40         # [HIỆU CHỈNH GOLDEN] tỷ trọng THÂN nến xanh <= 40% (mặc định ban đầu 25% theo SỐ nến; 3 sóng mẫu = 23%/12%/33%)
+  lead_impulse_bars: 0         # 0 = đo trên cả sóng; >0 = chỉ đo n nến đầu của sóng (xung lực)
+  lead_max_pivots_back: 14
+  max_pivots_back: 16
+  # --- nến nhấn chìm giảm (giả định mặc định số 4)
+  trigger_body_atr: 1.5
+  engulf_eps_atr: 0.1          # dung sai khi so thân nến (nến liên tục -> open ~ close nến trước)
+  # --- cụm nến nén
+  cluster_bars: 3
+  cluster_range_atr: 2.5
+  # --- dung sai chung
+  pivot_tol_atr: 0.5
+  min_drop_atr: 0.1
+  invalid_above_atr: 0.25
+  break_no_trigger_atr: 0.75
+  # --- mức gợi ý (chỉ thông tin)
+  sl_buffer_atr: 0.25          # SL gợi ý = đỉnh cấu trúc + 0.25 ATR
+  tp_r: [1.0, 2.0, 3.0]        # TP gợi ý theo bội số R (R = SL - giá vào)

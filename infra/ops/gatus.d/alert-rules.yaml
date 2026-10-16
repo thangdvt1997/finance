@@ -1,0 +1,9 @@
+# alert-rules (cảnh báo người dùng + prefs). Nếu gỡ service khỏi compose thì xóa file này.
+endpoints:
+  - name: alert-rules
+    group: services
+    url: "http://alert-rules:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "alert-rules không phản hồi" }

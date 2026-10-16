@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 222" font-family="sans-serif" font-size="12">
+<rect width="640" height="222" fill="#fff"/><text x="8" y="18" font-weight="bold">R trung binh/lenh sau chi phi, walk-forward 2012+ (thanh = CI95)</text>
+<line x1="485.6" y1="26" x2="485.6" y2="216" stroke="#444" stroke-dasharray="3"/>
+<text x="8" y="52">Lay tat ca (WF 2012+)</text>
+<rect x="352.8" y="40" width="132.8" height="16" fill="#888"/>
+<line x1="318.1" y1="48" x2="388.1" y2="48" stroke="#000"/>
+<text x="636" y="52" text-anchor="end">-0.105</text>
+<text x="8" y="78">logit top50%</text>
+<rect x="379.4" y="66" width="106.2" height="16" fill="#c44"/>
+<line x1="333.1" y1="74" x2="423.7" y2="74" stroke="#000"/>
+<text x="636" y="78" text-anchor="end">-0.084</text>
+<text x="8" y="104">logit top25%</text>
+<rect x="369.6" y="92" width="116.0" height="16" fill="#c44"/>
+<line x1="306.4" y1="100" x2="432.9" y2="100" stroke="#000"/>
+<text x="636" y="104" text-anchor="end">-0.092</text>
+<text x="8" y="130">logit top10%</text>
+<rect x="485.6" y="118" width="3.9" height="16" fill="#2a7"/>
+<line x1="402.5" y1="126" x2="582.1" y2="126" stroke="#000"/>
+<text x="636" y="130" text-anchor="end">+0.003</text>
+<text x="8" y="156">gbm top50%</text>
+<rect x="416.4" y="144" width="69.2" height="16" fill="#c44"/>
+<line x1="367.9" y1="152" x2="464.5" y2="152" stroke="#000"/>
+<text x="636" y="156" text-anchor="end">-0.055</text>
+<text x="8" y="182">gbm top25%</text>
+<rect x="403.3" y="170" width="82.3" height="16" fill="#c44"/>
+<line x1="340.4" y1="178" x2="465.0" y2="178" stroke="#000"/>
+<text x="636" y="182" text-anchor="end">-0.065</text>
+<text x="8" y="208">gbm top10%</text>
+<rect x="340.8" y="196" width="144.8" height="16" fill="#c44"/>
+<line x1="247.9" y1="204" x2="437.8" y2="204" stroke="#000"/>
+<text x="636" y="208" text-anchor="end">-0.115</text>
+</svg>

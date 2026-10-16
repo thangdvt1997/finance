@@ -1,0 +1,730 @@
+{
+ "INF-C:ai-trading": [
+  "PASS",
+  "Up 20 minutes (healthy); restart=0"
+ ],
+ "INF-C:ai-trading-worker": [
+  "PASS",
+  "Up 23 hours (healthy); restart=0"
+ ],
+ "INF-C:alert-rules": [
+  "PASS",
+  "Up 34 minutes (healthy); restart=0"
+ ],
+ "INF-C:alert-service": [
+  "PASS",
+  "Up 12 minutes (healthy); restart=0"
+ ],
+ "INF-C:alertmanager": [
+  "PASS",
+  "Up 8 minutes (healthy); restart=0"
+ ],
+ "INF-C:analytics": [
+  "PASS",
+  "Up 20 hours (healthy); restart=0"
+ ],
+ "INF-C:api-gateway": [
+  "PASS",
+  "Up 6 minutes (healthy); restart=0"
+ ],
+ "INF-C:auth": [
+  "PASS",
+  "Up 21 hours (healthy); restart=0"
+ ],
+ "INF-C:briefing": [
+  "PASS",
+  "Up 2 minutes (healthy); restart=0"
+ ],
+ "INF-C:briefing-llm": [
+  "PASS",
+  "Up 36 minutes (healthy); restart=0"
+ ],
+ "INF-C:cadvisor": [
+  "PASS",
+  "Up 45 hours (healthy); restart=0"
+ ],
+ "INF-C:client-ui": [
+  "PASS",
+  "Up 19 minutes (healthy); restart=0"
+ ],
+ "INF-C:data-keeper": [
+  "PASS",
+  "Up 20 hours (healthy); restart=0"
+ ],
+ "INF-C:docker-socket-proxy": [
+  "PASS",
+  "Up 43 hours (healthy); restart=0"
+ ],
+ "INF-C:expert-collector": [
+  "PASS",
+  "Up 21 hours (healthy); restart=0"
+ ],
+ "INF-C:gatus": [
+  "PASS",
+  "Up 41 hours; restart=0"
+ ],
+ "INF-C:grafana": [
+  "PASS",
+  "Up 22 hours (healthy); restart=0"
+ ],
+ "INF-C:jaeger": [
+  "PASS",
+  "Up 22 hours (healthy); restart=0"
+ ],
+ "INF-C:journal": [
+  "PASS",
+  "Up 23 hours (healthy); restart=0"
+ ],
+ "INF-C:local-llm": [
+  "PASS",
+  "Up 22 hours (healthy); restart=0"
+ ],
+ "INF-C:market-collector": [
+  "PASS",
+  "Up 21 hours (healthy); restart=0"
+ ],
+ "INF-C:mt-bridge": [
+  "PASS",
+  "Up 31 hours (healthy); restart=0"
+ ],
+ "INF-C:news-collector": [
+  "PASS",
+  "Up 21 hours (healthy); restart=0"
+ ],
+ "INF-C:nlp": [
+  "PASS",
+  "Up 21 hours (healthy); restart=0"
+ ],
+ "INF-C:ntfy": [
+  "PASS",
+  "Up 44 hours (healthy); restart=0"
+ ],
+ "INF-C:paper-trader": [
+  "PASS",
+  "Up 20 hours (healthy); restart=0"
+ ],
+ "INF-C:pattern-engine": [
+  "PASS",
+  "Up 20 hours (healthy); restart=0"
+ ],
+ "INF-C:pattern-scan": [
+  "PASS",
+  "Up 20 minutes (healthy); restart=0"
+ ],
+ "INF-C:postgres-exporter": [
+  "PASS",
+  "Up 45 hours (healthy); restart=0"
+ ],
+ "INF-C:prometheus": [
+  "PASS",
+  "Up 8 minutes (healthy); restart=0"
+ ],
+ "INF-C:redis": [
+  "PASS",
+  "Up 31 hours (healthy); restart=0"
+ ],
+ "INF-C:redis-cache": [
+  "PASS",
+  "Up 45 hours (healthy); restart=0"
+ ],
+ "INF-C:redis-exporter": [
+  "PASS",
+  "Up 45 hours (healthy); restart=0"
+ ],
+ "INF-C:reporter": [
+  "PASS",
+  "Up 4 minutes (healthy); restart=0"
+ ],
+ "INF-C:risk-monitor": [
+  "PASS",
+  "Up 35 minutes (healthy); restart=0"
+ ],
+ "INF-C:storage-writer": [
+  "PASS",
+  "Up 20 hours (healthy); restart=0"
+ ],
+ "INF-C:textfile-exporter": [
+  "PASS",
+  "Up 45 hours (healthy); restart=0"
+ ],
+ "INF-C:timescaledb": [
+  "PASS",
+  "Up 4 days (healthy); restart=0"
+ ],
+ "INF-C:track-record": [
+  "PASS",
+  "Up 3 minutes (healthy); restart=0"
+ ],
+ "INF-C:vn-market": [
+  "PASS",
+  "Up 22 hours (healthy); restart=0"
+ ],
+ "INF-C:web-ui": [
+  "PASS",
+  "Up 19 hours (healthy); restart=0"
+ ],
+ "INF-T:tradingsys-backup.timer": [
+  "PASS",
+  "active; next=Sat 2026-10-17 03:11:09 UTC"
+ ],
+ "INF-T:tradingsys-backupwatch.timer": [
+  "PASS",
+  "active; next=Fri 2026-10-16 08:18:49 UTC"
+ ],
+ "INF-T:tradingsys-basebackup.timer": [
+  "PASS",
+  "active; next=Sun 2026-10-18 02:31:35 UTC"
+ ],
+ "INF-T:tradingsys-restoretest.timer": [
+  "PASS",
+  "active; next=Sun 2026-10-18 04:30:37 UTC"
+ ],
+ "INF-T:cron-digest": [
+  "PASS",
+  "cron có digest.sh; DIGEST.md cập nhật 13 phút trước"
+ ],
+ "INF-R:rules.yml": [
+  "PASS",
+  "27 luật, lỗi=[]"
+ ],
+ "INF-R:rules_feed.yml": [
+  "PASS",
+  "20 luật, lỗi=[]"
+ ],
+ "INF-R:rules_rt.yml": [
+  "PASS",
+  "10 luật, lỗi=[]"
+ ],
+ "INF-R:rules_slo.yml": [
+  "PASS",
+  "42 luật, lỗi=[]"
+ ],
+ "INF-P:targets": [
+  "PASS",
+  "31 targets, down=[]"
+ ],
+ "INF-P:alertmanager": [
+  "PASS",
+  "API /api/v2/status trả cấu hình"
+ ],
+ "INF-G:cache-latency.json": [
+  "PASS",
+  "JSON hợp lệ (20 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+ ],
+ "INF-G:data_keeper.json": [
+  "PASS",
+  "JSON hợp lệ (17 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+ ],
+ "INF-G:feed_all.json": [
+  "PASS",
+  "JSON hợp lệ (22 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+ ],
+ "INF-G:local-llm.json": [
+  "PASS",
+  "JSON hợp lệ (13 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+ ],
+ "INF-G:market-overview.json": [
+  "PASS",
+  "JSON hợp lệ (7 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+ ],
+ "INF-G:platform-health.json": [
+  "PASS",
+  "JSON hợp lệ (7 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+ ],
+ "INF-G:realtime.json": [
+  "PASS",
+  "JSON hợp lệ (38 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+ ],
+ "INF-G:resources-db.json": [
+  "PASS",
+  "JSON hợp lệ (33 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+ ],
+ "INF-G:slo-observability.json": [
+  "PASS",
+  "JSON hợp lệ (36 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+ ],
+ "INF-GT:alert-rules.yaml": [
+  "PASS",
+  "1 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:auth.yaml": [
+  "PASS",
+  "1 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:briefing.yaml": [
+  "PASS",
+  "1 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:feed_all.yaml": [
+  "PASS",
+  "1 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:journal.yaml": [
+  "PASS",
+  "1 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:local-llm.yaml": [
+  "PASS",
+  "1 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:platform.yaml": [
+  "PASS",
+  "11 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:platform_extra.yaml": [
+  "PASS",
+  "6 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:vn-market.yaml": [
+  "PASS",
+  "1 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:web-ui.yaml": [
+  "PASS",
+  "1 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "INF-GT:gatus.yaml": [
+  "PASS",
+  "0 endpoint, lỗi=[], không thấy=[]"
+ ],
+ "FLAG:EXPERT_COLLECTOR_ENABLED": [
+  "PASS",
+  "dùng trong services/web-ui/app/src/pages/Overview.jsx, services/web-ui/app/src/pages/Experts.jsx, services/web-ui/app/dist/assets/index-DF3NRC1l.js"
+ ],
+ "FLAG:MARKET_COLLECTOR_ENABLED": [
+  "PASS",
+  "dùng trong infra/docker-compose.yml"
+ ],
+ "FLAG:MT_ENABLED": [
+  "PASS",
+  "dùng trong services/web-ui/app/src/pages/Overview.jsx, services/web-ui/app/src/pages/Accounts.jsx, services/web-ui/app/dist/assets/index-DF3NRC1l.js"
+ ],
+ "FLAG:NEWS_COLLECTOR_ENABLED": [
+  "PASS",
+  "dùng trong infra/docker-compose.yml"
+ ],
+ "SCRX:infra/ops/digest.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:infra/ops/llm_node.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:infra/ops/merge_old_bars_chunks.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:infra/ops/status_brief.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:infra/ops/digest.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/feed_e2e.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/tokens_report.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/la_lib/__init__.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/la_lib/agent.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/la_lib/cmds.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/la_lib/llm.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/la_lib/pool.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/la_lib/router.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/la_lib/tools.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/la_bench/run_bench.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/la_bench/tasks.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:services/client-ui/scripts/i18n-check.cjs": [
+  "PASS (tĩnh)",
+  "node --check"
+ ],
+ "SCRX:services/client-ui/scripts/lint-sources.cjs": [
+  "PASS (tĩnh)",
+  "node --check"
+ ],
+ "SCRX:services/nlp/scripts/export_onnx.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:services/nlp/scripts/loadtest_feed.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:services/nlp/scripts/smoke_real.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:services/web-ui/scripts/lint-sources.cjs": [
+  "PASS (tĩnh)",
+  "node --check"
+ ],
+ "SCRX:services/web-ui/scripts/make-htpasswd.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:tests/qa/api/build_inventory.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:tests/qa/api/gen_inventory.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:tests/qa/api/run_api.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:tests/qa/auth/c_cleanup_rooms.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:tests/qa/auth/c_matrix.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:tests/run_pytest_all.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:infra/perf/bench.js": [
+  "PASS (tĩnh)",
+  "node --check"
+ ],
+ "SCRX:infra/perf/gw_profile.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/perf/pageload.mjs": [
+  "PASS (tĩnh)",
+  "node --check"
+ ],
+ "SCRX:infra/perf/perf_session.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/perf/rt_latency_report.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/perf/ws_load.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/local-llm/guard.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "AI:pattern-engine/src": [
+  "PASS",
+  "pytest 37 passed (research 2026-10-16, run_pytest_docker.sh pattern-engine); không chạy backtest (đã dừng)"
+ ],
+ "AI:pattern-scan/src": [
+  "PASS",
+  "pytest 33 passed (research 2026-10-16, run_pytest_docker.sh pattern-scan); không quét live"
+ ],
+ "UI-M:tong-quan": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:chung-khoan-vn": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:danh-sach": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:phan-tich": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:ban-tin": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:tin-tuc": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:lich": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:chuyen-gia": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:tai-khoan": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:mo-phong": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:nhat-ky": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:canh-bao": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:bao-cao": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:khach-hang": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:he-thong": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:doi-tai-khoan": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:luat": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:su-co": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:vai-tro": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:phien-thiet-bi": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:kiem-toan": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:bao-cao-khach": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:cai-dat": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:tro-giup": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:du-lieu": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:phien-giao-dich": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:suc-manh-tien-te": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:movers": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:ban-do-nhiet": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:nhip-thi-truong": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:vi-the-lon": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:tuong-quan-rui-ro": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:kich-ban": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:gioi-thieu": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "UI-M:design": [
+  "PASS",
+  "d1_pages 1366x768 tối/vi: 0 vấn đề"
+ ],
+ "SMOKE": [
+  "PASS",
+  "smoke.sh xanh: 233 kiểm tra 3 vai trò"
+ ],
+ "UI-C:hom-nay": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:vi-the": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:thi-truong": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:nhat-ky": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:tong-quan": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:gioi-han": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:rui-ro": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:danh-muc": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:tin-lich": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:ban-tin": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:tin-hieu": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:kich-ban": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:ai-trading": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:chuyen-gia": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:bao-cao": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:canh-bao": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:thong-bao": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:ho-so": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-C:tro-giup": [
+  "PASS",
+  "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+ ],
+ "UI-M:thi-truong": [
+  "PASS",
+  "d2_run.sh (d2_matrix 60 kiểm tra: 4 độ phân giải x sáng/tối; chart dựng, không NaN/tràn/lộ nguồn)"
+ ],
+ "UI-M:terminal": [
+  "PASS",
+  "d2_run.sh terminal.mjs: 10 widget, không tràn ngang; lần 1 có 409 PUT /user/prefs do tranh chấp prefs dùng chung với phiên khác, lần 2 sạch"
+ ],
+ "UI-FLOWS": [
+  "PASS",
+  "eg_client_flows.sh 28/28 bước"
+ ],
+ "SCRX:infra/ops/fill_canon_gap.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:tests/qa/api/run_extra.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "SCRX:infra/ops/deploy_q.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:infra/ops/smoke_full_bg.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:infra/ops/smoke_quick.sh": [
+  "PASS (tĩnh)",
+  "bash -n"
+ ],
+ "SCRX:tests/qa/api/gen_function_inventory.py": [
+  "PASS (tĩnh)",
+  "py_compile"
+ ],
+ "AI:ai-trading/arena.py": [
+  "PASS",
+  "pytest ai-trading 164 pass/4 skip (+test_arena_store.py). GET /v1/ai-trading/arena master 200 (9 muc portfolio, ranked=0, note rong, min_n=30), an danh 401. Ham thuan: n=29 'chua du mau' khong xep hang, n=30 xep hang+CI95+p, rong, tat dinh."
+ ],
+ "AI:ai-trading/scenario_store.py": [
+  "PASS",
+  "Store tren thu muc tam: ghi/doc, trung id->FileExistsError (khong ghi de), id cam/traversal ../ / null -> None, ten anh traversal chan, job id sai chan. Da sua+deploy 2 loi nho: trial_index lech +1, ten anh sai de lai thu muc do dang (test_arena_store.py)."
+ ],
+ "AI:briefing/src": [
+  "PASS",
+  "pytest briefing 62 pass. /healthz ok; /briefing/latest 4 ban (status llm) moi nhat 16/10; id/edition/limit sai->422; khong token->401. Hau kiem tat dinh 14/14 ca mau (so sai, khuyen nghi, du bao, thieu cite, URL, injection, ten nguon...); 4 ban da luu khong vi pham tu cam. Timeout/fallback LLM co test (test_pipeline/test_analyst/test_app). Khong ep sinh ban moi."
+ ],
+ "AI:nlp/src": [
+  "PASS",
+  "pytest nlp 26 pass/1 skip. /v1/analyze: tin tich cuc EN +0.87/VI +0.93 > tieu cuc EN -0.80/VI -0.99; ~25-30ms; rong/thieu/>500 ky tu->422; tai lap cung input cung output; khong token->401. LUU Y: mo hinh VI nghieng positive voi cau trung tinh (xem QA_ISSUES)."
+ ]
+}

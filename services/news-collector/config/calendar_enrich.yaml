@@ -1,0 +1,101 @@
+# Lam giau lich kinh te: (1) nhom su kien "cung mot ban phat hanh" (group) de loai trung giua nguon chinh thuc va Fair Economy;
+# (2) quy tac surprise (polarity/scale) theo ten chi so; (3) chi so co API 'actual' hop le (BLS/StatCan/ONS/ABS/Eurostat/BoJ/FRED).
+
+# ---- (1) Nhom ban phat hanh. countries: ma quoc gia HOAC ma tien te (FF dung USD/EUR...). titles: chuoi con (khong phan biet hoa/thuong).
+# Hang chinh thuc (bls/fed/ecb/boe/boj) bi AN o API/UI neu co hang Fair Economy cung nhom trong +-60 phut (hang FF chi tiet hon).
+groups:
+  - {id: us_employment, countries: [US, USD], titles: ["Employment Situation", "Non-Farm Employment Change", "Unemployment Rate", "Average Hourly Earnings"]}
+  - {id: us_cpi, countries: [US, USD], titles: ["Consumer Price Index", "CPI m/m", "CPI y/y", "Core CPI"]}
+  - {id: us_ppi, countries: [US, USD], titles: ["Producer Price Index", "PPI m/m", "PPI y/y", "Core PPI"]}
+  - {id: us_jolts, countries: [US, USD], titles: ["Job Openings and Labor Turnover", "JOLTS Job Openings"]}
+  - {id: us_import_prices, countries: [US, USD], titles: ["Import and Export Price", "Import Prices"]}
+  - {id: us_productivity, countries: [US, USD], titles: ["Productivity and Costs", "Nonfarm Productivity", "Unit Labor Costs"]}
+  - {id: us_eci, countries: [US, USD], titles: ["Employment Cost Index"]}
+  - {id: us_fomc, countries: [US, USD], titles: ["FOMC Rate Decision", "Federal Funds Rate", "FOMC Statement", "FOMC Press Conference"]}
+  - {id: eu_ecb, countries: [EU, EUR], titles: ["ECB Interest Rate Decision", "Main Refinancing Rate", "Monetary Policy Statement", "ECB Press Conference"]}
+  - {id: gb_boe, countries: [GB, GBP], titles: ["BoE Interest Rate Decision", "Official Bank Rate", "MPC Official Bank Rate Votes", "Monetary Policy Summary"]}
+  - {id: jp_boj, countries: [JP, JPY], titles: ["BoJ Monetary Policy Meeting Decision", "BOJ Policy Rate", "Monetary Policy Statement", "BOJ Press Conference"]}
+
+# ---- (2) Surprise. Quy tac dau tien khop (regex tren tieu de) duoc dung. polarity: +1 = cao hon du bao la TOT cho dong tien; -1 = XAU.
+# scale = do lech "dien hinh" cua chi so (cung don vi voi forecast) de chuan hoa z = surprise/scale. Khong khop -> mac dinh.
+surprise:
+  default_polarity: 1
+  default_scale_pct: 0.1       # chi so tinh theo % mac dinh: 0.1 diem %
+  inline_z: 0.3                # |z| < 0.3 coi la "dung du bao"
+  rules:
+    - {match: "Unemployment Rate", polarity: -1, scale: 0.1}
+    - {match: "Unemployment Claims|Jobless Claims|Initial Claims|Continuing Claims|Claimant Count", polarity: -1, scale: 20}
+    - {match: "Non-Farm Employment Change", scale: 75}          # K viec lam
+    - {match: "Employment Change", scale: 20}
+    - {match: "Core CPI m/m|CPI m/m|PPI m/m|Core PPI m/m", scale: 0.1}
+    - {match: "CPI y/y|Core CPI y/y|PPI y/y", scale: 0.1}
+    - {match: "Retail Sales m/m", scale: 0.3}
+    - {match: "GDP", scale: 0.2}
+    - {match: "Average Hourly Earnings m/m", scale: 0.1}
+
+# ---- (3) Chi so co API "actual". Ghep voi su kien lich bang: country khop (US/USD...) + tieu de khop regex `title`.
+# provider: bls | statcan | ons | abs | eurostat | boj | fred (fred can FRED_API_KEY). series: id chuoi o provider.
+# transform: level | mom_pct | yoy_pct | diff ; scale nhan sau transform ; unit hien thi (%, K, M) ; decimals mac dinh neu khong co forecast mau.
+# lag_months: ky tham chieu = thang cua su kien - lag (chi nhan 'actual' khi quan sat moi nhat dung ky nay -> khong nhan so cu).
+indicators:
+  # --- Hoa Ky: BLS Public API v1 (khong key, 25 req/ngay, <=10 series/req; co BLS_API_KEY thi dung v2 500 req/ngay) ---
+  - {id: us_cpi_mom, country: US, title: "^CPI m/m$", provider: bls, series: CUSR0000SA0, transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_cpi_yoy, country: US, title: "^CPI y/y$", provider: bls, series: CUUR0000SA0, transform: yoy_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_core_cpi_mom, country: US, title: "^Core CPI m/m$", provider: bls, series: CUSR0000SA0L1E, transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_core_cpi_yoy, country: US, title: "^Core CPI y/y$", provider: bls, series: CUUR0000SA0L1E, transform: yoy_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_unemployment, country: US, title: "^Unemployment Rate$", provider: bls, series: LNS14000000, transform: level, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_nfp, country: US, title: "^Non-Farm Employment Change$", provider: bls, series: CES0000000001, transform: diff, unit: K, decimals: 0, lag_months: 1}
+  - {id: us_ahe_mom, country: US, title: "^Average Hourly Earnings m/m$", provider: bls, series: CES0500000003, transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_ppi_mom, country: US, title: "^PPI m/m$", provider: bls, series: WPSFD4, transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_core_ppi_mom, country: US, title: "^Core PPI m/m$", provider: bls, series: WPSFD49104, transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_import_mom, country: US, title: "^Import Prices m/m$", provider: bls, series: EIUIR, transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_jolts, country: US, title: "^JOLTS Job Openings$", provider: bls, series: JTS000000000000000JOL, transform: level, scale: 0.001, unit: M, decimals: 2, lag_months: 2}
+  # --- Hoa Ky: FRED (can key mien phi FRED_API_KEY; neu chua co key cac dong nay bi bo qua) ---
+  - {id: us_retail_mom, country: US, title: "^Retail Sales m/m$", provider: fred, series: RSAFS, transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_core_retail_mom, country: US, title: "^Core Retail Sales m/m$", provider: fred, series: RSFSXMV, transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: us_indpro_mom, country: US, title: "^Industrial Production m/m$", provider: fred, series: INDPRO, transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  # --- Canada: Statistics Canada WDS (khong key) ---
+  - {id: ca_cpi_mom, country: CA, title: "^CPI m/m$", provider: statcan, series: "41690973", transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: ca_cpi_yoy, country: CA, title: "^CPI y/y$", provider: statcan, series: "41690973", transform: yoy_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: ca_unemployment, country: CA, title: "^Unemployment Rate$", provider: statcan, series: "2062815", transform: level, unit: "%", decimals: 1, lag_months: 1}
+  - {id: ca_gdp_mom, country: CA, title: "^GDP m/m$", provider: statcan, series: "65201210", transform: mom_pct, unit: "%", decimals: 1, lag_months: 2}
+  - {id: ca_retail_mom, country: CA, title: "^Retail Sales m/m$", provider: statcan, series: "1446859483", transform: mom_pct, unit: "%", decimals: 1, lag_months: 2}
+  - {id: ca_employment, country: CA, title: "^Employment Change$", provider: statcan, series: "2062811", transform: diff, unit: K, decimals: 1, lag_months: 1}
+  # --- Anh: ONS time-series JSON (khong key). series = "<duong dan muc>/<id>/<dataset>" ---
+  - {id: gb_cpi_yoy, country: GB, title: "^CPI y/y$", provider: ons, series: "economy/inflationandpriceindices|d7g7|mm23", transform: level, unit: "%", decimals: 1, lag_months: 1}
+  - {id: gb_core_cpi_yoy, country: GB, title: "^Core CPI y/y$", provider: ons, series: "economy/inflationandpriceindices|dko8|mm23", transform: level, unit: "%", decimals: 1, lag_months: 1}
+  - {id: gb_unemployment, country: GB, title: "^Unemployment Rate$", provider: ons, series: "employmentandlabourmarket/peoplenotinwork/unemployment|mgsx|lms", transform: level, unit: "%", decimals: 1, lag_months: 3}
+  - {id: gb_gdp_mom, country: GB, title: "^GDP m/m$", provider: ons, series: "economy/grossdomesticproductgdp|ecy2|mgdp", transform: mom_pct, unit: "%", decimals: 1, lag_months: 2}
+  - {id: gb_indpro_mom, country: GB, title: "^Industrial Production m/m$", provider: ons, series: "economy/economicoutputandproductivity/output|k222|diop", transform: mom_pct, unit: "%", decimals: 1, lag_months: 2}
+  - {id: gb_manuf_mom, country: GB, title: "^Manufacturing Production m/m$", provider: ons, series: "economy/economicoutputandproductivity/output|k22a|diop", transform: mom_pct, unit: "%", decimals: 1, lag_months: 2}
+  - {id: gb_retail_mom, country: GB, title: "^Retail Sales m/m$", provider: ons, series: "businessindustryandtrade/retailindustry|j5ek|drsi", transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: gb_aei_3my, country: GB, title: "^Average Earnings Index 3m/y$", provider: ons, series: "employmentandlabourmarket/peopleinwork/earningsandworkinghours|kac3|lms", transform: level, unit: "%", decimals: 1, lag_months: 2}
+  - {id: gb_claimant, country: GB, title: "^Claimant Count Change$", provider: ons, series: "employmentandlabourmarket/peoplenotinwork/outofworkbenefits|bcjd|unem", transform: diff, unit: K, decimals: 1, lag_months: 1}
+  # --- Uc: ABS Data API (SDMX, khong key), Labour Force: that nghiep SA ---
+  - {id: au_unemployment, country: AU, title: "^Unemployment Rate$", provider: abs, series: "LF|M13.3.1599.20.AUS.M", transform: level, unit: "%", decimals: 1, lag_months: 1}
+  - {id: au_employment, country: AU, title: "^Employment Change$", provider: abs, series: "LF|M3.3.1599.20.AUS.M", transform: diff, unit: K, decimals: 1, lag_months: 1}
+  # --- Khu vuc dong Euro: Eurostat (khong key). 2026-02 Eurostat dong bang prc_hicp_manr -> dung prc_hicp_minr (coicop18).
+  #     HICP dung geo=EA; dataset lao dong/kinh doanh dung geo=EA21 (doi khi khu vuc dong euro mo rong). ---
+  - {id: eu_cpi_flash_yoy, country: EU, title: "^CPI Flash Estimate y/y$", provider: eurostat, series: "prc_hicp_minr|geo=EA&coicop18=TOTAL&unit=RCH_A", transform: level, unit: "%", decimals: 1, lag_months: 0}
+  - {id: eu_core_cpi_flash_yoy, country: EU, title: "^Core CPI Flash Estimate y/y$", provider: eurostat, series: "prc_hicp_minr|geo=EA&coicop18=TOT_X_NRG_FOOD&unit=RCH_A", transform: level, unit: "%", decimals: 1, lag_months: 0}
+  - {id: eu_cpi_yoy, country: EU, title: "^(Final )?CPI y/y$", provider: eurostat, series: "prc_hicp_minr|geo=EA&coicop18=TOTAL&unit=RCH_A", transform: level, unit: "%", decimals: 1, lag_months: 1}
+  - {id: eu_core_cpi_yoy, country: EU, title: "^(Final )?Core CPI y/y$", provider: eurostat, series: "prc_hicp_minr|geo=EA&coicop18=TOT_X_NRG_FOOD&unit=RCH_A", transform: level, unit: "%", decimals: 1, lag_months: 1}
+  - {id: eu_unemployment, country: EU, title: "^Unemployment Rate$", provider: eurostat, series: "une_rt_m|geo=EA21&s_adj=SA&age=TOTAL&sex=T&unit=PC_ACT", transform: level, unit: "%", decimals: 1, lag_months: 2}
+  - {id: eu_retail_mom, country: EU, title: "^Retail Sales m/m$", provider: eurostat, series: "sts_trtu_m|geo=EA21&s_adj=SCA&indic_bt=VOL_SLS&nace_r2=G47&unit=I21", transform: mom_pct, unit: "%", decimals: 1, lag_months: 2}
+  - {id: eu_indpro_mom, country: EU, title: "^Industrial Production m/m$", provider: eurostat, series: "sts_inpr_m|geo=EA21&s_adj=SCA&indic_bt=PRD&nace_r2=B-D&unit=I21", transform: mom_pct, unit: "%", decimals: 1, lag_months: 2}
+  # --- Nhat: BoJ Time-Series Data Search API (khong key). series = "DB|ma chuoi". PPI = CGPI (chi so 2020=100) ---
+  - {id: jp_ppi_yoy, country: JP, title: "^PPI y/y$", provider: boj, series: "PR01|PRCG20_2200000000", transform: yoy_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: jp_ppi_mom, country: JP, title: "^PPI m/m$", provider: boj, series: "PR01|PRCG20_2200000000", transform: mom_pct, unit: "%", decimals: 1, lag_months: 1}
+  - {id: jp_m2_yoy, country: JP, title: "^M2 Money Stock y/y$", provider: boj, series: "MD02|MAM1YAM2M2MO", transform: level, unit: "%", decimals: 1, lag_months: 1}
+
+# Gioi han / lich tham do cho provider (khong dung "polling day dac"): sau gio cong bo tham do tha dan theo tuoi su kien.
+providers:
+  bls: {daily_cap: 22, daily_cap_with_key: 450}     # v1 = 25 req/ngay (chua tru du phong); v2 (BLS_API_KEY) = 500
+  statcan: {daily_cap: 200}
+  ons: {daily_cap: 200}
+  abs: {daily_cap: 100}
+  eurostat: {daily_cap: 100}
+  fred: {daily_cap: 500}
+  boj: {daily_cap: 100}
+poll_schedule_min: [0, 1, 2, 4, 8, 15, 30, 60, 120, 240, 480]   # moc tham do sau gio cong bo (phut); het moc -> thoi (toi da 36h)
+give_up_hours: 36

@@ -1,0 +1,785 @@
+x-logging: &logging
+  driver: json-file
+  options: { max-size: "10m", max-file: "3" }
+
+# Công cụ vận hành OSS (Gatus, Dozzle, docker-socket-proxy, ntfy). Chạy cùng compose chính + ops:
+#   docker compose -p tradingsys --env-file .env -f docker-compose.yml -f docker-compose.ops.yml -f docker-compose.tools.yml up -d
+# Mọi cổng publish chỉ bind 127.0.0.1 (truy cập qua SSH tunnel). Không đụng container hệ thống khác trên host.
+services:
+  gatus:
+    image: twinproduction/gatus:v5.37.0
+    container_name: tradingsys-gatus      # host đã có container `gatus` của hệ thống khác: KHÔNG dùng tên đó
+    restart: unless-stopped
+    networks: [backend, ops, frontend]
+    logging: *logging
+    environment:
+      GATUS_CONFIG_PATH: /cfg             # thư mục tự quản (tránh /config/config.yaml mẫu của image): gatus.yaml + gatus.d/*.yaml
+    volumes:
+      - ./ops/gatus.yaml:/cfg/gatus.yaml:ro
+      - ./ops/gatus.d:/cfg/gatus.d:ro
+      - gatus-data:/data
+    ports:
+      - "${OPS_BIND:-127.0.0.1}:${GATUS_PORT:-8590}:8080"
+    depends_on: [alert-service]
+    # Hardening: image scratch (không shell => không healthcheck được; Prometheus scrape gatus:8080/metrics thay thế). Volume gatus-data chown 65534 (xem docs/HARDENING.md).
+    user: "65534:65534"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 1
+
+  # Proxy docker.sock CHỈ ĐỌC: chỉ cho GET containers/events/info/version; POST (tạo/xóa/exec) bị chặn.
+  docker-socket-proxy:
+    image: tecnativa/docker-socket-proxy:0.3.0
+    container_name: tradingsys-docker-socket-proxy
+    restart: unless-stopped
+    networks: [socketproxy]
+    logging: *logging
+    environment:
+      CONTAINERS: "1"
+      EVENTS: "1"
+      INFO: "1"
+      VERSION: "1"
+      POST: "0"
+      EXEC: "0"
+      IMAGES: "0"
+      NETWORKS: "0"
+      VOLUMES: "0"
+      SERVICES: "0"
+      TASKS: "0"
+      SECRETS: "0"
+      CONFIGS: "0"
+      AUTH: "0"
+      SYSTEM: "0"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    # entrypoint sinh haproxy.cfg vào FS gốc nên KHÔNG read_only được; bù lại bỏ mọi capability + giới hạn tài nguyên (root owner của socket đủ quyền đọc 660)
+    cap_drop: [ALL]
+    pids_limit: 512        # haproxy tạo 1 thread/CPU (host nhiều nhân) — 64 làm proxy treo
+    mem_limit: 256m
+    cpus: 0.5
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:   # /_ping qua chính haproxy (kiểm cả proxy lẫn quyền đọc docker.sock); busybox wget có sẵn trong image alpine
+      test: ["CMD", "wget", "-qO-", "-T", "3", "http://127.0.0.1:2375/_ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Dozzle TẮT mặc định (HARDENING §7.3): qua docker-socket-proxy nó inspect được env (secret) của MỌI container. Bật khi cần xem log rồi tắt:
+  #   docker compose --profile debug up -d dozzle   ...   docker compose --profile debug rm -sf dozzle
+  dozzle:
+    profiles: ["debug"]
+    image: amir20/dozzle:v11.3.1
+    container_name: tradingsys-dozzle
+    restart: unless-stopped
+    networks: [socketproxy]
+    logging: *logging
+    environment:
+      DOCKER_HOST: tcp://docker-socket-proxy:2375
+      DOZZLE_FILTER: "label=com.docker.compose.project=tradingsys"   # chỉ thấy container tradingsys
+      DOZZLE_NO_ANALYTICS: "true"
+      DOZZLE_ENABLE_ACTIONS: "false"                                   # không start/stop/restart từ UI
+      DOZZLE_ENABLE_SHELL: "false"
+    ports:
+      - "${OPS_BIND:-127.0.0.1}:${DOZZLE_PORT:-8591}:8080"
+    depends_on: [docker-socket-proxy]
+    user: "65534:65534"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 0.5
+    healthcheck:
+      test: ["CMD", "/dozzle", "healthcheck"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    security_opt: ["no-new-privileges:true"]
+
+  # Kênh push dự phòng (Apprise ntfy://ntfy:80/tradingsys-alerts). Nội bộ; cổng 8592 bind 127.0.0.1 để test/đăng ký app qua tunnel.
+  ntfy:
+    image: binwiederhier/ntfy:v2.29.0
+    container_name: tradingsys-ntfy
+    command: ["serve"]
+    restart: unless-stopped
+    networks: [ops, frontend]
+    logging: *logging
+    user: "1000:1000"        # volume ntfy-cache chown 1000 (docs/HARDENING.md); cổng 80 trong container vẫn bind được (ip_unprivileged_port_start=0)
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 1
+    environment:
+      NTFY_BASE_URL: http://localhost:8592
+      NTFY_CACHE_FILE: /var/cache/ntfy/cache.db
+      # Đính kèm (ảnh kịch bản do pattern-scan gửi): lưu trong volume, giới hạn dung lượng + tự hết hạn
+      NTFY_ATTACHMENT_CACHE_DIR: /var/cache/ntfy/attachments
+      NTFY_ATTACHMENT_TOTAL_SIZE_LIMIT: 200M
+      NTFY_ATTACHMENT_FILE_SIZE_LIMIT: 2M
+      NTFY_ATTACHMENT_EXPIRY_DURATION: 72h
+    volumes:
+      - ntfy-cache:/var/cache/ntfy
+    ports:
+      - "${OPS_BIND:-127.0.0.1}:${NTFY_PORT:-8592}:80"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:80/v1/health | grep -q '\"healthy\":true'"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Phân tích kỹ thuật (services/analytics): đọc nến bằng ts_ro, ghi CHỈ bảng analytics_snapshots bằng ts_analytics.
+  # Trước khi up: chạy infra/db/create_analytics_role.sh (áp migration 002 + tạo POSTGRES_ANALYTICS_PASSWORD trong .env).
+  # Cấu hình cảnh báo/khung/symbol: sửa services/analytics/analytics.example.yaml (mount :ro bên dưới) rồi restart.
+  analytics:
+    build: { context: .., dockerfile: services/analytics/Dockerfile }
+    container_name: tradingsys-analytics
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    user: "10001:10001"
+    pids_limit: 256
+    mem_limit: 1g
+    cpus: 2
+    depends_on:
+      redis: { condition: service_healthy }
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: analytics
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REDIS_URL: redis://ts_svc_analytics:${REDIS_SVC_ANALYTICS_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      ANALYTICS_DB_RW_URL: postgresql://ts_analytics:${POSTGRES_ANALYTICS_PASSWORD:?chạy infra/db/create_analytics_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      ANALYTICS_CONFIG: /cfg/analytics.yaml
+      ENABLED: ${ANALYTICS_ENABLED:-true}
+    volumes:
+      - ../services/analytics/analytics.example.yaml:/cfg/analytics.yaml:ro
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # Nhận diện kịch bản Sell KB-1..KB-4 trên nến đã đóng (services/pattern-engine): đọc nến bằng ts_ro, ghi CHỈ bảng pattern_signals bằng ts_pattern,
+  # phát pattern.signal lên bus (stream pattern.signals). CHỈ thông tin/paper, KHÔNG gửi lệnh. Tham số: services/pattern-engine/spec/*.yaml + pattern-engine.example.yaml.
+  # Trước khi up: chạy infra/db/create_pattern_role.sh (áp migration 018 + tạo POSTGRES_PATTERN_PASSWORD trong .env).
+  pattern-engine:
+    build: { context: .., dockerfile: services/pattern-engine/Dockerfile }
+    container_name: tradingsys-pattern-engine
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    user: "10001:10001"
+    pids_limit: 256
+    mem_limit: 512m
+    cpus: 1
+    depends_on:
+      redis: { condition: service_healthy }
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: pattern-engine
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REDIS_URL: redis://ts_svc_pattern_engine:${REDIS_SVC_PATTERN_ENGINE_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      PATTERN_DB_RW_URL: postgresql://ts_pattern:${POSTGRES_PATTERN_PASSWORD:?chạy infra/db/create_pattern_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      PATTERN_CONFIG: /cfg/pattern-engine.yaml
+      ENABLED: ${PATTERN_ENGINE_ENABLED:-true}
+    volumes:
+      - ../services/pattern-engine/pattern-engine.example.yaml:/cfg/pattern-engine.yaml:ro
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Quét live kịch bản Sell (services/pattern-scan): pattern.signals -> ảnh (pattern-render) -> ntfy kèm ảnh -> lệnh PAPER + sổ cái hash-chain.
+  # CHỈ thông tin/paper (không có đường tới lệnh thật). Trước khi up: infra/db/create_pscan_role.sh (migration 019 + POSTGRES_PSCAN_PASSWORD).
+  pattern-scan:
+    build: { context: .., dockerfile: services/pattern-scan/Dockerfile }
+    container_name: tradingsys-pattern-scan
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    user: "10001:10001"
+    pids_limit: 256
+    mem_limit: 768m
+    cpus: 1
+    depends_on:
+      redis: { condition: service_healthy }
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: pattern-scan
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REDIS_URL: redis://ts_app:${REDIS_APP_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      PSCAN_DB_RW_URL: postgresql://ts_pscan:${POSTGRES_PSCAN_PASSWORD:?chạy infra/db/create_pscan_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      PATTERN_SCAN_CONFIG: /cfg/pattern-scan.yaml
+      PATTERN_EXAMPLES_DIR: /examples
+      PATTERN_BACKTEST_DIR: /backtest
+      NTFY_URL: http://ntfy:80
+      PATTERN_NTFY_TOPIC: ${PATTERN_NTFY_TOPIC:-tradingsys-patterns}
+      PATTERN_CLICK_URL: ${PATTERN_CLICK_URL:-}
+      ENABLED: ${PATTERN_SCAN_ENABLED:-true}
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}
+    volumes:
+      - ../services/pattern-scan/pattern-scan.example.yaml:/cfg/pattern-scan.yaml:ro
+      - ../services/pattern-scan/examples:/examples:ro
+      - ../docs/research/pattern_sell:/backtest:ro   # hiện vật backtest (bản nhỏ) cho tab Backtest
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Nền tab AI Trading (services/ai-trading): registry YAML + kết quả backtest thật + lab/backlog + arena paper (đọc pattern-scan) + jobs (stub A).
+  # CHỈ đọc/paper, KHÔNG đường đặt lệnh. Không DB: Redis user riêng ts_svc_ai_trading (cache arena, trạng thái job). Truy cập qua api-gateway /v1/ai-trading/*.
+  ai-trading:
+    build: { context: .., dockerfile: services/ai-trading/Dockerfile }
+    container_name: tradingsys-ai-trading
+    restart: unless-stopped
+    networks: [backend, ops]   # ops: tới briefing-llm (LLM cục bộ, mạng internal không internet)
+    logging: *logging
+    user: "10001:10001"
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 0.5
+    depends_on:
+      redis: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: ai-trading
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REDIS_URL: redis://ts_svc_ai_trading:${REDIS_SVC_AI_TRADING_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      PATTERN_SCAN_URL: http://pattern-scan:8000
+      AI_REGISTRY_DIR: /registry
+      AI_RESEARCH_DIR: /research/pattern_sell
+      AI_STATE_DIR: /state
+      AI_CLASS_DIR: /classroom                          # AI Training Class: SQLite bền (phòng/tin/nhãn/hồ sơ) trên volume RIÊNG chỉ ai-trading ghi
+      CLASSROOM_LLM_BACKEND: ${CLASSROOM_LLM_BACKEND:-llamacpp}   # llamacpp (mặc định; lỗi -> câu hỏi mẫu) | none | claude (cần CLASSROOM_CLAUDE_ENABLED + khoá)
+      AI_REGIME_DIR: /research/regime
+      TRACK_RECORD_URL: http://track-record:8000
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}
+    volumes:
+      - ../services/ai-trading/registry:/registry:ro    # thêm chiến lược/ý tưởng = sửa YAML (tự nạp lại khi file đổi), không build lại
+      - ../docs/research/pattern_sell:/research/pattern_sell:ro
+      - ../data/ai-trading:/state                      # kịch bản người dùng nạp (đã validate) + job; worker ghi kết quả vào đây
+      - ../data/ai-classroom:/classroom                # AI Training Class (SQLite + tệp đính kèm); worker KHÔNG gắn volume này
+      - ../docs/research/regime:/research/regime:ro    # C2: hiện vật regime (chạy lại bằng services/ai-trading/research/regime_research.py)
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Worker nền "Dạy kịch bản mới" (services/ai-trading-worker): nhặt job trong /state/jobs, chạy detector thử/golden/backtest trung thực/test khoá RIÊNG.
+  # KHÔNG mạng (network_mode none), dữ liệu lịch sử :ro, chỉ ghi /state; nice 15, 1 job/lần, timeout cứng 25 phút. CHỈ nghiên cứu/paper.
+  ai-trading-worker:
+    build: { context: .., dockerfile: services/ai-trading-worker/Dockerfile }
+    container_name: tradingsys-ai-trading-worker
+    restart: unless-stopped
+    network_mode: none
+    logging: *logging
+    user: "10001:10001"
+    pids_limit: 128
+    mem_limit: 3g
+    cpus: 1.5
+    environment:
+      AI_STATE_DIR: /state
+      PATTERN_DATA: /data/patterns
+      AI_JOB_TIMEOUT_S: "1500"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    volumes:
+      # chỉ gắn đúng thứ cần đọc (mt5/ gốc là root 0750: gắn thẳng bars/ — thư mục này o+rx); KHÔNG gắn cả patterns/ (không thấy test_access.log của KB-1..4)
+      - ../data/research/patterns/mt5/bars:/data/patterns/mt5/bars:ro
+      - ../data/research/patterns/splits.json:/data/patterns/splits.json:ro
+      - ../data/ai-trading:/state
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+
+  # NLP làm giàu tin (services/nlp): news.items -> news.enriched (sentiment/symbols/chủ đề/quan trọng) + gauge Prometheus + alert đảo chiều.
+  # Chạy CPU, ONNX int8, giới hạn tài nguyên (VPS dùng chung). Model ở volume nlp-models (tải lần đầu từ HF; ViSoBERT: xem README).
+  # Bật ghi cột mở rộng vào DB sau khi áp infra/db/migrations/002_news_enrichment.sql: STORAGE_ENRICH_EXTENDED=true cho storage-writer.
+  nlp:
+    build: { context: .., dockerfile: services/nlp/Dockerfile }
+    container_name: tradingsys-nlp
+    restart: unless-stopped
+    networks: [backend, ops, internal]
+    logging: *logging
+    user: "10001:10001"
+    depends_on:
+      redis: { condition: service_healthy }
+    cpus: 4
+    mem_limit: 6g
+    pids_limit: 256
+    environment:
+      SERVICE_NAME: nlp
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE_NLP:-${INTERNAL_AUTH_MODE:-log}}    # off|log|enforce; mặc định theo INTERNAL_AUTH_MODE chung (.env: enforce); đặt INTERNAL_AUTH_MODE_<SVC>=log để hạ riêng
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REDIS_URL: redis://ts_svc_nlp:${REDIS_SVC_NLP_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      ENABLED: ${NLP_ENABLED:-true}
+      NLP_THREADS: ${NLP_THREADS:-3}
+      NLP_MODEL_EN: ${NLP_MODEL_EN:-finbert}
+      NLP_MODEL_VI: ${NLP_MODEL_VI:-visobert}
+      NLP_AUTO_DOWNLOAD: ${NLP_AUTO_DOWNLOAD:-false}   # model đã nằm trong volume; tắt tải runtime (HF resolve/main không ghim revision/hash = rủi ro chuỗi cung ứng)
+      NLP_BATCH: ${NLP_BATCH:-32}
+      NLP_ALERT_ENABLED: ${NLP_ALERT_ENABLED:-true}
+      NLP_VI_HYBRID: ${NLP_VI_HYBRID:-false}
+    volumes:
+      - nlp-models:/models
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  # Xuất ViSoBERT -> ONNX int8 vào volume nlp-models (CHẠY 1 LẦN, cần torch ~200MB tạm thời, KHÔNG nằm trong image nlp):
+  #   docker compose -p tradingsys -f docker-compose.yml -f docker-compose.tools.yml --profile export run --rm nlp-export
+  nlp-export:
+    profiles: ["export"]
+    image: python:3.12-slim
+    container_name: tradingsys-nlp-export
+    networks: [internal]
+    logging: *logging
+    cpus: 4
+    mem_limit: 6g
+    volumes:
+      - nlp-models:/models
+      - ../services/nlp/scripts:/scripts:ro
+    working_dir: /tmp
+    command: >
+      sh -c "pip install -q torch --index-url https://download.pytorch.org/whl/cpu &&
+             pip install -q transformers onnx onnxruntime onnxscript huggingface_hub tokenizers &&
+             python /scripts/export_onnx.py --out /models/visobert && chmod -R a+rX /models/visobert"
+
+  # Giao dịch MÔ PHỎNG / forward test (services/paper-trader): KHÔNG tiền thật, KHÔNG broker/MT, không có đường thực thi thật.
+  # Đọc nến bằng ts_ro, ghi CHỈ các bảng paper_* bằng ts_paper. Trước khi up: chạy infra/db/create_paper_role.sh
+  # (áp migration 003 + tạo POSTGRES_PAPER_PASSWORD trong .env). Cấu hình tài khoản/chi phí/rủi ro: services/paper-trader/paper.example.yaml.
+  # Thêm chiến lược riêng: đặt file .py vào services/paper-trader/strategies/ (mount :ro) + thêm tài khoản vào YAML + restart.
+  paper-trader:
+    build: { context: .., dockerfile: services/paper-trader/Dockerfile }
+    container_name: tradingsys-paper-trader
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    user: "10001:10001"
+    pids_limit: 256
+    mem_limit: 1g
+    cpus: 2
+    depends_on:
+      redis: { condition: service_healthy }
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: paper-trader
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REDIS_URL: redis://ts_svc_paper_trader:${REDIS_SVC_PAPER_TRADER_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      PAPER_DB_RW_URL: postgresql://ts_paper:${POSTGRES_PAPER_PASSWORD:?chạy infra/db/create_paper_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      PAPER_CONFIG: /cfg/paper.yaml
+      PAPER_STRATEGY_DIR: /cfg/strategies
+      PAPER_ADMIN_TOKEN: ${PAPER_ADMIN_TOKEN:-}
+      API_TOKEN: ${API_TOKEN:-}               # chỉ để GET /v1/risk-windows của api-gateway
+      ENABLED: ${PAPER_ENABLED:-true}
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay (ops/rotate_secret.sh)
+    volumes:
+      - ../services/paper-trader/paper.example.yaml:/cfg/paper.yaml:ro
+      - ../services/paper-trader/strategies:/cfg/strategies:ro
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # Cảnh báo do NGƯỜI DÙNG đặt + tuỳ chọn UI (watchlist/layout) lưu server (services/alert-rules): đánh giá điều kiện (giá, %, RSI/EMA từ analytics,
+  # cửa sổ tin, sentiment, margin MT) trên md.quotes + DB (ts_ro), phát alerts.out. Ghi CHỈ alert_rules/alert_rule_events/user_prefs bằng ts_userconf.
+  # KHÔNG có đường đặt lệnh. Không publish cổng: chỉ api-gateway gọi nội bộ (whitelist /v1/user/*). Trước khi up: chạy infra/db/create_userconf_role.sh.
+  alert-rules:
+    build: { context: .., dockerfile: services/alert-rules/Dockerfile }
+    container_name: tradingsys-alert-rules
+    restart: unless-stopped
+    networks: [backend, ops, internal]   # internal = ra internet CHỈ để gửi Web Push (VAPID) tới dịch vụ push của trình duyệt; endpoint bị allowlist hậu tố (webpush.py)
+    logging: *logging
+    user: "10001:10001"
+    depends_on:
+      redis: { condition: service_healthy }
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: alert-rules
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REDIS_URL: redis://ts_svc_alert_rules:${REDIS_SVC_ALERT_RULES_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      USERCONF_DB_RW_URL: postgresql://ts_userconf:${POSTGRES_USERCONF_PASSWORD:?chạy infra/db/create_userconf_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      # Web Push (VAPID) cho cảnh báo cá nhân của client: chạy infra/ops/gen_vapid.sh để sinh khoá vào infra/.env (trống = Web Push TẮT, mọi thứ khác vẫn chạy)
+      VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-}
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-mailto:admin@localhost}
+      PUSH_ENC_KEY: ${PUSH_ENC_KEY:-}
+      PUSH_ALLOWED_HOSTS: ${PUSH_ALLOWED_HOSTS:-}
+      PUSH_MAX_PER_HOUR: ${PUSH_MAX_PER_HOUR:-20}
+      FLEET_INTERNAL_TOKEN: ${FLEET_INTERNAL_TOKEN:-}   # xác thực POST /internal/notify từ risk-monitor (push cho khách opt-in khi luật sát/vi phạm); trống = 503
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay (ops/rotate_secret.sh)
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # data-keeper (services/data-keeper): AI agent cục bộ giữ dữ liệu giá đủ cho mọi mã: kiểm kê phủ (mã x khung, lịch phiên), tự chữa, backfill, nạp lịch sử.
+  # Đọc bars/quotes bằng ts_ro; ghi CHỈ schema dk.* bằng ts_dk (infra/db/create_dk_role.sh). READ-ONLY/PAPER: không có đường đặt lệnh.
+  # Kill-switch DATA_KEEPER_ENABLED=false. Nice thấp + cpus nhỏ để không tranh CPU với đường giá (p95 <= 0,5 s). Không publish cổng.
+  data-keeper:
+    build: { context: .., dockerfile: services/data-keeper/Dockerfile }
+    container_name: tradingsys-data-keeper
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    user: "10001:10001"
+    depends_on:
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: data-keeper
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE_DATA_KEEPER:-${INTERNAL_AUTH_MODE:-log}}    # off|log|enforce; mặc định theo INTERNAL_AUTH_MODE chung (.env: enforce); đặt INTERNAL_AUTH_MODE_<SVC>=log để hạ riêng
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      DATA_KEEPER_ENABLED: ${DATA_KEEPER_ENABLED:-true}
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      DK_DB_RW_URL: postgresql://ts_dk:${POSTGRES_DK_PASSWORD:?chạy infra/db/create_dk_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      DK_INVENTORY_INTERVAL_S: ${DK_INVENTORY_INTERVAL_S:-300}
+      DK_BRIDGE_METRICS_URL: http://mt-bridge:8000/metrics
+      DK_P95_MAX_S: ${DK_P95_MAX_S:-0.5}
+      DK_HEAL_DRY_RUN: ${DK_HEAL_DRY_RUN:-true}   # true = chỉ lập kế hoạch ('planned'), không restart thật; proxy docker chỉ đọc
+      DK_BACKFILL_XCHG: /xchg                     # trao đổi req/res với EA MTAgentExport Mode=range (terminal hist mtlab-mt5)
+      DATA_KEEPER_LLM_URL: ${DATA_KEEPER_LLM_URL:-http://briefing-llm:8080}
+    volumes:
+      - ../mt-agent/lab-feed/out:/out             # heal ghi feed_symbols.txt + kế hoạch failover (feed đọc khi khởi động)
+      - /root/mtlab/out/xchg:/xchg                # backfill <-> EA range
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 0.5
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  # Chứng khoán VIỆT NAM cuối ngày (services/vn-market): nạp VNDirect finfo (công khai, không chính thức) -> bảng vn_*; API chỉ-đọc heatmap ngành,
+  # top tăng/giảm, độ rộng, trần/sàn, khối ngoại, screener, sự kiện, tin theo mã. Ghi CHỈ bảng vn_* bằng ts_vn (+ SELECT news_items). KHÔNG đặt lệnh.
+  # Không publish cổng: chỉ api-gateway gọi nội bộ (/v1/vn/*). Trước khi up: chạy infra/db/create_vn_role.sh. Tắt nạp: VN_INGEST=false.
+  vn-market:
+    build: { context: .., dockerfile: services/vn-market/Dockerfile }
+    container_name: tradingsys-vn-market
+    restart: unless-stopped
+    networks: [backend, ops, internal]
+    logging: *logging
+    depends_on:
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: vn-market
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      VN_DB_URL: postgresql://ts_vn:${POSTGRES_VN_PASSWORD:?chạy infra/db/create_vn_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      VN_INGEST: ${VN_INGEST:-true}
+      VN_MIN_INTERVAL: ${VN_MIN_INTERVAL:-0.8}
+      USER_AGENT: ${USER_AGENT:-trading-system-vn-market/0.1 (personal research, read-only)}
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # Nhật ký giao dịch + analytics tài khoản (services/journal): thống kê từ account_deals (MT4/MT5 qua EA->mt-bridge->account.deals) và paper_fills,
+  # kỷ luật (tin/revenge/overtrading), MAE/MFE, review tuần. Đọc dữ liệu bằng ts_ro; GHI DUY NHẤT bảng journal_notes (tag/ghi chú) bằng ts_journal.
+  # KHÔNG có đường đặt lệnh. Không publish cổng: chỉ api-gateway gọi nội bộ (/v1/journal/*). Trước khi up: chạy infra/db/create_journal_role.sh.
+  journal:
+    build: { context: .., dockerfile: services/journal/Dockerfile }
+    container_name: tradingsys-journal
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    depends_on:
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: journal
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      JOURNAL_DB_RW_URL: postgresql://ts_journal:${POSTGRES_JOURNAL_PASSWORD:?chạy infra/db/create_journal_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      JOURNAL_TZ: Asia/Ho_Chi_Minh
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay (ops/rotate_secret.sh)
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # TRACK RECORD chuyên gia/nguồn ý kiến (services/track-record): trích quan điểm có hướng bằng QUY TẮC, sổ cái hash-chain bất biến, chấm điểm khách quan
+  # (Wilson/bootstrap/hoán vị/BH-FDR, co Beta, "chưa đủ mẫu" khi n<30). Đọc dữ liệu ts_ro; ghi CHỈ bảng tr_* bằng ts_trackrec; Redis chỉ key `tr:*` (ts_trackrec).
+  # KHÔNG đặt lệnh, KHÔNG sinh văn bản tự do, không lộ tên nguồn. Chỉ api-gateway gọi nội bộ (/v1/experts/*). Trước khi up: infra/db/create_trackrec_role.sh + infra/ops/redis_acl_render.sh.
+  track-record:
+    build: { context: .., dockerfile: services/track-record/Dockerfile }
+    container_name: tradingsys-track-record
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    depends_on:
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: track-record
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      TRACKREC_DB_RW_URL: postgresql://ts_trackrec:${POSTGRES_TRACKREC_PASSWORD:?chạy infra/db/create_trackrec_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      REDIS_URL: redis://ts_trackrec:${REDIS_TRACKREC_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0
+      TRACKREC_INTERVAL_S: "900"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  # BẢN TIN thị trường tiếng Việt do LLM cục bộ tóm tắt (services/briefing + briefing-llm). Chạy CPU, giới hạn tài nguyên (VPS dùng chung).
+  # briefing-llm = llama.cpp server (MIT) + mô hình GGUF (volume briefing-models, :ro) — mạng `ops` (internal, KHÔNG internet), không publish cổng, không tool/jinja-tools.
+  # briefing = pipeline grounded + hậu kiểm tất định + lịch 06:15/16:30 giờ VN; đọc dữ liệu ts_ro, ghi CHỈ bảng briefings (ts_briefing), phát briefing.items + alerts.out.
+  # Trước khi up: infra/db/create_briefing_role.sh (migration 010 + POSTGRES_BRIEFING_PASSWORD) và tải mô hình (xem services/briefing/README.md).
+  briefing-llm:
+    image: ghcr.io/ggml-org/llama.cpp:server@sha256:fc9b506e89c1a1cfdd7bc056480f54dc657c1c04d76839a08642dc280b8ed2f6
+    container_name: tradingsys-briefing-llm
+    restart: unless-stopped
+    networks: [ops]
+    logging: *logging
+    user: "10001:10001"
+    # RS-7: 2 slot (chat Lop hoc khong xep hang sau ban tin/nen), cache prompt, ghim nhan (16-23,48-55, chung nhe voi local-llm nice thap) de khong tranh duong gia/local-llm
+    command: ["--model", "/models/${BRIEFING_LLM_FILE:-Qwen3.5-9B-Q4_K_M.gguf}", "--host", "0.0.0.0", "--port", "8080", "--threads", "${BRIEFING_LLM_THREADS:-4}",
+              "--threads-batch", "${BRIEFING_LLM_THREADS_BATCH:-12}", "--batch-size", "512", "--ubatch-size", "256", "--cache-reuse", "128", "--flash-attn", "on",
+              "--ctx-size", "${BRIEFING_LLM_CTX:-16384}", "--parallel", "${BRIEFING_LLM_PARALLEL:-2}", "--no-webui", "--jinja", "--no-warmup", "--alias", "briefing"]
+    volumes:
+      - briefing-models:/models:ro
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    cpus: 12
+    cpuset: "${BRIEFING_LLM_CPUSET:-16-23,48-55}"
+    mem_limit: 16g
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 120s
+
+  # local-llm = llama-swap (+ llama-server kem san trong image) tai http://local-llm:8080 (OpenAI /v1/*, Anthropic /v1/messages). Alias: code (Qwen3-Coder-30B-A3B), general (Qwen3-30B-A3B-2507).
+  # Mang ops+backend (internal, KHONG publish cong). Chi 1 model 30B nap tai 1 luc (swap, ttl 600s); tu choi nap khi load host > 60. Cau hinh: infra/local-llm/. Xem docs/handoff/LLM_L1_status.md
+  local-llm:
+    image: ghcr.io/mostlygeek/llama-swap:cpu
+    container_name: tradingsys-local-llm
+    restart: unless-stopped
+    user: "10001:10001"
+    networks: [ops, backend]
+    logging: *logging
+    command: ["-config", "/config/config.yaml", "-listen", "0.0.0.0:8080"]
+    volumes:
+      - briefing-models:/models:ro
+      - ./local-llm:/config:ro
+      - ./local-llm/guard.sh:/guard.sh:ro
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 256
+    cpus: 28
+    cpuset: "${LOCAL_LLM_CPUSET:-20-31,52-63}"   # ghim 12 luong logic de khong tranh voi duong gia
+    cpu_shares: 64
+    mem_limit: 30g
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # ai-pool-lb: can bang tai OpenAI-compatible toi pool node llama.cpp tu xa (data/ai-pool/nodes.json, Bearer tu pool_key), du phong local-llm.
+  # Mang ops (cac dich vu goi http://ai-pool-lb:8080) + internal (co egress toi cac node). Chay user cc de doc pool_key (600). Xem infra/local-llm/pool_lb.py.
+  ai-pool-lb:
+    image: python:3.12-slim
+    container_name: tradingsys-ai-pool-lb
+    restart: unless-stopped
+    user: "1005:1005"
+    networks: [ops, internal]
+    logging: *logging
+    command: ["python", "-u", "/app/pool_lb.py"]
+    volumes:
+      - ./local-llm/pool_lb.py:/app/pool_lb.py:ro
+      - ../data/ai-pool:/pool:ro
+    environment: { POOL_DIR: /pool, FALLBACK_URL: "http://local-llm:8080" }
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 256
+    cpus: 1
+    mem_limit: 256m
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u;u.urlopen('http://localhost:8080/health',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  briefing:
+    build: { context: .., dockerfile: services/briefing/Dockerfile }
+    container_name: tradingsys-briefing
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    user: "10001:10001"
+    depends_on:
+      redis: { condition: service_healthy }
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: briefing
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      BRIEFING_SECRETS_FILE: /run/briefing.secrets   # REDIS_URL/DATABASE_URL/BRIEFING_DB_RW_URL/BRIEFING_ADMIN_TOKEN đọc từ file mount :ro (gen_briefing_secrets.sh), KHÔNG để trong Env
+      BRIEFING_LLM_URL: http://briefing-llm:8080
+      BRIEFING_LLM_MODEL: ${BRIEFING_LLM_MODEL:-Qwen3.5-9B-Q4_K_M}
+      BRIEFING_LLM_ENABLED: ${BRIEFING_LLM_ENABLED:-true}
+      BRIEFING_LLM_TIMEOUT_S: ${BRIEFING_LLM_TIMEOUT_S:-600}
+      BRIEFING_SCHEDULE: ${BRIEFING_SCHEDULE:-06:15=morning,16:30=close}
+      BRIEFING_NOTIFY: ${BRIEFING_NOTIFY:-true}
+      BRIEFING_TZ: Asia/Ho_Chi_Minh
+      AI_TRADING_URL: http://ai-trading:8000   # C2: AI analyst lấy ngữ cảnh regime/đồng thuận/kịch bản (GET nội bộ)
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay (ops/rotate_secret.sh)
+    volumes:
+      - ./env/briefing.secrets:/run/briefing.secrets:ro
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+networks:
+  socketproxy:
+    driver: bridge     # mạng riêng cho Dozzle<->proxy; proxy không publish port
+
+volumes:
+  gatus-data:
+  ntfy-cache:
+  nlp-models:
+  briefing-models:

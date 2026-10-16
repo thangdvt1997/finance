@@ -1,0 +1,40 @@
+# Jaeger v2 all-in-one rút gọn: giữ trace trong RAM nhưng giới hạn max_traces (mặc định 100000 -> dễ chạm mem_limit).
+service:
+  extensions: [jaeger_storage, jaeger_query, healthcheckv2]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [jaeger_storage_exporter]
+  telemetry:
+    resource:
+      service.name: jaeger
+    metrics:
+      level: none
+    logs:
+      level: info
+extensions:
+  healthcheckv2:
+    use_v2: true
+    http:
+      endpoint: 0.0.0.0:13133
+  jaeger_query:
+    storage:
+      traces: memstore
+  jaeger_storage:
+    backends:
+      memstore:
+        memory:
+          max_traces: 20000
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+processors:
+  batch:
+exporters:
+  jaeger_storage_exporter:
+    trace_storage: memstore

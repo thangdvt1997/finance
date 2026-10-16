@@ -1,0 +1,19 @@
+# CFTC Legacy Futures-Only (Socrata dataset 6dca-aqww). Key = cftc_contract_market_code.
+# invert: true => hop dong futures la dong ngoai te doi ung USD (vd JPY futures) nen chieu nguoc voi cap USDxxx.
+# MA HOP DONG DA XAC MINH bang mang 2026-10-11 (Socrata 6dca-aqww, bao cao tuan 2026-10-06; 12/12 ma tra du lieu):
+# EURO FX/BRITISH POUND/JAPANESE YEN/AUSTRALIAN DOLLAR/CANADIAN DOLLAR/SWISS FRANC/NZ DOLLAR (CME), GOLD/SILVER (COMEX),
+# WTI-PHYSICAL (NYMEX), E-MINI S&P 500 (CME), USD INDEX (ICE US). Luu y: 067651 = WTI-PHYSICAL (NYMEX), khong phai 067411 (ICE Europe).
+limit: 1900   # ~150 tuan x 12 hop dong: backfill lich su vi the (phan vi); chi bao cao moi nhat thanh tin
+contracts:
+  "099741": {symbol: EURUSD}
+  "096742": {symbol: GBPUSD}
+  "097741": {symbol: USDJPY, invert: true}
+  "232741": {symbol: AUDUSD}
+  "090741": {symbol: USDCAD, invert: true}
+  "092741": {symbol: USDCHF, invert: true}
+  "112741": {symbol: NZDUSD}
+  "088691": {symbol: XAUUSD}
+  "084691": {symbol: XAGUSD}
+  "067651": {symbol: USOIL}
+  "13874A": {symbol: "US:SPX"}
+  "098662": {symbol: DXY}

@@ -1,0 +1,98 @@
+# Cau hinh de xuat cho paper-trader: Slow Trend da tai san (nguon: docs/research/MULTI_ASSET_BACKTEST.md)
+# THAM SO CO DINH THEO VAN LIEU, KHONG toi uu tren du lieu. Dung lam lop DA DANG HOA / bao hiem duoi, KHONG phai nguon alpha doc lap.
+# Mo hinh tinh toan: moi tai san la chuoi loi suat "excess" (vuot tien mat USD) = hop dong tuong lai / ETF co don bay.
+strategy:
+  id: slow_trend_multiasset
+  version: 1
+  status: paper_only              # chua du bang chung de dung tien that (xem muc 'validation_gates')
+  role: diversifier               # tuong quan ~ -0.08 voi 60/40 (thang); ky vong Sharpe sau chi phi 0.3-0.5, KHONG ky vong thang 60/40
+  data_frequency: daily_close     # tin hieu tren dong cua cuoi ngay, thuc thi o dong cua phien KE TIEP (lag 2 trong backtest)
+  rebalance: monthly              # phien giao dich cuoi thang (ban weekly cho ket qua tuong duong: Sharpe 0.55)
+  execution_lag_sessions: 1       # vao lenh o close phien sau ngay ra tin hieu
+  history_required_days: 300      # tai san chua du ~252 phien khong duoc giao dich (khong co tin hieu)
+
+signal:                           # tin hieu tung tai san, gia tri trong [-1, +1]; la TRUNG BINH 4 bo tin hieu (da chot truoc khi chay)
+  index_series: cumulative_excess_return   # I_t = cumprod(1 + r_excess); gan dung bang gia/ETF adj close neu khong co series excess
+  components:
+    - {name: tsmom_12_1,      rule: "sign(I[t-21]/I[t-252] - 1)"}                       # Moskowitz-Ooi-Pedersen 12-1 thang
+    - {name: tsmom_multi,     rule: "mean(sign(I[t]/I[t-L]-1) for L in (21,63,252))"}   # Hurst-Ooi-Pedersen 1/3/12 thang
+    - {name: ma200,           rule: "sign(I[t] - SMA_200(I))"}
+    - {name: donchian_200_100, rule: "vao dai khi close > max 200 ngay truoc, vao ngan khi < min 200; thoat khi cat min/max 100 ngay; trang thai giu den khi thoat"}
+  combine: mean
+  variants:
+    long_short: {clip: "[-1, 1]"}          # PRIMARY
+    long_flat:  {clip: "[0, 1]"}           # doi chung: Sharpe cao hon (0.80) nhung phan lon la beta mua-giu (placebo 0.57), khong co crisis alpha
+
+sizing:
+  target_vol_annual: 0.10
+  asset_vol: {method: ewma, span_days: 60, floor: 0.01, annualization: 252}
+  risk_budget: class_balanced      # 6 lop (eq, bond, fx, metal, energy, agri) ngang rui ro; trong lop chia deu; lop chua co du lieu thi bo qua
+  raw_weight: "signal_i * budget_i * target_vol / sigma_i"
+  portfolio_scale: "L = min(lmax, target_vol / sqrt(w' Cov w))"   # Cov: EWMA halflife 60d (500 ngay), shrink 20% ve duong cheo
+  lmax: 3.0
+  per_asset_cap_notional: 3.0      # |w_i| <= 3x von
+  gross_cap_notional: 8.0          # thuc te trung binh 2.3x, toi da ~4x
+  retail_unlevered_alt: {lmax: 1.0, gross_cap: 2.0, expected_vol: 0.034}   # Sharpe giu nguyen (0.56) nhung loi nhuan ~ 1/3
+
+costs_assumed_conservative:        # backtest tru het cac muc nay; paper-trader nen ghi nhan chi phi thuc te de doi chieu
+  one_way_bps: {eq: "2.5-12 (xem universe)", bond: "1-3", fx: "1-2", metal: "3-8", energy: "6-15", agri: "10-12"}
+  pre_2010_multiplier: 1.5
+  gross_friction_pct_per_year: 0.30     # phi duy tri/markup tren tong notional
+  stress: {cost_x2_sharpe: 0.44, cost_x3_sharpe: 0.33}   # chien luoc nhay voi chi phi: KHONG dung neu chi phi thuc te > ~2x gia dinh
+
+universe:                          # asset: [lop, bps_mot_chieu, nguon_du_lieu_backtest, goi_y_cong_cu_giao_dich_paper]
+  SPX:    [eq, 2.5, "^GSPC + 2.0% co tuc", "ES / SPY"]
+  NDX:    [eq, 3.0, "^IXIC + 0.9%", "NQ / QQQ"]
+  RUT:    [eq, 4.0, "^RUT + 1.3%", "RTY / IWM"]
+  DAX:    [eq, 3.0, "^GDAXI (performance index)", "FDAX / EWG"]
+  SX5E:   [eq, 3.0, "^STOXX50E + 3.3% (tu 2007)", "FESX / FEZ"]
+  CAC:    [eq, 3.0, "^FCHI + 3.0%", "EWQ"]
+  FTSE:   [eq, 3.0, "^FTSE + 3.8%", "Z / EWU"]
+  N225:   [eq, 4.0, "^N225 + 1.8%", "NK / EWJ"]
+  HSI:    [eq, 6.0, "^HSI + 3.2%", "HSI fut / EWH"]
+  ASX:    [eq, 4.0, "^AXJO + 4.0%", "SPI / EWA"]
+  KOSPI:  [eq, 6.0, "^KS11 + 1.5%", "EWY"]
+  SENSEX: [eq, 8.0, "^BSESN + 1.3%", "INDA"]
+  BVSP:   [eq, 8.0, "^BVSP + 4.0%", "EWZ"]
+  VNM:    [eq, 12.0, "ETF VNM (USD, tu 2009) - proxy VN-Index; khong co VN-Index goc", "VNM / E1VFVN30 (neu co du lieu)"]
+  UST2:   [bond, 1.0, "FRED DGS2 -> par-bond TR", "ZT / SHY(bien the)"]
+  UST5:   [bond, 1.5, "FRED DGS5", "ZF / IEI"]
+  UST10:  [bond, 2.0, "FRED DGS10", "ZN / IEF"]
+  UST30:  [bond, 3.0, "FRED DGS30 (lien tuc; khong phai bao hao DGS20)", "ZB / TLT"]
+  EURUSD: [fx, 1.0, "ECB + carry OECD 3M", "6E"]
+  GBPUSD: [fx, 1.5, "ECB + carry", "6B"]
+  USDJPY: [fx, 1.2, "ECB + carry", "6J (dao dau)"]
+  AUDUSD: [fx, 1.5, "ECB + carry", "6A"]
+  USDCAD: [fx, 1.8, "ECB + carry", "6C (dao dau)"]
+  USDCHF: [fx, 1.8, "ECB + carry", "6S (dao dau)"]
+  NZDUSD: [fx, 2.0, "ECB + carry", "6N"]
+  GOLD:   [metal, 3.0, "GC=F (2000-2004) -> GLD", "GC / GLD"]
+  SILVER: [metal, 8.0, "SI=F -> SLV", "SI / SLV"]
+  COPPER: [metal, 6.0, "HG=F", "HG / CPER"]
+  WTI:    [energy, 6.0, "FRED spot (<2006) -> USO", "CL / USO"]
+  BRENT:  [energy, 8.0, "FRED spot (<2010) -> BNO", "BZ / BNO"]
+  NATGAS: [energy, 15.0, "UNG (tu 2007)", "NG / UNG"]
+  CORN:   [agri, 10.0, "CORN ETF (tu 2010)", "ZC / CORN"]
+  WHEAT:  [agri, 10.0, "WEAT (tu 2011)", "ZW / WEAT"]
+  SOY:    [agri, 10.0, "SOYB (tu 2011)", "ZS / SOYB"]
+  SUGAR:  [agri, 12.0, "CANE (tu 2011)", "SB / CANE"]
+
+optional_not_in_core: [BTC, ETH]   # them vao: Sharpe 0.55 -> 0.63 (toan mau) / 0.39 -> 0.43 (2018+): khong du de dua vao loi
+
+paper_trader_logging:               # de doi chieu voi bao cao
+  benchmarks: ["60/40 (SPX/UST10)", "risk_parity_long_only", "spx_excess"]
+  log_daily: [target_weights, executed_weights, fill_costs, gross_leverage, realized_vol_20d, per_class_pnl]
+  run_both_variants: [long_short (PRIMARY), long_flat (doi chung)]
+
+backtest_reference:                 # 1990-02 .. 2026-10, sau chi phi, tham so tren (nguon: research/results/ma_analysis.json)
+  long_short: {sharpe: 0.55, sharpe_ci95: [0.21, 0.87], total_cagr: 0.080, vol: 0.095, maxdd: -0.235, loss_years: 0.29, max_underwater_years: 4.4}
+  long_flat:  {sharpe: 0.80, sharpe_ci95: [0.47, 1.13], total_cagr: 0.091, vol: 0.076, maxdd: -0.167, max_underwater_years: 9.2}
+  by_era_sharpe_long_short: {"1990-1999": 0.67, "2000-2009": 0.74, "2010-2019": 0.16, "2020-2026": 0.59, "2012-2026_full_universe": 0.29}
+  sixty_forty: {sharpe: 0.60, total_cagr: 0.090, vol: 0.105, maxdd: -0.315}
+  expected_forward_realistic: {net_sharpe: "0.3-0.5", excess_return_at_10pct_vol: "3-5%/nam", maxdd: "-20% .. -30%", loss_years: "~30%", note: "thap hon trung binh lich su; giai doan 2010-2019 gan nhu khong sinh loi"}
+
+validation_gates:                   # dieu kien truoc khi nghi den tien that (paper chi kiem chung ky thuat/tracking, KHONG du de chung minh loi nhuan)
+  - "Tracking: tin hieu/trong so paper-trader khop backtest tai cung ngay (sai khac < 1% notional/tai san) tren >= 6 thang"
+  - "Chi phi thuc te <= 1.5x gia dinh (neu > 2x thi Sharpe < 0.45: bo)"
+  - "Tuong quan thang voi 60/40 duoc ghi nhan va van < 0.3 (gia tri co y nghia cua chien luoc la tinh da dang hoa)"
+  - "Chi dung nhu mot phan (20-30%) cua tong rui ro danh muc co co phieu/trai phieu, khong thay the 60/40"

@@ -1,0 +1,10 @@
+# Đổi tên thành web-ui.yaml (cùng thư mục với gatus.yaml được mount ở /config) khi service web-ui đã chạy trong compose.
+# Chỉnh URL cho đúng tên service/cổng nội bộ của web-ui.
+endpoints:
+  - name: web-ui
+    group: services
+    url: "http://web-ui:80/"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "web-ui không phản hồi" }

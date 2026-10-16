@@ -1,0 +1,21 @@
+# llama-swap: 1 model 30B nap tai 1 thoi diem (swap theo yeu cau), ttl 600s. Dich vu local-llm (docs/handoff/LLM_L1_status.md).
+healthCheckTimeout: 600
+logLevel: info
+metricsMaxInMemory: 2000
+macros:
+  # guard.sh: tu choi neu load host > 60, nice 19
+  guard: /guard.sh
+  base: >
+    /app/llama-server --host 127.0.0.1 --port ${PORT}
+    --threads 12 --threads-batch 12 --parallel 3 --ctx-size 49152
+    --flash-attn on --batch-size 2048 --ubatch-size 512 --cache-reuse 256
+    --no-webui --metrics --jinja --no-warmup
+models:
+  code:
+    ttl: 600
+    cmd: ${guard} ${base} --model /models/Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf --alias code
+    checkEndpoint: /health
+  general:
+    ttl: 600
+    cmd: ${guard} ${base} --model /models/Qwen3-30B-A3B-Instruct-2507-Q4_K_M.gguf --alias general
+    checkEndpoint: /health

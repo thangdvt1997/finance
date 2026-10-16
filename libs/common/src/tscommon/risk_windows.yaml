@@ -1,0 +1,91 @@
+# Bo loc rui ro tin (news risk windows). Nguon chan ly duy nhat cho news-collector (phat alert) va api-gateway (REST).
+# Ghi de bang bien moi truong RISK_WINDOWS_CONFIG=/duong/dan/risk_windows.yaml
+#
+# Quy uoc nghien cuu: khong vao lenh / giam co lenh tu T-15 den T+30 phut quanh su kien HIGH impact (T = gio cong bo);
+# vang quanh FOMC/NFP keo dai toi T+45 vi spread/bien dong con tiep dien sau so lieu.
+version: 1
+
+# Chi su kien co impact nam trong danh sach nay moi tao cua so rui ro.
+impacts: [high]
+
+default:
+  before_min: 15        # cua so bat dau T-15
+  after_min: 30         # cua so ket thuc T+30
+  warn_before_min: 30   # canh bao "sap vao cua so" tai T-30 (tinh tu T)
+
+# Su kien bo qua (khong tinh rui ro) neu tieu de chua chuoi nay (khong phan biet hoa/thuong).
+ignore_title_any: ["Bank Holiday", "Holiday"]
+
+# Ma quoc gia (nguon BLS/ECB...) HOAC ma tien te (Fair Economy) -> tien te. Khoa viet hoa.
+country_currency:
+  US: USD
+  EU: EUR
+  GB: GBP
+  JP: JPY
+  AU: AUD
+  CA: CAD
+  CH: CHF
+  NZ: NZD
+  CN: CNY
+  VN: VND
+  USD: USD
+  EUR: EUR
+  GBP: GBP
+  JPY: JPY
+  AUD: AUD
+  CAD: CAD
+  CHF: CHF
+  NZD: NZD
+  CNY: CNY
+
+# Anh xa symbol KHONG phai cap forex 6 ky tu -> tien te chiu anh huong. Ho tro glob (*). Cap forex AAABBB tu dong
+# lay AAA+BBB; vang/bac XAUUSD, XAGUSD tu dong = {XAU, USD} (chi USD khop su kien). Khoa viet hoa.
+symbol_currencies:
+  "US:*": [USD]
+  "VN:*": [VND]
+  # Crypto giao dich 24/7, it phu thuoc lich kinh te: MAC DINH khong tao cua so rui ro (doi thanh [USD] de coi FOMC/CPI/NFP la rui ro cho crypto).
+  "CRYPTO:*": []
+  US500: [USD]
+  SPX500: [USD]
+  US30: [USD]
+  NAS100: [USD]
+  US100: [USD]
+  DXY: [USD]
+  USOIL: [USD]
+  UKOIL: [USD]
+  GER40: [EUR]
+  DE40: [EUR]
+  UK100: [GBP]
+  JP225: [JPY]
+  NIKKEI225: [JPY]
+  AUS200: [AUD]
+
+# Danh sach symbol mac dinh dung de liet ke tac dong trong alert (gateway hop them symbol co trong DB).
+universe:
+  - EURUSD
+  - GBPUSD
+  - USDJPY
+  - AUDUSD
+  - NZDUSD
+  - USDCAD
+  - USDCHF
+  - EURGBP
+  - EURJPY
+  - GBPJPY
+  - XAUUSD
+  - XAGUSD
+  - US500
+  - NAS100
+  - US30
+  - DXY
+  - "VN:VNM"
+  - "VN:FPT"
+  - "VN:VCB"
+
+# Ghi de do rong cua so. Quy tac dau tien khop (title_any VA symbols_any neu co) duoc dung; truong bo trong = lay default.
+overrides:
+  - name: gold-silver-fomc-nfp
+    title_any: ["FOMC", "Federal Funds Rate", "Non-Farm", "Nonfarm", "Employment Situation"]
+    symbols_any: ["XAUUSD", "XAGUSD"]
+    before_min: 15
+    after_min: 45

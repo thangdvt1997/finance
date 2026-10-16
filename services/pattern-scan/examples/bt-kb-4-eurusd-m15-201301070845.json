@@ -1,0 +1,96 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-4",
+ "title": "KB-4 · EURUSD M15 (backtest, điển hình -1.01R)",
+ "symbol": "EURUSD",
+ "tf": "M15",
+ "ts": "2013-01-07T08:45:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát cắt lỗ (SL) sau 21 nến. tiếp diễn sau phá đáy. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "dien-hinh",
+ "result": {
+  "outcome": "sl",
+  "r": -1.006,
+  "entry_ts": "2013-01-07 09:00:00",
+  "exit_ts": "2013-01-07 14:00:00",
+  "entry": 1.30371,
+  "sl": 1.306797,
+  "tp": 1.297535,
+  "exit": 1.306817
+ },
+ "score": 96.0,
+ "levels": {
+  "box_low": 1.30818,
+  "wave_high": 1.31202,
+  "wave_low": 1.29975,
+  "high_1": 1.30654,
+  "high_last": 1.30413,
+  "entry": 1.30374,
+  "sl": 1.306797,
+  "r": 0.003057,
+  "atr": 0.001029,
+  "tp_1r": 1.300683,
+  "tp_2r": 1.297625,
+  "tp_3r": 1.294568,
+  "prev_low": 1.29975
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "đi ngang trước: biên 7.2 ATR, lệch ròng 42%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "nến phá đáy thân 4.1 ATR"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "4 nến đỏ liên tiếp; sóng dẫn 12.5 ATR"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "5 đỉnh trong vùng đi ngang mới"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "3 đỉnh giảm dần"
+  },
+  {
+   "id": 6,
+   "ok": true,
+   "detail": "cụm 3 nến nén dưới đỉnh thứ 3 1.30"
+  }
+ ],
+ "points": [
+  {
+   "label": "",
+   "t": "2013-01-03T15:15:00+00:00",
+   "p": 1.31202
+  },
+  {
+   "label": "(1)",
+   "t": "2013-01-04T10:30:00+00:00",
+   "p": 1.29975
+  },
+  {
+   "label": "H1",
+   "t": "2013-01-07T01:45:00+00:00",
+   "p": 1.30654
+  },
+  {
+   "label": "H2",
+   "t": "2013-01-07T06:30:00+00:00",
+   "p": 1.30544
+  },
+  {
+   "label": "H3",
+   "t": "2013-01-07T08:15:00+00:00",
+   "p": 1.30413
+  }
+ ]
+}

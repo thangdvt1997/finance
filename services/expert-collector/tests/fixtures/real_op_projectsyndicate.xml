@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:dcterms="http://purl.org/dc/terms/" version="2.0">
+  <channel>
+    <description><![CDATA[Project Syndicate - The World’s Opinion Page]]></description>
+    <link>https://www.project-syndicate.org/rss</link>
+    <lastBuildDate>Mon, 12 Oct 2026 03:06:43 GMT</lastBuildDate>
+    <title>Project Syndicate</title>
+    <copyright>Copyright: Project Syndicate, 2026.
+www.project-syndicate.org</copyright>
+    <language>en</language>
+    <atom:link rel="self" href="https://www.project-syndicate.org/rss" type="application/rss+xml" />
+    <atom:link rel="first" href="https://www.project-syndicate.org/rss" />
+    <atom:link rel="next" href="https://www.project-syndicate.org/rss?page=2" />
+    <atom:link rel="last" href="https://www.project-syndicate.org/rss?page=1270" />
+    <item>
+      <description><![CDATA[<p>The latest update of the Brookings-FT TIGER survey reveals that global growth has stabilized, with both advanced and emerging market economies showing positive momentum. But amid persistent inflation and fiscal profligacy, policymakers will still be forced to push forward with structural reforms to unleash productivity growth.</p>]]></description>
+      <link>https://www.project-syndicate.org/commentary/global-economy-is-experiencing-timid-recovery-by-eswar-prasad-and-thomas-riveros-2026-10?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=main&amp;utm_content=en</link>
+      <title>A Global Economic Recovery Built on Shaky Foundations</title>
+      <comments>https://www.project-syndicate.org/commentary/global-economy-is-experiencing-timid-recovery-by-eswar-prasad-and-thomas-riveros-2026-10?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=main&amp;utm_content=en#comments</comments>
+      <slash:comments>0</slash:comments>
+      <dc:creator>Eswar Prasad</dc:creator>
+      <pubDate>Fri, 09 Oct 2026 17:05:15 GMT</pubDate>
+      <guid isPermaLink="true">https://www.project-syndicate.org/commentary/global-economy-is-experiencing-timid-recovery-by-eswar-prasad-and-thomas-riveros-2026-10</guid>
+      <media:content url="https://webapi.project-syndicate.org/library/dd06268956875d9ebca00a7fe73c0af0.16-9-xlarge.1.jpg" height="540" width="960" medium="image" type="image/jpeg">
+        <media:copyright><![CDATA[Scott Olson/Getty Images]]></media:copyright>
+      </media:content>
+      <enclosure url="https://webapi.project-syndicate.org/library/dd06268956875d9ebca00a7fe73c0af0.16-9-xlarge.1.jpg" length="1208799" type="image/jpeg" />
+    </item><item>
+      <description><![CDATA[<p>In a recent speech detailing her economic program, the French far-right leader Marine Le Pen offered what can only be described as a populist vision of fiscal consolidation. Whether she can make such a paradoxical formulation work will now determine her own future, and possibly that of Europe’s nationalist right.</p>]]></description>
+      <link>https://www.project-syndicate.org/commentary/marine-le-pen-austerity-program-by-laurent-warlouzet-2026-10?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=main&amp;utm_content=en</link>
+      <title>The French Far Right Embraces Austerity</title>
+      <comments>https://www.project-syndicate.org/commentary/marine-le-pen-austerity-program-by-laurent-warlouzet-2026-10?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=main&amp;utm_content=en#comments</comments>
+      <slash:comments>0</slash:comments>
+      <dc:creator>Laurent Warlouzet</dc:creator>
+      <pubDate>Fri, 09 Oct 2026 15:28:30 GMT</pubDate>
+      <guid isPermaLink="true">https://www.project-syndicate.org/commentary/marine-le-pen-austerity-program-by-laurent-warlouzet-2026-10</guid>
+      <media:content url="https://webapi.project-syndicate.org/library/c0ab36cbeb70ea92902c7e694035d324.16-9-xlarge.1.jpg" height="540" width="960" medium="image" type="image/jpeg">
+        <media:copyright><![CDATA[Marine Le Pen speaks during a National Rally event in France.]]></media:copyright>
+      </media:content>
+      <enclosure url="https://webapi.project-syndicate.org/library/c0ab36cbeb70ea92902c7e694035d324.16-9-xlarge.1.jpg" length="459617" type="image/jpeg" />
+    </item><item>
+      <description><![CDATA[<p>For decades, African countries' borrowing costs have been largely determined by major credit-rating agencies whose methods overlook key features of these economies' institutions and markets. The new Africa Credit Rating Agency could mark a turning point, challenging how the continent’s credit risk is graded and priced.</p>]]></description>
+      <link>https://www.project-syndicate.org/commentary/new-africa-credit-rating-agency-could-mark-turning-point-for-the-continent-by-hannah-wanjie-ryder-2026-10?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=main&amp;utm_content=en</link>
+      <title>Rating Africa on Its Own Terms</title>
+      <comments>https://www.project-syndicate.org/commentary/new-africa-credit-rating-agency-could-mark-turning-point-for-the-continent-by-hannah-wanjie-ryder-2026-10?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=main&amp;utm_content=en#comments</comments>
+      <slash:comments>0</slash:comments>
+      <dc:creator>Hannah Wanjie Ryder</dc:creator>
+      <pubDate>Fri, 09 Oct 2026 14:44:15 GMT</pubDate>
+      <guid isPermaLink="true">https://www.project-syndicate.org/commentary/new-africa-credit-rating-agency-could-mark-turning-point-for-the-continent-by-hannah-wanjie-ryder-2026-10</guid>
+      <media:content url="https://webapi.project-syndicate.org/library/330663b6e29bde177a9ef8e36bb81718.16-9-xlarge.1.jpg" height="540" width="960" medium="image" type="image/jpeg">
+        <media:copyright><![CDATA[Olympia de Maismont/AFP via Getty Images]]></media:copyright>
+      </media:content>
+      <enclosure url="https://webapi.project-syndicate.org/library/330663b6e29bde177a9ef8e36bb81718.16-9-xlarge.1.jpg" length="783740" type="image/jpeg" />
+    </item></channel></rss>

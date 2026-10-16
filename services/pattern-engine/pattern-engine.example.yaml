@@ -1,0 +1,14 @@
+# Cấu hình pattern-engine (YAML). Đặt đường dẫn bằng PATTERN_CONFIG. Mọi khoá đều tuỳ chọn (có mặc định).
+# CHỈ là tín hiệu kỹ thuật/thông tin/paper, KHÔNG phải khuyến nghị đầu tư. Hệ thống READ-ONLY (không gửi lệnh).
+interval_seconds: 60           # chu kỳ quét; mỗi chu kỳ chỉ tính lại chuỗi có nến đóng mới
+timeframes: [M15, H1, H4]      # kịch bản độc lập khung: có thể thêm M5, D1 (cần >= 80 nến đã đóng trong bảng bars). Live (SCAN 2026-10-14): M15/H1/H4
+lookback_bars: { M5: 900, M15: 700, H1: 600, H4: 500, D1: 400 }
+symbols:
+  # watchlist live (SCAN 2026-10-14). Chỉ số US500/US30/USTEC: nến canon MT5 (lịch sử 2 năm nạp bởi infra/ops/backfill_canon_hist.py + live). Rỗng = mọi symbol có nến 10 ngày gần nhất
+  include: [US500, US30, USTEC, XAUUSD, XAGUSD, EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, USDCHF, NZDUSD, "CRYPTO:BTCUSDT", "CRYPTO:ETHUSDT"]
+  exclude: []
+  max: 40
+patterns: []   # danh sách kịch bản BẬT; rỗng = tắt quét (2026-10-15 dọn kịch bản). Bật lại: [KB-1, KB-2, KB-3, KB-4] hoặc kịch bản mới
+max_age_bars: 3                # chỉ phát sự kiện có nến đổi trạng thái trong 3 nến gần nhất (replay không làm ngập bus)
+emit_forming: true             # phát cả trạng thái forming (false = chỉ armed/triggered/invalid)
+overrides: {}                  # ghi đè tham số spec, ví dụ:  { common: { lead_min_atr: 7.0 }, KB-2: { retr_max: 0.7 } }

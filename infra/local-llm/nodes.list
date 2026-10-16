@@ -1,0 +1,2 @@
+# Node llama.cpp phụ do infra/ops/llm_node.sh quản lý (đừng sửa tay khi đang chạy add/remove).
+# name|ssh_target|mode(ssh|wg)|endpoint(ip:cổng mà LB truy cập)|weight

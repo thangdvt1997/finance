@@ -1,0 +1,43 @@
+# Mẫu điền sẵn 1: Donchian breakout (xu hướng) trên BTCUSD H4
+schema_version: 1
+id: KB-EX-DONCHIAN
+name: "Donchian breakout BTCUSD H4 (mẫu)"
+description: |
+  Phá kênh giá cao/thấp n nến gần nhất, thoát khi phá kênh ngược hoặc SL ATR. Kịch bản kinh điển, dùng để thử đường ống.
+hypothesis:
+  direction: both
+  expected_edge: "xu hướng crypto kéo dài đủ để vượt chi phí"
+  falsifier: "kỳ vọng OOS <= 0 hoặc p so với ngẫu nhiên > 0.10"
+market: {symbols: [BTCUSD], timeframe: H4}
+params:
+  n: {default: 20, sweep: [10, 20, 40]}
+  atrn: {default: 14}
+  slm: {default: 2.0, sweep: [2.0, 3.0]}
+entry:
+  long:  "close > shift(highest(high, $n), 1)"
+  short: "close < shift(lowest(low, $n), 1)"
+  filter: null
+  one_position: true
+exit:
+  stop_loss: {type: atr, n: "$atrn", mult: "$slm"}
+  take_profit: {type: none}
+  time_stop_bars: 120
+  exit_expr:
+    long:  "close < shift(lowest(low, $n // 2), 1)"
+    short: "close > shift(highest(high, $n // 2), 1)"
+  intrabar_priority: sl_first
+costs: {spread_bps: 3, slippage_bps: 2, commission_bps: 4, funding_bps_per_day: 0}
+validation:
+  data_scope: dev
+  walk_forward: {folds: 5, min_train_frac: 0.40, embargo_bars: 5, select_by: expectancy_r, min_trades_is: 20}
+  random_baseline: {runs: 300, seed: 7}
+  bootstrap: {runs: 2000, seed: 11}
+  pbo_blocks: 8
+acceptance:
+  min_oos_trades: 100
+  min_expectancy_r: 0.10
+  ci_low_gt: 0.0
+  max_p_vs_random: 0.05
+  max_pbo: 0.50
+  min_dsr: 0.50
+  min_positive_folds_frac: 0.60

@@ -1,0 +1,85 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-2",
+ "title": "KB-2 · XAUUSD M15 (backtest, thua -1.01R)",
+ "symbol": "XAUUSD",
+ "tf": "M15",
+ "ts": "2020-09-22T06:15:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát cắt lỗ (SL) sau 27 nến. nêm/tam giác. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "thua",
+ "result": {
+  "outcome": "sl",
+  "r": -1.005,
+  "entry_ts": "2020-09-22 06:30:00",
+  "exit_ts": "2020-09-22 13:00:00",
+  "entry": 1906.19,
+  "sl": 1915.412559,
+  "tp": 1887.744882,
+  "exit": 1915.462559
+ },
+ "score": 97.6,
+ "levels": {
+  "resistance": 1914.69,
+  "support": 1909.084615,
+  "wave_high": 1960.1,
+  "wave_low": 1882.71,
+  "entry": 1906.22,
+  "sl": 1915.412559,
+  "r": 9.192559,
+  "atr": 2.890236,
+  "tp_1r": 1897.027441,
+  "tp_2r": 1887.834882,
+  "tp_3r": 1878.642323,
+  "prev_low": 1882.71
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 12.5 ATR, 14 nến đỏ dài, xanh 25%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "hồi 48% sóng (1)"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "3 đỉnh thấp dần"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "2 đáy cao dần"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "co hẹp x0.39"
+  },
+  {
+   "id": 6,
+   "ok": true,
+   "detail": "nhấn chìm giảm thân 1.71 ATR, đóng dưới cạnh dưới 1909.08"
+  }
+ ],
+ "points": [
+  {
+   "label": "",
+   "t": "2020-09-18T17:00:00+00:00",
+   "p": 1960.1
+  },
+  {
+   "label": "(1)",
+   "t": "2020-09-21T14:30:00+00:00",
+   "p": 1882.71
+  },
+  {
+   "label": "(2)",
+   "t": "2020-09-22T00:00:00+00:00",
+   "p": 1920.03
+  }
+ ]
+}

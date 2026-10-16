@@ -1,0 +1,46 @@
+# RSS/Atom feeds. DA KIEM CHUNG BANG MANG 2026-10-11 (tu VPS <VPS_IP>, UA co email lien he): moi URL duoi day tra 200 + feedparser doc duoc
+# muc tin that. Nguon bi loai/khong dung xem README "Tinh trang xac minh".
+# symbols = gan san cho moi tin cua feed; bo sung them boi config/symbol_map.yaml
+# summary_max = gioi han do dai tom tat (bao thuong mai: chi tieu de + link + tom tat ngan, headline syndication, dung ca nhan/phi thuong mai)
+feeds:
+  # --- Nguon chinh thuc (cong bo cong khai) ---
+  - {id: fed_press_all,      url: "https://www.federalreserve.gov/feeds/press_all.xml",      lang: en, symbols: [], enabled: true}
+  - {id: fed_monetary,       url: "https://www.federalreserve.gov/feeds/press_monetary.xml", lang: en, symbols: [EURUSD, USDJPY, XAUUSD, GBPUSD], enabled: true}
+  - {id: fed_speeches,       url: "https://www.federalreserve.gov/feeds/speeches.xml",       lang: en, symbols: [EURUSD, USDJPY, XAUUSD, GBPUSD], enabled: true}
+  - {id: ecb_press,          url: "https://www.ecb.europa.eu/rss/press.xml",                 lang: en, symbols: [EURUSD], enabled: true}
+  # BLS: bls_latest.rss chi co 1 muc tinh ('Major Economic Indicators', link co dinh) -> thay bang feed tung chi so (co so lieu thuc: CPI, NFP, PPI)
+  - {id: bls_cpi,            url: "https://www.bls.gov/feed/cpi.rss",                       lang: en, symbols: [EURUSD, GBPUSD, USDJPY, XAUUSD], enabled: true}
+  - {id: bls_empsit,         url: "https://www.bls.gov/feed/empsit.rss",                    lang: en, symbols: [EURUSD, GBPUSD, USDJPY, XAUUSD], enabled: true}
+  - {id: bls_ppi,            url: "https://www.bls.gov/feed/ppi.rss",                       lang: en, symbols: [EURUSD, GBPUSD, USDJPY, XAUUSD], enabled: true}
+  - {id: sec_press,          url: "https://www.sec.gov/news/pressreleases.rss",              lang: en, symbols: [], enabled: true}
+  - {id: boe_news,           url: "https://www.bankofengland.co.uk/rss/news",                lang: en, symbols: [GBPUSD], enabled: true}
+  - {id: boe_speeches,       url: "https://www.bankofengland.co.uk/rss/speeches",            lang: en, symbols: [GBPUSD], enabled: true}
+  - {id: boj_whatsnew,       url: "https://www.boj.or.jp/en/rss/whatsnew.xml",               lang: en, symbols: [USDJPY], enabled: true}
+  - {id: rba_media,          url: "https://www.rba.gov.au/rss/rss-cb-media-releases.xml",    lang: en, symbols: [AUDUSD], enabled: true}
+  - {id: rba_speeches,       url: "https://www.rba.gov.au/rss/rss-cb-speeches.xml",          lang: en, symbols: [AUDUSD], enabled: true}
+  - {id: boc_press,          url: "https://www.bankofcanada.ca/content_type/press-releases/feed/", lang: en, symbols: [USDCAD], enabled: true}
+  - {id: snb_press,          url: "https://www.snb.ch/public/rss/en/pressrel",               lang: en, symbols: [USDCHF], enabled: true}
+  - {id: bis_press,          url: "https://www.bis.org/doclist/all_pressrels.rss",           lang: en, symbols: [], enabled: true}
+  # --- Bao tai chinh Anh/My/forex (RSS cong khai, robots cho phep; chi luu tieu de + link + tom tat ngan) ---
+  - {id: bbc_business,       url: "https://feeds.bbci.co.uk/news/business/rss.xml",          lang: en, symbols: [], summary_max: 300, enabled: true}
+  - {id: guardian_business,  url: "https://www.theguardian.com/business/rss",                lang: en, symbols: [], summary_max: 300, enabled: true}
+  - {id: fxstreet_news,      url: "https://www.fxstreet.com/rss/news",                       lang: en, symbols: [], summary_max: 300, enabled: true}
+  - {id: investinglive,      url: "https://www.forexlive.com/feed",                          lang: en, symbols: [], summary_max: 300, enabled: true}
+  - {id: actionforex,        url: "https://www.actionforex.com/feed/",                       lang: en, symbols: [], summary_max: 300, enabled: true}
+  - {id: oilprice,           url: "https://oilprice.com/rss/main",                           lang: en, symbols: [USOIL], summary_max: 300, enabled: true}
+  # --- Bao Viet Nam (RSS cong khai, robots cho phep; chi tieu de + link + tom tat ngan) ---
+  - {id: cafef_chungkhoan,   url: "https://cafef.vn/thi-truong-chung-khoan.rss",             lang: vi, symbols: ["VN:VNINDEX"], summary_max: 300, enabled: true}
+  - {id: cafef_vimo,         url: "https://cafef.vn/vi-mo-dau-tu.rss",                       lang: vi, symbols: [], summary_max: 300, enabled: true}
+  - {id: cafef_doanhnghiep,  url: "https://cafef.vn/doanh-nghiep.rss",                       lang: vi, symbols: [], summary_max: 300, enabled: true}
+  - {id: vnexpress_kinhdoanh, url: "https://vnexpress.net/rss/kinh-doanh.rss",               lang: vi, symbols: [], summary_max: 300, enabled: true}
+  - {id: vietstock_cophieu,  url: "https://vietstock.vn/830/chung-khoan/co-phieu.rss",       lang: vi, symbols: ["VN:VNINDEX"], summary_max: 300, enabled: true}
+  - {id: vietstock_vimo,     url: "https://vietstock.vn/739/kinh-te/vi-mo.rss",               lang: vi, symbols: [], summary_max: 300, enabled: true}
+  - {id: vietstock_ck_thegioi, url: "https://vietstock.vn/772/chung-khoan/chung-khoan-the-gioi.rss", lang: vi, symbols: [], summary_max: 300, enabled: true}
+  - {id: vietstock_ykien,    url: "https://vietstock.vn/145/chung-khoan/y-kien-chuyen-gia.rss", lang: vi, symbols: [], summary_max: 300, enabled: true}
+  - {id: vietstock_nhandinh, url: "https://vietstock.vn/1636/nhan-dinh-phan-tich/nhan-dinh-thi-truong.rss", lang: vi, symbols: ["VN:VNINDEX"], summary_max: 300, enabled: true}
+  - {id: vietstock_ptkt,     url: "https://vietstock.vn/585/nhan-dinh-phan-tich/phan-tich-ky-thuat.rss", lang: vi, symbols: ["VN:VNINDEX"], summary_max: 300, enabled: true}
+  - {id: vietstock_ptcb,     url: "https://vietstock.vn/582/nhan-dinh-phan-tich/phan-tich-co-ban.rss", lang: vi, symbols: [], summary_max: 300, enabled: true}
+  - {id: vneconomy_chungkhoan, url: "https://vneconomy.vn/chung-khoan.rss",                  lang: vi, symbols: ["VN:VNINDEX"], summary_max: 300, enabled: true}
+  - {id: vneconomy_taichinh, url: "https://vneconomy.vn/tai-chinh.rss",                      lang: vi, symbols: [], summary_max: 300, enabled: true}
+  - {id: tuoitre_kinhdoanh,  url: "https://tuoitre.vn/rss/kinh-doanh.rss",                   lang: vi, symbols: [], summary_max: 300, enabled: true}
+  - {id: baochinhphu_kinhte, url: "https://baochinhphu.vn/kinh-te.rss",                      lang: vi, symbols: [], enabled: true}

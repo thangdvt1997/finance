@@ -1,0 +1,620 @@
+[
+ {
+  "id": "client-setup:change-password-lan-dau-clientA",
+  "group": "client-setup",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "client-setup:login-sau-doi-mat-khau-clientA",
+  "group": "client-setup",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "client-setup:change-password-lan-dau-clientB",
+  "group": "client-setup",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "client-setup:login-sau-doi-mat-khau-clientB",
+  "group": "client-setup",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "master-setup:totp-enable",
+  "group": "master-setup",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "master-setup:login-totp",
+  "group": "master-setup",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "realtime:sse-nhan-su-kien",
+  "group": "realtime",
+  "ok": true,
+  "detail": "200 text/event-stream; charset=utf-8 3 dong trong 0.0s"
+ },
+ {
+  "id": "realtime:sse-anon-bi-tu-choi",
+  "group": "realtime",
+  "ok": true,
+  "detail": "401"
+ },
+ {
+  "id": "realtime:ws-nhan-su-kien",
+  "group": "realtime",
+  "ok": true,
+  "detail": "2 tin trong 0.3s"
+ },
+ {
+  "id": "realtime:ws-anon-bi-tu-choi",
+  "group": "realtime",
+  "ok": true,
+  "detail": "401"
+ },
+ {
+  "id": "idor-proxy:clientA-doc-du-lieu-B-qua-proxy",
+  "group": "idor-proxy",
+  "ok": true,
+  "detail": "23 duong dan deu bi chan/rong"
+ },
+ {
+  "id": "idor-proxy:clientA-khong-vao-route-master",
+  "group": "idor-proxy",
+  "ok": true,
+  "detail": "403/404 het (route cho phep rut gon da ghi o authz)"
+ },
+ {
+  "id": "idor-proxy:clientA-ghi-cheo-vao-B-qua-proxy",
+  "group": "idor-proxy",
+  "ok": true,
+  "detail": "bi chan het"
+ },
+ {
+  "id": "user-writes:rules-preview",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200 {\"result\":false,\"conditions\":[{\"ok\":false,\"value\":1.123855,\"text\":\"EURUSD giá 1."
+ },
+ {
+  "id": "user-writes:rules-create",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "201 {\"id\":\"6fd169c0-4651-4105-b8ad-262fbdd8e288\",\"name\":\"qa-rule\",\"enabled\":false,\"logic\":\"and\",\"conditions\":[{\"op\":\"gte\",\"t"
+ },
+ {
+  "id": "user-writes:rules-list-co-rule",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:rules-IDOR-B-khong-thay-rule-A",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:rules-IDOR-B-sua-rule-A",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404"
+ },
+ {
+  "id": "user-writes:rules-IDOR-B-xoa-rule-A",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404"
+ },
+ {
+  "id": "user-writes:rules-update",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200 {\"id\":\"6fd169c0-4651-4105-b8ad-262fbdd8e288\",\"name\":\"qa-rule-2\",\"enabled\":false,"
+ },
+ {
+  "id": "user-writes:rules-preview-id",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:rules-delete",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:rules-het-sau-xoa",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:prefs-put-hop-le-master",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200 {\"rev\":976,\"prefs\":{\"tm\":{\"a\":\"overview\",\"o\":[\"overview\",\"forex\",\"crypto\",\"vn\",\""
+ },
+ {
+  "id": "user-writes:prefs-put-rev-cu-409-hoac-ok",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "409"
+ },
+ {
+  "id": "user-writes:prefs-client-khong-duoc-ghi",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404"
+ },
+ {
+  "id": "user-writes:client-prefs-put",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200 {\"rev\":1,\"data\":{}}"
+ },
+ {
+  "id": "user-writes:notifications-read",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:tickets-create",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "201 {\"id\":28,\"status\":\"open\"}"
+ },
+ {
+  "id": "user-writes:tickets-IDOR-tao-cho-tai-khoan-B",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404"
+ },
+ {
+  "id": "user-writes:tickets-IDOR-B-khong-thay",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:tickets-IDOR-B-dong-ticket-A",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404"
+ },
+ {
+  "id": "user-writes:push-subscribe",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "422 (SSRF/endpoint gia khong duoc 500) {\"detail\":\"dịch vụ push không được hỗ trợ\"}"
+ },
+ {
+  "id": "user-writes:push-unsubscribe",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:limits-get",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:limits-IDOR-B-sua-A",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404"
+ },
+ {
+  "id": "user-writes:limits-put-hop-le",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200 {\"key\":\"max_dd_pct\",\"applied\":\"now\",\"value\":25.0,\"pending_value\":null,\"pending_r"
+ },
+ {
+  "id": "user-writes:journal-note-put-tai-khoan-chua-co-nhat-ky-404-JSON",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404 {\"detail\":\"không có tài khoản/nhật ký này\"}"
+ },
+ {
+  "id": "user-writes:journal-note-IDOR-B-ghi-vao-A",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "403"
+ },
+ {
+  "id": "user-writes:journal-note-IDOR-B-xoa",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "403"
+ },
+ {
+  "id": "user-writes:journal-note-delete",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404 {\"detail\":\"không có tài khoản/nhật ký này\"}"
+ },
+ {
+  "id": "user-writes:client-notify-put",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "user-writes:account-report-generate-cua-minh",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404 <html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not F"
+ },
+ {
+  "id": "user-writes:account-report-IDOR-sinh-cho-B",
+  "group": "user-writes",
+  "ok": true,
+  "detail": "404"
+ },
+ {
+  "id": "admin-writes:groups-create",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "201 {\"name\":\"qa-grp-8b69\",\"description\":\"qa\",\"color\":\"#123456\",\"policy\":{},\"created_"
+ },
+ {
+  "id": "admin-writes:groups-patch",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:groups-add-member",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200 {\"added\":1}"
+ },
+ {
+  "id": "admin-writes:groups-policy",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200 {\"ea_offline_grace_min\":5,\"min_severity\":\"warning\",\"client_notify\":false}"
+ },
+ {
+  "id": "admin-writes:groups-expert-xoa-nhom-bi-tu-choi-hoac-ok",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "403"
+ },
+ {
+  "id": "admin-writes:groups-del-member",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:groups-delete",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:account-tags",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200 {\"tags\":[\"qa\"]}"
+ },
+ {
+  "id": "admin-writes:account-notes",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "201 {\"note_id\":27,\"author_label\":\"QA qa_stab_api_8b69m\",\"text\":\"qa note\",\"created_at"
+ },
+ {
+  "id": "admin-writes:account-patch-khong-phoi-qua-nginx-405",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "405 (whitelist nginx web-ui khong cho PATCH accounts: dung thiet ke)"
+ },
+ {
+  "id": "admin-writes:account-suspend",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:account-activate",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:account-reset-passcode",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:account-rotate-ea-token",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:account-rotate-hmac",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:account-pairing-code",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:account-suspend-bang-expert-khong-5xx",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "403"
+ },
+ {
+  "id": "admin-writes:views-create",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "201 {\"name\":\"qa-view-8b69\",\"filters\":{},\"shared\":false,\"owner_user_id\":\"e4f3ac4b-173"
+ },
+ {
+  "id": "admin-writes:views-delete",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:rules-template-create",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "422 {\"detail\":\"loại luật không hợp lệ\"}"
+ },
+ {
+  "id": "admin-writes:view-as-start",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200 {\"grant_id\":\"71c81939-89a7-4174-8332-bade27250e84\",\"account_id\":\"mt5:97356895\",\""
+ },
+ {
+  "id": "admin-writes:view-as-end",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:bulk-prepare",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "422 {\"detail\":\"Hành động không hợp lệ\"}"
+ },
+ {
+  "id": "admin-writes:import-preview",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200 {\"preview_token\":\"92FrrxBjdv0blBtgqibZ2GDSMf8mfDQ0\",\"rows\":[{\"line\":2,\"platform\":\"mt5\",\"login\":97356"
+ },
+ {
+  "id": "admin-writes:import-commit",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200 {\"created\":[{\"line\":2,\"account_id\":\"mt5:97356897\",\"label\":\"\",\"server\":\"\",\"secret"
+ },
+ {
+  "id": "admin-writes:accounts-create",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "201 {\"account\":{\"account_id\":\"mt5:97356898\",\"platform\":\"mt5\",\"login\":97356898,\"serve"
+ },
+ {
+  "id": "admin-writes:accounts-delete",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:staff-create",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "201"
+ },
+ {
+  "id": "admin-writes:staff-patch",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:user-assign-account",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "405 (405 = nginx whitelist khong phoi)"
+ },
+ {
+  "id": "admin-writes:user-unassign-account",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "405 (405 = nginx whitelist khong phoi)"
+ },
+ {
+  "id": "admin-writes:user-suspend",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "admin-writes:user-activate",
+  "group": "admin-writes",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:me",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:login-hop-le-phien-2",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:sessions-list",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:sessions-revoke",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:phien-bi-thu-hoi-het-hieu-luc",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "401"
+ },
+ {
+  "id": "auth-flow:idor-revoke-phien-nguoi-khac",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "404"
+ },
+ {
+  "id": "auth-flow:phien-A-con-sau-idor",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:logout",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:sau-logout-me-401",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "401"
+ },
+ {
+  "id": "auth-flow:logout-all",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:logout-all-het-hieu-luc-phien-khac",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "401"
+ },
+ {
+  "id": "auth-flow:login-sai-401",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "401"
+ },
+ {
+  "id": "auth-flow:pair-hop-le",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:pair-dung-lai-ma-bi-tu-choi",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "400"
+ },
+ {
+  "id": "auth-flow:login-bang-mat-khau-moi-sau-pair",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:change-password-current-sai",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "401"
+ },
+ {
+  "id": "auth-flow:change-password-hop-le",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-flow:mat-khau-cu-het-hieu-luc",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "401"
+ },
+ {
+  "id": "auth-flow:mat-khau-moi-dang-nhap-duoc",
+  "group": "auth-flow",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-totp:setup",
+  "group": "auth-totp",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-totp:enable-ma-sai",
+  "group": "auth-totp",
+  "ok": true,
+  "detail": "400"
+ },
+ {
+  "id": "auth-totp:enable-hop-le",
+  "group": "auth-totp",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-totp:login-thieu-totp-bi-tu-choi",
+  "group": "auth-totp",
+  "ok": true,
+  "detail": "401"
+ },
+ {
+  "id": "auth-totp:login-co-totp-hop-le",
+  "group": "auth-totp",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "id": "auth-totp:disable-mat-khau-sai",
+  "group": "auth-totp",
+  "ok": true,
+  "detail": "400"
+ },
+ {
+  "id": "auth-totp:disable-hop-le",
+  "group": "auth-totp",
+  "ok": true,
+  "detail": "200"
+ }
+]

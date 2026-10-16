@@ -1,0 +1,11 @@
+UST10 proxy vs IEF: n=6313 corr_daily=0.958 ann_excess_proxy=1.352% ann_excess_etf=1.766%
+UST30 proxy vs TLT: n=6313 corr_daily=0.944 ann_excess_proxy=2.730% ann_excess_etf=2.464%
+UST2 proxy vs SHY: n=6313 corr_daily=0.896 ann_excess_proxy=0.161% ann_excess_etf=0.223%
+SPX index+q vs SPY: n=8790 corr_daily=0.985 ann_excess_proxy=9.405% ann_excess_etf=9.220%
+GOLD(GC=F/GLD) vs GLD: n=5703 corr_daily=1.000 ann_excess_proxy=9.364% ann_excess_etf=9.364%
+COPPER HG=F vs CPER: n=3877 corr_daily=0.617 ann_excess_proxy=5.109% ann_excess_etf=6.086%
+WTI spot(FRED) vs USO 2006-2020: corr_daily=0.878  (spot khong co roll yield => proxy kem hon)
+Spike removed: SPIKE removed WTI 2020-04-21 (51%), SPIKE removed BRENT 2020-04-21 (47%)
+info: {'UST30_gap_filled_days(DGS20 proxy)': 0, 'GOLD_splice_at': '2004-11-19', 'SILVER_splice_at': '2006-05-01', 'WTI_splice_at': '2006-04-11', 'BRENT_splice_at': '2010-06-03'}
+Top |daily excess ret|: ETH 2021-01-04 42.4%; ETH 2020-03-12 42.3%; BTC 2020-03-12 37.2%; BVSP 1999-01-15 33.4%; WTI 1991-01-17 33.4%; HSI 1987-10-26 33.3%; BRENT 1991-01-17 30.3%; SILVER 2026-01-30 28.6%; ETH 2018-12-24 28.1%; ETH 2022-07-18 28.0%; ETH 2022-06-13 27.7%; ETH 2021-05-19 27.2%
+rates3m last obs per ccy: {'USD': '2026-08-01', 'EUR': '2026-01-01', 'GBP': '2026-01-01', 'JPY': '2026-07-01', 'AUD': '2026-08-01', 'CAD': '2026-08-01', 'CHF': '2026-08-01', 'NZD': '2026-08-01'}

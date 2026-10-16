@@ -1,0 +1,50 @@
+# Từ điển thực thể -> symbol chuẩn hoá (CONTRACTS). So khớp bỏ dấu, không phân biệt hoa/thường, theo ranh giới từ.
+# case_sensitive: true cho mã viết hoa (tránh trùng từ thường). Mở rộng so với news-collector/config/symbol_map.yaml:
+# tiền tệ, vàng/bạc/dầu/khí/đồng, chỉ số, ngân hàng trung ương, tiền mã hoá, mã VN (VN30 + phổ biến), cashtag $XYZ.
+# Quy ước: từ khoá có chữ HOA và dài <= 5 ký tự, không có khoảng trắng (Fed, ECB, BoE, CPI, Brent, SJC...) được so khớp
+# PHÂN BIỆT hoa/thường; còn lại bỏ dấu + không phân biệt hoa/thường.
+# `entity` chỉ để thống kê/ghi log; `strength` (0..1) dùng cho trọng số tổng hợp sentiment theo symbol.
+rules:
+  # ---- Tiền tệ / cặp
+  - {entity: EUR, keywords: ["EUR/USD", "EURUSD", "euro", "eurozone", "euro zone", "đồng euro", "khu vực đồng euro"], symbols: [EURUSD]}
+  - {entity: GBP, keywords: ["GBP/USD", "GBPUSD", "sterling", "pound sterling", "bảng Anh"], symbols: [GBPUSD]}
+  - {entity: JPY, keywords: ["USD/JPY", "USDJPY", "yen", "đồng yên", "yên Nhật"], symbols: [USDJPY]}
+  - {entity: AUD, keywords: ["AUD/USD", "AUDUSD", "Aussie dollar", "Australian dollar", "đô la Úc"], symbols: [AUDUSD]}
+  - {entity: CAD, keywords: ["USD/CAD", "USDCAD", "loonie", "Canadian dollar", "đô la Canada"], symbols: [USDCAD]}
+  - {entity: CHF, keywords: ["USD/CHF", "USDCHF", "Swiss franc", "franc Thụy Sĩ"], symbols: [USDCHF]}
+  - {entity: NZD, keywords: ["NZD/USD", "NZDUSD", "kiwi dollar", "New Zealand dollar", "đô la New Zealand"], symbols: [NZDUSD]}
+  - {entity: CNH, keywords: ["USD/CNH", "USDCNH", "yuan", "renminbi", "nhân dân tệ"], symbols: [USDCNH]}
+  - {entity: VND, keywords: ["USD/VND", "USDVND", "tỷ giá", "đồng Việt Nam", "tỷ giá trung tâm"], symbols: [USDVND]}
+  - {entity: DXY, keywords: ["dollar index", "DXY", "US dollar index", "chỉ số USD", "chỉ số đô la"], symbols: [EURUSD, USDJPY, GBPUSD, XAUUSD]}
+  # ---- Ngân hàng trung ương / nhân vật (gắn cặp tiền chịu tác động)
+  - {entity: FED, keywords: ["Federal Reserve", "the Fed", "FOMC", "Powell", "Fed chair", "nonfarm", "non-farm payrolls", "NFP", "CPI", "PCE", "consumer price index", "US inflation", "Treasury yield", "Cục Dự trữ Liên bang", "Fed"], symbols: [EURUSD, GBPUSD, USDJPY, XAUUSD], strength: 0.8}
+  - {entity: ECB, keywords: ["ECB", "European Central Bank", "Lagarde", "Ngân hàng Trung ương châu Âu", "Lane"], symbols: [EURUSD]}
+  - {entity: BOE, keywords: ["Bank of England", "BoE", "Bailey", "MPC", "Ngân hàng Trung ương Anh"], symbols: [GBPUSD]}
+  - {entity: BOJ, keywords: ["Bank of Japan", "BoJ", "Ueda", "Ngân hàng Trung ương Nhật"], symbols: [USDJPY]}
+  - {entity: RBA, keywords: ["Reserve Bank of Australia", "RBA"], symbols: [AUDUSD]}
+  - {entity: BOC, keywords: ["Bank of Canada", "BoC", "Macklem"], symbols: [USDCAD]}
+  - {entity: SNB, keywords: ["Swiss National Bank", "SNB"], symbols: [USDCHF]}
+  - {entity: RBNZ, keywords: ["Reserve Bank of New Zealand", "RBNZ"], symbols: [NZDUSD]}
+  - {entity: PBOC, keywords: ["PBoC", "People's Bank of China", "Ngân hàng Nhân dân Trung Quốc"], symbols: [USDCNH]}
+  - {entity: SBV, keywords: ["Ngân hàng Nhà nước", "NHNN", "State Bank of Vietnam", "SBV"], symbols: [USDVND]}
+  # ---- Kim loại / năng lượng / hàng hoá
+  - {entity: GOLD, keywords: ["gold", "XAU", "XAUUSD", "bullion", "vàng", "giá vàng", "vàng miếng", "vàng nhẫn", "SJC", "SPDR Gold"], symbols: [XAUUSD]}
+  - {entity: SILVER, keywords: ["silver", "XAGUSD", "giá bạc"], symbols: [XAGUSD]}
+  - {entity: OIL, keywords: ["crude oil", "crude", "WTI", "Brent", "OPEC", "OPEC+", "dầu thô", "giá dầu", "dầu Brent", "xăng dầu", "oil prices", "oil price", "oil"], symbols: [USOIL]}
+  - {entity: GAS, keywords: ["natural gas", "LNG", "khí tự nhiên"], symbols: [NATGAS]}
+  - {entity: COPPER, keywords: ["copper"], symbols: [XCUUSD]}
+  # ---- Chỉ số
+  - {entity: SPX, keywords: ["S&P 500", "S&P500", "SPX", "Wall Street", "Dow Jones", "chứng khoán Mỹ"], symbols: ["US:SPX"]}
+  - {entity: NDX, keywords: ["Nasdaq", "Nasdaq 100", "NDX"], symbols: ["US:NDX"]}
+  - {entity: VNI, keywords: ["VN-Index", "VNINDEX", "VN Index", "HOSE", "HoSE", "HNX", "chứng khoán Việt Nam", "thị trường chứng khoán"], symbols: ["VN:VNINDEX"]}
+  - {entity: VN30, keywords: ["VN30", "VN30-Index", "rổ VN30"], symbols: ["VN:VN30"]}
+  # ---- Tiền mã hoá
+  - {entity: BTC, keywords: ["Bitcoin", "BTC", "BTCUSD"], symbols: [BTCUSD]}
+  - {entity: ETH, keywords: ["Ethereum", "ETHUSD", "Ether"], symbols: [ETHUSD]}
+  # ---- Cổ phiếu VN: mã viết hoa (VN30 + phổ biến + ngân hàng). Phân biệt hoa/thường.
+  - {entity: VN_TICKER, case_sensitive: true, ticker_prefix: "VN:", keywords: [ACB, BCM, BID, BVH, CTG, DGC, DPM, DCM, FPT, GVR, HDB, HPG, KDH, KOS, MBB, MSN, MWG, NVL, PDR, PLX, PNJ, POW, REE, SAB, SHB, SSB, SSI, STB, TCB, TPB, VCB, VCI, VHM, VIB, VIC, VJC, VNM, VPB, VRE, EIB, LPB, MSB, OCB, VGC, DIG, DXG, CII, KBC, SZC, GEX, HAG, HSG, NKG, PVD, PVS, BSR, VHC, ANV, GMD, HVN, VGI, FRT, DGW, CTR, CTD, HHV, LCG, VCG, BMP, NT2, PC1, TV2, SCS, VEA, SBT, QNS, DBC, BAF]}
+# Cashtag $AAPL, $TSLA ... -> US:AAPL (xử lý trong code)
+cashtag_prefix: "US:"
+# Ký hiệu hay trùng từ thường tiếng Anh: không bao giờ coi là mã VN trừ khi viết hoa đúng (đã case_sensitive) và
+# không nằm trong danh sách này:
+ticker_stoplist: [GAS, OIL, VND, CII, BAF, SAB]

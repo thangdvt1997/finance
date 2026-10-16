@@ -1,0 +1,11 @@
+# Ghi de van hanh (coordinator) sau kiem chung thuc te 2026-10-12: nguon bi chan (HTTP 403) tu VPS -> TAT, khong lach.
+- {id: cftc_press_releases, name_display: "CFTC - thong cao", type: rss, url: "https://www.cftc.gov/RSS/RSSGP/rssgp.xml", override: true, enabled: false, notes: "403 tu VPS (chan bot) - khong lach"}
+- {id: cftc_enforcement, name_display: "CFTC - thi hanh", type: rss, url: "https://www.cftc.gov/RSS/RSSENF/rssenf.xml", override: true, enabled: false, notes: "403 tu VPS (chan bot) - khong lach"}
+- {id: cftc_statements, name_display: "CFTC - tuyen bo", type: rss, url: "https://www.cftc.gov/RSS/RSSST/rssst.xml", override: true, enabled: false, notes: "403 tu VPS (chan bot) - khong lach"}
+# Ten hien thi KHONG chua ten website/nha cung cap (docs/UI_NO_SOURCES.md)
+- {id: coindesk_news, name_display: "Tin tuc va nghien cuu crypto (truyen thong chuyen nganh)", type: rss, url: "https://example.invalid/x", override: true}
+- {id: krugman, name_display: "Paul Krugman", type: rss, url: "https://example.invalid/x", override: true}
+- {id: forexcrunch, name_display: "Tin tong hop forex (trang thuong mai)", type: rss, url: "https://example.invalid/x", override: true}
+- {id: investing_economy, name_display: "Tin kinh te tong hop", type: rss, url: "https://example.invalid/x", override: true}
+- {id: investing_indicators, name_display: "Tin chi so kinh te tong hop", type: rss, url: "https://example.invalid/x", override: true}
+- {id: yt_vneconomy, name_display: "Kenh video kinh te VN", type: youtube, url: "https://example.invalid/x", override: true}

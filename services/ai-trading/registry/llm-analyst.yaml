@@ -1,0 +1,11 @@
+# C2 xong 2026-10-15. API (chỉ master): /v1/ai-trading/analyst?symbol= (service briefing, LLM cục bộ llama.cpp dùng chung với bản tin)
+id: llm-analyst
+name: "AI analyst (LLM cục bộ)"
+module: llm
+status: research
+summary: "Tóm tắt bối cảnh 1 mã từ tin/lịch sự kiện/kỹ thuật D1/regime/đồng thuận + giải thích điều kiện đã/chưa đạt của kịch bản đang hình thành. Ngữ cảnh đánh số [n] (số liệu do mã tạo), LLM chỉ viết lời, mỗi ý bắt buộc trích dẫn; hậu kiểm tất định (số/mã khớp mục trích, từ cấm 'mua/bán ngay', 'chắc chắn', dự báo giá, URL, tên nguồn); lỗi/quá hạn/bận -> bản mẫu tất định. Cache 10 phút, timeout, 1 lượt LLM tại một thời điểm."
+verdict: unproven
+warning: "Nhãn bắt buộc: AI tạo, không phải lời khuyên. Không có công cụ/URL, không ra lệnh. Chưa đo được giá trị dự báo của văn bản AI; không dùng làm tín hiệu giao dịch."
+honesty_note: "Đây là công cụ DIỄN GIẢI dữ liệu, không phải mô hình dự báo nên không có kỳ vọng R. Chất lượng đo bằng tỉ lệ ý bị hậu kiểm loại (hiện trong trường quality của từng phản hồi). Chỉ nghiên cứu/paper."
+metrics: {expectancy_r: null, p_vs_random: null, trades: null}
+doc: docs/research/REGIME_C2.md

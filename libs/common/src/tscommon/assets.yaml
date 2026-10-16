@@ -1,0 +1,205 @@
+# REGISTRY loai tai san (nguon chan ly duy nhat cho api-gateway / UI / analytics).
+# Anh xa symbol chuan hoa (xem docs/CONTRACTS.md) -> class, ten hien thi, nhom, tien te bao gia, phien giao dich, so le hien thi.
+# Ghi de bang bien moi truong ASSETS_CONFIG=/duong/dan/assets.yaml (file day du, thay the file nay).
+#
+# class (hop dong cho UI): forex | crypto | metal | commodity | index | etf | stock_us | stock_vn | bond  (+ "other" cho symbol chua dang ky)
+# Moi muc symbol: s (bat buoc), name (tieng Viet), name_en, group; co the ghi de precision / session / quote.
+version: 1
+
+# Phien giao dich (UTC tru khi ghi tz). Ngay le san KHONG duoc mo hinh hoa (session_open chi xet gio + thu trong tuan).
+sessions:
+  crypto_24x7: {name: "24/7", name_en: "24/7", kind: always}
+  fx_24x5:     {name: "24/5 (CN 22:00 - T6 22:00 UTC)", name_en: "24/5 (Sun 22:00 - Fri 22:00 UTC)", kind: week, open: "Sun 22:00", close: "Fri 22:00"}
+  us_equity:   {name: "San My T2-T6 09:30-16:00 (New York)", name_en: "US exchange Mon-Fri 09:30-16:00 (New York)", kind: daily, tz: us_eastern, days: [0, 1, 2, 3, 4], windows: ["09:30-16:00"]}
+  vn_equity:   {name: "San VN T2-T6 09:00-11:30, 13:00-15:00 (UTC+7)", name_en: "Vietnam exchange Mon-Fri 09:00-11:30, 13:00-15:00 (UTC+7)", kind: daily, tz: "+07:00", days: [0, 1, 2, 3, 4], windows: ["09:00-11:30", "13:00-15:00"]}
+  eod_daily:   {name: "So lieu cuoi ngay (ngay lam viec)", name_en: "End-of-day data (business days)", kind: eod}
+
+classes:
+  forex:     {name: "Ngoại hối (Forex)", name_en: "Forex", order: 1, session: fx_24x5, precision: 5}
+  crypto:    {name: "Tiền ảo (Crypto)", name_en: "Crypto", order: 2, session: crypto_24x7, precision: 2, quote: USDT}
+  metal:     {name: "Kim loại", name_en: "Metals", order: 3, session: us_equity, precision: 2, quote: USD}
+  commodity: {name: "Hàng hoá", name_en: "Commodities", order: 4, session: us_equity, precision: 2, quote: USD}
+  index:     {name: "Chỉ số", name_en: "Indices", order: 5, session: us_equity, precision: 2, quote: USD}
+  etf:       {name: "ETF", name_en: "ETFs", order: 6, session: us_equity, precision: 2, quote: USD}
+  stock_us:  {name: "Cổ phiếu Mỹ", name_en: "US stocks", order: 7, session: us_equity, precision: 2, quote: USD}
+  stock_vn:  {name: "Cổ phiếu Việt Nam", name_en: "Vietnam stocks", order: 8, session: vn_equity, precision: 0, quote: VND}
+  bond:      {name: "Trái phiếu", name_en: "Bonds", order: 9, session: us_equity, precision: 2, quote: USD}
+  other:     {name: "Khác", name_en: "Other", order: 99, session: eod_daily, precision: 4}
+
+# Symbol KHONG liet ke ben duoi duoc suy ra theo mau (khop dau tien thang).
+patterns:
+  - {match: "CRYPTO:*", class: crypto}
+  - {match: "VN:*", class: stock_vn}
+  - {match: "US:*", class: stock_us}
+  - {match: "FRED:*", class: bond}
+  - {regex: "^[A-Z]{6}$", class: forex}
+
+symbols:
+  forex:
+    - {s: EURUSD, name: "Euro / Đô la Mỹ", name_en: "Euro / US Dollar", group: Majors}
+    - {s: GBPUSD, name: "Bảng Anh / Đô la Mỹ", name_en: "British Pound / US Dollar", group: Majors}
+    - {s: USDJPY, name: "Đô la Mỹ / Yên Nhật", name_en: "US Dollar / Japanese Yen", group: Majors}
+    - {s: USDCHF, name: "Đô la Mỹ / Franc Thuỵ Sĩ", name_en: "US Dollar / Swiss Franc", group: Majors}
+    - {s: AUDUSD, name: "Đô la Úc / Đô la Mỹ", name_en: "Australian Dollar / US Dollar", group: Majors}
+    - {s: USDCAD, name: "Đô la Mỹ / Đô la Canada", name_en: "US Dollar / Canadian Dollar", group: Majors}
+    - {s: NZDUSD, name: "Đô la New Zealand / Đô la Mỹ", name_en: "New Zealand Dollar / US Dollar", group: Majors}
+    - {s: EURGBP, name: "Euro / Bảng Anh", name_en: "Euro / British Pound", group: Minors}
+    - {s: EURJPY, name: "Euro / Yên Nhật", name_en: "Euro / Japanese Yen", group: Minors}
+    - {s: GBPJPY, name: "Bảng Anh / Yên Nhật", name_en: "British Pound / Japanese Yen", group: Minors}
+    - {s: AUDJPY, name: "Đô la Úc / Yên Nhật", name_en: "Australian Dollar / Japanese Yen", group: Minors}
+    - {s: EURCHF, name: "Euro / Franc Thuỵ Sĩ", name_en: "Euro / Swiss Franc", group: Minors}
+    - {s: EURAUD, name: "Euro / Đô la Úc", name_en: "Euro / Australian Dollar", group: Minors}
+    - {s: GBPAUD, name: "Bảng Anh / Đô la Úc", name_en: "British Pound / Australian Dollar", group: Minors}
+    - {s: USDVND, name: "Đô la Mỹ / Đồng Việt Nam", name_en: "US Dollar / Vietnamese Dong", group: Exotics, precision: 0}
+  metal:
+    - {s: XAUUSD, name: "Vàng (giao ngay)", name_en: "Gold (spot)", group: "Kim loại quý", session: fx_24x5}
+    - {s: XAGUSD, name: "Bạc (giao ngay)", name_en: "Silver (spot)", group: "Kim loại quý", session: fx_24x5, precision: 3}
+    - {s: XPTUSD, name: "Bạch kim (giao ngay)", name_en: "Platinum (spot)", group: "Kim loại quý", session: fx_24x5}
+    - {s: XPDUSD, name: "Palladium (giao ngay)", name_en: "Palladium (spot)", group: "Kim loại quý", session: fx_24x5}
+    - {s: "US:GLD", name: "Quỹ vàng SPDR Gold", name_en: "SPDR Gold Shares (ETF)", group: "Kim loại quý"}
+    - {s: "US:SLV", name: "Quỹ bạc iShares Silver", name_en: "iShares Silver Trust (ETF)", group: "Kim loại quý"}
+    - {s: "US:CPER", name: "Quỹ đồng US Copper", name_en: "United States Copper Index Fund (ETF)", group: "Kim loại công nghiệp"}
+  commodity:
+    - {s: "US:USO", name: "Dầu thô WTI (ETF USO)", name_en: "WTI crude oil (USO ETF)", group: "Năng lượng"}
+    - {s: "US:BNO", name: "Dầu Brent (ETF BNO)", name_en: "Brent crude oil (BNO ETF)", group: "Năng lượng"}
+    - {s: "US:UNG", name: "Khí tự nhiên (ETF UNG)", name_en: "Natural gas (UNG ETF)", group: "Năng lượng"}
+    - {s: "US:CORN", name: "Ngô (ETF CORN)", name_en: "Corn (CORN ETF)", group: "Nông sản"}
+    - {s: "US:WEAT", name: "Lúa mì (ETF WEAT)", name_en: "Wheat (WEAT ETF)", group: "Nông sản"}
+    - {s: "US:SOYB", name: "Đậu tương (ETF SOYB)", name_en: "Soybeans (SOYB ETF)", group: "Nông sản"}
+    - {s: "US:CANE", name: "Đường (ETF CANE)", name_en: "Sugar (CANE ETF)", group: "Nông sản"}
+    - {s: USOIL, name: "Dầu WTI (CFD)", name_en: "WTI crude oil (CFD)", group: "Năng lượng", session: fx_24x5}
+    - {s: UKOIL, name: "Dầu Brent (CFD)", name_en: "Brent crude oil (CFD)", group: "Năng lượng", session: fx_24x5}
+  index:
+    - {s: "US:SPY", name: "S&P 500 (ETF SPY)", name_en: "S&P 500 (SPY ETF)", group: "Mỹ"}
+    - {s: "US:QQQ", name: "Nasdaq 100 (ETF QQQ)", name_en: "Nasdaq 100 (QQQ ETF)", group: "Mỹ"}
+    - {s: "US:IWM", name: "Russell 2000 (ETF IWM)", name_en: "Russell 2000 (IWM ETF)", group: "Mỹ"}
+    - {s: "US:FEZ", name: "Euro Stoxx 50 (ETF FEZ)", name_en: "Euro Stoxx 50 (FEZ ETF)", group: "Châu Âu"}
+    - {s: "US:DIA", name: "Dow Jones (ETF DIA)", name_en: "Dow Jones (DIA ETF)", group: "Mỹ"}
+    - {s: "US:UUP", name: "Chỉ số Đô la Mỹ (ETF UUP)", name_en: "US Dollar Index Bullish (UUP ETF)", group: "Đô la Mỹ"}
+    - {s: "US:VIXY", name: "Biến động VIX ngắn hạn (ETF VIXY)", name_en: "VIX Short-Term Futures (VIXY ETF)", group: "Biến động"}
+    - {s: US500, name: "S&P 500 (CFD)", name_en: "S&P 500 (CFD)", group: "Mỹ", session: fx_24x5}
+    - {s: SPX500, name: "S&P 500 (CFD)", name_en: "S&P 500 (CFD)", group: "Mỹ", session: fx_24x5}
+    - {s: NAS100, name: "Nasdaq 100 (CFD)", name_en: "Nasdaq 100 (CFD)", group: "Mỹ", session: fx_24x5}
+    - {s: US100, name: "Nasdaq 100 (CFD)", name_en: "Nasdaq 100 (CFD)", group: "Mỹ", session: fx_24x5}
+    - {s: US30, name: "Dow Jones (CFD)", name_en: "Dow Jones (CFD)", group: "Mỹ", session: fx_24x5}
+    - {s: GER40, name: "DAX 40 (CFD)", name_en: "DAX 40 (CFD)", group: "Châu Âu", session: fx_24x5, quote: EUR}
+    - {s: UK100, name: "FTSE 100 (CFD)", name_en: "FTSE 100 (CFD)", group: "Châu Âu", session: fx_24x5, quote: GBP}
+    - {s: JP225, name: "Nikkei 225 (CFD)", name_en: "Nikkei 225 (CFD)", group: "Châu Á", session: fx_24x5, quote: JPY}
+    - {s: DXY, name: "Chỉ số Đô la Mỹ (DXY)", name_en: "US Dollar Index (DXY)", group: "Đô la Mỹ", session: fx_24x5, precision: 3}
+    - {s: "FRED:DTWEXBGS", name: "Chỉ số Đô la Mỹ diện rộng (FRED)", name_en: "Broad US Dollar Index (FRED)", group: "Đô la Mỹ", session: eod_daily, precision: 3}
+  etf:
+    - {s: "US:EWG", name: "ETF Đức (EWG)", name_en: "iShares MSCI Germany (EWG)", group: "ETF quốc gia"}
+    - {s: "US:EWQ", name: "ETF Pháp (EWQ)", name_en: "iShares MSCI France (EWQ)", group: "ETF quốc gia"}
+    - {s: "US:EWU", name: "ETF Anh (EWU)", name_en: "iShares MSCI United Kingdom (EWU)", group: "ETF quốc gia"}
+    - {s: "US:EWJ", name: "ETF Nhật Bản (EWJ)", name_en: "iShares MSCI Japan (EWJ)", group: "ETF quốc gia"}
+    - {s: "US:EWH", name: "ETF Hồng Kông (EWH)", name_en: "iShares MSCI Hong Kong (EWH)", group: "ETF quốc gia"}
+    - {s: "US:EWA", name: "ETF Úc (EWA)", name_en: "iShares MSCI Australia (EWA)", group: "ETF quốc gia"}
+    - {s: "US:EWY", name: "ETF Hàn Quốc (EWY)", name_en: "iShares MSCI South Korea (EWY)", group: "ETF quốc gia"}
+    - {s: "US:INDA", name: "ETF Ấn Độ (INDA)", name_en: "iShares MSCI India (INDA)", group: "ETF quốc gia"}
+    - {s: "US:EWZ", name: "ETF Brazil (EWZ)", name_en: "iShares MSCI Brazil (EWZ)", group: "ETF quốc gia"}
+    - {s: "US:VNM", name: "ETF Việt Nam (VanEck VNM)", name_en: "VanEck Vietnam ETF (VNM)", group: "ETF quốc gia"}
+    - {s: "US:EFA", name: "ETF thị trường phát triển ngoài Mỹ (EFA)", name_en: "iShares MSCI EAFE (EFA)", group: "ETF khu vực"}
+    - {s: "US:EEM", name: "ETF thị trường mới nổi (EEM)", name_en: "iShares MSCI Emerging Markets (EEM)", group: "ETF khu vực"}
+    - {s: "US:SMH", name: "ETF bán dẫn (SMH)", name_en: "VanEck Semiconductor (SMH)", group: "ETF chủ đề"}
+    - {s: "US:GDX", name: "ETF khai thác vàng (GDX)", name_en: "VanEck Gold Miners (GDX)", group: "ETF chủ đề"}
+    - {s: "US:XLK", name: "Công nghệ (XLK)", name_en: "Technology Select Sector (XLK)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLF", name: "Tài chính (XLF)", name_en: "Financial Select Sector (XLF)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLE", name: "Năng lượng (XLE)", name_en: "Energy Select Sector (XLE)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLV", name: "Y tế (XLV)", name_en: "Health Care Select Sector (XLV)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLY", name: "Tiêu dùng không thiết yếu (XLY)", name_en: "Consumer Discretionary (XLY)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLP", name: "Tiêu dùng thiết yếu (XLP)", name_en: "Consumer Staples (XLP)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLI", name: "Công nghiệp (XLI)", name_en: "Industrial Select Sector (XLI)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLU", name: "Tiện ích (XLU)", name_en: "Utilities Select Sector (XLU)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLB", name: "Vật liệu (XLB)", name_en: "Materials Select Sector (XLB)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLRE", name: "Bất động sản (XLRE)", name_en: "Real Estate Select Sector (XLRE)", group: "ETF ngành Mỹ"}
+    - {s: "US:XLC", name: "Truyền thông (XLC)", name_en: "Communication Services (XLC)", group: "ETF ngành Mỹ"}
+  stock_us:
+    - {s: "US:AAPL", name: "Apple", name_en: "Apple Inc.", group: "Công nghệ"}
+    - {s: "US:MSFT", name: "Microsoft", name_en: "Microsoft Corp.", group: "Công nghệ"}
+    - {s: "US:NVDA", name: "NVIDIA", name_en: "NVIDIA Corp.", group: "Công nghệ"}
+    - {s: "US:AMZN", name: "Amazon", name_en: "Amazon.com Inc.", group: "Công nghệ"}
+    - {s: "US:GOOGL", name: "Alphabet (Google)", name_en: "Alphabet Inc.", group: "Công nghệ"}
+    - {s: "US:META", name: "Meta Platforms", name_en: "Meta Platforms Inc.", group: "Công nghệ"}
+    - {s: "US:TSLA", name: "Tesla", name_en: "Tesla Inc.", group: "Ô tô"}
+    - {s: "US:JPM", name: "JPMorgan Chase", name_en: "JPMorgan Chase & Co.", group: "Tài chính"}
+    - {s: "US:XOM", name: "Exxon Mobil", name_en: "Exxon Mobil Corp.", group: "Năng lượng"}
+    - {s: "US:WMT", name: "Walmart", name_en: "Walmart Inc.", group: "Bán lẻ"}
+  stock_vn:
+    - {s: "VN:VNM", name: "Vinamilk", name_en: "Vinamilk (VNM)", group: "Hàng tiêu dùng"}
+    - {s: "VN:FPT", name: "FPT", name_en: "FPT Corp.", group: "Công nghệ"}
+    - {s: "VN:VCB", name: "Vietcombank", name_en: "Vietcombank (VCB)", group: "Ngân hàng"}
+    - {s: "VN:ACB", name: "Ngân hàng Á Châu", name_en: "Asia Commercial Bank", group: "Ngân hàng"}
+    - {s: "VN:BID", name: "BIDV", name_en: "BIDV", group: "Ngân hàng"}
+    - {s: "VN:BSR", name: "Lọc hóa dầu Bình Sơn", name_en: "Binh Son Refining", group: "Năng lượng, hoá chất"}
+    - {s: "VN:CTG", name: "VietinBank", name_en: "VietinBank", group: "Ngân hàng"}
+    - {s: "VN:GAS", name: "PV Gas", name_en: "PV Gas", group: "Tiện ích"}
+    - {s: "VN:GVR", name: "Cao su Việt Nam", name_en: "Vietnam Rubber Group", group: "Hoá chất, cao su"}
+    - {s: "VN:HDB", name: "HDBank", name_en: "HDBank", group: "Ngân hàng"}
+    - {s: "VN:HPG", name: "Hòa Phát", name_en: "Hoa Phat Group", group: "Thép, vật liệu"}
+    - {s: "VN:LPB", name: "LPBank", name_en: "LPBank", group: "Ngân hàng"}
+    - {s: "VN:MBB", name: "MB Bank", name_en: "MB Bank", group: "Ngân hàng"}
+    - {s: "VN:MCH", name: "Masan Consumer", name_en: "Masan Consumer", group: "Thực phẩm - Đồ uống"}
+    - {s: "VN:MSN", name: "Masan Group", name_en: "Masan Group", group: "Thực phẩm - Đồ uống"}
+    - {s: "VN:MWG", name: "Thế Giới Di Động", name_en: "Mobile World", group: "Bán lẻ"}
+    - {s: "VN:SAB", name: "Sabeco", name_en: "Sabeco", group: "Thực phẩm - Đồ uống"}
+    - {s: "VN:SHB", name: "SHB", name_en: "SHB", group: "Ngân hàng"}
+    - {s: "VN:SSB", name: "SeABank", name_en: "SeABank", group: "Ngân hàng"}
+    - {s: "VN:SSI", name: "Chứng khoán SSI", name_en: "SSI Securities", group: "Chứng khoán"}
+    - {s: "VN:STB", name: "Sacombank", name_en: "Sacombank", group: "Ngân hàng"}
+    - {s: "VN:TCB", name: "Techcombank", name_en: "Techcombank", group: "Ngân hàng"}
+    - {s: "VN:TCX", name: "Chứng khoán Techcombank", name_en: "Techcom Securities", group: "Chứng khoán"}
+    - {s: "VN:VHM", name: "Vinhomes", name_en: "Vinhomes", group: "Bất động sản"}
+    - {s: "VN:VIB", name: "VIB", name_en: "VIB", group: "Ngân hàng"}
+    - {s: "VN:VIC", name: "Vingroup", name_en: "Vingroup", group: "Bất động sản"}
+    - {s: "VN:VJC", name: "Vietjet Air", name_en: "Vietjet Air", group: "Vận tải - kho bãi"}
+    - {s: "VN:VPB", name: "VPBank", name_en: "VPBank", group: "Ngân hàng"}
+    - {s: "VN:VPL", name: "Vinpearl", name_en: "Vinpearl", group: "Du lịch - giải trí"}
+    - {s: "VN:VRE", name: "Vincom Retail", name_en: "Vincom Retail", group: "Bất động sản"}
+    - {s: "VN:E1VFVN30", name: "ETF DCVFMVN30", name_en: "DCVFMVN30 ETF", group: "ETF VN"}
+    - {s: "VN:FUEVFVND", name: "ETF DCVFMVN Diamond", name_en: "DCVFMVN Diamond ETF", group: "ETF VN"}
+    - {s: "VN:FUESSV30", name: "ETF SSIAM VN30", name_en: "SSIAM VN30 ETF", group: "ETF VN"}
+    - {s: "VN:FUEMAV30", name: "ETF MAFM VN30", name_en: "MAFM VN30 ETF", group: "ETF VN"}
+    - {s: "VN:FUEKIV30", name: "ETF KIM Growth VN30", name_en: "KIM Growth VN30 ETF", group: "ETF VN"}
+    # Mã VN30 + ETF trên đây chỉ để có tên/nhóm hiển thị; dữ liệu cuối ngày của ~1.500 mã nằm ở service vn-market (/v1/vn/*). Nhóm = ngành rút gọn.
+  bond:
+    - {s: "US:SHY", name: "Trái phiếu Kho bạc Mỹ 1-3 năm (SHY)", name_en: "US Treasury 1-3Y (SHY)", group: "Kho bạc Mỹ"}
+    - {s: "US:IEI", name: "Trái phiếu Kho bạc Mỹ 3-7 năm (IEI)", name_en: "US Treasury 3-7Y (IEI)", group: "Kho bạc Mỹ"}
+    - {s: "US:IEF", name: "Trái phiếu Kho bạc Mỹ 7-10 năm (IEF)", name_en: "US Treasury 7-10Y (IEF)", group: "Kho bạc Mỹ"}
+    - {s: "US:TLT", name: "Trái phiếu Kho bạc Mỹ 20+ năm (TLT)", name_en: "US Treasury 20+Y (TLT)", group: "Kho bạc Mỹ"}
+    - {s: "US:AGG", name: "Trái phiếu tổng hợp Mỹ (AGG)", name_en: "US Aggregate Bond (AGG)", group: "Tổng hợp"}
+    - {s: "US:LQD", name: "Trái phiếu doanh nghiệp xếp hạng đầu tư (LQD)", name_en: "Investment Grade Corporate Bond (LQD)", group: "Doanh nghiệp"}
+    - {s: "US:HYG", name: "Trái phiếu doanh nghiệp lợi suất cao (HYG)", name_en: "High Yield Corporate Bond (HYG)", group: "Doanh nghiệp"}
+    - {s: "FRED:DGS10", name: "Lợi suất Kho bạc Mỹ 10 năm (%)", name_en: "US 10-Year Treasury yield (%)", group: "Lợi suất", session: eod_daily, precision: 2, quote: PCT}
+    - {s: "FRED:DGS2", name: "Lợi suất Kho bạc Mỹ 2 năm (%)", name_en: "US 2-Year Treasury yield (%)", group: "Lợi suất", session: eod_daily, precision: 2, quote: PCT}
+    - {s: "FRED:DFF", name: "Lãi suất Fed Funds hiệu dụng (%)", name_en: "Effective Fed Funds rate (%)", group: "Lợi suất", session: eod_daily, precision: 2, quote: PCT}
+    - {s: "FRED:T10YIE", name: "Lạm phát kỳ vọng 10 năm (%)", name_en: "10-Year breakeven inflation (%)", group: "Lợi suất", session: eod_daily, precision: 2, quote: PCT}
+  crypto:
+    - {s: "CRYPTO:BTCUSDT", name: "Bitcoin", name_en: "Bitcoin", group: "Vốn hoá lớn", precision: 2}
+    - {s: "CRYPTO:ETHUSDT", name: "Ethereum", name_en: "Ethereum", group: "Vốn hoá lớn", precision: 2}
+    - {s: "CRYPTO:BNBUSDT", name: "BNB", name_en: "BNB", group: "Vốn hoá lớn", precision: 2}
+    - {s: "CRYPTO:SOLUSDT", name: "Solana", name_en: "Solana", group: "Layer 1", precision: 2}
+    - {s: "CRYPTO:XRPUSDT", name: "XRP", name_en: "XRP", group: "Thanh toán", precision: 4}
+    - {s: "CRYPTO:ADAUSDT", name: "Cardano", name_en: "Cardano", group: "Layer 1", precision: 4}
+    - {s: "CRYPTO:DOGEUSDT", name: "Dogecoin", name_en: "Dogecoin", group: "Meme", precision: 5}
+    - {s: "CRYPTO:TONUSDT", name: "Toncoin", name_en: "Toncoin", group: "Layer 1", precision: 3}
+    - {s: "CRYPTO:AVAXUSDT", name: "Avalanche", name_en: "Avalanche", group: "Layer 1", precision: 2}
+    - {s: "CRYPTO:LINKUSDT", name: "Chainlink", name_en: "Chainlink", group: "DeFi / Oracle", precision: 3}
+    - {s: "CRYPTO:DOTUSDT", name: "Polkadot", name_en: "Polkadot", group: "Layer 1", precision: 3}
+    - {s: "CRYPTO:LTCUSDT", name: "Litecoin", name_en: "Litecoin", group: "Thanh toán", precision: 2}
+    - {s: "CRYPTO:TRXUSDT", name: "TRON", name_en: "TRON", group: "Layer 1", precision: 5}
+    - {s: "CRYPTO:BCHUSDT", name: "Bitcoin Cash", name_en: "Bitcoin Cash", group: "Thanh toán", precision: 2}
+    - {s: "CRYPTO:ATOMUSDT", name: "Cosmos", name_en: "Cosmos", group: "Layer 1", precision: 3}
+    - {s: "CRYPTO:NEARUSDT", name: "NEAR Protocol", name_en: "NEAR Protocol", group: "Layer 1", precision: 3}
+    - {s: "CRYPTO:UNIUSDT", name: "Uniswap", name_en: "Uniswap", group: "DeFi / Oracle", precision: 3}
+    - {s: "CRYPTO:XLMUSDT", name: "Stellar", name_en: "Stellar", group: "Thanh toán", precision: 5}
+    - {s: "CRYPTO:ETCUSDT", name: "Ethereum Classic", name_en: "Ethereum Classic", group: "Layer 1", precision: 3}
+    - {s: "CRYPTO:APTUSDT", name: "Aptos", name_en: "Aptos", group: "Layer 1", precision: 3}
+    - {s: "CRYPTO:ARBUSDT", name: "Arbitrum", name_en: "Arbitrum", group: "Layer 2", precision: 4}
+    - {s: "CRYPTO:OPUSDT", name: "Optimism", name_en: "Optimism", group: "Layer 2", precision: 4}
+    - {s: "CRYPTO:SUIUSDT", name: "Sui", name_en: "Sui", group: "Layer 1", precision: 4}
+    - {s: "CRYPTO:INJUSDT", name: "Injective", name_en: "Injective", group: "DeFi / Oracle", precision: 3}
+    - {s: "CRYPTO:AAVEUSDT", name: "Aave", name_en: "Aave", group: "DeFi / Oracle", precision: 2}
+    - {s: "CRYPTO:FILUSDT", name: "Filecoin", name_en: "Filecoin", group: "Hạ tầng", precision: 3}
+    - {s: "CRYPTO:HBARUSDT", name: "Hedera", name_en: "Hedera", group: "Layer 1", precision: 5}
+    - {s: "CRYPTO:SHIBUSDT", name: "Shiba Inu", name_en: "Shiba Inu", group: "Meme", precision: 8}
+    - {s: "CRYPTO:ICPUSDT", name: "Internet Computer", name_en: "Internet Computer", group: "Layer 1", precision: 3}

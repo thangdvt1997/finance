@@ -1,0 +1,30 @@
+# Backlog ý tưởng AI trading. status: idea|planned|running|done|dropped. Thêm mục mới = thêm dòng, không cần code.
+items:
+  - {id: B01, idea: "Meta-labeling KB bằng GBM/logistic ONNX", module: ml, status: planned, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B02, idea: "Purged K-fold + embargo cho mọi mô hình ML", module: ml, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B03, idea: "Dự báo hướng/biến động ngắn hạn (GBM)", module: ml, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B04, idea: "LSTM/TCN nhỏ dự báo biến động", module: ml, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B05, idea: "Phát hiện regime bằng HMM", module: ml, status: planned, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B06, idea: "Xác suất breakout từ độ nén (ATR/Bollinger width)", module: ml, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B07, idea: "LLM analyst tóm tắt bối cảnh có trích dẫn", module: llm, status: planned, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B08, idea: "LLM giải thích vì sao kịch bản đang hình thành", module: llm, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B09, idea: "Hậu kiểm tất định đầu ra LLM (số liệu phải khớp nguồn)", module: llm, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B10, idea: "Phân loại tin kinh tế theo tác động bằng NLP (đã có nlp)", module: llm, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B11, idea: "Đồng thuận chuyên gia làm đặc trưng lọc tín hiệu", module: consensus, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B12, idea: "Xếp hạng độ tin cậy chuyên gia theo track-record", module: consensus, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B13, idea: "RL (stable-baselines3/FinRL) trong môi trường paper có chi phí thật", module: rl, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B14, idea: "Tối ưu tham số có kiểm soát PBO/DSR (không tune theo test)", module: rl, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B15, idea: "Kích thước vị thế theo ATR và risk %", module: risk, status: planned, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B16, idea: "Giới hạn lỗ ngày + kill-switch mô phỏng", module: risk, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B17, idea: "Cửa sổ tin: chặn tín hiệu quanh tin mạnh", module: risk, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B18, idea: "Hash-chain sổ lệnh paper để chứng minh không sửa", module: risk, status: done, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B19, idea: "Backtest khung Dạy kịch bản mới (YAML + ảnh mẫu)", module: pattern, status: planned, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B20, idea: "Mở rộng kịch bản Buy đối xứng KB-1..4", module: pattern, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B21, idea: "Phân tích theo phiên Á/Âu/Mỹ và spread động", module: pattern, status: idea, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: B22, idea: "Ensemble nhiều kịch bản + bỏ phiếu", module: consensus, status: dropped, doc: docs/handoff/TASK_ai_trading_tab.md}
+  - {id: R01, idea: "Trend chậm đa tài sản (D1/W1) làm diversifier, vol-target 7,5-10%, theo dõi paper forward (R10-A)", module: pattern, status: planned, doc: docs/research/program/TRADING_PLAN.md}
+  - {id: R02, idea: "FVG H4 chốt 2R: cần dữ liệu khớp lệnh limit thật mới kết luận (R2)", module: pattern, status: idea, doc: docs/research/program/R2_discretionary_priceaction.md}
+  - {id: R03, idea: "Dự báo biến động (HAR/LightGBM) cho vol-targeting (R3)", module: ml, status: planned, doc: docs/research/program/R3_ml_ai.md}
+  - {id: R04, idea: "Carry thật từ lãi suất chính sách công khai (swap demo không đáng tin) (R7)", module: pattern, status: idea, doc: docs/research/program/R7_chi_phi_thuc_thi.md}
+  - {id: R05, idea: "Giảm đòn theo drawdown 8/12/16% và kill-switch 20% (R6)", module: risk, status: planned, doc: docs/research/program/R6_rui_ro_quan_tri_von.md}
+  - {id: R06, idea: "Lọc rủi ro bằng funding/basis crypto và trend filter giảm drawdown (R9)", module: risk, status: idea, doc: docs/research/program/R9_crypto_chi_so_hang_hoa.md}

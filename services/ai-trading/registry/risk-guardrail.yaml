@@ -1,0 +1,10 @@
+# Mô-đun 7 (D1): lớp bảo vệ rủi ro áp cho sổ PAPER. Không phải chiến lược sinh lợi nhuận: không có "kỳ vọng R" để chấm.
+id: risk-guardrail
+name: "Guardrail rủi ro"
+module: risk
+status: paper
+summary: "Đang áp cho sổ paper: cỡ vị thế theo % rủi ro/khoảng dừng (ATR), giới hạn lỗ ngày, cửa sổ tin, kill-switch (chỉ master), sổ lệnh hash-chain có neo."
+verdict: unproven
+warning: "Guardrail chỉ giới hạn thiệt hại và làm sổ minh bạch; nó KHÔNG tạo edge. Các kịch bản bên dưới vẫn không có edge sau chi phí."
+honesty_note: "Đã kiểm bằng test (cỡ vị thế không vượt rủi ro, chặn khi lỗ ngày/tin/kill-switch, phát hiện sửa-xoá-cắt đuôi sổ) nhưng chưa có đủ lệnh paper live để đo tác động lên kết quả. Nguồn phụ lỗi (cờ/lịch tin) thì cho qua và hiện cờ suy giảm (paper, không phải tiền thật). Chỉ nghiên cứu/paper."
+metrics: {expectancy_r: null, p_vs_random: null, trades: null}

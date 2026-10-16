@@ -1,0 +1,33 @@
+# Cấu hình pattern-scan (YAML; đường dẫn: PATTERN_SCAN_CONFIG). Mọi khoá tuỳ chọn.
+# CHỈ thông tin/paper: không có đường nào tới lệnh thật. Không đưa tên nguồn dữ liệu vào ảnh/thông báo.
+fresh_bars: 3                 # sự kiện "live" nếu nhận trong <= 3 nến (theo khung) sau khi nến đóng; cũ hơn = replay (không thông báo, lệnh paper gắn cờ replay)
+stale_bars: { forming: 48, armed: 160 }   # setup chưa kết thúc mà không cập nhật quá N nến -> không còn "hiện tại"
+render:
+  enabled: true
+  bars_before: 60             # số nến vẽ thêm trước điểm neo sớm nhất
+  max_bars: 260
+  bars_after: 0               # (ảnh sự kiện chỉ tới nến đã đóng làm đổi trạng thái — không look-ahead)
+  size: [1600, 800]
+  max_kb: 180
+  tz_offset_h: 7              # giờ hiển thị trên ảnh (GMT+7)
+notify:
+  enabled: true
+  states: [armed, triggered]  # forming không thông báo (nhiều nhiễu); thêm "forming" nếu muốn
+  on_close: true              # thông báo khi lệnh paper đóng
+  max_per_min: 20
+  min_score: 0
+paper:
+  enabled: true
+  max_hold_bars: 192          # hết hạn: đóng ở giá đóng cửa nến thứ N
+  cost_bps: { default: 2.0, XAUUSD: 3.0, XAGUSD: 6.0, "CRYPTO:": 10.0 }   # chi phí khứ hồi (spread+trượt+phí) theo bps giá vào; khoá kết thúc bằng ":" = tiền tố
+monitor_interval_s: 60
+backfill: { days: 3, interval_s: 600 }   # đọc lại pattern_signals (ts_ro) để bù sự kiện lỡ khỏi stream
+guardrail:                   # D1 (docs/AI_TRADING.md 3.3): áp cho tín hiệu paper LIVE mới; kill-switch là cờ Redis do master bật/tắt
+  enabled: true
+  equity: 10000              # vốn paper danh nghĩa (tính cỡ vị thế)
+  risk_pct: 0.5              # % vốn rủi ro mỗi lệnh (1R); trần max_risk_pct
+  max_risk_pct: 2.0
+  atr_mult: 1.5              # khoảng dừng thay thế = ATR x hệ số khi không có SL
+  max_daily_loss_r: 3.0      # lỗ ngày UTC >= ngưỡng -> chặn tới hết ngày
+  news_window: true          # chặn quanh sự kiện impact=high (tscommon.risk_windows)
+patterns_enabled: []      # kịch bản được xử lý; [] = tắt hết (2026-10-15 dọn kịch bản); bật lại: [KB-1, KB-2, KB-3, KB-4] hoặc kịch bản mới; bỏ khoá hoặc null = mọi kịch bản

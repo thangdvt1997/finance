@@ -1,0 +1,8686 @@
+[
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 799,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 790,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 232,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 3012,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 24,
+   "jsKB": 115,
+   "allKB": 304
+  },
+  "ttiMs": 7068,
+  "route": "tong-quan",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 171,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10.5": 14
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 1194,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 52,
+   "jsKB": 206,
+   "allKB": 423
+  },
+  "ttiMs": 954,
+  "route": "thi-truong",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1373,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 443,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 3332,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 66,
+   "jsKB": 445,
+   "allKB": 671
+  },
+  "ttiMs": 993,
+  "route": "chung-khoan-vn",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 106,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 681,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 69,
+   "jsKB": 451,
+   "allKB": 677
+  },
+  "ttiMs": 939,
+  "route": "danh-sach",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2267,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 801,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5859,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 77,
+   "jsKB": 459,
+   "allKB": 778
+  },
+  "ttiMs": 1084,
+  "route": "phan-tich",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 397,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18437,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 79,
+   "jsKB": 460,
+   "allKB": 791
+  },
+  "ttiMs": 955,
+  "route": "tin-tuc",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 88,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 81,
+   "jsKB": 463,
+   "allKB": 794
+  },
+  "ttiMs": 935,
+  "route": "lich",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 91,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 84,
+   "jsKB": 475,
+   "allKB": 805
+  },
+  "ttiMs": 938,
+  "route": "chuyen-gia",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1013,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 3,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 82,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 464,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 88,
+   "jsKB": 482,
+   "allKB": 813
+  },
+  "ttiMs": 943,
+  "route": "tai-khoan",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2439,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 299,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 101,
+   "jsKB": 495,
+   "allKB": 838
+  },
+  "ttiMs": 958,
+  "route": "mo-phong",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2070,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 194,
+  "tinyFont": 13,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 105,
+   "jsKB": 512,
+   "allKB": 858
+  },
+  "ttiMs": 971,
+  "route": "nhat-ky",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 75,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 107,
+   "jsKB": 523,
+   "allKB": 869
+  },
+  "ttiMs": 930,
+  "route": "canh-bao",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 89,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 109,
+   "jsKB": 525,
+   "allKB": 872
+  },
+  "ttiMs": 932,
+  "route": "bao-cao",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 840,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 821,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 244,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2753,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 139,
+   "load": 139,
+   "transfer": 888
+  },
+  "res": {
+   "n": 114,
+   "jsKB": 528,
+   "allKB": 878
+  },
+  "ttiMs": 948,
+  "route": "he-thong",
+  "vp": "1366",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "route": "_palette",
+  "vp": "1366",
+  "theme": "dark",
+  "pal": {
+   "opts": [
+    "Trang: Tổng quan#/tong-quan",
+    "Trang: Thị trường#/thi-truong",
+    "Trang: Chứng khoán VN#/chung-k",
+    "Trang: Danh sách theo dõi#/dan",
+    "Trang: Phân tích#/phan-tich",
+    "Trang: Tin tức#/tin-tuc",
+    "Trang: Lịch kinh tế#/lich",
+    "Trang: Chuyên gia#/chuyen-gia",
+    "Trang: Tài khoản#/tai-khoan",
+    "Trang: Mô phỏng#/mo-phong",
+    "Trang: Nhật ký#/nhat-ky",
+    "Trang: Cảnh báo#/canh-bao",
+    "Trang: Báo cáo#/bao-cao",
+    "Trang: Hệ thống#/he-thong",
+    "Lệnh: Đổi sang giao diện sángT",
+    "Lệnh: Tạo quy tắc cảnh báo mới"
+   ],
+   "dlg": true
+  },
+  "more": null,
+  "foc": [
+   "A:EURUSD outline=solid/2px fv",
+   "A:GBPUSD outline=solid/2px fv",
+   "A:USDJPY outline=solid/2px fv",
+   "A:XAUUSD outline=solid/2px fv",
+   "A:VNM outline=solid/2px fv",
+   "A:FPT outline=solid/2px fv",
+   "A:VCB outline=solid/2px fv",
+   "A:AAPL outline=solid/2px fv"
+  ]
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 799,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 790,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x3 e.g. \"22 giây trước\" <span.num>"
+  ],
+  "textNodes": 232,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 3007,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 26,
+   "jsKB": 115,
+   "allKB": 305
+  },
+  "ttiMs": 13633,
+  "route": "tong-quan",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"26 giây trước\" <span.num>",
+   "rgb(240, 184, 79) on rgb(255,255,255) cr=1.80 x1 e.g. \"1.12028\" <span.num>",
+   "rgb(90, 169, 255) on rgb(255,255,255) cr=2.46 x1 e.g. \"1.12055\" <span.num>"
+  ],
+  "textNodes": 171,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10.5": 14
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 1194,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 53,
+   "jsKB": 206,
+   "allKB": 423
+  },
+  "ttiMs": 948,
+  "route": "thi-truong",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1373,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"10 giây trước\" <span.num>"
+  ],
+  "textNodes": 443,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 3332,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 67,
+   "jsKB": 445,
+   "allKB": 671
+  },
+  "ttiMs": 982,
+  "route": "chung-khoan-vn",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"14 giây trước\" <span.num>"
+  ],
+  "textNodes": 106,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 681,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 70,
+   "jsKB": 451,
+   "allKB": 677
+  },
+  "ttiMs": 938,
+  "route": "danh-sach",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2267,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x3 e.g. \"4 phút trước\" <span.num>",
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"18 giây trước\" <span.num>"
+  ],
+  "textNodes": 800,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5859,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 78,
+   "jsKB": 459,
+   "allKB": 778
+  },
+  "ttiMs": 1082,
+  "route": "phan-tich",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"24 giây trước\" <span.num>"
+  ],
+  "textNodes": 397,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18437,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 80,
+   "jsKB": 460,
+   "allKB": 791
+  },
+  "ttiMs": 949,
+  "route": "tin-tuc",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"28 giây trước\" <span.num>"
+  ],
+  "textNodes": 88,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 82,
+   "jsKB": 463,
+   "allKB": 794
+  },
+  "ttiMs": 931,
+  "route": "lich",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"11 giây trước\" <span.num>"
+  ],
+  "textNodes": 91,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 85,
+   "jsKB": 475,
+   "allKB": 806
+  },
+  "ttiMs": 941,
+  "route": "chuyen-gia",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2076,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 9,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"15 giây trước\" <span.num>"
+  ],
+  "textNodes": 145,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 1899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 91,
+   "jsKB": 482,
+   "allKB": 816
+  },
+  "ttiMs": 961,
+  "route": "tai-khoan",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2439,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(196, 42, 73) on rgb(235,228,234) cr=4.45 x3 e.g. \"2 ngày trước\" <span.num>",
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"21 giây trước\" <span.num>",
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x2 e.g. \"MÔ PHỎNG — không phải ti\" <span.chip.accent>"
+  ],
+  "textNodes": 299,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 103,
+   "jsKB": 495,
+   "allKB": 841
+  },
+  "ttiMs": 973,
+  "route": "mo-phong",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2070,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"25 giây trước\" <span.num>",
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x1 e.g. \"Paper\" <span.chip.accent>"
+  ],
+  "textNodes": 194,
+  "tinyFont": 13,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 107,
+   "jsKB": 512,
+   "allKB": 861
+  },
+  "ttiMs": 969,
+  "route": "nhat-ky",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"29 giây trước\" <span.num>"
+  ],
+  "textNodes": 75,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 109,
+   "jsKB": 523,
+   "allKB": 872
+  },
+  "ttiMs": 930,
+  "route": "canh-bao",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 723,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 768,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"9 giây trước\" <span.num>"
+  ],
+  "textNodes": 89,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 111,
+   "jsKB": 525,
+   "allKB": 875
+  },
+  "ttiMs": 936,
+  "route": "bao-cao",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 840,
+   "ch": 723,
+   "sw": 1158,
+   "cw": 1158
+  },
+  "docScrollY": {
+   "sh": 821,
+   "ch": 768
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"13 giây trước\" <span.num>"
+  ],
+  "textNodes": 244,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2756,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 118,
+   "load": 118,
+   "transfer": 888
+  },
+  "res": {
+   "n": 116,
+   "jsKB": 528,
+   "allKB": 881
+  },
+  "ttiMs": 946,
+  "route": "he-thong",
+  "vp": "1366",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 236,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 3042,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 24,
+   "jsKB": 115,
+   "allKB": 304
+  },
+  "ttiMs": 3125,
+  "route": "tong-quan",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 197,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10.5": 14
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 1423,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 56,
+   "jsKB": 206,
+   "allKB": 427
+  },
+  "ttiMs": 956,
+  "route": "thi-truong",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1356,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 443,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 3332,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 72,
+   "jsKB": 445,
+   "allKB": 676
+  },
+  "ttiMs": 987,
+  "route": "chung-khoan-vn",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 106,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 681,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 75,
+   "jsKB": 451,
+   "allKB": 682
+  },
+  "ttiMs": 940,
+  "route": "danh-sach",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2483,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 800,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5859,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 83,
+   "jsKB": 459,
+   "allKB": 782
+  },
+  "ttiMs": 1087,
+  "route": "phan-tich",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 397,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18437,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 85,
+   "jsKB": 460,
+   "allKB": 796
+  },
+  "ttiMs": 949,
+  "route": "tin-tuc",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 88,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 87,
+   "jsKB": 463,
+   "allKB": 798
+  },
+  "ttiMs": 929,
+  "route": "lich",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 91,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 90,
+   "jsKB": 475,
+   "allKB": 810
+  },
+  "ttiMs": 946,
+  "route": "chuyen-gia",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1860,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 9,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 145,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 1899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 96,
+   "jsKB": 482,
+   "allKB": 820
+  },
+  "ttiMs": 966,
+  "route": "tai-khoan",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2191,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 299,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 108,
+   "jsKB": 495,
+   "allKB": 846
+  },
+  "ttiMs": 979,
+  "route": "mo-phong",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1938,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 194,
+  "tinyFont": 13,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 112,
+   "jsKB": 512,
+   "allKB": 866
+  },
+  "ttiMs": 970,
+  "route": "nhat-ky",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 75,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 114,
+   "jsKB": 523,
+   "allKB": 877
+  },
+  "ttiMs": 929,
+  "route": "canh-bao",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 89,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 116,
+   "jsKB": 525,
+   "allKB": 879
+  },
+  "ttiMs": 934,
+  "route": "bao-cao",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 244,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2754,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 121,
+   "jsKB": 528,
+   "allKB": 885
+  },
+  "ttiMs": 947,
+  "route": "he-thong",
+  "vp": "1920",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "route": "_palette",
+  "vp": "1920",
+  "theme": "dark",
+  "pal": {
+   "opts": [
+    "Trang: Tổng quan#/tong-quan",
+    "Trang: Thị trường#/thi-truong",
+    "Trang: Chứng khoán VN#/chung-k",
+    "Trang: Danh sách theo dõi#/dan",
+    "Trang: Phân tích#/phan-tich",
+    "Trang: Tin tức#/tin-tuc",
+    "Trang: Lịch kinh tế#/lich",
+    "Trang: Chuyên gia#/chuyen-gia",
+    "Trang: Tài khoản#/tai-khoan",
+    "Trang: Mô phỏng#/mo-phong",
+    "Trang: Nhật ký#/nhat-ky",
+    "Trang: Cảnh báo#/canh-bao",
+    "Trang: Báo cáo#/bao-cao",
+    "Trang: Hệ thống#/he-thong",
+    "Lệnh: Đổi sang giao diện sángT",
+    "Lệnh: Tạo quy tắc cảnh báo mới"
+   ],
+   "dlg": true
+  },
+  "more": null,
+  "foc": [
+   "A:EURUSD outline=solid/2px fv",
+   "A:GBPUSD outline=solid/2px fv",
+   "A:USDJPY outline=solid/2px fv",
+   "A:XAUUSD outline=solid/2px fv",
+   "A:VNM outline=solid/2px fv",
+   "A:FPT outline=solid/2px fv",
+   "A:VCB outline=solid/2px fv",
+   "A:AAPL outline=solid/2px fv"
+  ]
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x3 e.g. \"31 giây trước\" <span.num>",
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x1 e.g. \"15/15 service hoạt động\" <span.chip.up>"
+  ],
+  "textNodes": 237,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 3043,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 25,
+   "jsKB": 115,
+   "allKB": 305
+  },
+  "ttiMs": 10514,
+  "route": "tong-quan",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"11 giây trước\" <span.num>",
+   "rgb(240, 184, 79) on rgb(255,255,255) cr=1.80 x1 e.g. \"1.12028\" <span.num>",
+   "rgb(90, 169, 255) on rgb(255,255,255) cr=2.46 x1 e.g. \"1.12055\" <span.num>"
+  ],
+  "textNodes": 199,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10.5": 14
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 1433,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 59,
+   "jsKB": 206,
+   "allKB": 429
+  },
+  "ttiMs": 955,
+  "route": "thi-truong",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1356,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"15 giây trước\" <span.num>"
+  ],
+  "textNodes": 443,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 3332,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 73,
+   "jsKB": 445,
+   "allKB": 678
+  },
+  "ttiMs": 979,
+  "route": "chung-khoan-vn",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"19 giây trước\" <span.num>"
+  ],
+  "textNodes": 106,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 681,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 76,
+   "jsKB": 451,
+   "allKB": 684
+  },
+  "ttiMs": 942,
+  "route": "danh-sach",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2483,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x4 e.g. \"25 giây trước\" <span.num>"
+  ],
+  "textNodes": 799,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5848,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 84,
+   "jsKB": 459,
+   "allKB": 784
+  },
+  "ttiMs": 1084,
+  "route": "phan-tich",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"29 giây trước\" <span.num>"
+  ],
+  "textNodes": 397,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18437,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 86,
+   "jsKB": 460,
+   "allKB": 797
+  },
+  "ttiMs": 961,
+  "route": "tin-tuc",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"9 giây trước\" <span.num>"
+  ],
+  "textNodes": 88,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 88,
+   "jsKB": 463,
+   "allKB": 800
+  },
+  "ttiMs": 932,
+  "route": "lich",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"15 giây trước\" <span.num>"
+  ],
+  "textNodes": 91,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 91,
+   "jsKB": 475,
+   "allKB": 812
+  },
+  "ttiMs": 936,
+  "route": "chuyen-gia",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1860,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 9,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"19 giây trước\" <span.num>"
+  ],
+  "textNodes": 145,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 1899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 97,
+   "jsKB": 482,
+   "allKB": 822
+  },
+  "ttiMs": 965,
+  "route": "tai-khoan",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2191,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(196, 42, 73) on rgb(235,228,234) cr=4.45 x3 e.g. \"2 ngày trước\" <span.num>",
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"23 giây trước\" <span.num>",
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x2 e.g. \"MÔ PHỎNG — không phải ti\" <span.chip.accent>"
+  ],
+  "textNodes": 299,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 109,
+   "jsKB": 495,
+   "allKB": 848
+  },
+  "ttiMs": 976,
+  "route": "mo-phong",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1938,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"8 giây trước\" <span.num>",
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x1 e.g. \"Paper\" <span.chip.accent>"
+  ],
+  "textNodes": 194,
+  "tinyFont": 13,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 113,
+   "jsKB": 512,
+   "allKB": 867
+  },
+  "ttiMs": 967,
+  "route": "nhat-ky",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"12 giây trước\" <span.num>"
+  ],
+  "textNodes": 75,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 115,
+   "jsKB": 523,
+   "allKB": 879
+  },
+  "ttiMs": 929,
+  "route": "canh-bao",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"16 giây trước\" <span.num>"
+  ],
+  "textNodes": 89,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 117,
+   "jsKB": 525,
+   "allKB": 881
+  },
+  "ttiMs": 933,
+  "route": "bao-cao",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1035,
+   "ch": 1035,
+   "sw": 1712,
+   "cw": 1712
+  },
+  "docScrollY": {
+   "sh": 1080,
+   "ch": 1080
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"20 giây trước\" <span.num>"
+  ],
+  "textNodes": 244,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2756,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 133,
+   "load": 133,
+   "transfer": 888
+  },
+  "res": {
+   "n": 122,
+   "jsKB": 528,
+   "allKB": 887
+  },
+  "ttiMs": 946,
+  "route": "he-thong",
+  "vp": "1920",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 236,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 3042,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 24,
+   "jsKB": 115,
+   "allKB": 304
+  },
+  "ttiMs": 3085,
+  "route": "tong-quan",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 229,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10.5": 14
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 1702,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 64,
+   "jsKB": 206,
+   "allKB": 434
+  },
+  "ttiMs": 980,
+  "route": "thi-truong",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 0,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 64,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 413,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 75,
+   "jsKB": 445,
+   "allKB": 674
+  },
+  "ttiMs": 930,
+  "route": "chung-khoan-vn",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [
+   "WebSocket connection to 'ws://web-ui:8080/api/v1/stream?streams=md.quotes,md.bars,news.items,alerts.out,expert.signals,account.snapshots,calendar.events' failed",
+   "Failed to load resource: the server responded with a status of 502 (Bad Gateway)"
+  ],
+  "bad": [
+   "502 /api/v1/vn/status",
+   "502 /api/v1/vn/overview"
+  ]
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 106,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 681,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 77,
+   "jsKB": 451,
+   "allKB": 680
+  },
+  "ttiMs": 938,
+  "route": "danh-sach",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [
+   "Failed to load resource: the server responded with a status of 504 (Gateway Time-out)"
+  ],
+  "bad": [
+   "504 /api/v1/quotes/latest?symbols=EURUSD%2CGBPUSD%2CUSDJPY%2CXAUUSD%2CVN%3AVNM%2CVN%"
+  ]
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2168,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 799,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5847,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 86,
+   "jsKB": 459,
+   "allKB": 781
+  },
+  "ttiMs": 1088,
+  "route": "phan-tich",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 397,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18437,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 88,
+   "jsKB": 460,
+   "allKB": 794
+  },
+  "ttiMs": 953,
+  "route": "tin-tuc",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 88,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 90,
+   "jsKB": 463,
+   "allKB": 797
+  },
+  "ttiMs": 929,
+  "route": "lich",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 91,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 93,
+   "jsKB": 475,
+   "allKB": 808
+  },
+  "ttiMs": 940,
+  "route": "chuyen-gia",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1830,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 9,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 145,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 1899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 99,
+   "jsKB": 482,
+   "allKB": 818
+  },
+  "ttiMs": 965,
+  "route": "tai-khoan",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2173,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 299,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 111,
+   "jsKB": 495,
+   "allKB": 844
+  },
+  "ttiMs": 974,
+  "route": "mo-phong",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1913,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 195,
+  "tinyFont": 13,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 115,
+   "jsKB": 512,
+   "allKB": 864
+  },
+  "ttiMs": 962,
+  "route": "nhat-ky",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 75,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 117,
+   "jsKB": 523,
+   "allKB": 875
+  },
+  "ttiMs": 930,
+  "route": "canh-bao",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 89,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 119,
+   "jsKB": 525,
+   "allKB": 877
+  },
+  "ttiMs": 931,
+  "route": "bao-cao",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 243,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2742,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 129,
+   "load": 129,
+   "transfer": 888
+  },
+  "res": {
+   "n": 124,
+   "jsKB": 528,
+   "allKB": 883
+  },
+  "ttiMs": 945,
+  "route": "he-thong",
+  "vp": "2560",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "route": "_palette",
+  "vp": "2560",
+  "theme": "dark",
+  "pal": {
+   "opts": [
+    "Trang: Tổng quan#/tong-quan",
+    "Trang: Thị trường#/thi-truong",
+    "Trang: Chứng khoán VN#/chung-k",
+    "Trang: Danh sách theo dõi#/dan",
+    "Trang: Phân tích#/phan-tich",
+    "Trang: Tin tức#/tin-tuc",
+    "Trang: Lịch kinh tế#/lich",
+    "Trang: Chuyên gia#/chuyen-gia",
+    "Trang: Tài khoản#/tai-khoan",
+    "Trang: Mô phỏng#/mo-phong",
+    "Trang: Nhật ký#/nhat-ky",
+    "Trang: Cảnh báo#/canh-bao",
+    "Trang: Báo cáo#/bao-cao",
+    "Trang: Hệ thống#/he-thong",
+    "Lệnh: Đổi sang giao diện sángT",
+    "Lệnh: Tạo quy tắc cảnh báo mới"
+   ],
+   "dlg": true
+  },
+  "more": null,
+  "foc": [
+   "A:EURUSD outline=solid/2px fv",
+   "A:GBPUSD outline=solid/2px fv",
+   "A:USDJPY outline=solid/2px fv",
+   "A:XAUUSD outline=solid/2px fv",
+   "A:VNM outline=solid/2px fv",
+   "A:FPT outline=solid/2px fv",
+   "A:VCB outline=solid/2px fv",
+   "A:AAPL outline=solid/2px fv"
+  ]
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x3 e.g. \"37 giây trước\" <span.num>",
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x1 e.g. \"15/15 service hoạt động\" <span.chip.up>"
+  ],
+  "textNodes": 237,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 3070,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 24,
+   "jsKB": 115,
+   "allKB": 304
+  },
+  "ttiMs": 6782,
+  "route": "tong-quan",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P",
+   "WebSocket connection to 'ws://web-ui:8080/api/v1/stream?streams=md.quotes,md.bars,news.items,alerts.out,expert.signals,account.snapshots,calendar.events' failed"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"15 giây trước\" <span.num>"
+  ],
+  "textNodes": 216,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10.5": 14
+  },
+  "loadingLeft": 1,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 1629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 62,
+   "jsKB": 206,
+   "allKB": 429
+  },
+  "ttiMs": 953,
+  "route": "thi-truong",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"19 giây trước\" <span.num>"
+  ],
+  "textNodes": 443,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 3332,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 81,
+   "jsKB": 445,
+   "allKB": 677
+  },
+  "ttiMs": 985,
+  "route": "chung-khoan-vn",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"25 giây trước\" <span.num>"
+  ],
+  "textNodes": 106,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 681,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 84,
+   "jsKB": 451,
+   "allKB": 683
+  },
+  "ttiMs": 944,
+  "route": "danh-sach",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2168,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x4 e.g. \"7 giây trước\" <span.num>"
+  ],
+  "textNodes": 799,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5847,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 92,
+   "jsKB": 459,
+   "allKB": 784
+  },
+  "ttiMs": 1091,
+  "route": "phan-tich",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"11 giây trước\" <span.num>"
+  ],
+  "textNodes": 398,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18459,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 94,
+   "jsKB": 460,
+   "allKB": 797
+  },
+  "ttiMs": 953,
+  "route": "tin-tuc",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"17 giây trước\" <span.num>"
+  ],
+  "textNodes": 88,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 96,
+   "jsKB": 463,
+   "allKB": 800
+  },
+  "ttiMs": 933,
+  "route": "lich",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"21 giây trước\" <span.num>"
+  ],
+  "textNodes": 91,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 99,
+   "jsKB": 475,
+   "allKB": 812
+  },
+  "ttiMs": 938,
+  "route": "chuyen-gia",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1830,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 9,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"25 giây trước\" <span.num>"
+  ],
+  "textNodes": 145,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 1899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 105,
+   "jsKB": 482,
+   "allKB": 822
+  },
+  "ttiMs": 952,
+  "route": "tai-khoan",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2173,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(196, 42, 73) on rgb(235,228,234) cr=4.45 x3 e.g. \"2 ngày trước\" <span.num>",
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"10 giây trước\" <span.num>",
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x2 e.g. \"MÔ PHỎNG — không phải ti\" <span.chip.accent>"
+  ],
+  "textNodes": 299,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 117,
+   "jsKB": 495,
+   "allKB": 847
+  },
+  "ttiMs": 972,
+  "route": "mo-phong",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1913,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"14 giây trước\" <span.num>",
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x1 e.g. \"Paper\" <span.chip.accent>"
+  ],
+  "textNodes": 194,
+  "tinyFont": 13,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 121,
+   "jsKB": 512,
+   "allKB": 867
+  },
+  "ttiMs": 969,
+  "route": "nhat-ky",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"18 giây trước\" <span.num>"
+  ],
+  "textNodes": 75,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 123,
+   "jsKB": 523,
+   "allKB": 878
+  },
+  "ttiMs": 938,
+  "route": "canh-bao",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"24 giây trước\" <span.num>"
+  ],
+  "textNodes": 89,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 125,
+   "jsKB": 525,
+   "allKB": 880
+  },
+  "ttiMs": 934,
+  "route": "bao-cao",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1395,
+   "ch": 1395,
+   "sw": 2352,
+   "cw": 2352
+  },
+  "docScrollY": {
+   "sh": 1440,
+   "ch": 1440
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 15,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"6 giây trước\" <span.num>"
+  ],
+  "textNodes": 245,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi",
+   "Lỗi",
+   "lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2721,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 126,
+   "load": 126,
+   "transfer": 888
+  },
+  "res": {
+   "n": 130,
+   "jsKB": 528,
+   "allKB": 887
+  },
+  "ttiMs": 948,
+  "route": "he-thong",
+  "vp": "2560",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2289,
+   "ch": 2289,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2418,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 4,
+  "smallTargetsN": 21,
+  "smallTargets": [
+   "a.no-underline.font-semibold 51x15 \"EURUSD\"",
+   "a.no-underline.font-semibold 51x15 \"GBPUSD\"",
+   "a.no-underline.font-semibold 50x15 \"USDJPY\"",
+   "a.no-underline.font-semibold 53x15 \"XAUUSD\"",
+   "a.no-underline.font-semibold 30x15 \"VNM\"",
+   "a.no-underline.font-semibold 23x15 \"FPT\"",
+   "a.no-underline.font-semibold 26x15 \"VCB\"",
+   "a.no-underline.font-semibold 33x15 \"AAPL\"",
+   "a.text-[12px].text-muted 49x18 \"Xem lịch\"",
+   "a.text-[12px].text-muted 53x18 \"Tất cả tin\"",
+   "a.no-underline.font-medium 672x16 \"Preview: RBA minut\"",
+   "a.no-underline.font-medium 508x16 \"Goldman: Gulf oil \"",
+   "a.no-underline.font-medium 573x16 \"Weekend: Musk says\"",
+   "a.no-underline.font-medium 563x16 \"More on Russia’s d\"",
+   "a.no-underline.font-medium 240x16 \"Giới chuyên gia dự\"",
+   "a.no-underline.font-medium 669x36 \"Monday: Thin start\"",
+   "a.no-underline.font-medium 557x16 \"Trump says Russia,\"",
+   "a.no-underline.font-medium 572x16 \"Houthi strike on R\"",
+   "a.text-[12px].text-muted 40x18 \"Chi tiết\"",
+   "a.text-[12px].text-muted 36x18 \"Tất cả\""
+  ],
+  "contrast": [],
+  "textNodes": 216,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "lỗi"
+  ],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 2989,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 24,
+   "jsKB": 115,
+   "allKB": 305
+  },
+  "ttiMs": 6624,
+  "route": "tong-quan",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1250,
+   "ch": 1250,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1379,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 48,
+  "smallTargets": [
+   "button.h-7.shrink-0 69x28 \"Tất cả 84\"",
+   "button.h-7.shrink-0 39x28 \"★ 0\"",
+   "button.h-7.shrink-0 60x28 \"Forex 7\"",
+   "button.h-7.shrink-0 75x28 \"Tiền ảo 29\"",
+   "button.h-7.shrink-0 144x28 \"Kim loại & hàng ho\"",
+   "button.h-7.shrink-0 104x28 \"Chỉ số & ETF 15\"",
+   "button.h-7.shrink-0 104x28 \"Cổ phiếu Mỹ 10\"",
+   "button.h-7.shrink-0 98x28 \"Cổ phiếu VN 3\"",
+   "button.h-7.shrink-0 83x28 \"Trái phiếu 9\"",
+   "button.grid.h-full 28x46 \"Yêu thích AUDUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích EURUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích GBPUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích NZDUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDCAD\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDCHF\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDJPY\"",
+   "button.grid.h-full 28x46 \"Yêu thích AAVEUSDT\"",
+   "button.grid.h-7 28x28 \"Thêm vào yêu thích\"",
+   "button 44x40 \"M1\"",
+   "button 44x40 \"M5\"",
+   "button 44x40 \"M15\"",
+   "button 44x40 \"H1\"",
+   "button 44x40 \"H4\"",
+   "button 44x40 \"D1\"",
+   "button.grid.h-8 32x32 \"log\""
+  ],
+  "contrast": [],
+  "textNodes": 124,
+  "tinyFont": 15,
+  "tinyFontSizes": {
+   "10.5": 15
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 904,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 46,
+   "jsKB": 206,
+   "allKB": 418
+  },
+  "ttiMs": 946,
+  "route": "thi-truong",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2399,
+   "ch": 2399,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2528,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 4,
+  "smallTargetsN": 47,
+  "smallTargets": [
+   "button 94x39 \"Tổng quan\"",
+   "button 147x39 \"Bản đồ nhiệt ngành\"",
+   "button 118x39 \"Top & trần/sàn\"",
+   "button 92x39 \"Khối ngoại\"",
+   "button 123x39 \"Bộ lọc cổ phiếu\"",
+   "button 103x39 \"Sự kiện & tin\"",
+   "button 94x39 \"Chi tiết mã\"",
+   "a.text-[12px] 40x18 \"Chi tiết\"",
+   "a.no-underline.hover:underline 24x19 \"VHM\"",
+   "a.no-underline.hover:underline 24x19 \"SHB\"",
+   "a.no-underline.hover:underline 24x19 \"NVL\"",
+   "a.no-underline.hover:underline 24x19 \"TCB\"",
+   "a.no-underline.hover:underline 24x19 \"CTG\"",
+   "a.no-underline.hover:underline 24x19 \"MCH\"",
+   "a.no-underline.hover:underline 24x19 \"HDB\"",
+   "a.no-underline.hover:underline 24x19 \"FPT\"",
+   "a.no-underline.hover:underline 24x19 \"ACB\"",
+   "a.no-underline.hover:underline 24x19 \"VCI\"",
+   "a.text-[12px] 70x18 \"Bản đồ nhiệt\"",
+   "button 53x17 \"Ngành\"",
+   "button 112x17 \"% (theo vốn hoá)\"",
+   "button 78x17 \"Tăng/Giảm\"",
+   "button 50x17 \"GTGD\"",
+   "button 34x17 \"Mã\"",
+   "button 37x17 \"Sàn\""
+  ],
+  "contrast": [],
+  "textNodes": 427,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 3332,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 60,
+   "jsKB": 445,
+   "allKB": 666
+  },
+  "ttiMs": 985,
+  "route": "chung-khoan-vn",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 918,
+   "ch": 918,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1047,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 16,
+  "smallTargets": [
+   "button 44x40 \"Tối\"",
+   "button 48x40 \"Sáng\"",
+   "button 44x40 \"M1\"",
+   "button 44x40 \"M5\"",
+   "button 44x40 \"M15\"",
+   "button 44x40 \"H1\"",
+   "button 44x40 \"H4\"",
+   "button 44x40 \"D1\"",
+   "a.font-semibold.no-underline 51x15 \"EURUSD\"",
+   "a.font-semibold.no-underline 51x15 \"GBPUSD\"",
+   "a.font-semibold.no-underline 50x15 \"USDJPY\"",
+   "a.font-semibold.no-underline 53x15 \"XAUUSD\"",
+   "a.font-semibold.no-underline 30x15 \"VNM\"",
+   "a.font-semibold.no-underline 23x15 \"FPT\"",
+   "a.font-semibold.no-underline 26x15 \"VCB\"",
+   "a.font-semibold.no-underline 33x15 \"AAPL\""
+  ],
+  "contrast": [],
+  "textNodes": 90,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 681,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 63,
+   "jsKB": 451,
+   "allKB": 672
+  },
+  "ttiMs": 939,
+  "route": "danh-sach",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 4474,
+   "ch": 4474,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 4603,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 4,
+  "smallTargetsN": 272,
+  "smallTargets": [
+   "button.cursor-pointer.font-semibold 54x19 \"ICPUSDT\"",
+   "button.w-full.min-w-[64px] 165x36 \"76\"",
+   "button.w-full.min-w-[64px] 165x36 \"52\"",
+   "button.w-full.min-w-[64px] 165x36 \"36\"",
+   "button.cursor-pointer.font-semibold 51x19 \"FILUSDT\"",
+   "button.w-full.min-w-[64px] 165x36 \"71\"",
+   "button.w-full.min-w-[64px] 165x36 \"53\"",
+   "button.w-full.min-w-[64px] 165x36 \"48\"",
+   "button.cursor-pointer.font-semibold 68x19 \"NEARUSDT\"",
+   "button.w-full.min-w-[64px] 165x36 \"54\"",
+   "button.cursor-pointer.font-semibold 29x19 \"EWZ\"",
+   "button.w-full.min-w-[64px] 165x36 \"70\"",
+   "button.cursor-pointer.font-semibold 36x19 \"CORN\"",
+   "button.w-full.min-w-[64px] 165x36 \"67\"",
+   "button.cursor-pointer.font-semibold 31x19 \"EWQ\"",
+   "button.cursor-pointer.font-semibold 51x19 \"EURUSD\"",
+   "button.w-full.min-w-[64px] 165x36 \"35\"",
+   "button.w-full.min-w-[64px] 165x36 \"32\"",
+   "button.w-full.min-w-[64px] 165x36 \"66\"",
+   "button.cursor-pointer.font-semibold 35x19 \"MSFT\"",
+   "button.w-full.min-w-[64px] 165x36 \"64\"",
+   "button.cursor-pointer.font-semibold 55x19 \"UNIUSDT\"",
+   "button.w-full.min-w-[64px] 165x36 \"20\"",
+   "button.w-full.min-w-[64px] 165x36 \"44\"",
+   "button.w-full.min-w-[64px] 165x36 \"63\""
+  ],
+  "contrast": [],
+  "textNodes": 784,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5859,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 71,
+   "jsKB": 459,
+   "allKB": 773
+  },
+  "ttiMs": 1086,
+  "route": "phan-tich",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 7270,
+   "ch": 7270,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 7399,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 129,
+  "smallTargets": [
+   "button 44x40 \"24h\"",
+   "button 44x40 \"3d\"",
+   "button 44x40 \"7d\"",
+   "button 55x40 \"Tất cả\"",
+   "a.no-underline.font-semibold 692x19 \"Preview: RBA minut\"",
+   "a.no-underline.text-muted 80x17 \"Đọc bài gốc ↗\"",
+   "button.chip.cursor-pointer 63x20 \"AUDUSD\"",
+   "a.no-underline.font-semibold 692x19 \"Goldman: Gulf oil \"",
+   "button.chip.cursor-pointer 48x20 \"USOIL\"",
+   "a.no-underline.font-semibold 692x19 \"Weekend: Musk says\"",
+   "a.no-underline.font-semibold 692x19 \"More on Russia’s d\"",
+   "a.no-underline.font-semibold 692x19 \"Giới chuyên gia dự\"",
+   "button.chip.cursor-pointer 60x20 \"USDJPY\"",
+   "button.chip.cursor-pointer 61x20 \"GBPUSD\"",
+   "button.chip.cursor-pointer 63x20 \"XAUUSD\"",
+   "button.chip.cursor-pointer 38x20 \"SPX\"",
+   "button.chip.cursor-pointer 61x20 \"EURUSD\"",
+   "a.no-underline.font-semibold 692x37 \"Monday: Thin start\"",
+   "a.no-underline.font-semibold 692x19 \"Trump says Russia,\"",
+   "a.no-underline.font-semibold 692x19 \"Houthi strike on R\"",
+   "a.no-underline.font-semibold 692x19 \"Delivered crude pr\"",
+   "a.no-underline.font-semibold 692x19 \"Monday open indica\"",
+   "button.chip.cursor-pointer 63x20 \"USDCAD\"",
+   "button.chip.cursor-pointer 62x20 \"NZDUSD\"",
+   "button.chip.cursor-pointer 61x20 \"USDCHF\""
+  ],
+  "contrast": [],
+  "textNodes": 382,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18459,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 73,
+   "jsKB": 460,
+   "allKB": 786
+  },
+  "ttiMs": 952,
+  "route": "tin-tuc",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 895,
+   "ch": 895,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1024,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 3,
+  "smallTargets": [
+   "input 13x13 \"\""
+  ],
+  "contrast": [],
+  "textNodes": 72,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 75,
+   "jsKB": 463,
+   "allKB": 789
+  },
+  "ttiMs": 930,
+  "route": "lich",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 895,
+   "ch": 895,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1024,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 10,
+  "smallTargets": [
+   "button#radix-_r_10_-trigger-cg 83x40 \"Chuyên gia\"",
+   "button#radix-_r_10_-trigger-tin 64x40 \"Tín hiệu\"",
+   "button#radix-_r_10_-trigger-vt 52x40 \"Vị thế\"",
+   "button#radix-_r_10_-trigger-dt 84x40 \"Đồng thuận\"",
+   "button 79x17 \"Chuyên gia\"",
+   "button 79x17 \"Điểm uy tín\"",
+   "button 33x17 \"Lãi\"",
+   "button 92x17 \"Sụt vốn tối đa\"",
+   "button 65x17 \"Số tháng\"",
+   "button 97x17 \"Người theo dõi\""
+  ],
+  "contrast": [],
+  "textNodes": 75,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 78,
+   "jsKB": 475,
+   "allKB": 800
+  },
+  "ttiMs": 937,
+  "route": "chuyen-gia",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2228,
+   "ch": 2228,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2357,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 9,
+  "navItems": 4,
+  "smallTargetsN": 19,
+  "smallTargets": [
+   "button 135x40 \"demo-mt4-01 · MT4\"",
+   "button 134x40 \"demo-mt5-01 · MT5\"",
+   "button 44x40 \"1D\"",
+   "button 44x40 \"7D\"",
+   "button 44x40 \"30D\"",
+   "button 113x40 \"bh_6040 · paper\"",
+   "button 94x40 \"bh_fx · paper\"",
+   "button 95x40 \"bh_vn · paper\"",
+   "button 143x40 \"slow_trend_fx · pa\"",
+   "button 162x40 \"slow_trend_fx_v2 ·\"",
+   "button 165x40 \"slow_trend_global \"",
+   "button 207x40 \"slow_trend_global_\"",
+   "button 225x40 \"slow_trend_global_\"",
+   "button 184x40 \"slow_trend_global_\"",
+   "button 144x40 \"slow_trend_vn · pa\"",
+   "button 163x40 \"slow_trend_vn_v2 ·\"",
+   "button 161x40 \"smoke_fx_replay · \""
+  ],
+  "contrast": [],
+  "textNodes": 129,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 1899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 84,
+   "jsKB": 482,
+   "allKB": 810
+  },
+  "ttiMs": 963,
+  "route": "tai-khoan",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 3621,
+   "ch": 3621,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 3750,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 4,
+  "smallTargetsN": 8,
+  "smallTargets": [
+   "button 47x40 \"Lệnh\"",
+   "button 44x40 \"Fill\"",
+   "button 62x40 \"Sự kiện\"",
+   "button 99x40 \"Hiệu suất + CI\"",
+   "button 45x40 \"TCA\"",
+   "button 72x40 \"Suy giảm\"",
+   "button 97x40 \"Strategy card\"",
+   "button 71x40 \"Toàn vẹn\""
+  ],
+  "contrast": [],
+  "textNodes": 283,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 96,
+   "jsKB": 495,
+   "allKB": 836
+  },
+  "ttiMs": 975,
+  "route": "mo-phong",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2354,
+   "ch": 2354,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2483,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 4,
+  "smallTargetsN": 33,
+  "smallTargets": [
+   "button 57x40 \"7 ngày\"",
+   "button 66x40 \"30 ngày\"",
+   "button 66x40 \"90 ngày\"",
+   "button 55x40 \"Tất cả\"",
+   "button 71x40 \"Tuỳ chọn\"",
+   "button 55x40 \"Cả hai\"",
+   "button 44x40 \"Mua\"",
+   "button 44x40 \"Bán\"",
+   "button 79x40 \"Tổng quan\"",
+   "button 47x40 \"Lệnh\"",
+   "button 58x40 \"Kỷ luật\"",
+   "button 89x40 \"Review tuần\"",
+   "button.w-[18px].h-[18px] 18x18 \"2026-10-02: 8 lệnh\"",
+   "button 62x40 \"Giờ vào\"",
+   "button 44x40 \"Thứ\"",
+   "button 51x40 \"Phiên\"",
+   "button 62x40 \"Symbol\"",
+   "button 57x40 \"Hướng\"",
+   "button 81x40 \"EA / magic\"",
+   "button 49x17 \"Nhóm\"",
+   "button 44x17 \"Lệnh\"",
+   "button 36x17 \"Net\"",
+   "button 35x17 \"WR\"",
+   "button 30x17 \"PF\"",
+   "button 82x17 \"Expectancy\""
+  ],
+  "contrast": [],
+  "textNodes": 178,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 100,
+   "jsKB": 512,
+   "allKB": 856
+  },
+  "ttiMs": 970,
+  "route": "nhat-ky",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 895,
+   "ch": 895,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1024,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 3,
+  "smallTargets": [
+   "button#radix-_r_1v_-trigger-rules 104x40 \"Quy tắc của tôi\"",
+   "button#radix-_r_1v_-trigger-events 116x40 \"Lịch sử kích hoạt\"",
+   "button#radix-_r_1v_-trigger-system 125x40 \"Cảnh báo hệ thống\""
+  ],
+  "contrast": [],
+  "textNodes": 59,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 102,
+   "jsKB": 523,
+   "allKB": 867
+  },
+  "ttiMs": 930,
+  "route": "canh-bao",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 895,
+   "ch": 895,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1024,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 73,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 104,
+   "jsKB": 525,
+   "allKB": 869
+  },
+  "ttiMs": 934,
+  "route": "bao-cao",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2467,
+   "ch": 2467,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2597,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 4,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 229,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi",
+   "Lỗi",
+   "lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2726,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 109,
+   "jsKB": 528,
+   "allKB": 876
+  },
+  "ttiMs": 947,
+  "route": "he-thong",
+  "vp": "768",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "route": "_palette",
+  "vp": "768",
+  "theme": "dark",
+  "pal": {
+   "opts": [
+    "Trang: Tổng quan#/tong-quan",
+    "Trang: Thị trường#/thi-truong",
+    "Trang: Chứng khoán VN#/chung-k",
+    "Trang: Danh sách theo dõi#/dan",
+    "Trang: Phân tích#/phan-tich",
+    "Trang: Tin tức#/tin-tuc",
+    "Trang: Lịch kinh tế#/lich",
+    "Trang: Chuyên gia#/chuyen-gia",
+    "Trang: Tài khoản#/tai-khoan",
+    "Trang: Mô phỏng#/mo-phong",
+    "Trang: Nhật ký#/nhat-ky",
+    "Trang: Cảnh báo#/canh-bao",
+    "Trang: Báo cáo#/bao-cao",
+    "Trang: Hệ thống#/he-thong",
+    "Lệnh: Đổi sang giao diện sángT",
+    "Lệnh: Tạo quy tắc cảnh báo mới"
+   ],
+   "dlg": true
+  },
+  "more": [
+   "Tổng quan",
+   "Thị trường",
+   "Chứng khoán VN",
+   "Danh sách theo dõi",
+   "Phân tích",
+   "Tin tức",
+   "Lịch kinh tế",
+   "Chuyên gia",
+   "Tài khoản",
+   "Mô phỏng",
+   "Nhật ký",
+   "Cảnh báo",
+   "Báo cáo",
+   "Hệ thống"
+  ],
+  "foc": [
+   "A:EURUSD outline=solid/2px fv",
+   "A:GBPUSD outline=solid/2px fv",
+   "A:USDJPY outline=solid/2px fv",
+   "A:XAUUSD outline=solid/2px fv",
+   "A:VNM outline=solid/2px fv",
+   "A:FPT outline=solid/2px fv",
+   "A:VCB outline=solid/2px fv",
+   "A:AAPL outline=solid/2px fv"
+  ]
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2289,
+   "ch": 2289,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2418,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 4,
+  "smallTargetsN": 21,
+  "smallTargets": [
+   "a.no-underline.font-semibold 51x15 \"EURUSD\"",
+   "a.no-underline.font-semibold 51x15 \"GBPUSD\"",
+   "a.no-underline.font-semibold 50x15 \"USDJPY\"",
+   "a.no-underline.font-semibold 53x15 \"XAUUSD\"",
+   "a.no-underline.font-semibold 30x15 \"VNM\"",
+   "a.no-underline.font-semibold 23x15 \"FPT\"",
+   "a.no-underline.font-semibold 26x15 \"VCB\"",
+   "a.no-underline.font-semibold 33x15 \"AAPL\"",
+   "a.text-[12px].text-muted 49x18 \"Xem lịch\"",
+   "a.text-[12px].text-muted 53x18 \"Tất cả tin\"",
+   "a.no-underline.font-medium 672x16 \"Preview: RBA minut\"",
+   "a.no-underline.font-medium 508x16 \"Goldman: Gulf oil \"",
+   "a.no-underline.font-medium 573x16 \"Weekend: Musk says\"",
+   "a.no-underline.font-medium 563x16 \"More on Russia’s d\"",
+   "a.no-underline.font-medium 240x16 \"Giới chuyên gia dự\"",
+   "a.no-underline.font-medium 669x36 \"Monday: Thin start\"",
+   "a.no-underline.font-medium 557x16 \"Trump says Russia,\"",
+   "a.no-underline.font-medium 572x16 \"Houthi strike on R\"",
+   "a.text-[12px].text-muted 40x18 \"Chi tiết\"",
+   "a.text-[12px].text-muted 36x18 \"Tất cả\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x3 e.g. \"22 giây trước\" <span.num>"
+  ],
+  "textNodes": 216,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "lỗi"
+  ],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 2970,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 24,
+   "jsKB": 115,
+   "allKB": 305
+  },
+  "ttiMs": 3176,
+  "route": "tong-quan",
+  "vp": "768",
+  "theme": "light",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1250,
+   "ch": 1250,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1379,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 48,
+  "smallTargets": [
+   "button.h-7.shrink-0 69x28 \"Tất cả 84\"",
+   "button.h-7.shrink-0 39x28 \"★ 0\"",
+   "button.h-7.shrink-0 60x28 \"Forex 7\"",
+   "button.h-7.shrink-0 75x28 \"Tiền ảo 29\"",
+   "button.h-7.shrink-0 144x28 \"Kim loại & hàng ho\"",
+   "button.h-7.shrink-0 104x28 \"Chỉ số & ETF 15\"",
+   "button.h-7.shrink-0 104x28 \"Cổ phiếu Mỹ 10\"",
+   "button.h-7.shrink-0 98x28 \"Cổ phiếu VN 3\"",
+   "button.h-7.shrink-0 83x28 \"Trái phiếu 9\"",
+   "button.grid.h-full 28x46 \"Yêu thích AUDUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích EURUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích GBPUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích NZDUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDCAD\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDCHF\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDJPY\"",
+   "button.grid.h-full 28x46 \"Yêu thích AAVEUSDT\"",
+   "button.grid.h-7 28x28 \"Thêm vào yêu thích\"",
+   "button 44x40 \"M1\"",
+   "button 44x40 \"M5\"",
+   "button 44x40 \"M15\"",
+   "button 44x40 \"H1\"",
+   "button 44x40 \"H4\"",
+   "button 44x40 \"D1\"",
+   "button.grid.h-8 32x32 \"log\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"26 giây trước\" <span.num>",
+   "rgb(240, 184, 79) on rgb(255,255,255) cr=1.80 x1 e.g. \"1.12028\" <span.num>",
+   "rgb(90, 169, 255) on rgb(255,255,255) cr=2.46 x1 e.g. \"1.12055\" <span.num>"
+  ],
+  "textNodes": 123,
+  "tinyFont": 15,
+  "tinyFontSizes": {
+   "10.5": 15
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 44,
+   "jsKB": 206,
+   "allKB": 416
+  },
+  "ttiMs": 947,
+  "route": "thi-truong",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2399,
+   "ch": 2399,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2528,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 4,
+  "smallTargetsN": 47,
+  "smallTargets": [
+   "button 94x39 \"Tổng quan\"",
+   "button 147x39 \"Bản đồ nhiệt ngành\"",
+   "button 118x39 \"Top & trần/sàn\"",
+   "button 92x39 \"Khối ngoại\"",
+   "button 123x39 \"Bộ lọc cổ phiếu\"",
+   "button 103x39 \"Sự kiện & tin\"",
+   "button 94x39 \"Chi tiết mã\"",
+   "a.text-[12px] 40x18 \"Chi tiết\"",
+   "a.no-underline.hover:underline 24x19 \"VHM\"",
+   "a.no-underline.hover:underline 24x19 \"SHB\"",
+   "a.no-underline.hover:underline 24x19 \"NVL\"",
+   "a.no-underline.hover:underline 24x19 \"TCB\"",
+   "a.no-underline.hover:underline 24x19 \"CTG\"",
+   "a.no-underline.hover:underline 24x19 \"MCH\"",
+   "a.no-underline.hover:underline 24x19 \"HDB\"",
+   "a.no-underline.hover:underline 24x19 \"FPT\"",
+   "a.no-underline.hover:underline 24x19 \"ACB\"",
+   "a.no-underline.hover:underline 24x19 \"VCI\"",
+   "a.text-[12px] 70x18 \"Bản đồ nhiệt\"",
+   "button 53x17 \"Ngành\"",
+   "button 112x17 \"% (theo vốn hoá)\"",
+   "button 78x17 \"Tăng/Giảm\"",
+   "button 50x17 \"GTGD\"",
+   "button 34x17 \"Mã\"",
+   "button 37x17 \"Sàn\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"8 giây trước\" <span.num>"
+  ],
+  "textNodes": 427,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 3332,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 59,
+   "jsKB": 445,
+   "allKB": 665
+  },
+  "ttiMs": 984,
+  "route": "chung-khoan-vn",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 918,
+   "ch": 918,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1047,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 16,
+  "smallTargets": [
+   "button 44x40 \"Tối\"",
+   "button 48x40 \"Sáng\"",
+   "button 44x40 \"M1\"",
+   "button 44x40 \"M5\"",
+   "button 44x40 \"M15\"",
+   "button 44x40 \"H1\"",
+   "button 44x40 \"H4\"",
+   "button 44x40 \"D1\"",
+   "a.font-semibold.no-underline 51x15 \"EURUSD\"",
+   "a.font-semibold.no-underline 51x15 \"GBPUSD\"",
+   "a.font-semibold.no-underline 50x15 \"USDJPY\"",
+   "a.font-semibold.no-underline 53x15 \"XAUUSD\"",
+   "a.font-semibold.no-underline 30x15 \"VNM\"",
+   "a.font-semibold.no-underline 23x15 \"FPT\"",
+   "a.font-semibold.no-underline 26x15 \"VCB\"",
+   "a.font-semibold.no-underline 33x15 \"AAPL\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"14 giây trước\" <span.num>"
+  ],
+  "textNodes": 90,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 681,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 62,
+   "jsKB": 451,
+   "allKB": 671
+  },
+  "ttiMs": 939,
+  "route": "danh-sach",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 4474,
+   "ch": 4474,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 4603,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 4,
+  "smallTargetsN": 272,
+  "smallTargets": [
+   "button.cursor-pointer.font-semibold 54x19 \"ICPUSDT\"",
+   "button.w-full.min-w-[64px] 165x36 \"76\"",
+   "button.w-full.min-w-[64px] 165x36 \"52\"",
+   "button.w-full.min-w-[64px] 165x36 \"36\"",
+   "button.cursor-pointer.font-semibold 51x19 \"FILUSDT\"",
+   "button.w-full.min-w-[64px] 165x36 \"71\"",
+   "button.w-full.min-w-[64px] 165x36 \"53\"",
+   "button.w-full.min-w-[64px] 165x36 \"48\"",
+   "button.cursor-pointer.font-semibold 68x19 \"NEARUSDT\"",
+   "button.w-full.min-w-[64px] 165x36 \"54\"",
+   "button.cursor-pointer.font-semibold 29x19 \"EWZ\"",
+   "button.w-full.min-w-[64px] 165x36 \"70\"",
+   "button.cursor-pointer.font-semibold 36x19 \"CORN\"",
+   "button.w-full.min-w-[64px] 165x36 \"67\"",
+   "button.cursor-pointer.font-semibold 31x19 \"EWQ\"",
+   "button.cursor-pointer.font-semibold 51x19 \"EURUSD\"",
+   "button.w-full.min-w-[64px] 165x36 \"35\"",
+   "button.w-full.min-w-[64px] 165x36 \"32\"",
+   "button.w-full.min-w-[64px] 165x36 \"66\"",
+   "button.cursor-pointer.font-semibold 35x19 \"MSFT\"",
+   "button.w-full.min-w-[64px] 165x36 \"64\"",
+   "button.cursor-pointer.font-semibold 55x19 \"UNIUSDT\"",
+   "button.w-full.min-w-[64px] 165x36 \"20\"",
+   "button.w-full.min-w-[64px] 165x36 \"44\"",
+   "button.w-full.min-w-[64px] 165x36 \"63\""
+  ],
+  "contrast": [
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x3 e.g. \"5 phút trước\" <span.num>",
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"18 giây trước\" <span.num>"
+  ],
+  "textNodes": 784,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5859,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 70,
+   "jsKB": 459,
+   "allKB": 771
+  },
+  "ttiMs": 1100,
+  "route": "phan-tich",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 7270,
+   "ch": 7270,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 7399,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 129,
+  "smallTargets": [
+   "button 44x40 \"24h\"",
+   "button 44x40 \"3d\"",
+   "button 44x40 \"7d\"",
+   "button 55x40 \"Tất cả\"",
+   "a.no-underline.font-semibold 692x19 \"Preview: RBA minut\"",
+   "a.no-underline.text-muted 80x17 \"Đọc bài gốc ↗\"",
+   "button.chip.cursor-pointer 63x20 \"AUDUSD\"",
+   "a.no-underline.font-semibold 692x19 \"Goldman: Gulf oil \"",
+   "button.chip.cursor-pointer 48x20 \"USOIL\"",
+   "a.no-underline.font-semibold 692x19 \"Weekend: Musk says\"",
+   "a.no-underline.font-semibold 692x19 \"More on Russia’s d\"",
+   "a.no-underline.font-semibold 692x19 \"Giới chuyên gia dự\"",
+   "button.chip.cursor-pointer 60x20 \"USDJPY\"",
+   "button.chip.cursor-pointer 61x20 \"GBPUSD\"",
+   "button.chip.cursor-pointer 63x20 \"XAUUSD\"",
+   "button.chip.cursor-pointer 38x20 \"SPX\"",
+   "button.chip.cursor-pointer 61x20 \"EURUSD\"",
+   "a.no-underline.font-semibold 692x37 \"Monday: Thin start\"",
+   "a.no-underline.font-semibold 692x19 \"Trump says Russia,\"",
+   "a.no-underline.font-semibold 692x19 \"Houthi strike on R\"",
+   "a.no-underline.font-semibold 692x19 \"Delivered crude pr\"",
+   "a.no-underline.font-semibold 692x19 \"Monday open indica\"",
+   "button.chip.cursor-pointer 63x20 \"USDCAD\"",
+   "button.chip.cursor-pointer 62x20 \"NZDUSD\"",
+   "button.chip.cursor-pointer 61x20 \"USDCHF\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"22 giây trước\" <span.num>"
+  ],
+  "textNodes": 382,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18457,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 72,
+   "jsKB": 460,
+   "allKB": 785
+  },
+  "ttiMs": 963,
+  "route": "tin-tuc",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 895,
+   "ch": 895,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1024,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 3,
+  "smallTargets": [
+   "input 13x13 \"\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"28 giây trước\" <span.num>"
+  ],
+  "textNodes": 72,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 74,
+   "jsKB": 463,
+   "allKB": 787
+  },
+  "ttiMs": 931,
+  "route": "lich",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 895,
+   "ch": 895,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1024,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 10,
+  "smallTargets": [
+   "button#radix-_r_16_-trigger-cg 83x40 \"Chuyên gia\"",
+   "button#radix-_r_16_-trigger-tin 64x40 \"Tín hiệu\"",
+   "button#radix-_r_16_-trigger-vt 52x40 \"Vị thế\"",
+   "button#radix-_r_16_-trigger-dt 84x40 \"Đồng thuận\"",
+   "button 79x17 \"Chuyên gia\"",
+   "button 79x17 \"Điểm uy tín\"",
+   "button 33x17 \"Lãi\"",
+   "button 92x17 \"Sụt vốn tối đa\"",
+   "button 65x17 \"Số tháng\"",
+   "button 97x17 \"Người theo dõi\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"11 giây trước\" <span.num>"
+  ],
+  "textNodes": 75,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 77,
+   "jsKB": 475,
+   "allKB": 799
+  },
+  "ttiMs": 941,
+  "route": "chuyen-gia",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2228,
+   "ch": 2228,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2357,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 9,
+  "navItems": 4,
+  "smallTargetsN": 19,
+  "smallTargets": [
+   "button 135x40 \"demo-mt4-01 · MT4\"",
+   "button 134x40 \"demo-mt5-01 · MT5\"",
+   "button 44x40 \"1D\"",
+   "button 44x40 \"7D\"",
+   "button 44x40 \"30D\"",
+   "button 113x40 \"bh_6040 · paper\"",
+   "button 94x40 \"bh_fx · paper\"",
+   "button 95x40 \"bh_vn · paper\"",
+   "button 143x40 \"slow_trend_fx · pa\"",
+   "button 162x40 \"slow_trend_fx_v2 ·\"",
+   "button 165x40 \"slow_trend_global \"",
+   "button 207x40 \"slow_trend_global_\"",
+   "button 225x40 \"slow_trend_global_\"",
+   "button 184x40 \"slow_trend_global_\"",
+   "button 144x40 \"slow_trend_vn · pa\"",
+   "button 163x40 \"slow_trend_vn_v2 ·\"",
+   "button 161x40 \"smoke_fx_replay · \""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"15 giây trước\" <span.num>"
+  ],
+  "textNodes": 129,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 1899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 83,
+   "jsKB": 482,
+   "allKB": 809
+  },
+  "ttiMs": 964,
+  "route": "tai-khoan",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 3621,
+   "ch": 3621,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 3750,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 4,
+  "smallTargetsN": 8,
+  "smallTargets": [
+   "button 47x40 \"Lệnh\"",
+   "button 44x40 \"Fill\"",
+   "button 62x40 \"Sự kiện\"",
+   "button 99x40 \"Hiệu suất + CI\"",
+   "button 45x40 \"TCA\"",
+   "button 72x40 \"Suy giảm\"",
+   "button 97x40 \"Strategy card\"",
+   "button 71x40 \"Toàn vẹn\""
+  ],
+  "contrast": [
+   "rgb(196, 42, 73) on rgb(235,228,234) cr=4.45 x3 e.g. \"2 ngày trước\" <span.num>",
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"19 giây trước\" <span.num>",
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x2 e.g. \"MÔ PHỎNG — không phải ti\" <span.chip.accent>"
+  ],
+  "textNodes": 283,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 95,
+   "jsKB": 495,
+   "allKB": 835
+  },
+  "ttiMs": 976,
+  "route": "mo-phong",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2354,
+   "ch": 2354,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2483,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 4,
+  "smallTargetsN": 33,
+  "smallTargets": [
+   "button 57x40 \"7 ngày\"",
+   "button 66x40 \"30 ngày\"",
+   "button 66x40 \"90 ngày\"",
+   "button 55x40 \"Tất cả\"",
+   "button 71x40 \"Tuỳ chọn\"",
+   "button 55x40 \"Cả hai\"",
+   "button 44x40 \"Mua\"",
+   "button 44x40 \"Bán\"",
+   "button 79x40 \"Tổng quan\"",
+   "button 47x40 \"Lệnh\"",
+   "button 58x40 \"Kỷ luật\"",
+   "button 89x40 \"Review tuần\"",
+   "button.w-[18px].h-[18px] 18x18 \"2026-10-02: 8 lệnh\"",
+   "button 62x40 \"Giờ vào\"",
+   "button 44x40 \"Thứ\"",
+   "button 51x40 \"Phiên\"",
+   "button 62x40 \"Symbol\"",
+   "button 57x40 \"Hướng\"",
+   "button 81x40 \"EA / magic\"",
+   "button 49x17 \"Nhóm\"",
+   "button 44x17 \"Lệnh\"",
+   "button 36x17 \"Net\"",
+   "button 35x17 \"WR\"",
+   "button 30x17 \"PF\"",
+   "button 82x17 \"Expectancy\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"25 giây trước\" <span.num>",
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x1 e.g. \"Paper\" <span.chip.accent>"
+  ],
+  "textNodes": 178,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 99,
+   "jsKB": 512,
+   "allKB": 855
+  },
+  "ttiMs": 969,
+  "route": "nhat-ky",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 895,
+   "ch": 895,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1024,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 3,
+  "smallTargets": [
+   "button#radix-_r_21_-trigger-rules 104x40 \"Quy tắc của tôi\"",
+   "button#radix-_r_21_-trigger-events 116x40 \"Lịch sử kích hoạt\"",
+   "button#radix-_r_21_-trigger-system 125x40 \"Cảnh báo hệ thống\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"29 giây trước\" <span.num>"
+  ],
+  "textNodes": 59,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 101,
+   "jsKB": 523,
+   "allKB": 866
+  },
+  "ttiMs": 932,
+  "route": "canh-bao",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 895,
+   "ch": 895,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 1024,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"9 giây trước\" <span.num>"
+  ],
+  "textNodes": 73,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 103,
+   "jsKB": 525,
+   "allKB": 868
+  },
+  "ttiMs": 925,
+  "route": "bao-cao",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2467,
+   "ch": 2467,
+   "sw": 768,
+   "cw": 768
+  },
+  "docScrollY": {
+   "sh": 2597,
+   "ch": 1024
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 4,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"15 giây trước\" <span.num>"
+  ],
+  "textNodes": 229,
+  "tinyFont": 6,
+  "tinyFontSizes": {
+   "10.5": 6
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi",
+   "Lỗi",
+   "lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2724,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 127,
+   "load": 127,
+   "transfer": 888
+  },
+  "res": {
+   "n": 108,
+   "jsKB": 528,
+   "allKB": 874
+  },
+  "ttiMs": 944,
+  "route": "he-thong",
+  "vp": "768",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2826,
+   "ch": 2826,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 2955,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 4,
+  "smallTargetsN": 19,
+  "smallTargets": [
+   "a.no-underline.font-semibold 51x15 \"EURUSD\"",
+   "a.no-underline.font-semibold 51x15 \"GBPUSD\"",
+   "a.no-underline.font-semibold 50x15 \"USDJPY\"",
+   "a.no-underline.font-semibold 53x15 \"XAUUSD\"",
+   "a.no-underline.font-semibold 30x15 \"VNM\"",
+   "a.no-underline.font-semibold 23x15 \"FPT\"",
+   "a.no-underline.font-semibold 26x15 \"VCB\"",
+   "a.no-underline.font-semibold 33x15 \"AAPL\"",
+   "a.text-[12px].text-muted 49x18 \"Xem lịch\"",
+   "a.text-[12px].text-muted 53x18 \"Tất cả tin\"",
+   "a.no-underline.font-medium 323x36 \"Goldman: Gulf oil \"",
+   "a.no-underline.font-medium 292x36 \"Weekend: Musk says\"",
+   "a.no-underline.font-medium 293x36 \"More on Russia’s d\"",
+   "a.no-underline.font-medium 240x16 \"Giới chuyên gia dự\"",
+   "a.no-underline.font-medium 284x36 \"Trump says Russia,\"",
+   "a.no-underline.font-medium 287x36 \"Houthi strike on R\"",
+   "a.text-[12px].text-muted 40x18 \"Chi tiết\"",
+   "a.text-[12px].text-muted 36x18 \"Tất cả\""
+  ],
+  "contrast": [],
+  "textNodes": 203,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "lỗi"
+  ],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 2871,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 24,
+   "jsKB": 115,
+   "allKB": 305
+  },
+  "ttiMs": 3134,
+  "route": "tong-quan",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1226,
+   "ch": 1226,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 1355,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 48,
+  "smallTargets": [
+   "button.h-7.shrink-0 69x28 \"Tất cả 84\"",
+   "button.h-7.shrink-0 39x28 \"★ 0\"",
+   "button.h-7.shrink-0 60x28 \"Forex 7\"",
+   "button.h-7.shrink-0 75x28 \"Tiền ảo 29\"",
+   "button.h-7.shrink-0 144x28 \"Kim loại & hàng ho\"",
+   "button.h-7.shrink-0 104x28 \"Chỉ số & ETF 15\"",
+   "button.h-7.shrink-0 104x28 \"Cổ phiếu Mỹ 10\"",
+   "button.h-7.shrink-0 98x28 \"Cổ phiếu VN 3\"",
+   "button.h-7.shrink-0 83x28 \"Trái phiếu 9\"",
+   "button.grid.h-full 28x46 \"Yêu thích AUDUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích EURUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích GBPUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích NZDUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDCAD\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDCHF\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDJPY\"",
+   "button.grid.h-full 28x46 \"Yêu thích AAVEUSDT\"",
+   "button.grid.h-7 28x28 \"Thêm vào yêu thích\"",
+   "button 44x40 \"M1\"",
+   "button 44x40 \"M5\"",
+   "button 44x40 \"M15\"",
+   "button 44x40 \"H1\"",
+   "button 44x40 \"H4\"",
+   "button 44x40 \"D1\"",
+   "button.grid.h-8 32x32 \"log\""
+  ],
+  "contrast": [],
+  "textNodes": 111,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10.5": 14
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 854,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 44,
+   "jsKB": 206,
+   "allKB": 416
+  },
+  "ttiMs": 948,
+  "route": "thi-truong",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 3307,
+   "ch": 3307,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 3437,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 4,
+  "smallTargetsN": 47,
+  "smallTargets": [
+   "button 94x39 \"Tổng quan\"",
+   "button 147x39 \"Bản đồ nhiệt ngành\"",
+   "button 118x39 \"Top & trần/sàn\"",
+   "button 92x39 \"Khối ngoại\"",
+   "button 123x39 \"Bộ lọc cổ phiếu\"",
+   "button 103x39 \"Sự kiện & tin\"",
+   "button 94x39 \"Chi tiết mã\"",
+   "a.text-[12px] 40x18 \"Chi tiết\"",
+   "a.no-underline.hover:underline 24x19 \"VHM\"",
+   "a.no-underline.hover:underline 24x19 \"SHB\"",
+   "a.no-underline.hover:underline 24x19 \"NVL\"",
+   "a.no-underline.hover:underline 24x19 \"TCB\"",
+   "a.no-underline.hover:underline 24x19 \"CTG\"",
+   "a.no-underline.hover:underline 24x19 \"MCH\"",
+   "a.no-underline.hover:underline 24x19 \"HDB\"",
+   "a.no-underline.hover:underline 24x19 \"FPT\"",
+   "a.no-underline.hover:underline 24x19 \"ACB\"",
+   "a.no-underline.hover:underline 24x19 \"VCI\"",
+   "a.text-[12px] 70x18 \"Bản đồ nhiệt\"",
+   "button 53x17 \"Ngành\"",
+   "button 112x17 \"% (theo vốn hoá)\"",
+   "button 78x17 \"Tăng/Giảm\"",
+   "button 50x17 \"GTGD\"",
+   "button 34x17 \"Mã\"",
+   "button 37x17 \"Sàn\""
+  ],
+  "contrast": [],
+  "textNodes": 422,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 3332,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 59,
+   "jsKB": 445,
+   "allKB": 665
+  },
+  "ttiMs": 984,
+  "route": "chung-khoan-vn",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1110,
+   "ch": 1110,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 1239,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 16,
+  "smallTargets": [
+   "button 44x40 \"Tối\"",
+   "button 48x40 \"Sáng\"",
+   "button 44x40 \"M1\"",
+   "button 44x40 \"M5\"",
+   "button 44x40 \"M15\"",
+   "button 44x40 \"H1\"",
+   "button 44x40 \"H4\"",
+   "button 44x40 \"D1\"",
+   "a.font-semibold.no-underline 51x15 \"EURUSD\"",
+   "a.font-semibold.no-underline 51x15 \"GBPUSD\"",
+   "a.font-semibold.no-underline 50x15 \"USDJPY\"",
+   "a.font-semibold.no-underline 53x15 \"XAUUSD\"",
+   "a.font-semibold.no-underline 30x15 \"VNM\"",
+   "a.font-semibold.no-underline 23x15 \"FPT\"",
+   "a.font-semibold.no-underline 26x15 \"VCB\"",
+   "a.font-semibold.no-underline 33x15 \"AAPL\""
+  ],
+  "contrast": [],
+  "textNodes": 77,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 606,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 62,
+   "jsKB": 451,
+   "allKB": 671
+  },
+  "ttiMs": 938,
+  "route": "danh-sach",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 5366,
+   "ch": 5366,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 5496,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 4,
+  "smallTargetsN": 272,
+  "smallTargets": [
+   "button.cursor-pointer.font-semibold 54x19 \"ICPUSDT\"",
+   "button.w-full.min-w-[64px] 74x36 \"76\"",
+   "button.w-full.min-w-[64px] 74x36 \"52\"",
+   "button.w-full.min-w-[64px] 74x36 \"36\"",
+   "button.cursor-pointer.font-semibold 51x19 \"FILUSDT\"",
+   "button.w-full.min-w-[64px] 74x36 \"71\"",
+   "button.w-full.min-w-[64px] 74x36 \"53\"",
+   "button.w-full.min-w-[64px] 74x36 \"48\"",
+   "button.cursor-pointer.font-semibold 68x19 \"NEARUSDT\"",
+   "button.w-full.min-w-[64px] 74x36 \"54\"",
+   "button.cursor-pointer.font-semibold 29x19 \"EWZ\"",
+   "button.w-full.min-w-[64px] 74x36 \"70\"",
+   "button.cursor-pointer.font-semibold 36x19 \"CORN\"",
+   "button.w-full.min-w-[64px] 74x36 \"67\"",
+   "button.cursor-pointer.font-semibold 31x19 \"EWQ\"",
+   "button.cursor-pointer.font-semibold 51x19 \"EURUSD\"",
+   "button.w-full.min-w-[64px] 74x36 \"35\"",
+   "button.w-full.min-w-[64px] 74x36 \"32\"",
+   "button.w-full.min-w-[64px] 74x36 \"66\"",
+   "button.cursor-pointer.font-semibold 35x19 \"MSFT\"",
+   "button.w-full.min-w-[64px] 74x36 \"64\"",
+   "button.cursor-pointer.font-semibold 55x19 \"UNIUSDT\"",
+   "button.w-full.min-w-[64px] 74x36 \"20\"",
+   "button.w-full.min-w-[64px] 74x36 \"44\"",
+   "button.w-full.min-w-[64px] 74x36 \"63\""
+  ],
+  "contrast": [],
+  "textNodes": 779,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5859,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 70,
+   "jsKB": 459,
+   "allKB": 771
+  },
+  "ttiMs": 1103,
+  "route": "phan-tich",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 9037,
+   "ch": 9037,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 9167,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 75,
+  "smallTargets": [
+   "button 44x40 \"24h\"",
+   "button 44x40 \"3d\"",
+   "button 44x40 \"7d\"",
+   "button 55x40 \"Tất cả\"",
+   "a.no-underline.text-muted 80x17 \"Đọc bài gốc ↗\"",
+   "button.chip.cursor-pointer 63x20 \"AUDUSD\"",
+   "a.no-underline.font-semibold 299x37 \"Goldman: Gulf oil \"",
+   "button.chip.cursor-pointer 48x20 \"USOIL\"",
+   "a.no-underline.font-semibold 299x37 \"Weekend: Musk says\"",
+   "a.no-underline.font-semibold 299x37 \"More on Russia’s d\"",
+   "a.no-underline.font-semibold 299x19 \"Giới chuyên gia dự\"",
+   "button.chip.cursor-pointer 60x20 \"USDJPY\"",
+   "button.chip.cursor-pointer 61x20 \"GBPUSD\"",
+   "button.chip.cursor-pointer 63x20 \"XAUUSD\"",
+   "button.chip.cursor-pointer 38x20 \"SPX\"",
+   "button.chip.cursor-pointer 61x20 \"EURUSD\"",
+   "a.no-underline.font-semibold 299x37 \"Trump says Russia,\"",
+   "a.no-underline.font-semibold 299x37 \"Houthi strike on R\"",
+   "a.no-underline.font-semibold 299x37 \"Delivered crude pr\"",
+   "a.no-underline.font-semibold 299x37 \"Monday open indica\"",
+   "button.chip.cursor-pointer 63x20 \"USDCAD\"",
+   "button.chip.cursor-pointer 62x20 \"NZDUSD\"",
+   "button.chip.cursor-pointer 61x20 \"USDCHF\"",
+   "a.no-underline.font-semibold 299x37 \"How Low Can the St\"",
+   "a.no-underline.font-semibold 299x37 \"Phó thủ tướng: Doa\""
+  ],
+  "contrast": [],
+  "textNodes": 377,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18457,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 72,
+   "jsKB": 460,
+   "allKB": 785
+  },
+  "ttiMs": 965,
+  "route": "tin-tuc",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 683,
+   "ch": 683,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 812,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 3,
+  "smallTargets": [
+   "input 13x13 \"\""
+  ],
+  "contrast": [],
+  "textNodes": 67,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 74,
+   "jsKB": 463,
+   "allKB": 787
+  },
+  "ttiMs": 930,
+  "route": "lich",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 975,
+   "ch": 975,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 1104,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 10,
+  "smallTargets": [
+   "button#radix-_r_15_-trigger-cg 83x40 \"Chuyên gia\"",
+   "button#radix-_r_15_-trigger-tin 64x40 \"Tín hiệu\"",
+   "button#radix-_r_15_-trigger-vt 52x40 \"Vị thế\"",
+   "button#radix-_r_15_-trigger-dt 84x40 \"Đồng thuận\"",
+   "button 79x17 \"Chuyên gia\"",
+   "button 79x17 \"Điểm uy tín\"",
+   "button 33x17 \"Lãi\"",
+   "button 92x17 \"Sụt vốn tối đa\"",
+   "button 65x17 \"Số tháng\"",
+   "button 97x17 \"Người theo dõi\""
+  ],
+  "contrast": [],
+  "textNodes": 70,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 77,
+   "jsKB": 475,
+   "allKB": 799
+  },
+  "ttiMs": 936,
+  "route": "chuyen-gia",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2854,
+   "ch": 2854,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 2983,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 9,
+  "navItems": 4,
+  "smallTargetsN": 19,
+  "smallTargets": [
+   "button 135x40 \"demo-mt4-01 · MT4\"",
+   "button 134x40 \"demo-mt5-01 · MT5\"",
+   "button 44x40 \"1D\"",
+   "button 44x40 \"7D\"",
+   "button 44x40 \"30D\"",
+   "button 113x40 \"bh_6040 · paper\"",
+   "button 94x40 \"bh_fx · paper\"",
+   "button 95x40 \"bh_vn · paper\"",
+   "button 143x40 \"slow_trend_fx · pa\"",
+   "button 162x40 \"slow_trend_fx_v2 ·\"",
+   "button 165x40 \"slow_trend_global \"",
+   "button 207x40 \"slow_trend_global_\"",
+   "button 225x40 \"slow_trend_global_\"",
+   "button 184x40 \"slow_trend_global_\"",
+   "button 144x40 \"slow_trend_vn · pa\"",
+   "button 163x40 \"slow_trend_vn_v2 ·\"",
+   "button 161x40 \"smoke_fx_replay · \""
+  ],
+  "contrast": [],
+  "textNodes": 124,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 1899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 83,
+   "jsKB": 482,
+   "allKB": 809
+  },
+  "ttiMs": 962,
+  "route": "tai-khoan",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 5210,
+   "ch": 5210,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 5339,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 4,
+  "smallTargetsN": 8,
+  "smallTargets": [
+   "button 47x40 \"Lệnh\"",
+   "button 44x40 \"Fill\"",
+   "button 62x40 \"Sự kiện\"",
+   "button 99x40 \"Hiệu suất + CI\"",
+   "button 45x40 \"TCA\"",
+   "button 72x40 \"Suy giảm\"",
+   "button 97x40 \"Strategy card\"",
+   "button 71x40 \"Toàn vẹn\""
+  ],
+  "contrast": [],
+  "textNodes": 278,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 95,
+   "jsKB": 495,
+   "allKB": 835
+  },
+  "ttiMs": 980,
+  "route": "mo-phong",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 3293,
+   "ch": 3293,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 3423,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 4,
+  "smallTargetsN": 33,
+  "smallTargets": [
+   "button 57x40 \"7 ngày\"",
+   "button 66x40 \"30 ngày\"",
+   "button 66x40 \"90 ngày\"",
+   "button 55x40 \"Tất cả\"",
+   "button 71x40 \"Tuỳ chọn\"",
+   "button 55x40 \"Cả hai\"",
+   "button 44x40 \"Mua\"",
+   "button 44x40 \"Bán\"",
+   "button 79x40 \"Tổng quan\"",
+   "button 47x40 \"Lệnh\"",
+   "button 58x40 \"Kỷ luật\"",
+   "button 89x40 \"Review tuần\"",
+   "button.w-[18px].h-[18px] 18x18 \"2026-10-02: 8 lệnh\"",
+   "button 62x40 \"Giờ vào\"",
+   "button 44x40 \"Thứ\"",
+   "button 51x40 \"Phiên\"",
+   "button 62x40 \"Symbol\"",
+   "button 57x40 \"Hướng\"",
+   "button 81x40 \"EA / magic\"",
+   "button 49x17 \"Nhóm\"",
+   "button 44x17 \"Lệnh\"",
+   "button 36x17 \"Net\"",
+   "button 35x17 \"WR\"",
+   "button 30x17 \"PF\"",
+   "button 82x17 \"Expectancy\""
+  ],
+  "contrast": [],
+  "textNodes": 173,
+  "tinyFont": 13,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 99,
+   "jsKB": 512,
+   "allKB": 855
+  },
+  "ttiMs": 969,
+  "route": "nhat-ky",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 839,
+   "ch": 839,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 969,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 3,
+  "smallTargets": [
+   "button#radix-_r_20_-trigger-rules 104x40 \"Quy tắc của tôi\"",
+   "button#radix-_r_20_-trigger-events 116x40 \"Lịch sử kích hoạt\"",
+   "button#radix-_r_20_-trigger-system 125x40 \"Cảnh báo hệ thống\""
+  ],
+  "contrast": [],
+  "textNodes": 54,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 101,
+   "jsKB": 523,
+   "allKB": 866
+  },
+  "ttiMs": 929,
+  "route": "canh-bao",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 700,
+   "ch": 700,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 829,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 68,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 103,
+   "jsKB": 525,
+   "allKB": 868
+  },
+  "ttiMs": 930,
+  "route": "bao-cao",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2631,
+   "ch": 2631,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 2760,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 4,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 221,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi",
+   "Lỗi",
+   "lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2680,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 125,
+   "load": 125,
+   "transfer": 888
+  },
+  "res": {
+   "n": 108,
+   "jsKB": 528,
+   "allKB": 874
+  },
+  "ttiMs": 943,
+  "route": "he-thong",
+  "vp": "375",
+  "theme": "dark",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "route": "_palette",
+  "vp": "375",
+  "theme": "dark",
+  "pal": {
+   "opts": [
+    "Trang: Tổng quan#/tong-quan",
+    "Trang: Thị trường#/thi-truong",
+    "Trang: Chứng khoán VN#/chung-k",
+    "Trang: Danh sách theo dõi#/dan",
+    "Trang: Phân tích#/phan-tich",
+    "Trang: Tin tức#/tin-tuc",
+    "Trang: Lịch kinh tế#/lich",
+    "Trang: Chuyên gia#/chuyen-gia",
+    "Trang: Tài khoản#/tai-khoan",
+    "Trang: Mô phỏng#/mo-phong",
+    "Trang: Nhật ký#/nhat-ky",
+    "Trang: Cảnh báo#/canh-bao",
+    "Trang: Báo cáo#/bao-cao",
+    "Trang: Hệ thống#/he-thong",
+    "Lệnh: Đổi sang giao diện sángT",
+    "Lệnh: Tạo quy tắc cảnh báo mới"
+   ],
+   "dlg": true
+  },
+  "more": [
+   "Tổng quan",
+   "Thị trường",
+   "Chứng khoán VN",
+   "Danh sách theo dõi",
+   "Phân tích",
+   "Tin tức",
+   "Lịch kinh tế",
+   "Chuyên gia",
+   "Tài khoản",
+   "Mô phỏng",
+   "Nhật ký",
+   "Cảnh báo",
+   "Báo cáo",
+   "Hệ thống"
+  ],
+  "foc": [
+   "A:EURUSD outline=solid/2px fv",
+   "A:GBPUSD outline=solid/2px fv",
+   "A:USDJPY outline=solid/2px fv",
+   "A:XAUUSD outline=solid/2px fv",
+   "A:VNM outline=solid/2px fv",
+   "A:FPT outline=solid/2px fv",
+   "A:VCB outline=solid/2px fv",
+   "A:AAPL outline=solid/2px fv"
+  ]
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2826,
+   "ch": 2826,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 2955,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 4,
+  "smallTargetsN": 19,
+  "smallTargets": [
+   "a.no-underline.font-semibold 51x15 \"EURUSD\"",
+   "a.no-underline.font-semibold 51x15 \"GBPUSD\"",
+   "a.no-underline.font-semibold 50x15 \"USDJPY\"",
+   "a.no-underline.font-semibold 53x15 \"XAUUSD\"",
+   "a.no-underline.font-semibold 30x15 \"VNM\"",
+   "a.no-underline.font-semibold 23x15 \"FPT\"",
+   "a.no-underline.font-semibold 26x15 \"VCB\"",
+   "a.no-underline.font-semibold 33x15 \"AAPL\"",
+   "a.text-[12px].text-muted 49x18 \"Xem lịch\"",
+   "a.text-[12px].text-muted 53x18 \"Tất cả tin\"",
+   "a.no-underline.font-medium 323x36 \"Goldman: Gulf oil \"",
+   "a.no-underline.font-medium 292x36 \"Weekend: Musk says\"",
+   "a.no-underline.font-medium 293x36 \"More on Russia’s d\"",
+   "a.no-underline.font-medium 240x16 \"Giới chuyên gia dự\"",
+   "a.no-underline.font-medium 284x36 \"Trump says Russia,\"",
+   "a.no-underline.font-medium 287x36 \"Houthi strike on R\"",
+   "a.text-[12px].text-muted 40x18 \"Chi tiết\"",
+   "a.text-[12px].text-muted 36x18 \"Tất cả\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x1 e.g. \"15/15 service hoạt động\" <span.chip.up>"
+  ],
+  "textNodes": 203,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "lỗi"
+  ],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 2876,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 24,
+   "jsKB": 115,
+   "allKB": 305
+  },
+  "ttiMs": 3114,
+  "route": "tong-quan",
+  "vp": "375",
+  "theme": "light",
+  "errs": [
+   "The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. P"
+  ],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1226,
+   "ch": 1226,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 1355,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 48,
+  "smallTargets": [
+   "button.h-7.shrink-0 69x28 \"Tất cả 84\"",
+   "button.h-7.shrink-0 39x28 \"★ 0\"",
+   "button.h-7.shrink-0 60x28 \"Forex 7\"",
+   "button.h-7.shrink-0 75x28 \"Tiền ảo 29\"",
+   "button.h-7.shrink-0 144x28 \"Kim loại & hàng ho\"",
+   "button.h-7.shrink-0 104x28 \"Chỉ số & ETF 15\"",
+   "button.h-7.shrink-0 104x28 \"Cổ phiếu Mỹ 10\"",
+   "button.h-7.shrink-0 98x28 \"Cổ phiếu VN 3\"",
+   "button.h-7.shrink-0 83x28 \"Trái phiếu 9\"",
+   "button.grid.h-full 28x46 \"Yêu thích AUDUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích EURUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích GBPUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích NZDUSD\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDCAD\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDCHF\"",
+   "button.grid.h-full 28x46 \"Yêu thích USDJPY\"",
+   "button.grid.h-full 28x46 \"Yêu thích AAVEUSDT\"",
+   "button.grid.h-7 28x28 \"Thêm vào yêu thích\"",
+   "button 44x40 \"M1\"",
+   "button 44x40 \"M5\"",
+   "button 44x40 \"M15\"",
+   "button 44x40 \"H1\"",
+   "button 44x40 \"H4\"",
+   "button 44x40 \"D1\"",
+   "button.grid.h-8 32x32 \"log\""
+  ],
+  "contrast": [
+   "rgb(240, 184, 79) on rgb(255,255,255) cr=1.80 x1 e.g. \"1.12028\" <span.num>",
+   "rgb(90, 169, 255) on rgb(255,255,255) cr=2.46 x1 e.g. \"1.12055\" <span.num>"
+  ],
+  "textNodes": 112,
+  "tinyFont": 14,
+  "tinyFontSizes": {
+   "10.5": 14
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 859,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 45,
+   "jsKB": 206,
+   "allKB": 417
+  },
+  "ttiMs": 943,
+  "route": "thi-truong",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 3307,
+   "ch": 3307,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 3437,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 4,
+  "smallTargetsN": 47,
+  "smallTargets": [
+   "button 94x39 \"Tổng quan\"",
+   "button 147x39 \"Bản đồ nhiệt ngành\"",
+   "button 118x39 \"Top & trần/sàn\"",
+   "button 92x39 \"Khối ngoại\"",
+   "button 123x39 \"Bộ lọc cổ phiếu\"",
+   "button 103x39 \"Sự kiện & tin\"",
+   "button 94x39 \"Chi tiết mã\"",
+   "a.text-[12px] 40x18 \"Chi tiết\"",
+   "a.no-underline.hover:underline 24x19 \"VHM\"",
+   "a.no-underline.hover:underline 24x19 \"SHB\"",
+   "a.no-underline.hover:underline 24x19 \"NVL\"",
+   "a.no-underline.hover:underline 24x19 \"TCB\"",
+   "a.no-underline.hover:underline 24x19 \"CTG\"",
+   "a.no-underline.hover:underline 24x19 \"MCH\"",
+   "a.no-underline.hover:underline 24x19 \"HDB\"",
+   "a.no-underline.hover:underline 24x19 \"FPT\"",
+   "a.no-underline.hover:underline 24x19 \"ACB\"",
+   "a.no-underline.hover:underline 24x19 \"VCI\"",
+   "a.text-[12px] 70x18 \"Bản đồ nhiệt\"",
+   "button 53x17 \"Ngành\"",
+   "button 112x17 \"% (theo vốn hoá)\"",
+   "button 78x17 \"Tăng/Giảm\"",
+   "button 50x17 \"GTGD\"",
+   "button 34x17 \"Mã\"",
+   "button 37x17 \"Sàn\""
+  ],
+  "contrast": [],
+  "textNodes": 422,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 3332,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 59,
+   "jsKB": 445,
+   "allKB": 665
+  },
+  "ttiMs": 980,
+  "route": "chung-khoan-vn",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 1110,
+   "ch": 1110,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 1239,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 16,
+  "smallTargets": [
+   "button 44x40 \"Tối\"",
+   "button 48x40 \"Sáng\"",
+   "button 44x40 \"M1\"",
+   "button 44x40 \"M5\"",
+   "button 44x40 \"M15\"",
+   "button 44x40 \"H1\"",
+   "button 44x40 \"H4\"",
+   "button 44x40 \"D1\"",
+   "a.font-semibold.no-underline 51x15 \"EURUSD\"",
+   "a.font-semibold.no-underline 51x15 \"GBPUSD\"",
+   "a.font-semibold.no-underline 50x15 \"USDJPY\"",
+   "a.font-semibold.no-underline 53x15 \"XAUUSD\"",
+   "a.font-semibold.no-underline 30x15 \"VNM\"",
+   "a.font-semibold.no-underline 23x15 \"FPT\"",
+   "a.font-semibold.no-underline 26x15 \"VCB\"",
+   "a.font-semibold.no-underline 33x15 \"AAPL\""
+  ],
+  "contrast": [],
+  "textNodes": 77,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 606,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 62,
+   "jsKB": 451,
+   "allKB": 671
+  },
+  "ttiMs": 940,
+  "route": "danh-sach",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 5366,
+   "ch": 5366,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 5496,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 8,
+  "navItems": 4,
+  "smallTargetsN": 272,
+  "smallTargets": [
+   "button.cursor-pointer.font-semibold 54x19 \"ICPUSDT\"",
+   "button.w-full.min-w-[64px] 74x36 \"76\"",
+   "button.w-full.min-w-[64px] 74x36 \"52\"",
+   "button.w-full.min-w-[64px] 74x36 \"36\"",
+   "button.cursor-pointer.font-semibold 51x19 \"FILUSDT\"",
+   "button.w-full.min-w-[64px] 74x36 \"71\"",
+   "button.w-full.min-w-[64px] 74x36 \"53\"",
+   "button.w-full.min-w-[64px] 74x36 \"48\"",
+   "button.cursor-pointer.font-semibold 68x19 \"NEARUSDT\"",
+   "button.w-full.min-w-[64px] 74x36 \"54\"",
+   "button.cursor-pointer.font-semibold 29x19 \"EWZ\"",
+   "button.w-full.min-w-[64px] 74x36 \"70\"",
+   "button.cursor-pointer.font-semibold 36x19 \"CORN\"",
+   "button.w-full.min-w-[64px] 74x36 \"67\"",
+   "button.cursor-pointer.font-semibold 31x19 \"EWQ\"",
+   "button.cursor-pointer.font-semibold 51x19 \"EURUSD\"",
+   "button.w-full.min-w-[64px] 74x36 \"35\"",
+   "button.w-full.min-w-[64px] 74x36 \"32\"",
+   "button.w-full.min-w-[64px] 74x36 \"66\"",
+   "button.cursor-pointer.font-semibold 35x19 \"MSFT\"",
+   "button.w-full.min-w-[64px] 74x36 \"64\"",
+   "button.cursor-pointer.font-semibold 55x19 \"UNIUSDT\"",
+   "button.w-full.min-w-[64px] 74x36 \"20\"",
+   "button.w-full.min-w-[64px] 74x36 \"44\"",
+   "button.w-full.min-w-[64px] 74x36 \"63\""
+  ],
+  "contrast": [
+   "rgb(8, 122, 82) on rgb(221,232,233) cr=4.28 x2 e.g. \"42 giây trước\" <span.num>"
+  ],
+  "textNodes": 778,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 5848,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 70,
+   "jsKB": 459,
+   "allKB": 772
+  },
+  "ttiMs": 1106,
+  "route": "phan-tich",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 9037,
+   "ch": 9037,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 9167,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 75,
+  "smallTargets": [
+   "button 44x40 \"24h\"",
+   "button 44x40 \"3d\"",
+   "button 44x40 \"7d\"",
+   "button 55x40 \"Tất cả\"",
+   "a.no-underline.text-muted 80x17 \"Đọc bài gốc ↗\"",
+   "button.chip.cursor-pointer 63x20 \"AUDUSD\"",
+   "a.no-underline.font-semibold 299x37 \"Goldman: Gulf oil \"",
+   "button.chip.cursor-pointer 48x20 \"USOIL\"",
+   "a.no-underline.font-semibold 299x37 \"Weekend: Musk says\"",
+   "a.no-underline.font-semibold 299x37 \"More on Russia’s d\"",
+   "a.no-underline.font-semibold 299x19 \"Giới chuyên gia dự\"",
+   "button.chip.cursor-pointer 60x20 \"USDJPY\"",
+   "button.chip.cursor-pointer 61x20 \"GBPUSD\"",
+   "button.chip.cursor-pointer 63x20 \"XAUUSD\"",
+   "button.chip.cursor-pointer 38x20 \"SPX\"",
+   "button.chip.cursor-pointer 61x20 \"EURUSD\"",
+   "a.no-underline.font-semibold 299x37 \"Trump says Russia,\"",
+   "a.no-underline.font-semibold 299x37 \"Houthi strike on R\"",
+   "a.no-underline.font-semibold 299x37 \"Delivered crude pr\"",
+   "a.no-underline.font-semibold 299x37 \"Monday open indica\"",
+   "button.chip.cursor-pointer 63x20 \"USDCAD\"",
+   "button.chip.cursor-pointer 62x20 \"NZDUSD\"",
+   "button.chip.cursor-pointer 61x20 \"USDCHF\"",
+   "a.no-underline.font-semibold 299x37 \"How Low Can the St\"",
+   "a.no-underline.font-semibold 299x37 \"Phó thủ tướng: Doa\""
+  ],
+  "contrast": [],
+  "textNodes": 377,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 18457,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 72,
+   "jsKB": 460,
+   "allKB": 785
+  },
+  "ttiMs": 968,
+  "route": "tin-tuc",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 683,
+   "ch": 683,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 812,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 3,
+  "smallTargets": [
+   "input 13x13 \"\""
+  ],
+  "contrast": [],
+  "textNodes": 67,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 626,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 74,
+   "jsKB": 463,
+   "allKB": 788
+  },
+  "ttiMs": 930,
+  "route": "lich",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 975,
+   "ch": 975,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 1104,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 1,
+  "navItems": 4,
+  "smallTargetsN": 10,
+  "smallTargets": [
+   "button#radix-_r_v_-trigger-cg 83x40 \"Chuyên gia\"",
+   "button#radix-_r_v_-trigger-tin 64x40 \"Tín hiệu\"",
+   "button#radix-_r_v_-trigger-vt 52x40 \"Vị thế\"",
+   "button#radix-_r_v_-trigger-dt 84x40 \"Đồng thuận\"",
+   "button 79x17 \"Chuyên gia\"",
+   "button 79x17 \"Điểm uy tín\"",
+   "button 33x17 \"Lãi\"",
+   "button 92x17 \"Sụt vốn tối đa\"",
+   "button 65x17 \"Số tháng\"",
+   "button 97x17 \"Người theo dõi\""
+  ],
+  "contrast": [],
+  "textNodes": 70,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 877,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 77,
+   "jsKB": 475,
+   "allKB": 800
+  },
+  "ttiMs": 940,
+  "route": "chuyen-gia",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2854,
+   "ch": 2854,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 2983,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 9,
+  "navItems": 4,
+  "smallTargetsN": 19,
+  "smallTargets": [
+   "button 135x40 \"demo-mt4-01 · MT4\"",
+   "button 134x40 \"demo-mt5-01 · MT5\"",
+   "button 44x40 \"1D\"",
+   "button 44x40 \"7D\"",
+   "button 44x40 \"30D\"",
+   "button 113x40 \"bh_6040 · paper\"",
+   "button 94x40 \"bh_fx · paper\"",
+   "button 95x40 \"bh_vn · paper\"",
+   "button 143x40 \"slow_trend_fx · pa\"",
+   "button 162x40 \"slow_trend_fx_v2 ·\"",
+   "button 165x40 \"slow_trend_global \"",
+   "button 207x40 \"slow_trend_global_\"",
+   "button 225x40 \"slow_trend_global_\"",
+   "button 184x40 \"slow_trend_global_\"",
+   "button 144x40 \"slow_trend_vn · pa\"",
+   "button 163x40 \"slow_trend_vn_v2 ·\"",
+   "button 161x40 \"smoke_fx_replay · \""
+  ],
+  "contrast": [],
+  "textNodes": 124,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity",
+   "Balance"
+  ],
+  "txtLen": 1899,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 83,
+   "jsKB": 482,
+   "allKB": 810
+  },
+  "ttiMs": 960,
+  "route": "tai-khoan",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 5210,
+   "ch": 5210,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 5339,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 18,
+  "navItems": 4,
+  "smallTargetsN": 8,
+  "smallTargets": [
+   "button 47x40 \"Lệnh\"",
+   "button 44x40 \"Fill\"",
+   "button 62x40 \"Sự kiện\"",
+   "button 99x40 \"Hiệu suất + CI\"",
+   "button 45x40 \"TCA\"",
+   "button 72x40 \"Suy giảm\"",
+   "button 97x40 \"Strategy card\"",
+   "button 71x40 \"Toàn vẹn\""
+  ],
+  "contrast": [
+   "rgb(196, 42, 73) on rgb(235,228,234) cr=4.45 x3 e.g. \"2 ngày trước\" <span.num>",
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x2 e.g. \"MÔ PHỎNG — không phải ti\" <span.chip.accent>"
+  ],
+  "textNodes": 278,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 4629,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 95,
+   "jsKB": 495,
+   "allKB": 835
+  },
+  "ttiMs": 980,
+  "route": "mo-phong",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 3293,
+   "ch": 3293,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 3423,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 15,
+  "navItems": 4,
+  "smallTargetsN": 33,
+  "smallTargets": [
+   "button 57x40 \"7 ngày\"",
+   "button 66x40 \"30 ngày\"",
+   "button 66x40 \"90 ngày\"",
+   "button 55x40 \"Tất cả\"",
+   "button 71x40 \"Tuỳ chọn\"",
+   "button 55x40 \"Cả hai\"",
+   "button 44x40 \"Mua\"",
+   "button 44x40 \"Bán\"",
+   "button 79x40 \"Tổng quan\"",
+   "button 47x40 \"Lệnh\"",
+   "button 58x40 \"Kỷ luật\"",
+   "button 89x40 \"Review tuần\"",
+   "button.w-[18px].h-[18px] 18x18 \"2026-10-02: 8 lệnh\"",
+   "button 62x40 \"Giờ vào\"",
+   "button 44x40 \"Thứ\"",
+   "button 51x40 \"Phiên\"",
+   "button 62x40 \"Symbol\"",
+   "button 57x40 \"Hướng\"",
+   "button 81x40 \"EA / magic\"",
+   "button 49x17 \"Nhóm\"",
+   "button 44x17 \"Lệnh\"",
+   "button 36x17 \"Net\"",
+   "button 35x17 \"WR\"",
+   "button 30x17 \"PF\"",
+   "button 82x17 \"Expectancy\""
+  ],
+  "contrast": [
+   "rgb(150, 89, 10) on rgb(231,229,228) cr=4.49 x1 e.g. \"Paper\" <span.chip.accent>"
+  ],
+  "textNodes": 173,
+  "tinyFont": 13,
+  "tinyFontSizes": {
+   "10": 8,
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Profit"
+  ],
+  "txtLen": 3383,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 99,
+   "jsKB": 512,
+   "allKB": 855
+  },
+  "ttiMs": 965,
+  "route": "nhat-ky",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 839,
+   "ch": 839,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 969,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 3,
+  "smallTargets": [
+   "button#radix-_r_1q_-trigger-rules 104x40 \"Quy tắc của tôi\"",
+   "button#radix-_r_1q_-trigger-events 116x40 \"Lịch sử kích hoạt\"",
+   "button#radix-_r_1q_-trigger-system 125x40 \"Cảnh báo hệ thống\""
+  ],
+  "contrast": [],
+  "textNodes": 54,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [
+   "Equity"
+  ],
+  "txtLen": 545,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 101,
+   "jsKB": 523,
+   "allKB": 866
+  },
+  "ttiMs": 926,
+  "route": "canh-bao",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 700,
+   "ch": 700,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 829,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 2,
+  "navItems": 4,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 68,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [],
+  "enWords": [],
+  "txtLen": 587,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 103,
+   "jsKB": 525,
+   "allKB": 868
+  },
+  "ttiMs": 926,
+  "route": "bao-cao",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ },
+ {
+  "docScrollX": 0,
+  "bodyScrollX": 0,
+  "mainScroll": {
+   "sh": 2631,
+   "ch": 2631,
+   "sw": 375,
+   "cw": 375
+  },
+  "docScrollY": {
+   "sh": 2760,
+   "ch": 812
+  },
+  "overflowEls": [],
+  "overflowN": 0,
+  "clipped": [],
+  "clippedN": 0,
+  "panelOverlap": [],
+  "panels": 6,
+  "navItems": 4,
+  "smallTargetsN": 0,
+  "smallTargets": [],
+  "contrast": [],
+  "textNodes": 221,
+  "tinyFont": 5,
+  "tinyFontSizes": {
+   "10.5": 5
+  },
+  "loadingLeft": 0,
+  "skeletons": 0,
+  "errWords": [
+   "Lỗi",
+   "Lỗi",
+   "lỗi"
+  ],
+  "enWords": [],
+  "txtLen": 2681,
+  "banned": [],
+  "imgsBroken": 0,
+  "perf": {
+   "dcl": 136,
+   "load": 136,
+   "transfer": 888
+  },
+  "res": {
+   "n": 108,
+   "jsKB": 528,
+   "allKB": 875
+  },
+  "ttiMs": 945,
+  "route": "he-thong",
+  "vp": "375",
+  "theme": "light",
+  "errs": [],
+  "bad": []
+ }
+]

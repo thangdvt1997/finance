@@ -1,0 +1,27 @@
+{
+  "name": "Trạm theo dõi thị trường",
+  "short_name": "Trạm TT",
+  "description": "Bảng theo dõi giá, tin tức, lịch kinh tế và phân tích kỹ thuật (chỉ đọc, không đặt lệnh).",
+  "lang": "vi",
+  "dir": "ltr",
+  "id": "/",
+  "start_url": "/#/tong-quan",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#090d13",
+  "background_color": "#090d13",
+  "categories": ["finance", "business"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Thị trường", "short_name": "Thị trường", "url": "/#/thi-truong", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Cảnh báo", "short_name": "Cảnh báo", "url": "/#/canh-bao", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Danh sách theo dõi", "short_name": "Theo dõi", "url": "/#/theo-doi", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-2",
+ "title": "KB-2 · EURUSD M15 (backtest, thắng +2.00R)",
+ "symbol": "EURUSD",
+ "tf": "M15",
+ "ts": "2009-07-03T14:30:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát chốt lời (TP) sau 58 nến. nêm/tam giác. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "thang",
+ "result": {
+  "outcome": "tp",
+  "r": 2.0,
+  "entry_ts": "2009-07-03 14:45:00",
+  "exit_ts": "2009-07-06 06:00:00",
+  "entry": 1.39845,
+  "sl": 1.401828,
+  "tp": 1.391693,
+  "exit": 1.391693
+ },
+ "score": 92.3,
+ "levels": {
+  "resistance": 1.400718,
+  "support": 1.399334,
+  "wave_high": 1.41965,
+  "wave_low": 1.39273,
+  "entry": 1.39856,
+  "sl": 1.401828,
+  "r": 0.003268,
+  "atr": 0.000874,
+  "tp_1r": 1.395292,
+  "tp_2r": 1.392023,
+  "tp_3r": 1.388755,
+  "prev_low": 1.39273
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 16.5 ATR, 14 nến đỏ dài, xanh 37%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "hồi 37% sóng (1)"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "3 đỉnh thấp dần"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "3 đáy cao dần"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "co hẹp x0.29"
+  },
+  {
+   "id": 6,
+   "ok": true,
+   "detail": "nhấn chìm giảm thân 1.58 ATR, đóng dưới cạnh dưới 1.40"
+  }
+ ],
+ "points": [
+  {
+   "label": "",
+   "t": "2009-07-01T15:00:00+00:00",
+   "p": 1.41965
+  },
+  {
+   "label": "(1)",
+   "t": "2009-07-02T20:45:00+00:00",
+   "p": 1.39273
+  },
+  {
+   "label": "(2)",
+   "t": "2009-07-03T05:45:00+00:00",
+   "p": 1.40274
+  }
+ ]
+}

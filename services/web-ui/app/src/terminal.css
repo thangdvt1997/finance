@@ -1,0 +1,86 @@
+/* ===== Terminal: workspace, lưới widget, khung widget (dùng biến màu của index.css) ===== */
+.page-terminal { gap: .5rem; }
+.tm-root { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+@media (min-width: 1024px) { .tm-root { min-height: 100%; } }
+.tm-bar { display: flex; align-items: center; gap: .6rem; min-width: 0; padding-bottom: .45rem; border-bottom: 1px solid var(--line); }
+.tm-tabs { scrollbar-width: none; flex: 1 1 auto; }
+.tm-tabs::-webkit-scrollbar { display: none; }
+.tm-tabs-in { scrollbar-width: none; }
+.tm-tabs-in::-webkit-scrollbar { display: none; }
+.tm-tab { height: 2rem; padding: 0 .85rem; border: 1px solid transparent; border-radius: 6px; background: transparent; color: var(--muted);
+  font: inherit; font-size: 12.5px; font-weight: 560; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; }
+.tm-tab:hover { color: var(--fg); background: var(--panel2); }
+.tm-tab.on { color: var(--accent); background: var(--accent-bg); border-color: color-mix(in srgb, var(--accent) 38%, transparent); }
+.tm-note { display: flex; align-items: center; gap: .5rem; padding: .4rem .7rem; border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); background: var(--accent-bg); border-radius: 6px; font-size: 12.5px; }
+.tm-note span { flex: 1; }
+.tm-stage { flex: 1 1 auto; min-height: 0; position: relative; }
+.tm-empty { display: flex; flex-direction: column; align-items: center; gap: .6rem; text-align: center; padding: 3rem 1rem; border: 1px dashed var(--line2); border-radius: 10px; }
+.tm-grid { min-height: 200px; }
+
+/* khung widget */
+.tm-w { height: 100%; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; min-width: 0; }
+.tm-w:hover { border-color: var(--line2); }
+.tm-wh { display: flex; align-items: center; gap: .4rem; padding: 0 .4rem 0 .55rem; height: 30px; flex: none; border-bottom: 1px solid var(--line); background: linear-gradient(var(--panel2), var(--panel)); user-select: none; }
+.tm-drag { cursor: grab; } .tm-drag:active { cursor: grabbing; }
+.tm-grip { opacity: .0; transition: opacity .15s; margin-left: -.15rem; }
+.tm-wh:hover .tm-grip, .tm-wh:focus-within .tm-grip { opacity: 1; }
+.tm-wt { margin: 0; font-size: 12px; font-weight: 650; letter-spacing: .01em; color: var(--fg); min-width: 0; }
+.tm-wb { flex: 1 1 0; min-height: 0; overflow: auto; position: relative; }
+.tm-ib { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 5px; border: 0; background: transparent; color: var(--muted); cursor: pointer; padding: 0; }
+.tm-ib:hover, .tm-ib[aria-expanded="true"] { background: var(--line); color: var(--fg); }
+.tm-pop { animation: tm-in .08s ease-out; }
+@keyframes tm-in { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+
+/* tiện ích dành cho widget */
+.tm-pad { padding: .55rem .65rem; }
+.tm-fill { height: 100%; min-height: 0; display: flex; flex-direction: column; }
+.tm-scroll { flex: 1 1 0; min-height: 0; overflow: auto; }
+.tm-sub { font-size: 11.5px; color: var(--faint); }
+.tm-tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.tm-tbl th { position: sticky; top: 0; z-index: 1; background: var(--panel); text-align: left; font-weight: 560; font-size: 11px; color: var(--muted); padding: .3rem .5rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.tm-tbl th.r, .tm-tbl td.r { text-align: right; }
+.tm-tbl td { padding: .26rem .5rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.tm-tbl tbody tr { cursor: pointer; }
+.tm-tbl tbody tr:hover { background: var(--panel2); }
+.tm-tbl tbody tr[aria-selected="true"] { background: var(--accent-bg); box-shadow: inset 2px 0 0 var(--accent); }
+.tm-tbl tr.tm-grp td { background: var(--panel2); color: var(--muted); font-size: 11px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; cursor: default; }
+.tm-tbl th button { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 2px; }
+.tm-tbl th button:focus-visible { outline: 2px solid var(--accent); }
+.tm-dragover { box-shadow: inset 0 2px 0 var(--accent); }
+.tm-flag { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--line2); background: transparent; padding: 0; cursor: pointer; }
+
+/* react-grid-layout: giao diện hợp theme */
+.react-grid-item.react-grid-placeholder { background: var(--accent); opacity: .14; border-radius: 8px; }
+.react-grid-item.react-draggable-dragging { z-index: 20; box-shadow: 0 12px 34px rgba(0,0,0,.45); opacity: .96; }
+.react-grid-item > .react-resizable-handle { width: 18px; height: 18px; z-index: 5; }
+.react-grid-item > .react-resizable-handle::after { border-right: 2px solid var(--muted) !important; border-bottom: 2px solid var(--muted) !important; width: 7px; height: 7px; right: 4px; bottom: 4px; opacity: .0; transition: opacity .15s; }
+.react-grid-item:hover > .react-resizable-handle::after { opacity: .9; }
+
+/* phóng to widget */
+.tm-maxlayer { position: fixed; inset: 0; z-index: 90; display: flex; padding: 1.5vh 1.5vw; }
+.tm-maxback { position: absolute; inset: 0; background: rgba(0,0,0,.66); }
+.tm-maxbox { position: relative; flex: 1; min-width: 0; min-height: 0; box-shadow: 0 20px 60px rgba(0,0,0,.6); border-radius: 8px; }
+
+/* kiosk / màn hình treo tường */
+html.tm-kiosk header.sticky, html.tm-kiosk nav.bottom-nav, html.tm-kiosk .sr-only-skip { display: none !important; }
+html.tm-kiosk .app-pad { padding: 0 !important; }
+html.tm-kiosk #main { padding: .5rem !important; }
+.tm-kctl { position: fixed; top: 8px; right: 8px; z-index: 60; display: flex; align-items: center; gap: .15rem; padding: .25rem .4rem; border: 1px solid var(--line2); border-radius: 8px;
+  background: color-mix(in srgb, var(--panel) 92%, transparent); opacity: .3; transition: opacity .2s; backdrop-filter: blur(6px); }
+.tm-kctl:hover, .tm-kctl:focus-within { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .tm-pop { animation: none; } .tm-grip, .react-grid-item > .react-resizable-handle::after { transition: none; } }
+.tm-nopause:hover .tape-track { animation-play-state: running; }
+.tm-tbl tbody tr:hover .tm-rm, .tm-rm:focus-visible { opacity: 1 !important; }
+
+/* widget "bare": ẩn tiêu đề, chỉ hiện khi rê chuột/focus (băng giá chạy ngang…) */
+.tm-bare { position: relative; }
+.tm-bare .tm-wh { position: absolute; inset: 0 0 auto 0; z-index: 4; opacity: 0; background: color-mix(in srgb, var(--panel) 92%, transparent); transition: opacity .12s; }
+.tm-bare:hover .tm-wh, .tm-bare:focus-within .tm-wh { opacity: 1; }
+.tm-bare .tm-wb { height: 100%; }
+@media (prefers-reduced-motion: reduce) { .tm-bare .tm-wh { transition: none; } }
+
+@media (max-width: 700px) {
+  .tm-bar { flex-wrap: wrap; row-gap: .4rem; }
+  .tm-tabs { flex: 1 1 100%; order: 2; }
+  .tm-root, .tm-stage { max-width: 100%; }
+}

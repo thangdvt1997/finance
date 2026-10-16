@@ -1,0 +1,28 @@
+[project]
+name = "news-collector"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "tscommon",
+  "httpx>=0.27",
+  "feedparser>=6.0",
+  "pyyaml>=6.0",
+  "icalendar>=5.0",
+  "defusedxml>=0.7",
+  "tzdata",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "fakeredis>=2.23", "pytest-asyncio>=0.23"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["src"]

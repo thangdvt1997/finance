@@ -1,0 +1,9 @@
+# briefing (bản tin AI). Nếu gỡ service khỏi compose thì xóa file này.
+endpoints:
+  - name: briefing
+    group: services
+    url: "http://briefing:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "briefing không phản hồi" }

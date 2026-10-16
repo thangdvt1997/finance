@@ -1,0 +1,242 @@
+[
+{
+"market_and_exchange_names": "AUSTRALIAN DOLLAR - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "232741",
+"open_interest_all": "328682",
+"noncomm_positions_long_all": "100138",
+"noncomm_positions_short_all": "198726",
+"change_in_noncomm_long_all": "-9552",
+"change_in_noncomm_short_all": "25797"
+},
+{
+"market_and_exchange_names": "E-MINI S&P 500 - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "13874A",
+"open_interest_all": "1932227",
+"noncomm_positions_long_all": "212009",
+"noncomm_positions_short_all": "366079",
+"change_in_noncomm_long_all": "2422",
+"change_in_noncomm_short_all": "13993"
+},
+{
+"market_and_exchange_names": "NZ DOLLAR - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "112741",
+"open_interest_all": "129883",
+"noncomm_positions_long_all": "27821",
+"noncomm_positions_short_all": "57167",
+"change_in_noncomm_long_all": "4483",
+"change_in_noncomm_short_all": "16514"
+},
+{
+"market_and_exchange_names": "EURO FX - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "099741",
+"open_interest_all": "870291",
+"noncomm_positions_long_all": "243020",
+"noncomm_positions_short_all": "342352",
+"change_in_noncomm_long_all": "4837",
+"change_in_noncomm_short_all": "40913"
+},
+{
+"market_and_exchange_names": "USD INDEX - ICE FUTURES U.S.",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "098662",
+"open_interest_all": "51095",
+"noncomm_positions_long_all": "30526",
+"noncomm_positions_short_all": "18515",
+"change_in_noncomm_long_all": "784",
+"change_in_noncomm_short_all": "654"
+},
+{
+"market_and_exchange_names": "JAPANESE YEN - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "097741",
+"open_interest_all": "368138",
+"noncomm_positions_long_all": "190368",
+"noncomm_positions_short_all": "128043",
+"change_in_noncomm_long_all": "14102",
+"change_in_noncomm_short_all": "7217"
+},
+{
+"market_and_exchange_names": "WTI-PHYSICAL - NEW YORK MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "067651",
+"open_interest_all": "1889422",
+"noncomm_positions_long_all": "336706",
+"noncomm_positions_short_all": "237646",
+"change_in_noncomm_long_all": "-24645",
+"change_in_noncomm_short_all": "-14242"
+},
+{
+"market_and_exchange_names": "SILVER - COMMODITY EXCHANGE INC.",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "084691",
+"open_interest_all": "105130",
+"noncomm_positions_long_all": "33648",
+"noncomm_positions_short_all": "10495",
+"change_in_noncomm_long_all": "166",
+"change_in_noncomm_short_all": "-904"
+},
+{
+"market_and_exchange_names": "GOLD - COMMODITY EXCHANGE INC.",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "088691",
+"open_interest_all": "396109",
+"noncomm_positions_long_all": "245403",
+"noncomm_positions_short_all": "35068",
+"change_in_noncomm_long_all": "-4333",
+"change_in_noncomm_short_all": "3964"
+},
+{
+"market_and_exchange_names": "CANADIAN DOLLAR - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "090741",
+"open_interest_all": "371048",
+"noncomm_positions_long_all": "91109",
+"noncomm_positions_short_all": "181272",
+"change_in_noncomm_long_all": "6062",
+"change_in_noncomm_short_all": "17554"
+},
+{
+"market_and_exchange_names": "SWISS FRANC - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "092741",
+"open_interest_all": "137185",
+"noncomm_positions_long_all": "27818",
+"noncomm_positions_short_all": "51558",
+"change_in_noncomm_long_all": "2990",
+"change_in_noncomm_short_all": "2113"
+},
+{
+"market_and_exchange_names": "BRITISH POUND - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-10-06T00:00:00.000",
+"cftc_contract_market_code": "096742",
+"open_interest_all": "265890",
+"noncomm_positions_long_all": "45259",
+"noncomm_positions_short_all": "142870",
+"change_in_noncomm_long_all": "3863",
+"change_in_noncomm_short_all": "10399"
+},
+{
+"market_and_exchange_names": "AUSTRALIAN DOLLAR - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "232741",
+"open_interest_all": "309800",
+"noncomm_positions_long_all": "109690",
+"noncomm_positions_short_all": "172929",
+"change_in_noncomm_long_all": "1157",
+"change_in_noncomm_short_all": "17582"
+},
+{
+"market_and_exchange_names": "WTI-PHYSICAL - NEW YORK MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "067651",
+"open_interest_all": "1878576",
+"noncomm_positions_long_all": "361351",
+"noncomm_positions_short_all": "251888",
+"change_in_noncomm_long_all": "541",
+"change_in_noncomm_short_all": "32184"
+},
+{
+"market_and_exchange_names": "SILVER - COMMODITY EXCHANGE INC.",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "084691",
+"open_interest_all": "107047",
+"noncomm_positions_long_all": "33482",
+"noncomm_positions_short_all": "11399",
+"change_in_noncomm_long_all": "-1219",
+"change_in_noncomm_short_all": "2142"
+},
+{
+"market_and_exchange_names": "GOLD - COMMODITY EXCHANGE INC.",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "088691",
+"open_interest_all": "406456",
+"noncomm_positions_long_all": "249736",
+"noncomm_positions_short_all": "31104",
+"change_in_noncomm_long_all": "-4246",
+"change_in_noncomm_short_all": "2975"
+},
+{
+"market_and_exchange_names": "CANADIAN DOLLAR - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "090741",
+"open_interest_all": "347274",
+"noncomm_positions_long_all": "85047",
+"noncomm_positions_short_all": "163718",
+"change_in_noncomm_long_all": "-983",
+"change_in_noncomm_short_all": "24478"
+},
+{
+"market_and_exchange_names": "SWISS FRANC - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "092741",
+"open_interest_all": "133872",
+"noncomm_positions_long_all": "24828",
+"noncomm_positions_short_all": "49445",
+"change_in_noncomm_long_all": "2639",
+"change_in_noncomm_short_all": "504"
+},
+{
+"market_and_exchange_names": "BRITISH POUND - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "096742",
+"open_interest_all": "251740",
+"noncomm_positions_long_all": "41396",
+"noncomm_positions_short_all": "132471",
+"change_in_noncomm_long_all": "-13059",
+"change_in_noncomm_short_all": "-4552"
+},
+{
+"market_and_exchange_names": "JAPANESE YEN - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "097741",
+"open_interest_all": "360720",
+"noncomm_positions_long_all": "176266",
+"noncomm_positions_short_all": "120826",
+"change_in_noncomm_long_all": "-16008",
+"change_in_noncomm_short_all": "534"
+},
+{
+"market_and_exchange_names": "USD INDEX - ICE FUTURES U.S.",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "098662",
+"open_interest_all": "48342",
+"noncomm_positions_long_all": "29742",
+"noncomm_positions_short_all": "17861",
+"change_in_noncomm_long_all": "1974",
+"change_in_noncomm_short_all": "423"
+},
+{
+"market_and_exchange_names": "EURO FX - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "099741",
+"open_interest_all": "853959",
+"noncomm_positions_long_all": "238183",
+"noncomm_positions_short_all": "301439",
+"change_in_noncomm_long_all": "17475",
+"change_in_noncomm_short_all": "28397"
+},
+{
+"market_and_exchange_names": "NZ DOLLAR - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "112741",
+"open_interest_all": "114777",
+"noncomm_positions_long_all": "23338",
+"noncomm_positions_short_all": "40653",
+"change_in_noncomm_long_all": "1767",
+"change_in_noncomm_short_all": "7702"
+},
+{
+"market_and_exchange_names": "E-MINI S&P 500 - CHICAGO MERCANTILE EXCHANGE",
+"report_date_as_yyyy_mm_dd": "2026-09-29T00:00:00.000",
+"cftc_contract_market_code": "13874A",
+"open_interest_all": "1895922",
+"noncomm_positions_long_all": "209587",
+"noncomm_positions_short_all": "352086",
+"change_in_noncomm_long_all": "-8456",
+"change_in_noncomm_short_all": "815"
+}
+]

@@ -1,0 +1,22 @@
+// QA vai trò client: đăng nhập tài khoản MT thử, kiểm tra thanh điều hướng chỉ có trang cho phép client và #/terminal bị chuyển hướng.
+import { chromium } from "playwright";
+import fs from "node:fs";
+const BASE = process.env.BASE || "http://127.0.0.1:8580";
+const OUT = process.env.OUT || "out";
+fs.mkdirSync(OUT, { recursive: true });
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ viewport: { width: 1366, height: 768 }, baseURL: BASE });
+await ctx.addInitScript(() => { try { localStorage.setItem("ts-ux", JSON.stringify({ onboarded: 99 })); } catch { /* bỏ */ } });
+const r = await ctx.request.post(`${BASE}/auth/login`, { data: { platform: "mt5", login: process.env.QA_USER, secret: process.env.QA_PASS }, headers: { Origin: BASE, "Content-Type": "application/json" } });
+console.log("login", r.status(), (await r.text()).slice(0, 160));
+const page = await ctx.newPage();
+page.setDefaultTimeout(8000);
+const errs = [];
+page.on("pageerror", (e) => errs.push(String(e.message).slice(0, 200)));
+await page.goto(`${BASE}/#/terminal`, { waitUntil: "load" }).catch(() => {});
+await page.waitForTimeout(3500);
+const info = await page.evaluate(() => ({ hash: location.hash, nav: [...document.querySelectorAll("nav[aria-label='Điều hướng chính'] a")].map((a) => a.textContent.trim()), h1: document.querySelector("h1")?.textContent }));
+console.log("client-view", JSON.stringify(info));
+await page.screenshot({ path: `${OUT}/client-role.png` });
+console.log("errors", JSON.stringify(errs));
+await browser.close();

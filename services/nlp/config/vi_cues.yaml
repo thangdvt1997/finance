@@ -1,0 +1,124 @@
+# Từ khoá tín hiệu cảm xúc / hướng giá tiếng Việt cho hiệu chỉnh sentiment VI (models.ViCalibrator).
+# Khớp trên chuỗi đã bỏ dấu, theo ranh giới từ. Câu VI KHÔNG chứa từ nào dưới đây -> trả neutral
+# (model ViSoBERT huấn luyện trên review nên hay gán positive tin cậy cao cho câu trung tính).
+# Chỉnh được không cần đổi mã; thêm từ không dấu hoặc có dấu đều được.
+positive:
+  - tăng
+  - tăng trưởng
+  - tăng mạnh
+  - tăng trần
+  - bứt phá
+  - đột phá
+  - vượt đỉnh
+  - kỷ lục
+  - lập đỉnh
+  - phục hồi
+  - hồi phục
+  - khởi sắc
+  - khả quan
+  - tích cực
+  - lạc quan
+  - thuận lợi
+  - cải thiện
+  - lợi nhuận
+  - lãi
+  - lãi ròng
+  - cổ tức
+  - mua ròng
+  - nâng hạng
+  - nâng
+  - thăng hạng
+  - hưởng lợi
+  - thành công
+  - ấn tượng
+  - vượt kỳ vọng
+  - vượt
+  - tốt
+  - tuyệt vời
+  - hài lòng
+  - vui
+  - hạnh phúc
+  - tuyệt
+  - đẹp
+  - ngon
+  - thích
+  - yêu
+  - xuất sắc
+  - hiệu quả
+  - ổn định
+  - săn đón
+  - hỗ trợ
+  - giảm lãi suất
+  - giảm nợ xấu
+  - xanh
+  - bùng nổ
+  - thắng
+  - nhiệt tình
+  - chất lượng
+  - khen
+  - tăng vọt
+  - bội thu
+  - cao nhất
+negative:
+  - giảm
+  - giảm sâu
+  - giảm mạnh
+  - giảm sàn
+  - sụt
+  - sụt giảm
+  - lao dốc
+  - rớt
+  - rơi
+  - đỏ
+  - thua lỗ
+  - lỗ
+  - nợ xấu
+  - vỡ nợ
+  - phá sản
+  - khủng hoảng
+  - suy thoái
+  - lạm phát
+  - khó khăn
+  - áp lực
+  - bất ổn
+  - rủi ro
+  - lo ngại
+  - lo lắng
+  - lo
+  - cảnh báo
+  - bán ròng
+  - bán tháo
+  - bán giải chấp
+  - rút vốn
+  - đình chỉ
+  - khởi tố
+  - bắt
+  - vi phạm
+  - gian lận
+  - lừa đảo
+  - thiệt hại
+  - tai nạn
+  - nguy hiểm
+  - nguy cơ
+  - tệ
+  - dở
+  - thất vọng
+  - buồn
+  - mệt mỏi
+  - ốm
+  - bệnh
+  - chán
+  - ghét
+  - kém
+  - yếu
+  - tồi
+  - sai phạm
+  - mất
+  - đổ vỡ
+  - sập
+  - hủy
+  - đóng băng
+  - trừng phạt
+  - chiến tranh
+  - xung đột
+  - tăng nóng

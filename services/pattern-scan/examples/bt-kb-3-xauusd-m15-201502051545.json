@@ -1,0 +1,92 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-3",
+ "title": "KB-3 · XAUUSD M15 (backtest, thắng +2.00R)",
+ "symbol": "XAUUSD",
+ "tf": "M15",
+ "ts": "2015-02-05T15:45:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát chốt lời (TP) sau 93 nến. vai-đầu-vai. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "thang",
+ "result": {
+  "outcome": "tp",
+  "r": 2.0,
+  "entry_ts": "2015-02-05 16:00:00",
+  "exit_ts": "2015-02-06 16:00:00",
+  "entry": 1260.75,
+  "sl": 1274.426746,
+  "tp": 1233.396509,
+  "exit": 1233.396509
+ },
+ "score": 94.8,
+ "levels": {
+  "neckline": 1259.035,
+  "head": 1273.82,
+  "left_shoulder": 1271.35,
+  "right_shoulder": 1265.46,
+  "range_high": 1273.82,
+  "range_low": 1256.54,
+  "measured_move": 1244.25,
+  "entry": 1260.77,
+  "sl": 1274.426746,
+  "r": 13.656746,
+  "atr": 2.426982,
+  "tp_1r": 1247.113254,
+  "tp_2r": 1233.456509,
+  "tp_3r": 1219.799763
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 9.0 ATR, 7 nến đỏ dài, xanh 20%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "đi ngang 182 nến, biên 7.1 ATR"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "vai-đầu-vai: vai 1271.35/1265.46, đầu 1273.82, cổ 1259.03"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "giá 1261.35 về gần đường cổ 1259.03"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "cụm 3 nến thân nhỏ (<= 0.23 ATR) sát đường cổ 1259.03"
+  }
+ ],
+ "points": [
+  {
+   "label": "LS",
+   "t": "2015-02-04T10:30:00+00:00",
+   "p": 1271.35
+  },
+  {
+   "label": "",
+   "t": "2015-02-04T15:30:00+00:00",
+   "p": 1259.36
+  },
+  {
+   "label": "H",
+   "t": "2015-02-04T23:30:00+00:00",
+   "p": 1273.82
+  },
+  {
+   "label": "",
+   "t": "2015-02-05T11:00:00+00:00",
+   "p": 1258.71
+  },
+  {
+   "label": "RS",
+   "t": "2015-02-05T13:00:00+00:00",
+   "p": 1265.46
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+"""la — local agent CLI. Biến: LA_LLM_URL, LA_MODEL (code|general), LA_PARALLEL (<=2), LA_TIMEOUT."""
+import argparse, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from la_lib import cmds, router
+
+
+def main():
+    p = argparse.ArgumentParser(prog="la", description=__doc__)
+    p.add_argument("--dry-run", action="store_true", help="chỉ in quyết định, không gọi LLM/ghi")
+    p.add_argument("--review", action="store_true", help="chạy agent, in diff, KHÔNG commit")
+    p.add_argument("--max-steps", type=int, default=12)
+    s = p.add_subparsers(dest="cmd", required=True)
+    for name, arg, fn in [("fix-lint", "path?", cmds.c_fix_lint), ("add-test", "file", cmds.c_add_test),
+                          ("docs", "topic", cmds.c_docs), ("triage-log", "service", cmds.c_triage),
+                          ("summarize", "file", cmds.c_summarize), ("commit-msg", None, cmds.c_commit),
+                          ("explain-error", "file?", cmds.c_explain), ("run-tests", "service", cmds.c_run_tests),
+                          ("issue-fix", "code", cmds.c_issue_fix), ("stats", None, None)]:
+        sp = s.add_parser(name)
+        sp.add_argument("--dry-run", action="store_true", dest="dry_run2")
+        sp.add_argument("--review", action="store_true", dest="review2")
+        if arg:
+            sp.add_argument(arg.rstrip("?"), nargs="?" if arg.endswith("?") else None)
+        sp.set_defaults(fn=fn)
+    a = p.parse_args()
+    a.dry_run = a.dry_run or a.dry_run2
+    a.review = a.review or a.review2
+    if a.cmd == "stats":
+        return router.stats() or 0
+    if a.cmd == "fix-lint":
+        a.path = getattr(a, "path", None)
+    return a.fn(a)
+
+
+sys.exit(main() or 0)

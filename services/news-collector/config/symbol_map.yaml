@@ -1,0 +1,45 @@
+# Bang anh xa tu khoa -> symbol (chuan hoa theo CONTRACTS). So khop khong dau, khong phan biet hoa/thuong,
+# theo ranh gioi tu. case_sensitive: true dung cho ma co phieu viet hoa de tranh trung tu thuong.
+rules:
+  - keywords: ["EUR/USD", "EURUSD", "euro", "ECB", "Lagarde", "eurozone"]
+    symbols: [EURUSD]
+  - keywords: ["GBP/USD", "GBPUSD", "sterling", "Bank of England", "BoE", "Bailey"]
+    symbols: [GBPUSD]
+  - keywords: ["USD/JPY", "USDJPY", "yen", "Bank of Japan", "BoJ", "Ueda"]
+    symbols: [USDJPY]
+  - keywords: ["AUD/USD", "AUDUSD", "Aussie dollar", "Reserve Bank of Australia", "RBA"]
+    symbols: [AUDUSD]
+  - keywords: ["USD/CAD", "USDCAD", "loonie", "Bank of Canada"]
+    symbols: [USDCAD]
+  - keywords: ["USD/CHF", "USDCHF", "Swiss franc", "SNB"]
+    symbols: [USDCHF]
+  - keywords: ["NZD/USD", "NZDUSD", "kiwi dollar", "Reserve Bank of New Zealand", "RBNZ"]
+    symbols: [NZDUSD]
+  - keywords: ["gold", "XAU", "XAUUSD", "bullion", "vang", "gia vang"]
+    symbols: [XAUUSD]
+  - keywords: ["silver", "XAGUSD"]
+    symbols: [XAGUSD]
+  - keywords: ["crude oil", "WTI", "Brent", "OPEC", "dau tho"]
+    symbols: [USOIL]
+  - keywords: ["S&P 500", "S&P500", "Wall Street", "Nasdaq", "Dow Jones"]
+    symbols: ["US:SPX"]
+  # Tin USD vi mo: dong thoi anh huong nhom cap chinh + vang
+  - keywords: ["Federal Reserve", "FOMC", "Powell", "nonfarm", "non-farm payrolls", "CPI", "consumer price index", "US inflation", "Treasury yield"]
+    symbols: [EURUSD, GBPUSD, USDJPY, XAUUSD]
+  - keywords: ["VN-Index", "VNINDEX", "VN Index", "HOSE", "HNX", "chung khoan"]
+    symbols: ["VN:VNINDEX"]
+  # Ma co phieu VN pho bien (viet hoa, phan biet hoa/thuong)
+  - {keywords: [VNM], symbols: ["VN:VNM"], case_sensitive: true}
+  - {keywords: [VCB], symbols: ["VN:VCB"], case_sensitive: true}
+  - {keywords: [FPT], symbols: ["VN:FPT"], case_sensitive: true}
+  - {keywords: [HPG], symbols: ["VN:HPG"], case_sensitive: true}
+  - {keywords: [VIC], symbols: ["VN:VIC"], case_sensitive: true}
+  - {keywords: [VHM], symbols: ["VN:VHM"], case_sensitive: true}
+  - {keywords: [MWG], symbols: ["VN:MWG"], case_sensitive: true}
+  - {keywords: [SSI], symbols: ["VN:SSI"], case_sensitive: true}
+  - {keywords: [TCB], symbols: ["VN:TCB"], case_sensitive: true}
+  # Co phieu My (viet hoa)
+  - {keywords: [AAPL, Apple], symbols: ["US:AAPL"], case_sensitive: true}
+  - {keywords: [MSFT, Microsoft], symbols: ["US:MSFT"], case_sensitive: true}
+  - {keywords: [NVDA, Nvidia], symbols: ["US:NVDA"], case_sensitive: true}
+  - {keywords: [TSLA, Tesla], symbols: ["US:TSLA"], case_sensitive: true}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="reporter {{ version }}">
+<title>{{ r.kind_vi }} {{ r.period }} · {{ r.account.id }} · Trạm theo dõi thị trường</title>
+{% include "_account_css.j2" %}
+</head>
+<body>
+{% set S = r.sections %}
+{% macro nodata(sec) %}<div class="nodata">Chưa có dữ liệu{% if sec.error %} — {{ sec.error }}{% endif %}.</div>{% endmacro %}
+
+<div class="head">
+  <div>
+    <span class="stamp">READ-ONLY · CHỈ ĐỌC</span>
+    <h1>{{ r.kind_vi }} · {{ r.period }}</h1>
+    <p class="sub">Tài khoản <b>{{ r.account.id }}</b>{% if r.account.label %} — {{ r.account.label }}{% endif %}{% if r.account.platform %} · {{ r.account.platform }}{% endif %}{% if r.account.currency %} · {{ r.account.currency }}{% endif %}<br>Kỳ dữ liệu: {{ r.window }}</p>
+  </div>
+  <div class="meta">
+    Mã báo cáo: <b>{{ r.code }}</b><br>
+    Tạo lúc: {{ r.generated_utc }}<br>{{ r.generated_vn }}<br>
+    Mục thành công: {{ r.ok|length }}/{{ r.order|length }}
+  </div>
+</div>
+
+<div class="summary">
+  <b>Tóm tắt</b>
+  <ol>{% for l in r.summary %}<li>{{ l }}</li>{% endfor %}</ol>
+</div>
+
+{# 1. HIỆU SUẤT #}
+{% set s = S.performance %}
+<section id="s-performance"><h2>1. {{ r.titles.performance }}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% else %}
+<div class="kpis">
+  <div class="kpi"><span>Equity đầu kỳ</span><b>{{ s.start_equity }}</b></div>
+  <div class="kpi"><span>Equity cuối kỳ</span><b>{{ s.end_equity }}</b></div>
+  <div class="kpi"><span>Lãi/lỗ kỳ ({{ s.pnl_pct }})</span><b class="{{ 'up' if s.pnl_up else 'down' }}">{{ '▲' if s.pnl_up else '▼' }} {{ s.pnl }}</b></div>
+  <div class="kpi"><span>Sụt giảm tối đa ({{ s.max_dd_pct }})</span><b class="down">▼ {{ s.max_dd }}</b></div>
+</div>
+<h3>Đường equity</h3>{{ s.chart }}
+<h3>Sụt giảm từ đỉnh (%)</h3>{{ s.dd_chart }}
+<table><tbody>
+<tr><td>Cao nhất / thấp nhất trong kỳ</td><td class="n">{{ s.high }} / {{ s.low }}</td></tr>
+<tr><td>Số dư (balance) đầu / cuối kỳ</td><td class="n">{{ s.start_balance }} / {{ s.end_balance }}</td></tr>
+<tr><td>Điểm dữ liệu / khoảng thời gian</td><td class="n">{{ s.n_points }} · {{ s.first_ts }} → {{ s.last_ts }}</td></tr>
+</tbody></table>
+<p class="note">Lãi/lỗ tính theo equity điểm đầu và điểm cuối trong kỳ (gồm lệnh đang mở; có thể gồm nạp/rút nếu có).</p>
+{% endif %}</section>
+
+{# 2. RỦI RO #}
+{% set s = S.risk %}
+<section id="s-risk"><h2>2. {{ r.titles.risk }}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% else %}
+<div class="kpis">
+  <div class="kpi"><span>Margin level</span><b>{{ s.margin_level }}</b></div>
+  <div class="kpi"><span>Margin đã dùng / tự do</span><b>{{ s.margin_used }} / {{ s.free_margin }}</b></div>
+  <div class="kpi"><span>Đòn bẩy hiệu dụng</span><b>{{ s.leverage }}x</b></div>
+  <div class="kpi"><span>Ngân sách rủi ro</span><b class="st-{{ 'red' if s.budget_status == 'crit' else 'yellow' if s.budget_status == 'warn' else 'green' if s.budget_status == 'ok' else 'na' }}">{{ s.budget_vi }}</b></div>
+</div>
+<table><tbody>
+<tr><td>Số vị thế đang mở · tập trung tiền tệ tối đa</td><td class="n">{{ s.positions }} · {{ s.ccy_conc }}</td></tr>
+<tr><td>Lãi/lỗ ngày · sụt giảm từ đỉnh · sụt giảm tối đa lịch sử</td><td class="n">{{ s.day_pnl }} · {{ s.dd_peak }} · {{ s.max_dd_hist }}</td></tr>
+<tr><td>VaR 95% 1 ngày · ES 97,5%</td><td class="n">{{ s.var95 }} · {{ s.es }}</td></tr>
+</tbody></table>
+{% if s.budget %}<h3>Ngân sách rủi ro</h3>
+<table><thead><tr><th>Chỉ tiêu</th><th class="n">Giá trị</th><th class="n">Giới hạn</th><th>Mức dùng</th></tr></thead><tbody>
+{% for i in s.budget %}<tr><td>{{ i.label }}</td><td class="n">{{ i.value }} {{ i.unit }}</td><td class="n">{{ i.limit }} {{ i.unit }}</td><td>{{ i.meter }}</td></tr>{% endfor %}
+</tbody></table>{% endif %}
+{% if s.by_symbol %}<h3>Phơi nhiễm theo mã</h3>
+<table><thead><tr><th>Mã</th><th class="n">Lot ròng</th><th class="n">% equity</th><th class="n">Lãi/lỗ mở</th></tr></thead><tbody>
+{% for x in s.by_symbol %}<tr><td>{{ x.symbol }}</td><td class="n">{{ x.net_lots }}</td><td class="n">{{ x.pct_eq }}</td><td class="n">{{ x.pnl }}</td></tr>{% endfor %}
+</tbody></table>{% endif %}
+{% for w in s.warnings %}<div class="warnbox">! {{ w }}</div>{% endfor %}
+<p class="note">Số liệu rủi ro là ƯỚC TÍNH tại thời điểm {{ s.as_of or 'tạo báo cáo' }} (không phải trung bình cả kỳ).</p>
+{% endif %}</section>
+
+{# 3. NHẬT KÝ #}
+{% set s = S.journal %}
+<section id="s-journal"><h2>3. {{ r.titles.journal }}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% elif s.empty %}<div class="nodata">{{ s.empty_msg }}</div>{% else %}
+<div class="kpis">
+  <div class="kpi"><span>Lệnh đã đóng ({{ s.wins }} thắng · {{ s.losses }} thua · {{ s.breakeven }} hoà)</span><b>{{ s.n }}</b></div>
+  <div class="kpi"><span>Tỷ lệ thắng</span><b>{{ s.wr }}</b></div>
+  <div class="kpi"><span>Lãi/lỗ ròng</span><b class="{{ 'up' if s.net_up else 'down' }}">{{ '▲' if s.net_up else '▼' }} {{ s.net }}</b></div>
+  <div class="kpi"><span>Hệ số lợi nhuận (PF)</span><b>{{ s.pf }}</b></div>
+</div>
+<table><tbody>
+<tr><td>Kỳ vọng / lệnh · trung bình thắng · trung bình thua</td><td class="n">{{ s.exp }} · {{ s.avg_win }} · {{ s.avg_loss }}</td></tr>
+<tr><td>Lệnh tốt nhất · xấu nhất · chuỗi thua dài nhất</td><td class="n">{{ s.best }} · {{ s.worst }} · {{ s.loss_streak }}</td></tr>
+</tbody></table>
+{% if s.by_symbol %}<h3>Theo mã</h3>
+<div class="grid2"><div><table><thead><tr><th>Mã</th><th class="n">Lệnh</th><th class="n">Lãi/lỗ</th><th class="n">Thắng</th><th class="n">PF</th></tr></thead><tbody>
+{% for x in s.by_symbol %}<tr><td>{{ x.symbol }}</td><td class="n">{{ x.n }}</td><td class="n">{{ x.net }}</td><td class="n">{{ x.wr }}</td><td class="n">{{ x.pf }}</td></tr>{% endfor %}
+</tbody></table></div><div>{{ s.sym_chart }}</div></div>{% endif %}
+<p class="note">Thống kê trên deal ĐÃ ĐÓNG trong kỳ (không gồm lệnh đang mở).</p>
+{% endif %}</section>
+
+{# 4. TUÂN THỦ #}
+{% set s = S.compliance %}
+<section id="s-compliance"><h2>4. {{ r.titles.compliance }}</h2>
+{% if not s.ok %}{{ nodata(s) }}{% elif s.empty %}<div class="nodata">Chưa có luật nào được áp dụng cho tài khoản này.</div>{% else %}
+<p>Tổng hợp: <b>{{ s.counts.green }}</b> đạt · <b>{{ s.counts.yellow }}</b> gần ngưỡng · <b>{{ s.counts.red }}</b> vi phạm{% if s.counts.na %} · {{ s.counts.na }} chưa đánh giá{% endif %}</p>
+<table><thead><tr><th>Luật</th><th>Trạng thái</th><th class="n">Giá trị</th><th class="n">Giới hạn</th><th>Mức dùng</th></tr></thead><tbody>
+{% for i in s.rules %}<tr><td>{{ i.name }}</td><td class="st-{{ i.status }}">{{ i.status_vi }}</td><td class="n">{{ i.value }} {{ i.unit }}</td><td class="n">{{ i.limit }} {{ i.unit }}</td><td>{{ i.meter }}</td></tr>{% endfor %}
+</tbody></table>
+{% endif %}</section>
+
+<footer>
+  Chỉ đọc / mô phỏng, không phải lời khuyên đầu tư. Hệ thống không đặt lệnh; tài khoản MT ở chế độ READ-ONLY.
+  Báo cáo tạo bởi service reporter {{ version }} — {{ r.generated_utc }}.
+  {% if r.fail %}<br>Mục chưa có dữ liệu: {% for k in r.fail %}{{ r.titles[k] }}{% if not loop.last %}, {% endif %}{% endfor %}.{% endif %}
+</footer>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# C2 xong 2026-10-15. API: /v1/ai-trading/consensus (client: rút gọn). Dữ liệu sống từ service track-record (không chép số vào đây).
+id: consensus
+name: "Đồng thuận chuyên gia"
+module: consensus
+status: research
+summary: "Đồng thuận có trọng số theo track-record (cửa sổ 14 ngày) làm đặc trưng [net, độ đồng thuận, số nguồn, tỉ lệ nguồn đủ mẫu] và xếp hạng độ tin cậy: mỗi mã có mức tin cậy; toàn hệ thống có bậc 'chưa chứng minh' nếu chưa nguồn nào vượt ngẫu nhiên sau hiệu chỉnh đa kiểm định (FDR 10%)."
+verdict: unproven
+warning: "Hiện chưa nguồn nào đủ mẫu vượt ngẫu nhiên sau hiệu chỉnh đa kiểm định; đồng thuận chủ yếu là đếm phiếu của nguồn chưa đủ mẫu. Lịch sử đồng thuận quá ngắn để kiểm định như bộ lọc giao dịch."
+honesty_note: "Chưa backtest 'lọc bằng đồng thuận' vì không có lịch sử đồng thuận đủ dài và độc lập; chỉ cung cấp đặc trưng + độ tin cậy trung thực để dùng sau khi có dữ liệu. Chỉ nghiên cứu/paper."
+metrics: {expectancy_r: null, p_vs_random: null, trades: null}
+doc: docs/EXPERT_TRACKRECORD.md

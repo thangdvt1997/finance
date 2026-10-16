@@ -1,0 +1,138 @@
+# Danh sach TEN NGUON du lieu KHONG duoc hien thi cho nguoi dung (xem docs/UI_NO_SOURCES.md).
+# Ghi de bang env SOURCES_CONFIG=/duong/dan/file.yaml (cung cau truc). Thay doi co hieu luc sau khi khoi dong lai
+# (hoac goi tscommon.sources.reload()). Chi ap dung cho noi dung HIEN THI; log/Prometheus/Gatus/Grafana giu nguyen.
+
+# Thay the khi con sot ten nguon sau cac luat tren (trung tinh).
+replacement: "nguồn dữ liệu"
+
+# Ten nguon RO RANG (khop khong phan biet hoa/thuong, ranh gioi tu, cho phep hau to _id va ten mien .com/.vn/...).
+# "_" va khoang trang trong ten khop ca "_", "-", " " hoac dinh lien.
+strict:
+  # --- gia / nen / FX / crypto ---
+  - dukascopy
+  - frankfurter
+  - yahoo
+  - yahoo finance
+  - yahoo_daily
+  - stooq
+  - twelvedata
+  - twelve data
+  - alpaca
+  - tiingo
+  - alphavantage
+  - alpha vantage
+  - eodhd
+  - polygon.io
+  - oanda
+  - truefx
+  - fmp
+  - financial modeling prep
+  - ccxt
+  - crypto_ccxt
+  - okx
+  - kucoin
+  - gate.io
+  - bitfinex
+  - kraken
+  - binance
+  - bybit
+  - coinbase
+  - coingecko
+  # --- chung khoan VN ---
+  - vnstock
+  - vndirect
+  - tcbs
+  # --- tin tuc / lich / vi mo / chuyen gia ---
+  - gdelt
+  - marketaux
+  - faireconomy
+  - fair economy
+  - forexfactory
+  - forex factory
+  - myfxbook
+  - mql5
+  - actionforex
+  - action forex
+  - fxstreet
+  - investinglive
+  - forexlive
+  - babypips
+  - tradingview
+  - investing.com
+  - oilprice
+  - reuters
+  - bloomberg
+  - bbc
+  - the guardian
+  - guardian
+  - edgar
+  - cafef
+  - vnexpress
+  - vietstock
+  - vietstockfinance
+  - vietstock finance
+  - vneconomy
+  - tuoitre
+  - tuổi trẻ
+  - baochinhphu
+  - static_json
+
+# Ten de nham voi noi dung that (ngan hang trung uong, ma chi so, tu thong thuong): CHI loai khi o ngu canh
+# gan nguon ("nguon: X", "theo X", "X API", "X loi", "X feed", ten mien...). Id feed dang <ten>_<hau to> luon bi loai.
+contextual:
+  - ecb
+  - fred
+  - bls
+  - cftc
+  - sec
+  - ssi
+  - gate
+
+# Tien to id feed/nguon noi bo (fed_press_all, bls_cpi, ecb_press, boe_news...): <tien to>_<gi do> bi loai.
+id_prefixes: [fed, ecb, bls, sec, boe, boj, rba, boc, snb, bis, cftc, fred, bbc, guardian, fxstreet, investinglive,
+  actionforex, oilprice, cafef, vnexpress, vietstock, vneconomy, tuoitre, baochinhphu, statcan, ons, abs, eurostat]
+
+# URL co host ket thuc bang ten mien nay (hoac chua ten strict) bi go khoi noi dung.
+domains:
+  - federalreserve.gov
+  - ecb.europa.eu
+  - bls.gov
+  - sec.gov
+  - bankofengland.co.uk
+  - boj.or.jp
+  - rba.gov.au
+  - bankofcanada.ca
+  - snb.ch
+  - bis.org
+  - stlouisfed.org
+  - cftc.gov
+  - bbci.co.uk
+  - theguardian.com
+  - statcan.gc.ca
+  - ons.gov.uk
+  - abs.gov.au
+  - ec.europa.eu
+  - gov.vn
+  - chinhphu.vn
+
+# Viet lai nguyen cau ky thuat thanh cau trung tinh. {SRC} = to hop moi ten nguon. Chay TRUOC cac buoc go chung.
+# Khop co dau lan khong dau.
+rewrites:
+  - pattern: '{SRC}\s+l(?:ỗ|o)i\s+l(?:ấ|a)y\s+d(?:ữ|u)\s+li(?:ệ|e)u\s+(?P<sym>\S+)\s+(?P<tf>[A-Z]+\d+)'
+    to: 'dữ liệu giá \g<sym> \g<tf>: lỗi cập nhật'
+  - pattern: '{SRC}\s+tr(?:ả|a)\s+d(?:ữ|u)\s+li(?:ệ|e)u\s+r(?:ỗ|o)ng\s+li(?:ê|e)n\s+t(?:ụ|u)c\s*\((?P<sym>\S+)\s+(?P<tf>[A-Z]+\d+)\)'
+    to: 'dữ liệu giá \g<sym> \g<tf>: rỗng liên tục'
+  - pattern: '{SRC}:\s*(?P<n>\d+)\s+ng(?:à|a)y\s+d(?:ữ|u)\s+li(?:ệ|e)u\s+c(?:ò|o)n\s+thi(?:ế|e)u'
+    to: 'dữ liệu giá: \g<n> ngày còn thiếu'
+  - pattern: '(?P<h>L(?:ệ|e)ch\s+gi(?:á|a)\s+\S+?):\s*[\w.\-]+\s+vs\s+[\w.\-]+'
+    to: '\g<h>: lệch giữa hai luồng giá'
+
+# Khoa JSON "giong nguon": chi bi BO khi GIA TRI la ten nguon (vd source="dukascopy", forecast_source="faireconomy").
+# Gia tri trung tinh (source="mt5", "paper", "balance", price_source="quote") duoc GIU. Khoa duoi `_source|_provider|_publisher` cung vay.
+source_keys: [source, src, via, origin, source_id]
+
+# Khoa LUON bi bo trong phan hoi cong khai (gia tri vo nghia voi nguoi dung).
+strong_keys: [provider, publisher, feed, feed_id, source_name, data_source, vendor, provider_name, needs_env]
+
+# Khoa dinh danh/lien ket: GIU nguyen gia tri (UI dung lam khoa/duong dan, khong hien thi).
+id_keys: [url, link, event_id, expert_id, dedupe_key, id, alert_event_id, ref, key]

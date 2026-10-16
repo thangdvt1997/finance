@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":dependencyDashboard", ":semanticCommitsDisabled"],
+  "timezone": "Asia/Ho_Chi_Minh",
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 5,
+  "labels": ["dependencies"],
+  "enabledManagers": ["dockerfile", "docker-compose", "pip_requirements", "pep621", "github-actions"],
+  "docker-compose": { "fileMatch": ["(^|/)infra/docker-compose[^/]*[.]ya?ml$"] },
+  "packageRules": [
+    { "description": "Image hạ tầng (DB/bus/giám sát): bản major cần xem tay, không tự merge", "matchManagers": ["docker-compose"], "matchUpdateTypes": ["major"], "automerge": false, "addLabels": ["manual-review"] },
+    { "description": "Postgres/Timescale: chỉ giữ pg16 (major PG cần migrate dữ liệu)", "matchPackageNames": ["timescale/timescaledb"], "allowedVersions": "/-pg16$/" },
+    { "description": "Redis: giữ dòng 8.x (tránh bản có giấy phép khác)", "matchPackageNames": ["redis"], "allowedVersions": "/^8[.][0-9]+[.][0-9]+-alpine$/" },
+    { "description": "Gom bản vá Python vào 1 PR/tuần", "matchManagers": ["pep621", "pip_requirements"], "matchUpdateTypes": ["patch", "minor"], "groupName": "python deps (minor/patch)" },
+    { "description": "Gom image Docker công cụ ops", "matchPackageNames": ["twinproduction/gatus", "amir20/dozzle", "binwiederhier/ntfy", "tecnativa/docker-socket-proxy", "aquasec/trivy"], "groupName": "ops tools" }
+  ],
+  "vulnerabilityAlerts": { "labels": ["security"], "schedule": ["at any time"] }
+}

@@ -1,0 +1,12 @@
+# Feed MT5 toan bo cap: doc recording rule feed:ok tu Prometheus (1 = khoe hoac thi truong dong/chua co metric; 0 = mat feed FX >120s khi mo cua).
+# Lich phien da nam trong luat (infra/prometheus/rules_feed.yml) nen cuoi tuan/le khong bao gia.
+endpoints:
+  - name: feed-all-fx
+    group: data
+    url: "http://prometheus:9090/api/v1/query?query=feed:ok"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].data.result[0].value[1] == 1"
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "Feed MT5 toan bo cap (FX) mat quote >120s trong gio mo cua" }

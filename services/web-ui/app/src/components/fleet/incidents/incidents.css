@@ -1,0 +1,36 @@
+/* Trang Sự cố. Tiền tố inc-. Dùng token màu sẵn có; màu luôn đi kèm biểu tượng + chữ. */
+.inc-page { display: grid; gap: .75rem; min-width: 0; }
+.inc-layout { display: grid; gap: .75rem; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 1100px) { .inc-layout.wide { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); } }
+.inc-detail-pane { position: sticky; top: 52px; max-height: calc(100dvh - 64px); overflow: auto; padding: .9rem; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+
+.inc-tabs { display: flex; align-items: stretch; gap: 2px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+.inc-tabs button { all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; padding: .5rem .85rem; min-height: 2.5rem; font-size: 12.5px; font-weight: 560; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; }
+.inc-tabs button:hover { color: var(--fg); }
+.inc-tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.inc-tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.inc-tabs .inc-n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 11px; min-width: 1.25rem; height: 1.25rem; padding: 0 .35rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 99px; background: var(--panel2); border: 1px solid var(--line2); color: var(--fg); }
+.inc-tabs button[aria-selected="true"] .inc-n { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+.inc-tabs .inc-n.hot { background: var(--down); border-color: transparent; color: #fff; }
+
+.inc-card { cursor: default; }
+.inc-card[aria-current="true"], .inc-card[data-selected="1"] { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); background: color-mix(in srgb, var(--accent) 6%, var(--panel)); }
+.inc-card[aria-current="true"] { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent); }
+.inc-title { all: unset; cursor: pointer; display: block; font-size: 13px; font-weight: 600; line-height: 1.35; color: var(--fg); overflow-wrap: anywhere; }
+.inc-title:hover { text-decoration: underline; text-underline-offset: 2px; }
+.inc-title:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.inc-detail { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.inc-quick { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .3rem; flex: none; max-width: 11rem; }
+@media (max-width: 640px) { .inc-quick .btn { min-width: 2.25rem; justify-content: center; height: 2.25rem !important; } .inc-quick { max-width: 6.5rem; } }
+.inc-sub { margin-top: .4rem; padding-left: .6rem; border-left: 2px solid var(--line); }
+.inc-cluster { border-left-width: 3px; }
+
+.inc-ev::before { border-color: var(--ec, var(--line2)) !important; }
+.inc-keys { display: flex; flex-wrap: wrap; gap: .25rem .9rem; font-size: 11.5px; color: var(--muted); }
+.inc-keys kbd { font-family: var(--font-mono); font-size: 10.5px; border: 1px solid var(--line2); background: var(--panel2); border-radius: 4px; padding: 0 .3rem; color: var(--fg); }
+.inc-ro-row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+
+.inc-fsel { display: contents; }
+@media (max-width: 639px) { .inc-fsel { display: none; } .inc-fsel[data-open="1"] { display: flex; flex-wrap: wrap; gap: .5rem; width: 100%; } .inc-fsel .field { flex: 1 1 9rem; } }
+.inc-cluster .inc-quick { max-width: 17rem; }
+@media (max-width: 640px) { .inc-cluster .inc-quick { max-width: 8rem; } }

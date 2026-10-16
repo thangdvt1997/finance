@@ -1,0 +1,4 @@
+# Ghi de cho /root/mtlab/docker-compose.yml (project mtlab): uu tien CPU cho terminal EA canon (mtlab-mt5).
+# Dung: cd /root/mtlab && docker compose -f docker-compose.yml -f /root/trading-system/mt-agent/lab-feed/compose.perf.yml up -d mt5
+services:
+  mt5: { cpus: 32, cpu_shares: 4096 }

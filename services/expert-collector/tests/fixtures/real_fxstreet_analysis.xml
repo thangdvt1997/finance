@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>FXStreet Forex &amp; Commodities Analysis</title>
+        <link>https://www.fxstreet.com/analysis/feed</link>
+        <description>Find the latest articles about forex analysis, reports and videos around the forex market, currencies and pairs.</description>
+        <lastBuildDate>Sun, 11 Oct 2026 09:35:42 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <atom:link href="https://www.fxstreet.com/rss/analysis" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[CFTC Report: Euro and Aussie shorts expand amid diverging signals]]></title>
+            <link>https://www.fxstreet.com/analysis/cftc-report-euro-and-aussie-shorts-expand-amid-diverging-signals-202610101554</link>
+            <guid isPermaLink="false">ccbc6313-26cc-4a0e-9466-b3c45b3b2cab</guid>
+            <pubDate>Sat, 10 Oct 2026 15:54:25 GMT</pubDate>
+            <description><![CDATA[The week in one sentence: Euro and Australian Dollar shorts deepened in the week to October 6, while Yen longs rebuilt. In addition, Coffee buying continued, and Gold exposure remained elevated despite another price decline.]]></description>
+            <enclosure url="https://editorial.fxsstatic.com/images/i/discover-70.png" length="0" type="image/png"/>
+        </item><item>
+            <title><![CDATA[US Dollar Weekly Forecast: December is calling, but CPI gets the final word]]></title>
+            <link>https://www.fxstreet.com/analysis/us-dollar-weekly-forecast-december-is-calling-but-cpi-gets-the-final-word-202610091901</link>
+            <guid isPermaLink="false">c9486566-a869-4823-aac7-782c7e0114d5</guid>
+            <pubDate>Fri, 09 Oct 2026 19:01:23 GMT</pubDate>
+            <description><![CDATA[The US Dollar (USD) kept its bullish bias well in place for yet another week, extending its march north while revisiting an area last seen 18 months ago.]]></description>
+            <enclosure url="https://editorial.fxsstatic.com/images/i/United_States.png" length="0" type="image/png"/>
+        </item><item>
+            <title><![CDATA[Forecasting the upcoming week: US inflation data steal the show]]></title>
+            <link>https://www.fxstreet.com/analysis/forecasting-the-upcoming-week-us-inflation-data-steal-the-show-202610091814</link>
+            <guid isPermaLink="false">7a1b3edf-8c8c-41be-952d-203ca73d2d54</guid>
+            <pubDate>Fri, 09 Oct 2026 18:14:53 GMT</pubDate>
+            <description><![CDATA[The US Dollar (USD) has advanced for the fourth week in a row, this time hitting levels last traded back in April 2025, always on the back of steady bets for further tightening by the Federal Reserve, while the lack of progress on the geopolitical front and rising crude oil prices also added to the ]]></description>
+            <enclosure url="https://editorial.fxsstatic.com/images/i/HIGH%20Traffic%20-%201330%20GMT%20-%20US%20PCE%20inflation.png" length="0" type="image/png"/>
+        </item><item>
+            <title><![CDATA[EUR/USD Weekly Forecast: US Dollar persistent demand hints at a test of 1.1000]]></title>
+            <link>https://www.fxstreet.com/analysis/eur-usd-weekly-forecast-us-dollar-persistent-demand-hints-at-a-test-of-11000-202610091525</link>
+            <guid isPermaLink="false">b656e4d2-f6f0-40ec-91f9-9e3384a22868</guid>
+            <pubDate>Fri, 09 Oct 2026 15:25:48 GMT</pubDate>
+            <description><![CDATA[The EUR/USD pair maintained its bearish route, edging lower for a fifth consecutive week. The pair traded as low as 1.1161 before trimming some losses, settling on Friday at around 1.1210.]]></description>
+            <enclosure url="https://editorial.fxsstatic.com/images/i/Federal-Reserve-Building_5.png" length="0" type="image/png"/>
+        </item></channel></rss>

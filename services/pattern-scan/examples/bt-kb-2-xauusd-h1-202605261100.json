@@ -1,0 +1,85 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-2",
+ "title": "KB-2 · XAUUSD H1 (backtest, giai đoạn kiểm tra khoá -1.00R)",
+ "symbol": "XAUUSD",
+ "tf": "H1",
+ "ts": "2026-05-26T11:00:00+00:00",
+ "note": "Mô phỏng lịch sử (tập kiểm tra khoá): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát cắt lỗ (SL) sau 70 nến. nêm/tam giác. Không phải khuyến nghị.",
+ "period": "test",
+ "pick": "test",
+ "result": {
+  "outcome": "sl",
+  "r": -1.001,
+  "entry_ts": "2026-05-26 12:00:00",
+  "exit_ts": "2026-05-29 15:00:00",
+  "entry": 4507.12,
+  "sl": 4584.255359,
+  "tp": 4352.849282,
+  "exit": 4584.305359
+ },
+ "score": 95.5,
+ "levels": {
+  "resistance": 4579.609815,
+  "support": 4512.982857,
+  "wave_high": 4773.42,
+  "wave_low": 4480.3,
+  "entry": 4507.17,
+  "sl": 4584.255359,
+  "r": 77.085359,
+  "atr": 15.021436,
+  "tp_1r": 4430.084641,
+  "tp_2r": 4352.999282,
+  "tp_3r": 4275.913923,
+  "prev_low": 4480.3
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 10.8 ATR, 12 nến đỏ dài, xanh 36%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "hồi 37% sóng (1)"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "5 đỉnh thấp dần"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "5 đáy cao dần"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "co hẹp x0.51"
+  },
+  {
+   "id": 6,
+   "ok": true,
+   "detail": "nhấn chìm giảm thân 1.83 ATR, đóng dưới cạnh dưới 4512.98"
+  }
+ ],
+ "points": [
+  {
+   "label": "",
+   "t": "2026-05-12T00:00:00+00:00",
+   "p": 4773.42
+  },
+  {
+   "label": "(1)",
+   "t": "2026-05-18T00:00:00+00:00",
+   "p": 4480.3
+  },
+  {
+   "label": "(2)",
+   "t": "2026-05-19T00:00:00+00:00",
+   "p": 4589.24
+  }
+ ]
+}

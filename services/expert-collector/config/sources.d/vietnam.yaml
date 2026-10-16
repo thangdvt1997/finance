@@ -1,0 +1,732 @@
+# Nguon chuyen gia/nhan dinh Viet Nam. Kiem tra that tu VPS <VPS_IP> ngay 2026-10-12 (xem docs/sources/vietnam.md).
+# Luu y loader: ngay thang dinh dang la (M/D/Y 12h; TZ "+07"), gzip khong khai bao, entity HTML trong tieu de.
+
+- id: vn_vs_expert_opinion
+  name_display: "Chuyên gia & công ty chứng khoán nhận định thị trường"
+  type: rss
+  url: https://vietstock.vn/145/chung-khoan/y-kien-chuyen-gia.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.62
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 60
+  mode: mkt
+  summary_max: 300
+  notes: "Mục ý kiến chuyên gia (20 mục, mới 2026-10-11). Tổng hợp nhận định nhiều CTCK/chuyên gia; tên chuyên gia nằm trong nội dung bài."
+
+- id: vn_vs_market_view
+  name_display: "Phòng phân tích - nhận định thị trường chứng khoán VN"
+  type: rss
+  url: https://vietstock.vn/1636/nhan-dinh-phan-tich/nhan-dinh-thi-truong.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.6
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 60
+  mode: mkt
+  summary_max: 300
+  notes: "Nhận định tuần/phiên (20 mục, mới 10-11)."
+
+- id: vn_vs_fundamental
+  name_display: "Phân tích cơ bản cổ phiếu VN (CTCK tổng hợp)"
+  type: rss
+  url: https://vietstock.vn/582/nhan-dinh-phan-tich/phan-tich-co-ban.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.6
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 180
+  mode: mkt
+  summary_max: 300
+  notes: "Phân tích cơ bản theo mã (20 mục, mới 10-01: tần suất thấp)."
+
+- id: vn_vs_technical
+  name_display: "Phân tích kỹ thuật cổ phiếu VN"
+  type: rss
+  url: https://vietstock.vn/585/nhan-dinh-phan-tich/phan-tich-ky-thuat.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.55
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 60
+  mode: mkt
+  summary_max: 300
+  notes: "Phân tích kỹ thuật / cổ phiếu nóng (20 mục, mới 10-12)."
+
+- id: vn_vs_hot_stocks
+  name_display: "Cổ phiếu nóng trong tuần - góc nhìn kỹ thuật VN"
+  type: rss
+  url: https://vietstock.vn/830/chung-khoan/co-phieu.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.52
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 120
+  mode: mkt
+  summary_max: 300
+  notes: "Danh mục cổ phiếu đáng chú ý (20 mục, mới 10-12)."
+
+- id: vn_vs_macro
+  name_display: "Kinh tế vĩ mô Việt Nam"
+  type: rss
+  url: https://vietstock.vn/761/kinh-te/vi-mo.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.58
+  topics: [tang_truong, lam_phat, tai_khoa]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "Tin/nhận định vĩ mô (20 mục, mới 10-12)."
+
+- id: vn_vs_intl_finance
+  name_display: "Tài chính quốc tế (USD, Fed, thị trường toàn cầu)"
+  type: rss
+  url: https://vietstock.vn/772/the-gioi/tai-chinh-quoc-te.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.55
+  topics: [ngoai_hoi, lai_suat]
+  enabled: true
+  poll_minutes: 90
+  mode: cb
+  summary_max: 300
+  notes: "USD/Fed/ngoại hối (20 mục, mới 10-10)."
+
+- id: vn_vs_bond
+  name_display: "Thị trường trái phiếu Việt Nam"
+  type: rss
+  url: https://vietstock.vn/785/chung-khoan/thi-truong-trai-phieu.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.6
+  topics: [trai_phieu]
+  enabled: true
+  poll_minutes: 120
+  mode: mkt
+  summary_max: 300
+  notes: "Đấu thầu TPCP / trái phiếu DN (20 mục, mới 10-12)."
+
+- id: vn_vs_gold
+  name_display: "Thị trường vàng & kim loại quý trong nước"
+  type: rss
+  url: https://vietstock.vn/759/hang-hoa/vang-va-kim-loai-quy.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.55
+  topics: [vang_kim_loai]
+  symbols_hint: [XAUUSD]
+  enabled: true
+  poll_minutes: 120
+  mode: mkt
+  summary_max: 300
+  notes: "Giá vàng SJC / thế giới (20 mục, mới 10-10)."
+
+- id: vn_vs_fuel
+  name_display: "Giá dầu & nhiên liệu"
+  type: rss
+  url: https://vietstock.vn/34/hang-hoa/nhien-lieu.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.55
+  topics: [nang_luong]
+  symbols_hint: [USOIL, UKOIL]
+  enabled: true
+  poll_minutes: 120
+  mode: mkt
+  summary_max: 300
+  notes: "Dầu Brent / xăng dầu (20 mục, mới 10-12)."
+
+- id: vn_vs_world_stocks
+  name_display: "Chứng khoán thế giới (tổng kết phiên)"
+  type: rss
+  url: https://vietstock.vn/773/the-gioi/chung-khoan-the-gioi.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.52
+  topics: [co_phieu]
+  symbols_hint: [US:SPX]
+  enabled: true
+  poll_minutes: 120
+  mode: mkt
+  summary_max: 300
+  notes: "Tin chứng khoán Mỹ/châu Á (20 mục, mới 10-11)."
+
+- id: vn_cf_stock_market
+  name_display: "Chuyên gia chứng khoán - tin & nhận định thị trường"
+  type: rss
+  url: https://cafef.vn/thi-truong-chung-khoan.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.5
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 30
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12. Nhiều tin nhanh; trích chuyên gia khi có."
+
+- id: vn_cf_macro
+  name_display: "Kinh tế vĩ mô & đầu tư"
+  type: rss
+  url: https://cafef.vn/vi-mo-dau-tu.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.52
+  topics: [tang_truong, tai_khoa]
+  enabled: true
+  poll_minutes: 60
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12."
+
+- id: vn_cf_banking
+  name_display: "Tài chính - ngân hàng (chính sách NHNN, lãi suất)"
+  type: rss
+  url: https://cafef.vn/tai-chinh-ngan-hang.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.55
+  topics: [ngan_hang, lai_suat]
+  enabled: true
+  poll_minutes: 60
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12; nhiều tin NHNN."
+
+- id: vn_cf_intl_finance
+  name_display: "Tài chính quốc tế"
+  type: rss
+  url: https://cafef.vn/tai-chinh-quoc-te.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.48
+  topics: [ngoai_hoi, co_phieu]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12."
+
+- id: vn_ve_stock
+  name_display: "Chuyên gia chứng khoán - nhận định (tạp chí kinh tế)"
+  type: rss
+  url: https://vneconomy.vn/chung-khoan.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.6
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 45
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12. Nhiều bài trích ý kiến chuyên gia/CTCK có tên."
+
+- id: vn_ve_finance
+  name_display: "Tài chính - tiền tệ (tạp chí kinh tế)"
+  type: rss
+  url: https://vneconomy.vn/tai-chinh.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.6
+  topics: [lai_suat, ngan_hang, tai_khoa]
+  enabled: true
+  poll_minutes: 60
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12."
+
+- id: vn_ve_banking
+  name_display: "Ngân hàng - tiền tệ (tạp chí kinh tế)"
+  type: rss
+  url: https://vneconomy.vn/tai-chinh-ngan-hang.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.58
+  topics: [ngan_hang, lai_suat]
+  enabled: true
+  poll_minutes: 120
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-08."
+
+- id: vn_ve_world
+  name_display: "Kinh tế thế giới (tạp chí kinh tế)"
+  type: rss
+  url: https://vneconomy.vn/kinh-te-the-gioi.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.55
+  topics: [tang_truong, thuong_mai]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12."
+
+- id: vn_vne_business
+  name_display: "Kinh doanh - chứng khoán, vĩ mô (báo online)"
+  type: rss
+  url: https://vnexpress.net/rss/kinh-doanh.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.55
+  topics: [co_phieu, tang_truong]
+  enabled: true
+  poll_minutes: 60
+  keywords_only: true
+  mode: mkt
+  summary_max: 300
+  notes: "60 mục, mới 10-12. Chuyên mục chung -> keywords_only."
+
+- id: vn_tt_business
+  name_display: "Kinh doanh (báo Tuổi Trẻ)"
+  type: rss
+  url: https://tuoitre.vn/rss/kinh-doanh.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.52
+  topics: [tang_truong]
+  enabled: true
+  poll_minutes: 60
+  keywords_only: true
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục. pubDate dạng \"10/12/2026 9:20:00 AM\" (feedparser KHÔNG parse -> loader tự parse M/D/Y)."
+
+- id: vn_tn_stock
+  name_display: "Chứng khoán (báo Thanh Niên)"
+  type: rss
+  url: https://thanhnien.vn/rss/kinh-te/chung-khoan.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.5
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-10. Tiêu đề có entity HTML (&aacute;) -> unescape."
+
+- id: vn_tn_banking
+  name_display: "Ngân hàng (báo Thanh Niên)"
+  type: rss
+  url: https://thanhnien.vn/rss/kinh-te/ngan-hang.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.5
+  topics: [ngan_hang, vang_kim_loai]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12; hay đưa giá vàng. Entity HTML trong tiêu đề."
+
+- id: vn_dt_business
+  name_display: "Kinh doanh (báo Dân trí)"
+  type: rss
+  url: https://dantri.com.vn/rss/kinh-doanh.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.48
+  topics: [tang_truong]
+  enabled: true
+  poll_minutes: 60
+  keywords_only: true
+  mode: mkt
+  summary_max: 300
+  notes: "100 mục, mới 10-12."
+
+- id: vn_vnp_economy
+  name_display: "Kinh tế (thông tấn xã Việt Nam)"
+  type: rss
+  url: https://www.vietnamplus.vn/rss/kinhte-91.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.68
+  topics: [tang_truong, thuong_mai, tai_khoa]
+  enabled: true
+  poll_minutes: 60
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục. Server trả gzip dù không xin (không khai báo Content-Encoding) -> giải nén nếu bytes bắt đầu 1f8b."
+
+- id: vn_vnp_stock
+  name_display: "Chứng khoán (thông tấn xã Việt Nam)"
+  type: rss
+  url: https://www.vietnamplus.vn/rss/chungkhoan-110.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.68
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục. Cùng lưu ý gzip. Nguồn tin nhà nước."
+
+- id: vn_nd_stock
+  name_display: "Tài chính - chứng khoán (báo cơ quan Đảng)"
+  type: rss
+  url: https://nhandan.vn/rss/chungkhoan-1191.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.62
+  topics: [co_phieu, tai_khoa]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12."
+
+- id: vn_nd_economy
+  name_display: "Kinh tế (báo cơ quan Đảng)"
+  type: rss
+  url: https://nhandan.vn/rss/kinhte-1185.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.62
+  topics: [tang_truong, tai_khoa]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12."
+
+- id: vn_tp_economy
+  name_display: "Kinh tế (báo Tiền Phong)"
+  type: rss
+  url: https://tienphong.vn/rss/kinh-te-3.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.48
+  topics: [tang_truong]
+  enabled: true
+  poll_minutes: 90
+  keywords_only: true
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12."
+
+- id: vn_tp_stock
+  name_display: "Tài chính - ngân hàng - chứng khoán (báo Tiền Phong)"
+  type: rss
+  url: https://tienphong.vn/rss/kinh-te-tai-chinh-ngan-hang-chung-khoan-48.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.48
+  topics: [co_phieu, ngan_hang]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12."
+
+- id: vn_vtv_economy
+  name_display: "Kinh tế (đài truyền hình quốc gia)"
+  type: rss
+  url: https://vtv.vn/rss/kinh-te.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.6
+  topics: [tang_truong]
+  enabled: true
+  poll_minutes: 60
+  keywords_only: true
+  mode: mkt
+  summary_max: 300
+  notes: "500 mục (lớn), pubDate TZ \"+07\" (feedparser không parse). Chỉ lấy 50 mới nhất."
+
+- id: vn_vov_economy
+  name_display: "Kinh tế (đài tiếng nói quốc gia)"
+  type: rss
+  url: https://vov.vn/rss/kinh-te.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.6
+  topics: [tang_truong, tai_khoa]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "30 mục, mới 10-12."
+
+- id: vn_ndh_finance
+  name_display: "Tài chính - chứng khoán - doanh nghiệp (tạp chí)"
+  type: rss
+  url: https://ndh.vn/feed
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.5
+  topics: [co_phieu, tai_khoa]
+  enabled: true
+  poll_minutes: 180
+  mode: mkt
+  summary_max: 300
+  notes: "10 mục/feed, mới 10-02 (tần suất thấp). WordPress."
+
+- id: vn_ct_finance
+  name_display: "Tài chính (cơ quan ngôn luận Bộ Công Thương)"
+  type: rss
+  url: https://congthuong.vn/rss/tai-chinh.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.58
+  topics: [ngan_hang, tai_khoa]
+  enabled: true
+  poll_minutes: 120
+  mode: mkt
+  summary_max: 300
+  notes: "25 mục, feed build 10-09."
+
+- id: vn_ct_energy
+  name_display: "Năng lượng (cơ quan ngôn luận Bộ Công Thương)"
+  type: rss
+  url: https://congthuong.vn/rss/nang-luong.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.58
+  topics: [nang_luong]
+  enabled: true
+  poll_minutes: 180
+  mode: mkt
+  summary_max: 300
+  notes: "25 mục, feed build 10-09."
+
+- id: vn_vnn_business
+  name_display: "Kinh doanh (báo VietnamNet)"
+  type: rss
+  url: https://vietnamnet.vn/kinh-doanh.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.48
+  topics: [tang_truong]
+  enabled: true
+  poll_minutes: 60
+  keywords_only: true
+  mode: mkt
+  summary_max: 300
+  notes: "1000 mục (rất lớn) -> chỉ lấy 50 mới nhất. Chuyên mục chung -> keywords_only."
+
+- id: vn_vir_business
+  name_display: "Vietnam Investment Review - kinh doanh (EN)"
+  type: rss
+  url: https://vir.com.vn/rss_feed/
+  lang: en
+  group: vn_analysis
+  institution_type: media
+  prior_score: 0.55
+  topics: [tang_truong, thuong_mai]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "25 mục, mới 10-12; tiếng Anh."
+
+- id: vn_gov_stock
+  name_display: "Chính phủ Việt Nam - chuyên mục Chứng khoán"
+  type: rss
+  url: https://baochinhphu.vn/chung-khoan.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.75
+  topics: [co_phieu, tai_khoa]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 60
+  mode: mkt
+  summary_max: 300
+  notes: "Báo Chính phủ. 50 mục. pubDate \"10/8/2026 5:21:00 PM\" dạng M/D/Y 12h (loader tự parse)."
+
+- id: vn_gov_economy
+  name_display: "Chính phủ Việt Nam - chuyên mục Kinh tế"
+  type: rss
+  url: https://baochinhphu.vn/kinh-te.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.75
+  topics: [tang_truong, tai_khoa, thuong_mai]
+  enabled: true
+  poll_minutes: 60
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục, mới 10-12. Cùng định dạng ngày M/D/Y."
+
+- id: vn_gov_policy
+  name_display: "Chính phủ Việt Nam - Chính sách mới"
+  type: rss
+  url: https://baochinhphu.vn/chinh-sach-moi.rss
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.75
+  topics: [tai_khoa]
+  enabled: true
+  poll_minutes: 90
+  mode: mkt
+  summary_max: 300
+  notes: "50 mục. Thông cáo / chính sách. Cùng định dạng ngày."
+
+- id: vn_nso_news
+  name_display: "Cục Thống kê (Bộ Tài chính) - thông cáo số liệu"
+  type: rss
+  url: https://www.nso.gov.vn/feed/
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.85
+  topics: [tang_truong, lam_phat, thuong_mai]
+  enabled: true
+  poll_minutes: 120
+  mode: cb
+  summary_max: 300
+  notes: "WordPress, 10 mục, mới 10-12. Số liệu GDP/CPI/XNK chính thức."
+
+- id: vn_nso_stats_news
+  name_display: "Cục Thống kê (Bộ Tài chính) - tin tức thống kê"
+  type: rss
+  url: https://www.nso.gov.vn/tin-tuc-thong-ke/feed/
+  lang: vi
+  group: vn_analysis
+  institution_type: institution
+  prior_score: 0.85
+  topics: [tang_truong, lam_phat]
+  enabled: true
+  poll_minutes: 180
+  mode: cb
+  summary_max: 300
+  notes: "10 mục, mới 10-12. Trùng một phần feed chính."
+
+- id: vn_vcsc_research
+  name_display: "Vietcap - Trung tâm phân tích (bản tin, ngành, vĩ mô, chiến lược)"
+  type: html_list
+  url: https://www.vietcap.com.vn/trung-tam-phan-tich
+  lang: vi
+  group: bank_research
+  institution_type: institution
+  prior_score: 0.78
+  topics: [co_phieu, tang_truong, trai_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 180
+  mode: mkt
+  summary_max: 300
+  notes: "html_list: selector a[href^=\"/trung-tam-phan-tich/\"] (bỏ ?page= và link chuyên mục). Text chứa tiêu đề + chuyên mục + ngày dd/mm/yyyy dính liền; slug có ngày. Khuyến nghị trong tiêu đề, vd \"PLX [MUA +25,1%]\". Phân trang ?page=N."
+
+- id: vn_vdsc_daily
+  name_display: "Rồng Việt (VDSC) - bản tin sáng hằng ngày"
+  type: html_list
+  url: https://www.vdsc.com.vn/trung-tam-phan-tich/nhan-dinh-hang-ngay
+  lang: vi
+  group: bank_research
+  institution_type: institution
+  prior_score: 0.72
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 240
+  mode: mkt
+  summary_max: 300
+  notes: "html_list: a[href^=\"/data/api/app/file-storage/\"] (PDF CÔNG KHAI, không qua /dang-nhap). Text: \"09 tháng 10 - 2026 <tiêu đề>\" + số lượt xem dính cuối. Báo cáo chiến lược/doanh nghiệp bắt buộc đăng nhập -> KHÔNG dùng."
+
+- id: vn_phs_daily
+  name_display: "Phú Hưng (PHS) - bản tin thị trường hằng ngày"
+  type: html_list
+  url: https://www.phs.vn/trung-tam-phan-tich
+  lang: vi
+  group: bank_research
+  institution_type: institution
+  prior_score: 0.65
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 240
+  mode: mkt
+  summary_max: 300
+  notes: "html_list: a[href^=\"/trung-tam-phan-tich/ban-tin-ngay-\"]; id cuối slug (/4788) + ngày trong slug dd-mm-yyyy; tiêu đề có nhận định VN-Index/ngưỡng kỹ thuật."
+
+- id: vn_shs_daily
+  name_display: "SHS - bản tin thị trường ngày/tuần"
+  type: html_list
+  url: https://www.shs.com.vn/trung-tam-phan-tich
+  lang: vi
+  group: bank_research
+  institution_type: institution
+  prior_score: 0.65
+  topics: [co_phieu]
+  symbols_hint: [VN:VNINDEX]
+  enabled: true
+  poll_minutes: 240
+  mode: mkt
+  summary_max: 300
+  notes: "html_list: a[href^=\"/nhan-dinh-thi-truong/\"]; text = \"dd/mm/yyyy\" + tiêu đề (dính liền). Redirect 1 lần sang URL cuối."
+
+- id: vn_vinacapital_insights
+  name_display: "VinaCapital - nhận định thị trường (EN)"
+  type: rss
+  url: https://vinacapital.com/insights/feed/
+  lang: en
+  group: indep_markets
+  institution_type: institution
+  prior_score: 0.70
+  topics: [tang_truong, co_phieu]
+  enabled: false
+  poll_minutes: 720
+  mode: mkt
+  summary_max: 300
+  notes: "Feed sống (HTTP 200, 10 mục) nhưng bài mới nhất 2026-06-22 (>60 ngày) -> TẮT; bật lại nếu có bài mới. Quỹ có xung đột lợi ích (bán quỹ)."

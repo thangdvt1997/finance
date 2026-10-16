@@ -1,0 +1,7 @@
+# Marketaux Free: 100 request/ngay, 3 bai/request -> chi 1 request moi lan poll (xoay vong), tran ngay MARKETAUX_DAILY_BUDGET.
+# Uu tien bai CO THUC THE + sentiment (filter_entities=true). `symbols` la ma co phieu My; `search` cho tu khoa vi mo/FX.
+queries:
+  - {id: us_megacap, symbols: "AAPL,MSFT,NVDA,AMZN,GOOGL,META,TSLA", filter_entities: true, lookback_hours: 6}
+  - {id: macro_fx, search: '"federal reserve" | ECB | inflation | "interest rate" | dollar | forex', filter_entities: false, lookback_hours: 6}
+  - {id: us_etf_index, symbols: "SPY,QQQ,GLD,USO", filter_entities: true, lookback_hours: 12}
+  - {id: gold_oil, search: 'gold | crude | OPEC | bullion', filter_entities: false, lookback_hours: 12}

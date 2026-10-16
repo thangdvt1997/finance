@@ -1,0 +1,657 @@
+# Nhom: NGUOI TRONG CUOC / nghi si + HANG HOA-NANG LUONG-VANG + CRYPTO research cong khai.
+# Kiem chung that tu VPS <VPS_IP> ngay 2026-10-12 (HTTP 200, feedparser doc duoc muc, bai moi < 60 ngay, robots.txt khong chan).
+# Bang chi tiet + ly do dung/khong dung: docs/sources/insiders_commodities.md
+sources:
+  # ---------------- NGUOI TRONG CUOC / QUY / THU NGO ----------------
+  - id: sec_form4_insiders
+    name_display: "Nguoi trong cuoc (Form 4 - giam doc, lanh dao, co dong >10%)"
+    type: form4
+    url: https://www.sec.gov/Archives/edgar/daily-index/
+    lang: en
+    group: insider
+    institution_type: individual
+    prior_score: 0.60
+    topics: [co_phieu]
+    symbols_hint: ["US:SPX"]
+    enabled: true
+    poll_minutes: 60
+    notes: "Provider providers_insiders.py: doc daily-index (robots cho phep /Archives; Atom cgi-bin bi Disallow) -> goi .txt -> XML. Chi giu mua thi truong mo (P) >= 100k USD, ban (S) >= 1M USD, bo 10b5-1/DRIP/thuong. Quy tac SEC: <=10 req/s, UA co email. Nguoi noi bo mua co y nghia hon ban (ban thuong do thue/da dang hoa)."
+
+  - id: sec_13d_activists
+    name_display: "Nha dau tu hanh dong (Schedule 13D)"
+    type: sec13d
+    url: https://www.sec.gov/Archives/edgar/daily-index/
+    lang: en
+    group: insider
+    institution_type: institution
+    prior_score: 0.55
+    topics: [co_phieu]
+    enabled: false
+    poll_minutes: 120
+    notes: "SCHEDULE 13D (muc >5% co y dinh tac dong). Index doc duoc (form.YYYYMMDD.idx, loai 'SCHEDULE 13D'); CHUA co provider phan tich -> enabled=false. Dung form type moi 'SCHEDULE 13D/G' tu 12/2024 (khong con 'SC 13D')."
+
+  - id: sec_13g_passive
+    name_display: "Co dong lon thu dong (Schedule 13G)"
+    type: sec13d
+    url: https://www.sec.gov/Archives/edgar/daily-index/
+    lang: en
+    group: insider
+    institution_type: institution
+    prior_score: 0.45
+    topics: [co_phieu]
+    enabled: false
+    poll_minutes: 240
+    notes: "SCHEDULE 13G (thu dong, nhieu tin hieu nhieu hon 13D). Chua co provider -> enabled=false."
+
+  - id: sec_13f_funds
+    name_display: "Quy lon (bao cao 13F-HR hang quy)"
+    type: sec13d
+    url: https://www.sec.gov/Archives/edgar/daily-index/
+    lang: en
+    group: insider
+    institution_type: institution
+    prior_score: 0.50
+    topics: [co_phieu]
+    enabled: false
+    poll_minutes: 1440
+    notes: "13F-HR (danh muc cuoi quy, tre toi 45 ngay -> chi la boi canh, khong phai tin hieu thoi gian thuc). Chua co provider -> enabled=false."
+
+  - id: house_ptr_members
+    name_display: "Nghi si Ha vien My (bao cao giao dich PTR)"
+    type: house_trades
+    url: https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026FD.xml
+    lang: en
+    group: insider
+    institution_type: individual
+    prior_score: 0.45
+    topics: [co_phieu]
+    enabled: false
+    poll_minutes: 360
+    notes: "NGUON CONG BO CHINH THUC cua Van phong Thu ky Ha vien: index XML 2026 (418 PTR, truong FilingType=P, DocID) -> PDF https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/<DocID>.pdf (pypdf doc duoc van ban: ma, loai giao dich, ngay, khoang gia tri). Chi co KHOANG so tien, cong bo tre toi 45 ngay -> tin hieu yeu. Can provider PDF (pypdf) -> enabled=false."
+
+  - id: bridgewater_insights
+    name_display: "Bridgewater Associates - nghien cuu & nhan dinh"
+    type: rss
+    url: https://www.bridgewater.com/research-and-insights.rss
+    lang: en
+    group: indep_markets
+    institution_type: institution
+    prior_score: 0.70
+    topics: [lai_suat, tang_truong, lam_phat, trai_phieu]
+    symbols_hint: ["US:SPX", XAUUSD]
+    enabled: true
+    poll_minutes: 720
+    mode: mkt
+    summary_max: 300
+    notes: "Quy phong ho lon nhat the gioi; it bai (3 muc, moi nhat 17 ngay). Lap truong vi mo dai han, co lien quan loi ich (quan ly von)."
+
+  - id: alpha_architect_research
+    name_display: "Alpha Architect - nghien cuu dinh luong"
+    type: rss
+    url: https://alphaarchitect.com/feed/
+    lang: en
+    group: indep_markets
+    institution_type: institution
+    prior_score: 0.50
+    topics: [co_phieu]
+    enabled: true
+    poll_minutes: 720
+    keywords_only: true
+    notes: "Tong hop hoc thuat ve yeu to dau tu (factor); feed 5 muc. Ban hang san pham quy ETF -> thien lech thuong mai."
+
+  - id: berkshire_letters
+    name_display: "Berkshire Hathaway - thu gui co dong (Warren Buffett)"
+    type: html_list
+    url: https://www.berkshirehathaway.com/letters/letters.html
+    lang: en
+    group: indep_markets
+    institution_type: individual
+    prior_score: 0.85
+    topics: [co_phieu]
+    enabled: false
+    poll_minutes: 1440
+    notes: "Trang liet ke thu thuong nien (PDF hang nam, vd /letters/2025ltr.pdf, HTTP 200). Khong co RSS; moi nam 1 thu -> can html_list parser; enabled=false (tan suat qua thap de poll)."
+
+  - id: oaktree_memos
+    name_display: "Howard Marks (Oaktree) - ghi nho dau tu"
+    type: html_list
+    url: https://www.oaktreecapital.com/insights/howard-marks-memos
+    lang: en
+    group: indep_markets
+    institution_type: individual
+    prior_score: 0.85
+    topics: [co_phieu, trai_phieu]
+    enabled: false
+    poll_minutes: 1440
+    notes: "Trang 200 nhung la SPA nang (970KB), khong co RSS/feed (memo-rss 404). Can html_list parser rieng -> enabled=false."
+
+  - id: thirdpoint_letters
+    name_display: "Third Point - thu gui nha dau tu"
+    type: html_list
+    url: https://www.thirdpointlimited.com/investor-letters
+    lang: en
+    group: indep_markets
+    institution_type: institution
+    prior_score: 0.65
+    topics: [co_phieu]
+    enabled: false
+    poll_minutes: 1440
+    notes: "Trang 200, khong co feed. Pershing Square (403, bot-block) KHONG dung. enabled=false cho toi khi co html_list parser."
+
+  # ---------------- HANG HOA / NANG LUONG / VANG ----------------
+  - id: eia_today_in_energy
+    name_display: "Cuc Thong tin Nang luong My (EIA) - Today in Energy"
+    type: rss
+    url: https://www.eia.gov/rss/todayinenergy.xml
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.85
+    topics: [nang_luong]
+    symbols_hint: [USOIL, UKOIL, NATGAS]
+    enabled: true
+    poll_minutes: 240
+    mode: mkt
+    notes: "Co quan thong ke chinh thuc cua Chinh phu My; 15 muc, moi nhat 4 ngay. Trung lap, khong dua khuyen nghi mua/ban."
+
+  - id: eia_gasoline_diesel_prices
+    name_display: "EIA - gia xang dau ban le hang tuan"
+    type: rss
+    url: https://www.eia.gov/petroleum/gasdiesel/includes/gas_diesel_rss.xml
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.80
+    topics: [nang_luong, lam_phat]
+    symbols_hint: [USOIL]
+    enabled: true
+    poll_minutes: 360
+    notes: "1 muc/tuan (cap nhat thu Hai), moi nhat 5 ngay."
+
+  - id: eia_heating_oil_propane
+    name_display: "EIA - gia dau suoi va propane theo mua"
+    type: rss
+    url: https://www.eia.gov/petroleum/heatingoilpropane/includes/hopu_rss.xml
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.75
+    topics: [nang_luong]
+    symbols_hint: [USOIL, NATGAS]
+    enabled: true
+    poll_minutes: 720
+    notes: "1 muc/tuan trong mua dong; moi nhat 4 ngay."
+
+  - id: eia_press_releases
+    name_display: "EIA - thong cao bao chi (STEO, bao cao thang)"
+    type: rss
+    url: https://www.eia.gov/rss/press_rss.xml
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.80
+    topics: [nang_luong]
+    symbols_hint: [USOIL, NATGAS]
+    enabled: true
+    poll_minutes: 360
+    notes: "12 muc, moi nhat 5 ngay; chua thong bao STEO. Trang STEO/This Week in Petroleum khong co RSS dung duoc (week_in_petroleum_rss.xml dung o 10/2025, pubDate hong) -> khong dung."
+
+  - id: eia_natgas_storage
+    name_display: "EIA - ton kho khi tu nhien hang tuan (WNGSR)"
+    type: json
+    url: https://ir.eia.gov/ngs/wngsr.json
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.85
+    topics: [nang_luong]
+    symbols_hint: [NATGAS]
+    enabled: false
+    poll_minutes: 360
+    notes: "JSON 7 KB HTTP 200 (robots.txt cua ir.eia.gov tra 403 -> theo ToS EIA du lieu cong cong, nhung chua co provider JSON de chuyen thanh y kien) -> enabled=false."
+
+  - id: wgc_gold_research
+    name_display: "Hoi dong Vang The gioi (World Gold Council) - nghien cuu & tin"
+    type: rss
+    url: https://www.gold.org/rss.xml
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.65
+    topics: [vang_kim_loai]
+    symbols_hint: [XAUUSD]
+    enabled: true
+    poll_minutes: 360
+    mode: mkt
+    notes: "To chuc nganh vang (do cac cong ty khai thac vang tai tro) -> THIEN LECH TICH CUC; dung lam boi canh cung/cau, khong phai tin hieu. 10 muc, moi nhat 5 ngay. Gold Demand Trends o trang goldhub (khong co feed rieng)."
+
+  - id: silver_institute
+    name_display: "Vien Bac (Silver Institute)"
+    type: rss
+    url: https://www.silverinstitute.org/feed/
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.55
+    topics: [vang_kim_loai]
+    symbols_hint: [XAGUSD]
+    enabled: true
+    poll_minutes: 720
+    mode: mkt
+    notes: "Hiep hoi nganh bac -> thien lech tich cuc. 10 muc, moi nhat 40 ngay (it bai)."
+
+  - id: us_doe_news
+    name_display: "Bo Nang luong My (DOE)"
+    type: rss
+    url: https://www.energy.gov/rss
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.55
+    topics: [nang_luong]
+    symbols_hint: [USOIL]
+    enabled: true
+    poll_minutes: 360
+    keywords_only: true
+    notes: "Tin chinh sach (du tru dau chien luoc SPR, xuat khau LNG); nhieu tin khong lien quan thi truong -> keywords_only. 10 muc, moi nhat 1 ngay."
+
+  - id: cftc_press_releases
+    name_display: "Uy ban Giao dich Hang hoa Tuong lai My (CFTC) - thong cao"
+    type: rss
+    url: https://www.cftc.gov/RSS/RSSGP/rssgp.xml
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.70
+    topics: [tien_so, vang_kim_loai, nang_luong]
+    enabled: true
+    poll_minutes: 240
+    keywords_only: true
+    notes: "10 muc, moi nhat 2 ngay. Duong dan cu /RSS/RSSGP/rss.xml va /PressRoom/.../rss tra 404/HTML -> dung /RSS/RSSGP/rssgp.xml (lay tu trang /RSS/index.htm)."
+
+  - id: cftc_enforcement
+    name_display: "CFTC - hanh dong thi hanh (gian lan, thao tung, crypto)"
+    type: rss
+    url: https://www.cftc.gov/RSS/RSSENF/rssenf.xml
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.65
+    topics: [tien_so]
+    enabled: true
+    poll_minutes: 480
+    keywords_only: true
+    notes: "10 muc, moi nhat 11 ngay."
+
+  - id: cftc_statements
+    name_display: "CFTC - phat bieu & tuyen bo cua Uy vien"
+    type: rss
+    url: https://www.cftc.gov/RSS/RSSST/rssst.xml
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.65
+    topics: [tien_so, tai_khoa]
+    enabled: true
+    poll_minutes: 480
+    keywords_only: true
+    notes: "10 muc, moi nhat 6 ngay."
+
+  - id: cftc_cot_futures
+    name_display: "CFTC - Cam ket cua Nha giao dich (COT, hang tuan)"
+    type: json
+    url: https://www.cftc.gov/dea/newcot/deafut.txt
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.80
+    topics: [vang_kim_loai, nang_luong, ngoai_hoi]
+    symbols_hint: [XAUUSD, USOIL, EURUSD]
+    enabled: false
+    poll_minutes: 1440
+    notes: "Du lieu vi the quy dau co/thuong mai (CSV 420 KB, HTTP 200, robots cho phep), cong bo thu Sau. Day la DU LIEU, can provider COT rieng (khong phai bai viet) -> enabled=false."
+
+  - id: farmdoc_daily
+    name_display: "Dai hoc Illinois - farmdoc daily (kinh te nong nghiep)"
+    type: rss
+    url: https://farmdocdaily.illinois.edu/feed
+    lang: en
+    group: commodity
+    institution_type: institution
+    prior_score: 0.65
+    topics: [thuong_mai, lam_phat]
+    symbols_hint: ["US:ZC", "US:ZS", "US:ZW"]
+    enabled: true
+    poll_minutes: 480
+    notes: "Hoc thuat, hoc gia xu ly WASDE, gia ngu coc; 10 muc, moi nhat 2 ngay. USDA (WASDE/Crop Progress) KHONG truy cap duoc tu VPS: usda.gov va rigcount.bakerhughes.com tra 403 (chan bot) -> khong dung."
+
+  # ---------------- CRYPTO RESEARCH CONG KHAI ----------------
+  - id: coinmetrics_state_of_network
+    name_display: "Coin Metrics - State of the Network"
+    type: rss
+    url: https://coinmetrics.substack.com/feed
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.75
+    topics: [tien_so]
+    symbols_hint: [BTCUSD, ETHUSD]
+    enabled: true
+    poll_minutes: 360
+    mode: mkt
+    notes: "Ban tin on-chain hang tuan (feed Substack 20 muc, moi nhat 5 ngay). Cung cap du lieu thi truong nen co the thien lech tich cuc nhe."
+
+  - id: coindesk_news
+    name_display: "CoinDesk - tin tuc va nghien cuu crypto"
+    type: rss
+    url: https://www.coindesk.com/arc/outboundfeeds/rss/
+    lang: en
+    group: crypto
+    institution_type: media
+    prior_score: 0.45
+    topics: [tien_so]
+    symbols_hint: [BTCUSD, ETHUSD]
+    enabled: true
+    poll_minutes: 60
+    summary_max: 250
+    notes: "Bao chi (25 muc, moi nhat 0 ngay) - KHONG phai research thuan; dung de phat hien su kien. Thien lech: do cong ty trong nganh so huu; nhieu bai tai tro/PR."
+
+  - id: chainalysis_blog
+    name_display: "Chainalysis - phan tich chuoi khoi va an ninh"
+    type: rss
+    url: https://www.chainalysis.com/blog/feed/
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.65
+    topics: [tien_so]
+    symbols_hint: [BTCUSD]
+    enabled: true
+    poll_minutes: 480
+    notes: "10 muc, moi nhat 3 ngay; du lieu tin cay nhung la hang ban san pham tuan thu."
+
+  - id: a16z_crypto
+    name_display: "a16z crypto - nghien cuu & quan diem"
+    type: rss
+    url: https://a16zcrypto.com/feed/
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.50
+    topics: [tien_so]
+    symbols_hint: [BTCUSD, ETHUSD]
+    enabled: true
+    poll_minutes: 720
+    notes: "Quy dau tu vi the lon trong crypto -> XUNG DOT LOI ICH ro (thoi phong); 30 muc, moi nhat 12 ngay."
+
+  - id: ethereum_foundation_blog
+    name_display: "Ethereum Foundation - blog giao thuc"
+    type: rss
+    url: https://blog.ethereum.org/feed.xml
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.50
+    topics: [tien_so]
+    symbols_hint: [ETHUSD]
+    enabled: true
+    poll_minutes: 720
+    keywords_only: false
+    notes: "Thong bao ky thuat/nang cap (feed 642 muc, moi nhat 7 ngay); khong phai nhan dinh gia, chi la boi canh nang cap giao thuc."
+
+  - id: bitcoin_optech
+    name_display: "Bitcoin Optech - ban tin ky thuat Bitcoin"
+    type: rss
+    url: https://bitcoinops.org/feed.xml
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.50
+    topics: [tien_so]
+    symbols_hint: [BTCUSD]
+    enabled: true
+    poll_minutes: 1440
+    notes: "Ban tin hang tuan cua nha phat trien Bitcoin (10 muc, moi nhat 3 ngay); ky thuat, khong co nhan dinh gia."
+
+  - id: glassnode_research
+    name_display: "Glassnode - nghien cuu on-chain"
+    type: rss
+    url: https://research.glassnode.com/rss/
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.75
+    topics: [tien_so]
+    symbols_hint: [BTCUSD, ETHUSD]
+    enabled: false
+    poll_minutes: 360
+    notes: "KHONG DUNG: curl cho 200 nhung httpx/urllib (UA hop le) nhan 403 (Cloudflare chan bot theo TLS) -> khong vuot chong bot. Feed insights.glassnode.com da chuyen sang research.glassnode.com."
+
+  # ---------------- SEC / BIS / FED / BoE / ECB: crypto, thi truong, cong bo quy dinh ----------------
+  - id: sec_press_releases
+    name_display: "Uy ban Chung khoan My (SEC) - thong cao bao chi"
+    type: rss
+    url: https://www.sec.gov/news/pressreleases.rss
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.70
+    topics: [tien_so, co_phieu, tai_khoa]
+    enabled: true
+    poll_minutes: 120
+    keywords_only: true
+    notes: "25 muc, moi nhat 2 ngay. UA bat buoc co email lien he; toc do <= 10 req/s."
+
+  - id: sec_speeches_statements
+    name_display: "SEC - phat bieu va tuyen bo cua Uy vien"
+    type: rss
+    url: https://www.sec.gov/news/speeches-statements.rss
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.70
+    topics: [tien_so, co_phieu]
+    enabled: true
+    poll_minutes: 240
+    keywords_only: true
+    notes: "25 muc, moi nhat 2 ngay (gom ca nhom cong tac crypto)."
+
+  - id: sec_statements
+    name_display: "SEC - tuyen bo cua Ban Chu tich va cac Vu"
+    type: rss
+    url: https://www.sec.gov/news/statements.rss
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.65
+    topics: [tien_so, co_phieu]
+    enabled: true
+    poll_minutes: 240
+    keywords_only: true
+    notes: "25 muc, moi nhat 2 ngay (trung lap mot phan voi speeches-statements)."
+
+  - id: sec_litigation_releases
+    name_display: "SEC - ban cao trang khoi to dan su"
+    type: rss
+    url: https://www.sec.gov/enforcement-litigation/litigation-releases/rss
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.60
+    topics: [tien_so, co_phieu]
+    enabled: true
+    poll_minutes: 360
+    keywords_only: true
+    notes: "25 muc, moi nhat 2 ngay; thong tin vu kien, khong phai nhan dinh thi truong."
+
+  - id: sec_admin_proceedings
+    name_display: "SEC - thu tuc hanh chinh"
+    type: rss
+    url: https://www.sec.gov/enforcement-litigation/administrative-proceedings/rss
+    lang: en
+    group: crypto
+    institution_type: institution
+    prior_score: 0.55
+    topics: [co_phieu]
+    enabled: true
+    poll_minutes: 480
+    keywords_only: true
+    notes: "25 muc, moi nhat 2 ngay."
+
+  - id: bis_fsi_publications
+    name_display: "Ngan hang Thanh toan Quoc te (BIS) - an ninh he thong tai chinh (FSI)"
+    type: rss
+    url: https://www.bis.org/doclist/bis_fsi_publs.rss
+    lang: en
+    group: intl_org
+    institution_type: central_bank
+    prior_score: 0.80
+    topics: [tien_so, ngan_hang]
+    enabled: true
+    poll_minutes: 720
+    mode: cb
+    notes: "20 muc, moi nhat 4 ngay (co bai crypto/stablecoin/CBDC)."
+
+  - id: bis_papers
+    name_display: "BIS - BIS Papers"
+    type: rss
+    url: https://www.bis.org/doclist/bispapers.rss
+    lang: en
+    group: intl_org
+    institution_type: central_bank
+    prior_score: 0.80
+    topics: [tien_so, lai_suat, ngan_hang]
+    enabled: true
+    poll_minutes: 720
+    mode: cb
+    notes: "25 muc, moi nhat 4 ngay."
+
+  - id: bis_working_papers
+    name_display: "BIS - tai lieu lam viec"
+    type: rss
+    url: https://www.bis.org/doclist/wppubls.rss
+    lang: en
+    group: intl_org
+    institution_type: central_bank
+    prior_score: 0.75
+    topics: [tien_so, lai_suat, tang_truong]
+    enabled: true
+    poll_minutes: 720
+    mode: cb
+    notes: "25 muc, moi nhat 6 ngay."
+
+  - id: bis_central_bank_speeches
+    name_display: "BIS - phat bieu cua cac NHTW"
+    type: rss
+    url: https://www.bis.org/doclist/cbspeeches.rss
+    lang: en
+    group: cb_speech
+    institution_type: central_bank
+    prior_score: 0.80
+    topics: [lai_suat, lam_phat, tien_so]
+    enabled: true
+    poll_minutes: 240
+    mode: cb
+    notes: "50 muc, moi nhat 4 ngay; tong hop phat bieu cua nhieu NHTW (nguoi phat bieu khac nhau)."
+
+  - id: fed_feds_notes
+    name_display: "Cuc Du tru Lien bang (Fed) - FEDS Notes (co bai stablecoin/crypto)"
+    type: rss
+    url: https://www.federalreserve.gov/feeds/feds_notes.xml
+    lang: en
+    group: cb_research
+    institution_type: central_bank
+    prior_score: 0.80
+    topics: [tien_so, lai_suat, ngan_hang]
+    enabled: true
+    poll_minutes: 720
+    mode: cb
+    notes: "15 muc, moi nhat 2 ngay."
+
+  - id: fed_feds_papers
+    name_display: "Fed - FEDS working papers"
+    type: rss
+    url: https://www.federalreserve.gov/feeds/feds.xml
+    lang: en
+    group: cb_research
+    institution_type: central_bank
+    prior_score: 0.75
+    topics: [lai_suat, tang_truong, tien_so]
+    enabled: true
+    poll_minutes: 720
+    mode: cb
+    notes: "15 muc, moi nhat 9 ngay."
+
+  - id: fed_press_all
+    name_display: "Fed - toan bo thong cao bao chi"
+    type: rss
+    url: https://www.federalreserve.gov/feeds/press_all.xml
+    lang: en
+    group: cb_speech
+    institution_type: central_bank
+    prior_score: 0.85
+    topics: [lai_suat, ngan_hang]
+    enabled: true
+    poll_minutes: 120
+    mode: cb
+    notes: "20 muc, moi nhat 2 ngay. robots.txt cua federalreserve.gov tra 404 (khong han che)."
+
+  - id: fed_speeches_testimony
+    name_display: "Fed - phat bieu va chung ngon"
+    type: rss
+    url: https://www.federalreserve.gov/feeds/speeches_and_testimony.xml
+    lang: en
+    group: cb_speech
+    institution_type: central_bank
+    prior_score: 0.85
+    topics: [lai_suat, lam_phat, viec_lam]
+    enabled: true
+    poll_minutes: 120
+    mode: cb
+    author_as_expert: true
+    notes: "15 muc, moi nhat 3 ngay."
+
+  - id: fed_monetary_policy
+    name_display: "Fed - quyet dinh chinh sach tien te (FOMC)"
+    type: rss
+    url: https://www.federalreserve.gov/feeds/press_monetary.xml
+    lang: en
+    group: cb_speech
+    institution_type: central_bank
+    prior_score: 0.90
+    topics: [lai_suat, lam_phat]
+    symbols_hint: [EURUSD, XAUUSD, "US:SPX"]
+    enabled: true
+    poll_minutes: 120
+    mode: cb
+    notes: "15 muc, moi nhat 4 ngay; thong cao FOMC."
+
+  - id: boe_publications
+    name_display: "Ngan hang Trung uong Anh (BoE) - an pham"
+    type: rss
+    url: https://www.bankofengland.co.uk/rss/publications
+    lang: en
+    group: cb_research
+    institution_type: central_bank
+    prior_score: 0.80
+    topics: [lai_suat, tien_so, ngan_hang]
+    symbols_hint: [GBPUSD]
+    enabled: true
+    poll_minutes: 360
+    mode: cb
+    notes: "50 muc, moi nhat 2 ngay (gom bao cao on dinh tai chinh, tai lieu stablecoin)."
+
+  - id: ecb_press
+    name_display: "Ngan hang Trung uong Chau Au (ECB) - thong cao"
+    type: rss
+    url: https://www.ecb.europa.eu/rss/press.html
+    lang: en
+    group: cb_speech
+    institution_type: central_bank
+    prior_score: 0.85
+    topics: [lai_suat, lam_phat]
+    symbols_hint: [EURUSD]
+    enabled: true
+    poll_minutes: 120
+    mode: cb
+    notes: "15 muc, moi nhat 3 ngay."

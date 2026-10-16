@@ -1,0 +1,89 @@
+{
+ "res": [
+  {
+   "role": "client",
+   "mock": true,
+   "w": 1440,
+   "th": "dark",
+   "tab": null,
+   "login": 0,
+   "overflow": false,
+   "offender": [],
+   "honest": false,
+   "leak": true,
+   "orderBtn": false,
+   "broken": 0
+  },
+  {
+   "role": "client",
+   "mock": true,
+   "w": 1440,
+   "th": "light",
+   "tab": null,
+   "login": 0,
+   "overflow": false,
+   "offender": [],
+   "honest": true,
+   "leak": true,
+   "orderBtn": false,
+   "broken": 0
+  },
+  {
+   "role": "client",
+   "mock": true,
+   "w": 820,
+   "th": "dark",
+   "tab": null,
+   "login": 0,
+   "overflow": false,
+   "offender": [],
+   "honest": true,
+   "leak": true,
+   "orderBtn": false,
+   "broken": 0
+  },
+  {
+   "role": "client",
+   "mock": true,
+   "w": 820,
+   "th": "light",
+   "tab": null,
+   "login": 0,
+   "overflow": false,
+   "offender": [],
+   "honest": true,
+   "leak": true,
+   "orderBtn": false,
+   "broken": 0
+  },
+  {
+   "role": "client",
+   "mock": true,
+   "w": 390,
+   "th": "dark",
+   "tab": null,
+   "login": 0,
+   "overflow": false,
+   "offender": [],
+   "honest": true,
+   "leak": true,
+   "orderBtn": false,
+   "broken": 0
+  },
+  {
+   "role": "client",
+   "mock": true,
+   "w": 390,
+   "th": "light",
+   "tab": null,
+   "login": 0,
+   "overflow": false,
+   "offender": [],
+   "honest": true,
+   "leak": true,
+   "orderBtn": false,
+   "broken": 0
+  }
+ ],
+ "errs": []
+}

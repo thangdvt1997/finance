@@ -1,0 +1,7 @@
+numpy
+pandas>=3
+scipy
+matplotlib
+fastparquet
+yfinance
+requests

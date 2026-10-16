@@ -1,0 +1,30 @@
+[project]
+name = "mt-bridge"
+version = "0.1.0"
+description = "READ-ONLY MT4/MT5 bridge: BrokerGateway, MT5 adapter, EA ingest (MT4/MT5)"
+requires-python = ">=3.12"
+dependencies = [
+  "tscommon",
+  "pydantic>=2.7",
+  "fastapi>=0.110",
+  "uvicorn>=0.29",
+  "pyyaml>=6",
+  "prometheus-client>=0.20",
+  "tzdata",
+]
+
+[project.optional-dependencies]
+# Chi cai tren Windows (package chinh hang chi co cho Windows). Docker/Linux khong dung.
+mt5 = ["MetaTrader5>=5.0.45; sys_platform == 'win32'"]
+test = ["pytest>=8", "pytest-asyncio>=0.23", "httpx>=0.27", "fakeredis>=2.23"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

@@ -1,0 +1,106 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-1",
+ "title": "KB-1 · USTEC M15 (backtest, thắng +2.00R)",
+ "symbol": "USTEC",
+ "tf": "M15",
+ "ts": "2024-03-14T12:30:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát chốt lời (TP) sau 5 nến. hồi-vượt đỉnh-2 đỉnh giảm. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "thang",
+ "result": {
+  "outcome": "tp",
+  "r": 2.0,
+  "entry_ts": "2024-03-14 12:45:00",
+  "exit_ts": "2024-03-14 13:45:00",
+  "entry": 18127.95,
+  "sl": 18176.196756,
+  "tp": 18031.456488,
+  "exit": 18031.456488
+ },
+ "score": 86.8,
+ "levels": {
+  "wave_high": 18245.8,
+  "wave_low": 18026.1,
+  "high_4": 18173.1,
+  "low_3": 18032.9,
+  "high_5": 18158.1,
+  "entry": 18128.5,
+  "sl": 18176.196756,
+  "r": 47.696756,
+  "atr": 12.387023,
+  "tp_1r": 18080.803244,
+  "tp_2r": 18033.106488,
+  "tp_3r": 17985.409733,
+  "prev_low": 18032.9
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 6.7 ATR, 6 nến đỏ dài, xanh 29%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "hồi 55% sóng (1)"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "sóng (3)/(2) = 0.94"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "vượt đỉnh (2) 22% sóng (3)"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "2 đỉnh giảm dần"
+  },
+  {
+   "id": 6,
+   "ok": true,
+   "detail": "nhấn chìm giảm thân 1.57 ATR dưới đỉnh (5) 18158.10"
+  }
+ ],
+ "points": [
+  {
+   "label": "",
+   "t": "2024-03-13T08:00:00+00:00",
+   "p": 18245.8
+  },
+  {
+   "label": "(1)",
+   "t": "2024-03-13T15:30:00+00:00",
+   "p": 18026.1
+  },
+  {
+   "label": "(2)",
+   "t": "2024-03-13T18:45:00+00:00",
+   "p": 18147.5
+  },
+  {
+   "label": "(3)",
+   "t": "2024-03-13T19:15:00+00:00",
+   "p": 18032.9
+  },
+  {
+   "label": "(4)",
+   "t": "2024-03-14T08:15:00+00:00",
+   "p": 18173.1
+  },
+  {
+   "label": "",
+   "t": "2024-03-14T11:45:00+00:00",
+   "p": 18134.7
+  },
+  {
+   "label": "(5)",
+   "t": "2024-03-14T12:15:00+00:00",
+   "p": 18158.1
+  }
+ ]
+}

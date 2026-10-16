@@ -1,0 +1,27 @@
+/* Bố cục đa biểu đồ (ChartWorkspace). Màu/biến lấy từ chủ đề chung (--panel, --line, --accent...). */
+.ws-grid { position: absolute; inset: 0; display: grid; gap: 2px; background: var(--line); min-width: 0; min-height: 0; }
+.ws-grid[data-layout="1"] { grid-template: minmax(0, 1fr) / minmax(0, 1fr); }
+.ws-grid[data-layout="2v"] { grid-template: repeat(2, minmax(0, 1fr)) / minmax(0, 1fr); }
+.ws-grid[data-layout="2h"] { grid-template: minmax(0, 1fr) / repeat(2, minmax(0, 1fr)); }
+.ws-grid[data-layout="2x2"] { grid-template: repeat(2, minmax(0, 1fr)) / repeat(2, minmax(0, 1fr)); }
+.ws-grid[data-layout="1+3"] { grid-template: repeat(3, minmax(0, 1fr)) / minmax(0, 2fr) minmax(0, 1fr); }
+.ws-grid[data-layout="1+3"] > :first-child { grid-row: 1 / 4; }
+.ws-grid[data-layout="3x2"] { grid-template: repeat(2, minmax(0, 1fr)) / repeat(3, minmax(0, 1fr)); }
+.ws-cell { position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 0; background: var(--panel); overflow: hidden; }
+.ws-cellhead { display: flex; align-items: center; gap: .4rem; flex-wrap: nowrap; padding: .15rem .45rem; border-bottom: 1px solid var(--line); font-size: 12px; min-height: 28px; background: var(--panel); }
+.ws-lay { display: grid; gap: 2px; width: 28px; height: 20px; padding: 0; }
+.ws-lay > i { background: currentColor; opacity: .5; border-radius: 1px; display: block; }
+.ws-lay[data-l="2v"] { grid-template: 1fr 1fr / 1fr; }
+.ws-lay[data-l="2h"] { grid-template: 1fr / 1fr 1fr; }
+.ws-lay[data-l="2x2"] { grid-template: 1fr 1fr / 1fr 1fr; }
+.ws-lay[data-l="1+3"] { grid-template: 1fr 1fr 1fr / 2fr 1fr; } .ws-lay[data-l="1+3"] > i:first-child { grid-row: 1 / 4; }
+.ws-lay[data-l="3x2"] { grid-template: 1fr 1fr / 1fr 1fr 1fr; }
+.ws-lay[data-l="1"] { grid-template: 1fr / 1fr; }
+@media (max-width: 899px) {
+  .ws-grid:not([data-layout="1"]) { position: relative; inset: auto; grid-template: none !important; grid-auto-rows: minmax(320px, 56dvh); overflow-y: auto; }
+  .ws-grid:not([data-layout="1"]) > :first-child { grid-row: auto !important; }
+  .mkt-canvas:has(.ws-grid:not([data-layout="1"])) { overflow-y: auto; min-height: 320px; }
+}
+
+.ws-embedded { flex: 1 1 0; min-height: 0; height: 100%; border: 0; border-radius: 0; box-shadow: none; }
+.ws-embedded .mkt-body { flex: 1 1 0; height: auto; }

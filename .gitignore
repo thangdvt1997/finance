@@ -1,0 +1,30 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+node_modules/
+dist/
+# secrets / dữ liệu vận hành: KHÔNG commit
+.env
+.env.*
+!.env.example
+*.dump
+*.dump.enc
+*.tar.gz.enc
+backups/
+wal-archive/
+data/
+infra/web-ui/auth/htpasswd
+infra/backup/offsite.env
+infra/redis/users.acl
+data_webui_login.txt
+*.key
+.release
+infra/env/
+
+# artefact build setuptools (gây cài tscommon cũ)
+build/
+infra/redis/users-cache.acl
+docs/handoff/

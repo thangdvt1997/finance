@@ -1,0 +1,504 @@
+# Chạy:  cd infra && cp .env.example .env && docker compose up -d --build
+# Build context của service = thư mục gốc repo (Dockerfile cần libs/common).
+name: trading-system
+
+x-logging: &logging
+  driver: json-file
+  options: { max-size: "10m", max-file: "3" }
+
+x-service: &svc
+  restart: unless-stopped
+  networks: [backend, ops]
+  logging: *logging
+  # Hardening (ARCH_AUDIT S-3): không root (user ghi đè từng service nếu image chưa có USER), FS gốc chỉ-đọc, bỏ mọi capability, giới hạn tài nguyên
+  # (VPS dùng chung với hệ thống khác). Cần ghi: tmpfs /tmp hoặc volume riêng (xem market-collector).
+  read_only: true
+  tmpfs: ["/tmp"]
+  cap_drop: [ALL]
+  security_opt: ["no-new-privileges:true"]
+  pids_limit: 256
+  mem_limit: 1g
+  cpus: 2
+  depends_on:
+    redis: { condition: service_healthy }
+  # Secrets (ARCH_AUDIT S-5): KHÔNG còn `env_file: .env` toàn bộ. Mỗi service khai `env_file: [env/<service>.env]` (sinh bởi ops/gen_service_env.sh theo
+  # ops/service_env.manifest) + `environment:` tường minh; mật khẩu superuser Postgres/Redis admin không vào container nào ngoài timescaledb/redis.
+  environment: &svc-env
+    # ACL: user ts_app (ops/redis_acl_render.sh); api-gateway dùng ts_gateway (chỉ đọc)
+    REDIS_URL: redis://ts_app:${REDIS_APP_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0
+    # KHÔNG đặt DATABASE_URL ở anchor chung (HARDENING: least-privilege). Service cần DB tự khai role hẹp (ts_writer/ts_ro...) trong `environment:` của chính nó.
+    LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    USER_AGENT: ${USER_AGENT:-trading-system/0.1}
+    PORT: "8000"
+  healthcheck:
+    test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+    interval: 30s
+    timeout: 5s
+    retries: 3
+    start_period: 20s
+
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "everysec", "--maxmemory", "4gb", "--maxmemory-policy", "noeviction", "--aclfile", "/etc/redis/users.acl"]
+    restart: unless-stopped
+    networks: [backend]
+    logging: *logging
+    # Hardening: uid redis (999:1000, khớp chủ sở hữu volume), FS gốc chỉ-đọc (ghi vào /data + /tmp), bỏ mọi capability, giới hạn tài nguyên
+    user: "999:1000"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 256
+    mem_limit: 6g          # maxmemory 4gb + dư cho fork AOF rewrite
+    cpus: 4
+    environment:
+      REDISCLI_AUTH: ${REDIS_ADMIN_PASSWORD:?chạy infra/ops/redis_acl_render.sh}   # chỉ cho redis-cli trong healthcheck/exec
+    volumes:
+      - redis-data:/data
+      - ./redis/users.acl:/etc/redis/users.acl:ro
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli --user ts_admin --no-auth-warning ping | grep -q PONG"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # Cache phản hồi của api-gateway: instance RIÊNG chỉ-bộ-nhớ (không AOF/RDB), allkeys-lru, trần 512mb => không bao giờ đụng bus (redis chính noeviction).
+  # ACL tối thiểu infra/redis/users-cache.acl (ops/redis_acl_render.sh): ts_cache chỉ ~cache:* với GET/SET/MGET/DEL/EXPIRE/INCR; default tắt.
+  redis-cache:
+    image: redis:8.10.2-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "512mb", "--maxmemory-policy", "allkeys-lru", "--aclfile", "/etc/redis/users.acl", "--lazyfree-lazy-eviction", "yes", "--lazyfree-lazy-expire", "yes", "--tcp-backlog", "511"]
+    restart: unless-stopped
+    networks: [backend]
+    logging: *logging
+    user: "999:1000"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 768m
+    cpus: 2
+    environment:
+      REDISCLI_AUTH: ${REDIS_ADMIN_PASSWORD:?chạy infra/ops/redis_acl_render.sh}
+    volumes:
+      - ./redis/users-cache.acl:/etc/redis/users.acl:ro
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli --user ts_admin --no-auth-warning ping | grep -q PONG"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16
+    restart: unless-stopped
+    networks: [backend]
+    logging: *logging
+    # Hardening: chạy thẳng bằng uid postgres (70) — entrypoint bỏ qua bước chown/gosu; ghi chỉ ở data dir, wal-archive, /tmp, /var/run/postgresql
+    user: "70:70"
+    read_only: true
+    tmpfs: ["/tmp", "/var/run/postgresql:uid=70,gid=70,mode=2775"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 1024
+    mem_limit: 48g         # shared_buffers=32GB (timescaledb-tune lúc initdb) + work_mem/conn
+    cpus: 16
+    shm_size: 1g
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ts}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?đặt POSTGRES_PASSWORD trong .env}
+      POSTGRES_DB: ${POSTGRES_DB:-ts}
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      # initdb chạy theo thứ tự tên file, chỉ ở lần khởi tạo đầu tiên
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./db/migrations/001_alerts_event_id.sql:/docker-entrypoint-initdb.d/02_001_alerts_event_id.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ts} -d ${POSTGRES_DB:-ts}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    restart: unless-stopped
+    networks: [backend, ops, internal]
+    logging: *logging
+    command: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.retention.time=30d", "--web.enable-lifecycle"]
+    user: "65534:65534"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prom-data:/prometheus
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    restart: unless-stopped
+    networks: [backend, ops, frontend]
+    logging: *logging
+    depends_on: [prometheus, timescaledb]
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?đặt GRAFANA_ADMIN_PASSWORD trong .env}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      # Datasource Timescale dùng role chỉ-đọc ts_ro (không còn superuser); GF_* admin giữ riêng cho Grafana
+      POSTGRES_USER: ${POSTGRES_RO_USER:-ts_ro}
+      POSTGRES_PASSWORD: ${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}
+      POSTGRES_DB: ${POSTGRES_DB:-ts}
+    ports:
+      - "${GRAFANA_BIND:-127.0.0.1}:${GRAFANA_PORT:-3000}:3000"
+    user: "472:0"          # uid grafana (image mặc định), giữ gid 0 để đọc dữ liệu cũ trong volume
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 256
+    mem_limit: 1g
+    cpus: 2
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+
+  storage-writer:
+    <<: *svc
+    networks: [backend, ops]
+    logging: *logging
+    env_file: [env/storage-writer.env]
+    user: "10001:10001"
+    build: { context: .., dockerfile: services/storage-writer/Dockerfile }
+    depends_on:
+      redis: { condition: service_healthy }
+      timescaledb: { condition: service_healthy }
+    environment:
+      <<: *svc-env
+      SERVICE_NAME: storage-writer
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE_STORAGE_WRITER:-${INTERNAL_AUTH_MODE:-log}}    # off|log|enforce; mặc định theo INTERNAL_AUTH_MODE chung (.env: enforce); đặt INTERNAL_AUTH_MODE_<SVC>=log để hạ riêng
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}
+      REDIS_URL: redis://ts_svc_storage_writer:${REDIS_SVC_STORAGE_WRITER_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # HARDENING §7.2
+      # role ghi hẹp (infra/db/create_writer_role.sh): INSERT/UPDATE/SELECT 9 bảng dữ liệu, không DDL/DELETE/superuser
+      DATABASE_URL: postgresql://ts_writer:${POSTGRES_WRITER_PASSWORD:?chạy infra/db/create_writer_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+
+  market-collector:
+    <<: *svc
+    networks: [backend, ops, internal]
+    logging: *logging
+    env_file: [env/market-collector.env]
+    pids_limit: 512
+    volumes: [mc-data:/data]    # state/cache (CACHE_DIR=/data/cache, STATE_FILE=/data/state.json); FS gốc chỉ-đọc
+    build:
+      context: ..
+      dockerfile: services/market-collector/Dockerfile
+      args:
+        WITH_VNSTOCK: ${WITH_VNSTOCK:-0}   # 1 = cai vnstock 4.x tu index cua tac gia (xem services/market-collector/README.md)
+    environment:
+      <<: *svc-env
+      SERVICE_NAME: market-collector
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE_MARKET_COLLECTOR:-${INTERNAL_AUTH_MODE:-log}}    # off|log|enforce; mặc định theo INTERNAL_AUTH_MODE chung (.env: enforce); đặt INTERNAL_AUTH_MODE_<SVC>=log để hạ riêng
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}
+      REDIS_URL: redis://ts_svc_market_collector:${REDIS_SVC_MARKET_COLLECTOR_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      ENABLED: ${MARKET_COLLECTOR_ENABLED:-true}
+      VNSTOCK_TELEMETRY: "off"
+      HOME: /data/home        # vnstock ghi ~/.vnstock; FS gốc chỉ-đọc nên đặt HOME vào volume mc-data
+
+  news-collector:
+    <<: *svc
+    networks: [backend, ops, internal]
+    logging: *logging
+    env_file: [env/news-collector.env]
+    user: "10001:10001"
+    build: { context: .., dockerfile: services/news-collector/Dockerfile }
+    environment:
+      <<: *svc-env
+      SERVICE_NAME: news-collector
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE_NEWS_COLLECTOR:-${INTERNAL_AUTH_MODE:-log}}    # off|log|enforce; mặc định theo INTERNAL_AUTH_MODE chung (.env: enforce); đặt INTERNAL_AUTH_MODE_<SVC>=log để hạ riêng
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}
+      REDIS_URL: redis://ts_svc_news_collector:${REDIS_SVC_NEWS_COLLECTOR_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      ENABLED: ${NEWS_COLLECTOR_ENABLED:-true}
+
+  expert-collector:
+    <<: *svc
+    networks: [backend, ops, internal]
+    logging: *logging
+    env_file: [env/expert-collector.env]
+    user: "10001:10001"
+    build: { context: .., dockerfile: services/expert-collector/Dockerfile }
+    environment:
+      <<: *svc-env
+      SERVICE_NAME: expert-collector
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE_EXPERT_COLLECTOR:-${INTERNAL_AUTH_MODE:-log}}    # off|log|enforce; mặc định theo INTERNAL_AUTH_MODE chung (.env: enforce); đặt INTERNAL_AUTH_MODE_<SVC>=log để hạ riêng
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}
+      REDIS_URL: redis://ts_svc_expert_collector:${REDIS_SVC_EXPERT_COLLECTOR_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      ENABLED: ${EXPERT_COLLECTOR_ENABLED:-false}
+
+  mt-bridge:
+    <<: *svc
+    networks: [backend, ops, internal]
+    logging: *logging
+    env_file: [env/mt-bridge.env]
+    build: { context: .., dockerfile: services/mt-bridge/Dockerfile }
+    environment:
+      <<: *svc-env
+      SERVICE_NAME: mt-bridge
+      REDIS_URL: redis://ts_svc_mt_bridge:${REDIS_SVC_MT_BRIDGE_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      ENABLED: ${MT_ENABLED:-true}
+      BRIDGE_CONFIG: /config/accounts.yaml
+      MT_TOKEN_DEMO_MT4_01: ${MT_TOKEN_DEMO_MT4_01}
+      MT_TOKEN_DEMO_MT5_01: ${MT_TOKEN_DEMO_MT5_01}
+      MT_HMAC_DEMO_MT4_01: ${MT_HMAC_DEMO_MT4_01:?chạy infra/ops/gen_mt_hmac.sh}   # chữ ký HMAC-SHA256 (X-MT-Sig); EA nhập vào input HmacSecret
+      MT_HMAC_DEMO_MT5_01: ${MT_HMAC_DEMO_MT5_01:-}
+      MT_REQUIRE_HMAC: ${MT_REQUIRE_HMAC:-0}   # 1 = tài khoản agent không có hmac_secret_env bị từ chối
+      # Feed canon (docs/KIEN_TRUC.md "Feed canon"): nến M1 EA của FEED_CANON_ACCOUNT -> chuỗi source canon:<account> (M1..D1 mốc UTC), ưu tiên trước nguồn cũ.
+      # Rollback: FEED_CANON_ENABLED=false + DELETE FROM bars WHERE source LIKE 'canon:%'. MT_BAR_TFS: khung nến EA THÔ được phát (H4/D1 theo giờ server -> bỏ).
+      FEED_CANON_ENABLED: ${FEED_CANON_ENABLED:-true}
+      FEED_CANON_ACCOUNT: ${FEED_CANON_ACCOUNT:-mt5:100000001}
+      FEED_CANON_SYMBOLS: ${FEED_CANON_SYMBOLS:-EURUSD,GBPUSD,USDJPY,XAUUSD,US500,US30,USTEC}
+      # Feed toan thi truong (EA market-feed, docs/handoff/FEED_ALL_contract.md): chuoi canon thu 2 cho tai khoan FEED_ALL_ACCOUNT, ma = feed_symbols.txt tru 7 ma tren.
+      # Rollback: FEED_ALL_ENABLED=false (+ DELETE FROM bars WHERE source = 'canon:' || FEED_ALL_ACCOUNT).
+      FEED_ALL_ENABLED: ${FEED_ALL_ENABLED:-true}
+      BRIDGE_RATE_PER_S: ${BRIDGE_RATE_PER_S:-20}   # feed EA 162 ma gui toi 10 POST/s (mac dinh cu 5/s); burst 60
+      BRIDGE_RATE_BURST: ${BRIDGE_RATE_BURST:-60}
+      FEED_ALL_ACCOUNT: ${FEED_ALL_ACCOUNT:-mt5:100000001-feed}
+      FEED_ALL_SYMBOLS: ${FEED_ALL_SYMBOLS:-@/config/feed_symbols.txt}
+      MT_BAR_TFS: ${MT_BAR_TFS:-M1,M5,M15,H1}
+      BRIDGE_ADMIN_TOKEN: ${BRIDGE_ADMIN_TOKEN:?đặt BRIDGE_ADMIN_TOKEN trong .env}
+      BRIDGE_AUTH_URL: http://auth:8000   # cấp phát tài khoản động: gọi API nội bộ của auth (token BRIDGE_AUTH_TOKEN qua env/mt-bridge.env)
+    volumes:
+      - ./mt-bridge:/config:ro
+    ports:
+      - "${BRIDGE_BIND:-127.0.0.1}:${BRIDGE_PORT:-8490}:8000"
+
+  alert-service:
+    <<: *svc
+    networks: [backend, ops, internal]
+    logging: *logging
+    env_file: [env/alert-service.env]
+    build: { context: .., dockerfile: services/alert-service/Dockerfile }
+    environment: { <<: *svc-env, SERVICE_NAME: alert-service, INTERNAL_TOKEN: "${INTERNAL_TOKEN:-}", INTERNAL_AUTH_MODE: "${INTERNAL_AUTH_MODE_ALERT_SERVICE:-${INTERNAL_AUTH_MODE:-log}}", INTERNAL_TOKEN_PREV: "${INTERNAL_TOKEN_PREV:-}", REDIS_URL: "redis://ts_svc_alert_service:${REDIS_SVC_ALERT_SERVICE_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0" }
+
+  # Rủi ro tài khoản MT4/MT5 + paper: margin/đòn bẩy/drawdown/VaR/ES/stress. READ-ONLY (đọc DB bằng ts_ro, chỉ phát alerts.out).
+  risk-monitor:
+    <<: *svc
+    networks: [backend, ops]
+    logging: *logging
+    user: "10001:10001"
+    mem_limit: 512m
+    cpus: 1
+    build: { context: .., dockerfile: services/risk-monitor/Dockerfile }
+    depends_on:
+      redis: { condition: service_healthy }
+      timescaledb: { condition: service_healthy }
+    environment:
+      <<: *svc-env
+      SERVICE_NAME: risk-monitor
+      REDIS_URL: redis://ts_svc_risk_monitor:${REDIS_SVC_RISK_MONITOR_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      # Engine mẫu luật đội tài khoản (docs/FLEET_MGMT.md): lấy luật từ auth, đẩy kết quả về auth, push khách opt-in qua alert-rules. Token trống = TẮT.
+      FLEET_AUTH_URL: http://auth:8000
+      ALERT_RULES_URL: http://alert-rules:8000
+      FLEET_INTERNAL_TOKEN: ${FLEET_INTERNAL_TOKEN:-}
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay (ops/rotate_secret.sh)
+
+  api-gateway:
+    <<: *svc
+    networks: [backend, ops, frontend]
+    logging: *logging
+    env_file: [env/api-gateway.env]
+    build: { context: .., dockerfile: services/api-gateway/Dockerfile }
+    depends_on:
+      redis: { condition: service_healthy }
+      timescaledb: { condition: service_healthy }
+    environment:
+      <<: *svc-env
+      SERVICE_NAME: api-gateway
+      API_TOKENS: "${API_TOKEN}"
+      REDIS_URL: redis://ts_gateway:${REDIS_GATEWAY_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # chỉ đọc
+      # Cache phản hồi (api_gateway/cache.py): redis-cache riêng, user ts_cache (chỉ key cache:*). Rỗng mật khẩu/CACHE_ENABLED=0 => tắt (fail-open). Cờ khẩn: SET cache:ctl:off 1 trên redis-cache.
+      CACHE_REDIS_URL: redis://ts_cache:${REDIS_CACHE_PASSWORD:-}@redis-cache:6379/0
+      CACHE_ENABLED: ${CACHE_ENABLED:-1}
+      # role chỉ-đọc (tạo bằng infra/db/create_readonly_role.sh); fallback superuser nếu chưa có
+      DATABASE_URL: postgresql://${POSTGRES_RO_USER:-ts_ro}:${POSTGRES_RO_PASSWORD:?chạy infra/db/create_readonly_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+      DATA_KEEPER_URL: http://data-keeper:8000   # /v1/data/health|recheck (master-only, datakeeper_routes.py)
+      TRACKREC_URL: http://track-record:8000   # /v1/experts/{leaderboard,...} (api_gateway/track_routes.py)
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      PROMETHEUS_URL: http://prometheus:9090
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318   # tracing (api_gateway/tracing.py); Jaeger ở docker-compose.ops.yml; bỏ biến này = tắt
+      OTEL_TRACES_SAMPLER_ARG: "0.25"
+    ports:
+      - "${GATEWAY_BIND:-127.0.0.1}:${GATEWAY_PORT:-8080}:8000"
+
+  # Báo cáo tự động ngày/tuần (HTML + PDF) -> volume reports-data. Lấy dữ liệu CHỈ-ĐỌC qua api-gateway; /generate chỉ dùng nội bộ (không publish cổng).
+  reporter:
+    <<: *svc
+    networks: [backend, ops]
+    logging: *logging
+    user: "10001:10001"
+    build: { context: .., dockerfile: services/reporter/Dockerfile }
+    mem_limit: 768m
+    cpus: 1
+    pids_limit: 256
+    volumes: [reports-data:/data]
+    depends_on:
+      redis: { condition: service_healthy }
+      api-gateway: { condition: service_healthy }
+    environment:
+      <<: *svc-env
+      SERVICE_NAME: reporter
+      REDIS_URL: redis://ts_svc_reporter:${REDIS_SVC_REPORTER_PASSWORD:?chạy infra/ops/redis_acl_render.sh}@redis:6379/0   # user Redis riêng (ops/redis_acl_services.manifest, HARDENING §7.2)
+      GATEWAY_URL: http://api-gateway:8000
+      API_KEY: ${API_TOKEN:?đặt API_TOKEN trong .env}
+      REPORT_TZ: ${REPORT_TZ:-Asia/Ho_Chi_Minh}
+      REPORT_BASE_URL: ${REPORT_BASE_URL:-}
+      FLEET_AUTH_URL: http://auth:8000                      # báo cáo theo tài khoản: phân giải phạm vi lịch + tuân thủ luật (auth có thể chưa chạy -> mục "chưa có dữ liệu")
+      FLEET_INTERNAL_TOKEN: ${FLEET_INTERNAL_TOKEN:-}
+      DATA_DIR: /data
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}               # X-Internal-Token (tscommon.internal_auth, HARDENING §7)
+      INTERNAL_AUTH_MODE: ${INTERNAL_AUTH_MODE:-log}    # off|log|enforce
+      INTERNAL_TOKEN_PREV: ${INTERNAL_TOKEN_PREV:-}     # token cũ còn chấp nhận khi xoay (ops/rotate_secret.sh)
+
+  # Đăng nhập master/client (services/auth, docs/AUTH.md): argon2id, phiên cookie HttpOnly lưu BĂM, rate limit + khoá tạm, TOTP master, audit chuỗi băm.
+  # DB role hẹp ts_auth (infra/db/create_auth_role.sh tạo role + AUTH_SECRET_KEY + AUTH_TRUST_SECRET). Bootstrap master: infra/ops/auth_bootstrap_master.sh.
+  # Chỉ nginx (web-ui) gọi qua mạng frontend (auth_request + /auth/*); không publish cổng. Không dùng anchor *svc (không nhận superuser DB/Redis).
+  auth:
+    build: { context: .., dockerfile: services/auth/Dockerfile }
+    container_name: tradingsys-auth
+    restart: unless-stopped
+    networks: [backend, ops, frontend]
+    logging: *logging
+    env_file: [env/auth.env]
+    depends_on:
+      timescaledb: { condition: service_healthy }
+    environment:
+      SERVICE_NAME: auth
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      AUTH_DB_URL: postgresql://ts_auth:${POSTGRES_AUTH_PASSWORD:?chạy infra/db/create_auth_role.sh}@timescaledb:5432/${POSTGRES_DB:-ts}
+    user: "10001:10001"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/healthz',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # Website theo dõi (nginx + SPA). Cổng duy nhất ra ngoài: đăng nhập phiên (auth_request -> auth; basic-auth chỉ là dự phòng khi AUTH_BASIC_FALLBACK=1), tự chèn X-API-Key + danh tính, chỉ GET (+whitelist ghi).
+  # Tạo mật khẩu trước khi up:  services/web-ui/scripts/make-htpasswd.sh <user>   (ghi infra/web-ui/auth/htpasswd)
+  web-ui:
+    build: { context: .., dockerfile: services/web-ui/Dockerfile }
+    restart: unless-stopped
+    networks: [frontend]
+    logging: *logging
+    depends_on:
+      api-gateway: { condition: service_healthy }
+      auth: { condition: service_healthy }
+    environment:
+      API_KEY: ${API_TOKEN:?đặt API_TOKEN trong .env}   # chỉ nginx biết; không đi xuống trình duyệt
+      GATEWAY_UPSTREAM: http://api-gateway:8000
+      AUTH_UPSTREAM: http://auth:8000
+      AUTH_TRUST_SECRET: ${AUTH_TRUST_SECRET:?chạy infra/db/create_auth_role.sh}   # bí mật nginx<->gateway (xác nhận X-User-Id/X-Role/X-Accounts)
+      AUTH_BASIC_FALLBACK: ${AUTH_BASIC_FALLBACK:-0}   # 1 = bật đường dự phòng khẩn cấp basic-auth (htpasswd)
+      API_PROXY_CACHE: ${API_PROXY_CACHE:-on}   # off = tắt micro-cache nginx cho API dùng chung (khẩn cấp; hoặc touch /tmp/ts-cache-off trong container)
+    volumes:
+      - ./web-ui/auth:/etc/nginx/auth:ro
+    read_only: true
+    tmpfs: ["/tmp:uid=101,gid=101,mode=1777", "/var/cache/nginx:uid=101,gid=101", "/etc/nginx/conf.d:uid=101,gid=101", "/var/cache/ts-proxy:uid=101,gid=101,size=128m"]   # cache nginx (api+auth) giới hạn 128m, tính vào mem_limit
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    user: "101:101"
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1
+    ports:
+      - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:-8580}:8080"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 4s
+      retries: 3
+      start_period: 10s
+
+  # Ứng dụng CLIENT (PWA /c/, services/client-ui, docs/CLIENT_UI.md): nginx riêng, đăng nhập ID MT (auth_request -> auth), chỉ whitelist /v1 đọc + ghi cảnh báo/ghi chú.
+  # Truy cập trực tiếp: http://127.0.0.1:${CLIENT_PORT:-8581}/c/ ; hoặc qua web-ui tại /c/ (location ^~ /c/ trong web-ui nginx) cùng host/cookie.
+  client-ui:
+    build: { context: .., dockerfile: services/client-ui/Dockerfile }
+    restart: unless-stopped
+    networks: [frontend]
+    logging: *logging
+    depends_on:
+      api-gateway: { condition: service_healthy }
+      auth: { condition: service_healthy }
+    environment:
+      API_KEY: ${API_TOKEN:?đặt API_TOKEN trong .env}
+      GATEWAY_UPSTREAM: http://api-gateway:8000
+      AUTH_UPSTREAM: http://auth:8000
+      AUTH_TRUST_SECRET: ${AUTH_TRUST_SECRET:?chạy infra/db/create_auth_role.sh}
+    read_only: true
+    tmpfs: ["/tmp:uid=101,gid=101,mode=1777", "/var/cache/nginx:uid=101,gid=101", "/etc/nginx/conf.d:uid=101,gid=101"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    user: "101:101"
+    pids_limit: 128
+    mem_limit: 192m
+    cpus: 1
+    ports:
+      - "${WEB_BIND:-127.0.0.1}:${CLIENT_PORT:-8581}:8080"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 4s
+      retries: 3
+      start_period: 10s
+
+networks:
+  # 4 mang (ARCH_AUDIT S-10): backend = DB/Redis, KHONG co duong ra internet; ops = HTTP noi bo + metrics (internal);
+  # frontend = cong publish 127.0.0.1 (web-ui, gateway, grafana, gatus, ntfy); internal = giu ten cu cho service CAN internet (collector, alert-service, nlp, vn-market) + mt-bridge (mt-agent lab noi vao day) + prometheus (host-gateway toi node_exporter)
+  backend:
+    driver: bridge
+    internal: true
+  ops:
+    driver: bridge
+    internal: true
+  frontend:
+    driver: bridge
+  internal:
+    driver: bridge
+
+volumes:
+  reports-data:
+  mc-data:
+  redis-data:
+  pg-data:
+  prom-data:
+  grafana-data:

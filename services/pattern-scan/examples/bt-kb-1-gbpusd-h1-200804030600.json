@@ -1,0 +1,106 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-1",
+ "title": "KB-1 · GBPUSD H1 (backtest, điển hình -1.00R)",
+ "symbol": "GBPUSD",
+ "tf": "H1",
+ "ts": "2008-04-03T06:00:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát cắt lỗ (SL) sau 6 nến. hồi-vượt đỉnh-2 đỉnh giảm. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "dien-hinh",
+ "result": {
+  "outcome": "sl",
+  "r": -1.003,
+  "entry_ts": "2008-04-03 07:00:00",
+  "exit_ts": "2008-04-03 12:00:00",
+  "entry": 1.98298,
+  "sl": 1.990388,
+  "tp": 1.968164,
+  "exit": 1.990408
+ },
+ "score": 95.2,
+ "levels": {
+  "wave_high": 2.0192,
+  "wave_low": 1.9737,
+  "high_4": 1.9898,
+  "low_3": 1.9731,
+  "high_5": 1.9881,
+  "entry": 1.9829,
+  "sl": 1.990388,
+  "r": 0.007488,
+  "atr": 0.002352,
+  "tp_1r": 1.975412,
+  "tp_2r": 1.967924,
+  "tp_3r": 1.960436,
+  "prev_low": 1.9731
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 13.8 ATR, 9 nến đỏ dài, xanh 29%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "hồi 30% sóng (1)"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "sóng (3)/(2) = 1.04"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "vượt đỉnh (2) 16% sóng (3)"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "2 đỉnh giảm dần"
+  },
+  {
+   "id": 6,
+   "ok": true,
+   "detail": "nhấn chìm giảm thân 1.53 ATR dưới đỉnh (5) 1.99"
+  }
+ ],
+ "points": [
+  {
+   "label": "",
+   "t": "2008-03-27T10:00:00+00:00",
+   "p": 2.0192
+  },
+  {
+   "label": "(1)",
+   "t": "2008-04-01T06:00:00+00:00",
+   "p": 1.9737
+  },
+  {
+   "label": "(2)",
+   "t": "2008-04-01T11:00:00+00:00",
+   "p": 1.9875
+  },
+  {
+   "label": "(3)",
+   "t": "2008-04-01T13:00:00+00:00",
+   "p": 1.9731
+  },
+  {
+   "label": "(4)",
+   "t": "2008-04-02T17:00:00+00:00",
+   "p": 1.9898
+  },
+  {
+   "label": "",
+   "t": "2008-04-03T03:00:00+00:00",
+   "p": 1.9851
+  },
+  {
+   "label": "(5)",
+   "t": "2008-04-03T05:00:00+00:00",
+   "p": 1.9881
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+id: KB-1
+name: "KB-1: giảm - hồi nhẹ - giảm bằng sóng - vượt đỉnh một chút - 2 đỉnh giảm dần - nhấn chìm"
+side: sell
+summary: >
+  Sóng giảm mạnh (1) -> hồi <= ~50% (2) -> giảm nhẹ bằng sóng (2) (3) -> hồi vượt đỉnh (2) một chút (4)
+  -> đi ngang tạo 2 đỉnh giảm dần (5) -> nến nhấn chìm giảm thân dài tại đỉnh thứ 2 (6): báo khi nến ĐÓNG.
+steps:
+  1: "(1) Sóng giảm dẫn hướng mạnh"
+  2: "(2) Hồi lên <= ~50% sóng (1)"
+  3: "(3) Giảm nhẹ ≈ sóng (2) (±25%)"
+  4: "(4) Hồi vượt đỉnh (2) một chút (<= 25% sóng (3))"
+  5: "(5) Đi ngang tạo 2 đỉnh giảm dần"
+  6: "(6) Nến nhấn chìm giảm thân dài (đóng nến)"
+invalidation:
+  - "Giá ĐÓNG CỬA vượt đỉnh (4) + 0.25 ATR"
+  - "Quá trigger_window nến sau đỉnh (5) mà chưa có nến nhấn chìm"
+  - "Đóng cửa thủng đáy giữa (4)-(5) quá 0.75 ATR mà không có nến nhấn chìm"
+params:
+  retr_min: 0.15               # (2) hồi 15%..60% sóng (1) ("<=50%" cộng dung sai 10 điểm %)
+  retr_max: 0.60
+  equal_tol: 0.25              # "bằng sóng" ±25% (giả định mặc định số 5)
+  overshoot_max: 0.25          # "vượt đỉnh một chút" <= 25% sóng (3) (giả định mặc định số 5)
+  pullback_min_atr: 1.0        # đáy giữa (4)-(5) sâu >= 1 ATR dưới cả hai đỉnh -> là 2 đỉnh phân biệt
+  max_after_h4_bars: 80
+  trigger_window: 8            # nến nhấn chìm phải nằm trong 8 nến sau đỉnh (5)
+levels:
+  sl: "max(đỉnh (4), đỉnh (5)) + sl_buffer_atr × ATR"
+  tp: "entry - m×R (m trong tp_r); tham chiếu: đáy (3)"

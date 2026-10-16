@@ -1,0 +1,30 @@
+# Cấu hình analytics (YAML). Đặt đường dẫn bằng ANALYTICS_CONFIG. Mọi khoá đều tuỳ chọn (có mặc định).
+# CHỈ là chỉ báo kỹ thuật/cảnh báo điều kiện, KHÔNG phải khuyến nghị đầu tư. Hệ thống READ-ONLY.
+interval_seconds: 300          # chu kỳ tính lại
+timeframes: [H1, H4, D1]
+lookback_bars: { H1: 800, H4: 600, D1: 500 }   # số nến đọc/khung (>=250 để có EMA200 + phân vị ATR)
+min_bars: 60                   # ít hơn thì bỏ qua symbol/khung
+resample_missing: true         # thiếu H4/D1 trong DB thì gộp từ H1
+series_points: 160             # số điểm chuỗi chỉ báo trả cho biểu đồ chi tiết
+symbols:
+  include: []                  # rỗng = mọi symbol có nến H1+
+  exclude: []
+  max: 300                    # ~240 ma co D1 (forex MT5 + ETF + VN + US + crypto); 120 truoc day cat theo chu cai -> thieu AUD*/CAD*...
+correlation:
+  tf: D1
+  window: 30                   # rolling 30 ngày (D1)
+  max_symbols: 80
+sessions_utc:                  # cửa sổ phiên theo giờ UTC (cố định, không chỉnh DST; chỉnh tại đây khi cần)
+  tokyo: [0, 9]
+  london: [7, 16]
+  newyork: [12, 21]
+sessions_days: 30
+alerts:
+  enabled: true
+  cooldown_note: "dedupe_key theo (luật, symbol, khung, nến) nên mỗi điều kiện chỉ báo 1 lần/nến; alert-service dedupe thêm"
+  rsi_cross:        { enabled: true,  upper: 70, lower: 30, tfs: [H4, D1] }
+  ema200_touch:     { enabled: true,  tfs: [H4, D1] }          # nến chạm EMA200 (low<=EMA200<=high), nến trước chưa chạm
+  range_breakout:   { enabled: true,  days: 20, tfs: [D1] }    # đóng cửa vượt đỉnh/đáy N ngày
+  volatility_spike: { enabled: true,  atr_percentile: 95, tfs: [H1, H4, D1] }
+  correlation_flip: { enabled: true,  min_abs_delta: 0.8 }     # tương quan đổi dấu và lệch >= ngưỡng so với cửa sổ trước
+  max_per_cycle: 20

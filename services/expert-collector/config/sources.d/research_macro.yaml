@@ -1,0 +1,676 @@
+# research_macro.yaml - nguon chuyen gia: nghien cuu ngan hang / think tank / blog vi mo doc lap
+# Kiem tra that tu VPS <VPS_IP> ngay 2026-10-12 (xem docs/sources/research_macro.md)
+# Chi lay tieu de + link + tom tat ngan; khong keo toan van; khong vuot paywall/dang nhap.
+sources:
+  - id: ing_think
+    name_display: "ING Think (ING Economics & FX Strategy)"
+    type: rss
+    url: https://think.ing.com/rss
+    lang: en
+    group: research_macro
+    institution_type: bank
+    prior_score: 0.78
+    prior_reason: "Nghien cuu FX/lai suat/vi mo cap to chuc, cap nhat deu, co tom tat"
+    topics: [fx, rates, macro, ecb, fed]
+    symbols_hint: [EURUSD, USDJPY, GBPUSD]
+    enabled: true
+    poll_minutes: 60
+    notes: "Sell-side (ING co vi the thi truong FX) - xung dot loi ich nhe"
+  - id: rbc_econ
+    name_display: "RBC Economics (RBC Thought Leadership)"
+    type: rss
+    url: https://thoughtleadership.rbc.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: bank
+    prior_score: 0.7
+    prior_reason: "Bao cao kinh te Canada/My cua ngan hang lon, tom tat day du"
+    topics: [macro, canada, cad]
+    symbols_hint: [USDCAD, US500]
+    enabled: true
+    poll_minutes: 180
+    notes: "Feed gom ca bai thought leadership phi kinh te; loc topic. Sell-side"
+  - id: piie_update
+    name_display: "Peterson Institute for International Economics (PIIE)"
+    type: rss
+    url: https://www.piie.com/rss/update.xml
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.82
+    prior_reason: "Think tank hang dau ve thuong mai/tien te quoc te; hoc thuat doc lap"
+    topics: [trade, tariff, macro, fx]
+    symbols_hint: [USDCNH, DXY, EURUSD]
+    enabled: true
+    poll_minutes: 180
+    notes: "Feed gom ca su kien sap toi (ngay tuong lai) - bo qua published > now"
+  - id: bruegel
+    name_display: "Bruegel (think tank kinh te Chau Au)"
+    type: rss
+    url: https://www.bruegel.org/rss.xml
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.78
+    prior_reason: "Phan tich chinh sach/kinh te EU doc lap, uy tin cao"
+    topics: [eu, ecb, macro, trade]
+    symbols_hint: [EURUSD]
+    enabled: true
+    poll_minutes: 360
+    notes: "Tan suat dang thap (vai bai/thang)"
+  - id: vox_cepr
+    name_display: "VoxEU / CEPR"
+    type: rss
+    url: https://cepr.org/rss/vox-content
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.82
+    prior_reason: "Nha kinh te hoc thuat viet cho chinh sach; lead-time dai"
+    topics: [macro, policy, eu]
+    symbols_hint: [EURUSD, DXY]
+    enabled: true
+    poll_minutes: 240
+    notes: "Khong co robots.txt -> coi nhu cho phep; chi lay tieu de+tom tat"
+  - id: nber
+    name_display: "NBER Working Papers"
+    type: rss
+    url: https://www.nber.org/rss/new.xml
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.7
+    prior_reason: "Working paper hoc thuat moi; do tre lon, khong tin hieu giao dich"
+    topics: [academic, macro]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 720
+    notes: "Khong co ngay trong feed; chi lam ngu canh nghien cuu"
+  - id: marginal_revolution
+    name_display: "Tyler Cowen & Alex Tabarrok (Marginal Revolution)"
+    type: rss
+    url: https://marginalrevolution.com/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.72
+    prior_reason: "Blog kinh te hoc anh huong; tan suat cao; it tin hieu thi truong truc tiep"
+    topics: [macro, policy, academic]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 120
+    notes: "Quan diem ca nhan, khong phai dinh gia"
+  - id: noahpinion
+    name_display: "Noah Smith (Noahpinion)"
+    type: rss
+    url: https://www.noahpinion.blog/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.62
+    prior_reason: "Nha kinh te/binh luan vi mo, de doc; mot so bai paywall (chi tom tat)"
+    topics: [macro, tech, policy]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 180
+    notes: "Substack; phan paywall chi hien doan dau"
+  - id: econbrowser
+    name_display: "Menzie Chinn & James Hamilton (Econbrowser)"
+    type: rss
+    url: https://econbrowser.com/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.85
+    prior_reason: "Hai giao su kinh te hoc (Wisconsin/UCSD); phan tich chu ky/Fed/dau co co so"
+    topics: [macro, fed, oil, recession]
+    symbols_hint: [US500, USOIL, DXY]
+    enabled: true
+    poll_minutes: 180
+    notes: "Vai bai/tuan"
+  - id: mishtalk
+    name_display: "Mike Mish Shedlock (MishTalk)"
+    type: rss
+    url: https://mishtalk.com/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.55
+    prior_reason: "Binh luan vi mo/ngan hang trung uong; hay thien kien bear/Austrian"
+    topics: [macro, fed, rates]
+    symbols_hint: [US500, XAUUSD]
+    enabled: true
+    poll_minutes: 120
+    notes: "Co thien kien ro; dung kem nguon khac"
+  - id: marc_to_market
+    name_display: "Marc Chandler (Marc to Market)"
+    type: atom
+    url: https://www.marctomarket.com/feeds/posts/default
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.8
+    prior_reason: "Chien luoc gia FX ky cu; khung tuan/ngay ro rang"
+    topics: [fx, rates, macro]
+    symbols_hint: [EURUSD, USDJPY, GBPUSD, USDCAD, AUDUSD]
+    enabled: true
+    poll_minutes: 120
+    notes: "Tac gia lam advisory/sell-side nhung blog doc lap"
+  - id: project_syndicate
+    name_display: "Project Syndicate (op-ed kinh te)"
+    type: rss
+    url: https://www.project-syndicate.org/rss
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.68
+    prior_reason: "Op-ed cua nha kinh te/cuu quan chuc (Roubini, El-Erian, Rogoff...)"
+    topics: [macro, policy, geopolitics]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 240
+    notes: "Chi tieu de+tom tat; van ban day du co the can dang ky"
+  - id: naked_capitalism
+    name_display: "Naked Capitalism (Yves Smith et al.)"
+    type: rss
+    url: https://www.nakedcapitalism.com/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.45
+    prior_reason: "Tong hop link/binh luan tai chinh; quan diem chinh tri ro"
+    topics: [macro, finance, politics]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 240
+    notes: "Thien kien chinh tri; mac dinh tat, chi ngu canh"
+  - id: wolf_street
+    name_display: "Wolf Richter (Wolf Street)"
+    type: rss
+    url: https://wolfstreet.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.62
+    prior_reason: "Phan tich du lieu nha o/lai suat/bang can doi Fed co so lieu"
+    topics: [rates, housing, fed, macro]
+    symbols_hint: [US500, US10Y]
+    enabled: true
+    poll_minutes: 180
+    notes: "Quan diem bear, nhung dua tren so lieu"
+  - id: employ_america
+    name_display: "Employ America"
+    type: rss
+    url: https://www.employamerica.org/feed/
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.8
+    prior_reason: "Nghien cuu viec lam/Fed/vi mo My; nhieu nha kinh te cuu Fed"
+    topics: [fed, labor, macro]
+    symbols_hint: [US500, DXY]
+    enabled: true
+    poll_minutes: 180
+    notes: ""
+  - id: tooze_chartbook
+    name_display: "Adam Tooze (Chartbook)"
+    type: rss
+    url: https://adamtooze.substack.com/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.75
+    prior_reason: "Su gia kinh te Columbia; phan tich vi mo toan cau/dia chinh tri"
+    topics: [macro, geopolitics, china]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 240
+    notes: "Mot so bai paywall"
+  - id: overshoot_klein
+    name_display: "Matthew C. Klein (The Overshoot)"
+    type: rss
+    url: https://theovershoot.co/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.8
+    prior_reason: "Vi mo toan cau/can can thanh toan; nha bao-kinh te chat luong"
+    topics: [macro, trade, china, fed]
+    symbols_hint: [USDCNH, DXY]
+    enabled: true
+    poll_minutes: 240
+    notes: "Mot so bai paywall"
+  - id: sahm_claudia
+    name_display: "Claudia Sahm (Stay-At-Home Macro)"
+    type: rss
+    url: https://stayathomemacro.substack.com/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.82
+    prior_reason: "Tac gia Sahm Rule, cuu nhan vien Fed; thi truong lao dong/Fed"
+    topics: [labor, fed, recession]
+    symbols_hint: [US500, DXY]
+    enabled: true
+    poll_minutes: 240
+    notes: "Tan suat thap (vai bai/thang)"
+  - id: yardeni
+    name_display: "Ed Yardeni (Yardeni Research QuickTakes)"
+    type: rss
+    url: https://yardeniquicktakes.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.72
+    prior_reason: "Chien luoc gia co phieu/vi mo ky cu, nhieu bieu do; ban chat advisory"
+    topics: [equities, macro, fed, earnings]
+    symbols_hint: [US500, NAS100]
+    enabled: true
+    poll_minutes: 120
+    notes: "Tu van tra phi; ban QuickTakes mien phi. Xung dot loi ich co the"
+  - id: apricitas
+    name_display: "Joseph Politano (Apricitas Economics)"
+    type: rss
+    url: https://www.apricitas.io/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.72
+    prior_reason: "Phan tich du lieu vi mo My chi tiet, minh bach nguon"
+    topics: [macro, labor, inflation]
+    symbols_hint: [US500, DXY]
+    enabled: true
+    poll_minutes: 240
+    notes: ""
+  - id: awealth
+    name_display: "Ben Carlson (A Wealth of Common Sense)"
+    type: rss
+    url: https://awealthofcommonsense.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.55
+    prior_reason: "Binh luan dau tu dai han/lich su thi truong; it tin hieu ngan han"
+    topics: [markets, equities, behavior]
+    symbols_hint: [US500]
+    enabled: true
+    poll_minutes: 240
+    notes: "Thuoc Ritholtz Wealth Mgmt - xung dot loi ich nhe"
+  - id: delong
+    name_display: "J. Bradford DeLong (Grasping Reality)"
+    type: rss
+    url: https://braddelong.substack.com/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.68
+    prior_reason: "Giao su Berkeley; kinh te hoc & lich su kinh te"
+    topics: [macro, academic, policy]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 360
+    notes: ""
+  - id: slow_boring
+    name_display: "Matthew Yglesias (Slow Boring)"
+    type: rss
+    url: https://www.slowboring.com/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.45
+    prior_reason: "Chinh sach cong/kinh te chinh tri; lien quan thap den gia"
+    topics: [policy, politics]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 360
+    notes: "Mac dinh tat; phan paywall"
+  - id: krugman
+    name_display: "Paul Krugman (Substack)"
+    type: rss
+    url: https://paulkrugman.substack.com/feed
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.68
+    prior_reason: "Nobel kinh te; vi mo/thuong mai; thien kien chinh tri"
+    topics: [macro, trade, policy]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 360
+    notes: "Mot so bai paywall; quan diem co thien huong"
+  - id: mankiw
+    name_display: "N. Gregory Mankiw (Greg Mankiw Blog)"
+    type: atom
+    url: https://gregmankiw.blogspot.com/feeds/posts/default
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.68
+    prior_reason: "Giao su Harvard; tan suat thap, tom tat ngan"
+    topics: [academic, macro, policy]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 720
+    notes: ""
+  - id: ofdollars
+    name_display: "Nick Maggiulli (Of Dollars And Data)"
+    type: rss
+    url: https://ofdollarsanddata.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.55
+    prior_reason: "Dau tu dua tren du lieu; dai han"
+    topics: [markets, data]
+    symbols_hint: [US500]
+    enabled: true
+    poll_minutes: 720
+    notes: "Thuoc Ritholtz - xung dot nhe"
+  - id: alpha_architect
+    name_display: "Alpha Architect (nghien cuu dinh luong)"
+    type: rss
+    url: https://alphaarchitect.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: asset_manager
+    prior_score: 0.6
+    prior_reason: "Nghien cuu yeu to/chien luoc dinh luong; quan ly quy co loi ich ban san pham"
+    topics: [quant, factor, equities]
+    symbols_hint: [US500]
+    enabled: true
+    poll_minutes: 480
+    notes: "Quan ly quy ETF -> xung dot loi ich"
+  - id: econofact
+    name_display: "EconoFact (Tufts Fletcher School)"
+    type: rss
+    url: https://econofact.org/feed
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.78
+    prior_reason: "Nha kinh te hoc thuat giai thich chinh sach/du lieu, mien phi"
+    topics: [policy, trade, macro]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 360
+    notes: ""
+  - id: aei
+    name_display: "American Enterprise Institute (AEI)"
+    type: rss
+    url: https://www.aei.org/feed/
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.6
+    prior_reason: "Think tank bao thu My; phan lon chinh sach, can loc topic kinh te; co thien kien"
+    topics: [policy, fiscal, macro]
+    symbols_hint: []
+    enabled: true
+    poll_minutes: 360
+    notes: "Thien kien chinh tri (bao thu); nen loc tag economics"
+  - id: resolution_foundation
+    name_display: "Resolution Foundation"
+    type: rss
+    url: https://www.resolutionfoundation.org/feed/
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.65
+    prior_reason: "Nghien cuu thu nhap/kinh te Anh (ngu canh GBP)"
+    topics: [uk, macro, gbp]
+    symbols_hint: [GBPUSD]
+    enabled: true
+    poll_minutes: 360
+    notes: ""
+  - id: alhambra
+    name_display: "Jeffrey Snider (Alhambra Investments)"
+    type: rss
+    url: https://alhambrapartners.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.55
+    prior_reason: "Phan tich thanh khoan/Eurodollar; quan diem heterodox"
+    topics: [liquidity, rates, macro]
+    symbols_hint: [US500, DXY]
+    enabled: true
+    poll_minutes: 240
+    notes: "Quan ly tai san - xung dot loi ich; quan diem heterodox"
+  - id: hussman
+    name_display: "John Hussman (Hussman Funds)"
+    type: rss
+    url: https://hussmanfunds.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: asset_manager
+    prior_score: 0.45
+    prior_reason: "Binh luan dinh gia co phieu cua nha quan ly quy; thien kien bear keo dai"
+    topics: [valuation, equities]
+    symbols_hint: [US500]
+    enabled: false
+    poll_minutes: 720
+    notes: "Xung dot loi ich + bear bias; mac dinh tat"
+  - id: forexcrunch
+    name_display: "ForexCrunch (Forex Crunch)"
+    type: rss
+    url: https://www.forexcrunch.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.5
+    prior_reason: "Tin/phan tich FX tong hop, bai ngan"
+    topics: [fx, news]
+    symbols_hint: [EURUSD, GBPUSD, USDJPY]
+    enabled: true
+    poll_minutes: 60
+    notes: "Trang thuong mai quang cao; tin tong hop"
+  - id: investing_economy
+    name_display: "Investing.com - Economy News (RSS)"
+    type: rss
+    url: https://www.investing.com/rss/news_14.rss
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.4
+    prior_reason: "Tin kinh te tong hop (feed khong co tom tat)"
+    topics: [news, macro]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 60
+    notes: "ToS Investing han che scrape -> chi RSS cong khai tieu de+link; mac dinh tat"
+  - id: investing_indicators
+    name_display: "Investing.com - Economic Indicators News (RSS)"
+    type: rss
+    url: https://www.investing.com/rss/news_95.rss
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.4
+    prior_reason: "Tin chi bao kinh te (khong summary)"
+    topics: [news, macro]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 60
+    notes: "Nhu tren; mac dinh tat"
+  - id: realclearmarkets
+    name_display: "RealClearMarkets (tong hop)"
+    type: rss
+    url: https://www.realclearmarkets.com/index.xml
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.45
+    prior_reason: "Tong hop op-ed/link thi truong; khong phai tac gia goc"
+    topics: [markets, policy]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 240
+    notes: "Aggregator/thien kien; mac dinh tat"
+  - id: visual_capitalist
+    name_display: "Visual Capitalist"
+    type: rss
+    url: https://www.visualcapitalist.com/feed/
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.35
+    prior_reason: "Infographic; khong co tin hieu giao dich"
+    topics: [data, education]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 720
+    notes: "Mac dinh tat"
+  - id: tax_foundation
+    name_display: "Tax Foundation"
+    type: rss
+    url: https://taxfoundation.org/feed/
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.45
+    prior_reason: "Chinh sach thue My; lien quan thap"
+    topics: [fiscal, tax]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 720
+    notes: "Mac dinh tat; feed khong co ngay chuan"
+  - id: standard_chartered
+    name_display: "Standard Chartered (feed tin chung)"
+    type: rss
+    url: https://www.sc.com/en/rss/
+    lang: en
+    group: research_macro
+    institution_type: bank
+    prior_score: 0.3
+    prior_reason: "Feed tin ngan hang chung, khong phai bao cao research"
+    topics: [news]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 720
+    notes: "Khong phai nghien cuu -> tat"
+  - id: macro_musings
+    name_display: "David Beckworth (Macro Musings podcast)"
+    type: rss
+    url: https://macromusings.libsyn.com/rss
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.6
+    prior_reason: "Podcast kinh te tien te, khach la nha kinh te/quan chuc Fed; chi mo ta tap"
+    topics: [monetary, fed]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 720
+    notes: "Podcast; chi tieu de+mo ta; mac dinh tat"
+  - id: collaborative_fund
+    name_display: "Collaborative Fund (Morgan Housel et al.)"
+    type: rss
+    url: https://collabfund.com/feed
+    lang: en
+    group: research_macro
+    institution_type: asset_manager
+    prior_score: 0.4
+    prior_reason: "Tieu luan dau tu hanh vi; khong phai tin hieu"
+    topics: [behavior, investing]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 720
+    notes: "Quy VC - xung dot; mac dinh tat"
+  - id: ecb_blog
+    name_display: "ECB Blog (ngan hang trung uong)"
+    type: rss
+    url: https://www.ecb.europa.eu/rss/blog.html
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.85
+    prior_reason: "Nguon chinh ECB; thuoc nhom central_bank - de nhom khac xu ly"
+    topics: [ecb, macro]
+    symbols_hint: [EURUSD]
+    enabled: false
+    poll_minutes: 720
+    notes: "Trung nhom NHTW; tat tranh trung"
+  - id: bis_publications
+    name_display: "BIS & FSI publications"
+    type: rss
+    url: https://www.bis.org/doclist/bis_fsi_publs.rss
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.85
+    prior_reason: "Ngan hang cac NHTW; nghien cuu uy tin; nhom central_bank"
+    topics: [macro, financial_stability]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 720
+    notes: "Trung nhom NHTW; tat"
+  - id: ny_fed_liberty
+    name_display: "NY Fed - Liberty Street Economics"
+    type: rss
+    url: https://libertystreeteconomics.newyorkfed.org/feed/
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.9
+    prior_reason: "Nghien cuu NY Fed; nhom central_bank"
+    topics: [fed, macro]
+    symbols_hint: [US500, DXY]
+    enabled: false
+    poll_minutes: 360
+    notes: "Trung nhom NHTW; tat"
+  - id: boe_bank_underground
+    name_display: "Bank Underground (nhan vien BoE)"
+    type: rss
+    url: https://bankunderground.co.uk/feed/
+    lang: en
+    group: research_macro
+    institution_type: think_tank
+    prior_score: 0.8
+    prior_reason: "Blog nhan vien BoE (quan diem ca nhan); nhom central_bank"
+    topics: [uk, boe, macro]
+    symbols_hint: [GBPUSD]
+    enabled: false
+    poll_minutes: 720
+    notes: "Trung nhom NHTW; tat"
+  - id: calculated_risk
+    name_display: "Bill McBride (Calculated Risk)"
+    type: atom
+    url: https://www.calculatedriskblog.com/feeds/posts/default
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.8
+    prior_reason: "Blog nha o/viec lam My uy tin; NHUNG feed tra du lieu cu (moi nhat 2026-01-12)"
+    topics: [housing, labor, macro]
+    symbols_hint: [US500]
+    enabled: false
+    poll_minutes: 180
+    notes: "Feed STALE (3 bien the deu 2026-01-12) - tat cho den khi sua"
+  - id: bond_vigilantes
+    name_display: "Bond Vigilantes (Royal London AM)"
+    type: rss
+    url: https://www.bondvigilantes.com/feed
+    lang: en
+    group: research_macro
+    institution_type: asset_manager
+    prior_score: 0.6
+    prior_reason: "Blog trai phieu cua quan ly quy; feed hop le nhung RONG 0 muc"
+    topics: [bonds, rates]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 360
+    notes: "Feed rong -> tat"
+  - id: fxempire_news
+    name_display: "FXEmpire (tin)"
+    type: rss
+    url: https://www.fxempire.com/api/v1/en/articles/rss/news
+    lang: en
+    group: research_macro
+    institution_type: independent
+    prior_score: 0.4
+    prior_reason: "Tin FX; muc moi nhat 2026-08-04 (stale)"
+    topics: [fx, news]
+    symbols_hint: []
+    enabled: false
+    poll_minutes: 60
+    notes: "Stale -> tat"

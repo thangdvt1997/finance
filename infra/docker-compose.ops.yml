@@ -1,0 +1,223 @@
+x-logging: &logging
+  driver: json-file
+  options: { max-size: "10m", max-file: "3" }
+
+# Lớp vận hành (monitoring/alerting). Chạy cùng compose chính:
+#   docker compose -p tradingsys --env-file .env -f docker-compose.yml -f docker-compose.ops.yml up -d
+# hoặc đặt  COMPOSE_FILE=docker-compose.yml:docker-compose.ops.yml  trong infra/.env (compose tự đọc).
+# Không publish port nào ra host.
+services:
+  alertmanager:
+    image: prom/alertmanager:v0.34.1   # nâng từ v0.27.0 (đã kiểm tra tồn tại trên Docker Hub 2026-10-11)
+    restart: unless-stopped
+    networks: [ops]
+    logging: *logging
+    user: "65534:65534"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 1
+    command: ["--config.file=/etc/alertmanager/alertmanager.yml", "--storage.path=/alertmanager"]
+    volumes:
+      - ./prometheus/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+      - alertmanager-data:/alertmanager
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9093/-/healthy"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  prometheus:
+    networks: [backend, ops, internal]
+    logging: *logging
+    # Gộp vào service prometheus của compose chính: thêm luật + trỏ tới node_exporter của host.
+    image: prom/prometheus:v3.13.4          # nâng từ v2.54.1 (TSDB v2 đọc được; rollback: xem docs/SECURITY_SCAN.md)
+    depends_on: [alertmanager]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./prometheus/rules.yml:/etc/prometheus/rules.yml:ro
+      - ./prometheus/rules_slo.yml:/etc/prometheus/rules_slo.yml:ro
+      - ./prometheus/rules_rt.yml:/etc/prometheus/rules_rt.yml:ro
+      - ./prometheus/rules_feed.yml:/etc/prometheus/rules_feed.yml:ro
+
+  # ---- Nâng phiên bản image ghim cũ bằng override (không sửa docker-compose.yml). Xem docs/SECURITY_SCAN.md. ----
+  redis:
+    networks: [backend]
+    logging: *logging
+    image: redis:8.10.2-alpine              # nâng từ redis:7-alpine (7.4.5); AOF 7.4 đọc được
+  timescaledb:
+    networks: [backend]
+    logging: *logging
+    image: timescale/timescaledb:2.30.2-pg16  # ghim đúng digest đang chạy của latest-pg16 (không đổi dữ liệu)
+    # WAL archiving (PITR): mỗi segment gzip vào /wal-archive (bind ../wal-archive, uid 70). archive_timeout=300 => RPO WAL <= 5 phút
+    # (cùng ổ đĩa cho tới khi cấu hình off-site: backup/offsite.sh). Base backup hằng tuần: backup/pg_basebackup.sh. Xem docs/DR_RUNBOOK.md.
+    command:
+      - postgres
+      - -c
+      - archive_mode=on
+      - -c
+      - archive_timeout=300
+      - -c
+      - "archive_command=test -f /wal-archive/%f.gz || (gzip -c %p > /wal-archive/%f.gz.tmp && mv /wal-archive/%f.gz.tmp /wal-archive/%f.gz)"
+    volumes:
+      - ../wal-archive:/wal-archive
+  grafana:
+    networks: [backend, ops, frontend]
+    logging: *logging
+    image: grafana/grafana:12.4.12          # nâng từ 11.2.0 (dòng 12.4, chưa nhảy 13.x)
+
+  # ---- Observability (ARCH_AUDIT O-1/O-2): exporter Postgres/Redis + backup textfile + cAdvisor. Không publish cổng; Prometheus scrape qua mạng nội bộ. ----
+  # Role ts_monitor: chạy infra/db/create_monitor_role.sh trước khi up. Truy vấn độ tươi dữ liệu: prometheus/pg_queries.yaml.
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:v0.20.1
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    depends_on:
+      timescaledb: { condition: service_healthy }
+    environment:
+      DATA_SOURCE_URI: timescaledb:5432/${POSTGRES_DB:-ts}?sslmode=disable
+      DATA_SOURCE_USER: ts_monitor
+      DATA_SOURCE_PASS: ${POSTGRES_MONITOR_PASSWORD:?chạy infra/db/create_monitor_role.sh}
+      PG_EXPORTER_EXTEND_QUERY_PATH: /etc/postgres-exporter/queries.yaml
+      GOMAXPROCS: "2"        # host nhiều nhân: không giới hạn thì Go sinh hàng chục thread (đụng pids_limit)
+    volumes:
+      - ./prometheus/pg_queries.yaml:/etc/postgres-exporter/queries.yaml:ro
+    user: "65534:65534"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 1.0   # 0.5 bị throttle >60% mỗi lần scrape (truy vấn pg_queries ~4s) -> ContainerCpuThrottled
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9187/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # Role Redis ts_metrics (ops/redis_acl_render.sh): INFO/XINFO/XPENDING/SLOWLOG... không đọc dữ liệu. Stream bus: độ dài, group lag, pending, DLQ.
+  redis-exporter:
+    image: oliver006/redis_exporter:v1.93.0-alpine
+    restart: unless-stopped
+    networks: [backend, ops]
+    logging: *logging
+    depends_on:
+      redis: { condition: service_healthy }
+    environment:
+      REDIS_ADDR: redis://redis:6379
+      REDIS_USER: ts_metrics
+      REDIS_PASSWORD: ${REDIS_METRICS_PASSWORD:?chạy infra/ops/redis_acl_render.sh}
+      GOMAXPROCS: "2"
+      REDIS_EXPORTER_CHECK_STREAMS: md.quotes,md.bars,news.items,news.enriched,calendar.events,expert.signals,expert.positions,expert.profiles,account.snapshots,account.deals,alerts.out,dlq
+    user: "65534:65534"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 64
+    mem_limit: 128m
+    cpus: 0.5
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9121/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # node_exporter THỨ HAI chỉ đọc textfile backup (ts_backup_last_success_timestamp...) do infra/backup/backup_watch.sh ghi mỗi giờ; KHÔNG đụng node_exporter của host.
+  # Thư mục state là 0700 root nên container chạy uid 0 nhưng bỏ hết capability + mount :ro (ngoại lệ có chủ đích, xem docs/HARDENING.md).
+  textfile-exporter:
+    image: prom/node-exporter:v1.12.1
+    restart: unless-stopped
+    networks: [ops]
+    logging: *logging
+    command:
+      - --collector.disable-defaults
+      - --collector.textfile
+      - --collector.textfile.directory=/textfiles
+      - --web.listen-address=:9100
+    volumes:
+      - /var/lib/tradingsys-backup:/textfiles:ro
+    user: "0:0"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 32
+    mem_limit: 64m
+    cpus: 0.25
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9100/metrics"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Tài nguyên theo container (CPU/RAM/mạng/IO). Đọc Docker qua docker-socket-proxy (chỉ GET) thay vì mount docker.sock. Prometheus chỉ giữ series project tradingsys
+  # (metric_relabel_configs) nên không lộ các container hệ thống khác trên host dùng chung. Chạy uid 0 + cap_drop ALL + mount :ro.
+  cadvisor:
+    image: ghcr.io/google/cadvisor:v0.60.6
+    restart: unless-stopped
+    networks: [ops, socketproxy]
+    logging: *logging
+    depends_on: [docker-socket-proxy]
+    command:
+      - --docker=tcp://docker-socket-proxy:2375
+      - --docker_only=true
+      - --housekeeping_interval=30s
+      - --store_container_labels=false
+      - --whitelisted_container_labels=com.docker.compose.project,com.docker.compose.service
+      - --disable_metrics=advtcp,cpu_topology,hugetlb,memory_numa,percpu,referenced_memory,resctrl,sched,tcp,udp,process,disk
+    volumes:
+      - /sys:/sys:ro
+      - /var/lib/docker/image:/var/lib/docker/image:ro   # chỉ metadata layer (không mount cả /var/lib/docker, không /rootfs, không /var/run=docker.sock)
+    user: "0:0"
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # Trace OpenTelemetry (ARCH_AUDIT O-1): Jaeger v2 all-in-one, lưu trong RAM (mất khi restart; đủ để điều tra độ trễ gateway->DB/Redis/service).
+  # api-gateway gửi OTLP/HTTP tới jaeger:4318 (bật bằng OTEL_EXPORTER_OTLP_ENDPOINT trong compose chính; lấy mẫu 25%). UI: http://127.0.0.1:${JAEGER_PORT:-16686} (SSH tunnel).
+  jaeger:
+    image: jaegertracing/jaeger:2.22.0
+    restart: unless-stopped
+    networks: [ops, frontend]
+    logging: *logging
+    environment:
+      GOMEMLIMIT: 800MiB
+      GOMAXPROCS: "2"
+    ports:
+      - "${OPS_BIND:-127.0.0.1}:${JAEGER_PORT:-16686}:16686"
+    command: ["--config", "/etc/jaeger/config.yaml"]    # max_traces 20000 (RAM giới hạn)
+    volumes: ["./jaeger/config.yaml:/etc/jaeger/config.yaml:ro"]
+    user: "10001:10001"
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 1g
+    cpus: 1
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:16686/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  alertmanager-data:

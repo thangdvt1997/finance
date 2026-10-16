@@ -1,0 +1,18 @@
+# Kịch bản MẪU nhỏ để chứng minh luồng nạp -> detector thử -> backtest nền -> test khoá. KHÔNG có edge (và không cần có).
+# Cú pháp đầy đủ: docs/AI_TRADING.md mục "Cách thêm kịch bản mới (Dạy kịch bản)".
+id: SC-DEMO-1
+name: "Mẫu: nến từ chối đỉnh sau nhịp tăng (Sell)"
+summary: "Sau nhịp tăng >= 2 ATR trong 6 nến, nến đóng giảm có bóng trên >= 40% biên độ -> Sell, SL trên đỉnh 6 nến."
+side: sell
+symbols: [EURUSD, GBPUSD]
+tfs: [H1]
+detector:
+  cooldown_bars: 8
+  rules:
+    - {rule: move_atr, dir: up, bars: 6, min: 2.0}
+    - {rule: upper_wick, min_ratio: 0.4}
+    - {rule: bear_body, min_atr: 0.3}
+levels:
+  sl: {type: swing_high, bars: 6, buffer_atr: [0.25, 0.5]}
+  tp_r: [1.0, 2.0]
+  max_hold: 60

@@ -1,0 +1,9 @@
+.git
+.venv
+**/__pycache__
+**/*.pyc
+**/node_modules
+services/client-ui/app/dist
+services/client-ui/docs
+services/client-ui/qa
+infra/.env

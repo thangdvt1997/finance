@@ -1,0 +1,168 @@
+# SINH TU DONG boi infra/ops/gen_assets_mt5.py tu symbols.csv - KHONG sua tay (muc viet tay dat trong assets.yaml, duoc uu tien).
+version: 1
+symbols:
+  forex:
+    - {s: "AUDCAD", name: "Đô la Úc / Đô la Canada", name_en: "Australian Dollar / Canadian Dollar", group: "Minors"}
+    - {s: "AUDCHF", name: "Đô la Úc / Franc Thuỵ Sĩ", name_en: "Australian Dollar / Swiss Franc", group: "Minors"}
+    - {s: "AUDDKK", name: "Đô la Úc / Curon Đan Mạch", name_en: "Australian Dollar / Danish Krone", group: "Exotics"}
+    - {s: "AUDHKD", name: "Đô la Úc / Đô la Hồng Kông", name_en: "Australian Dollar / Hong Kong Dollar", group: "Exotics"}
+    - {s: "AUDHUF", name: "Đô la Úc / Forint Hungary", name_en: "Australian Dollar / Hungarian Forint", group: "Exotics", precision: 3}
+    - {s: "AUDJPY", name: "Đô la Úc / Yên Nhật", name_en: "Australian Dollar / Japanese Yen", group: "Minors", precision: 3}
+    - {s: "AUDNOK", name: "Đô la Úc / Curon Na Uy", name_en: "Australian Dollar / Norwegian Krone", group: "Exotics"}
+    - {s: "AUDNZD", name: "Đô la Úc / Đô la New Zealand", name_en: "Australian Dollar / New Zealand Dollar", group: "Minors"}
+    - {s: "AUDPLN", name: "Đô la Úc / Zloty Ba Lan", name_en: "Australian Dollar / Polish Zloty", group: "Exotics"}
+    - {s: "AUDSEK", name: "Đô la Úc / Curon Thuỵ Điển", name_en: "Australian Dollar / Swedish Krona", group: "Exotics"}
+    - {s: "AUDSGD", name: "Đô la Úc / Đô la Singapore", name_en: "Australian Dollar / Singapore Dollar", group: "Exotics"}
+    - {s: "AUDTHB", name: "Đô la Úc / Baht Thái", name_en: "Australian Dollar / Thai Baht", group: "Exotics"}
+    - {s: "AUDUSD", name: "Đô la Úc / Đô la Mỹ", name_en: "Australian Dollar / US Dollar", group: "Majors"}
+    - {s: "AUDZAR", name: "Đô la Úc / Rand Nam Phi", name_en: "Australian Dollar / South African Rand", group: "Exotics"}
+    - {s: "CADCHF", name: "Đô la Canada / Franc Thuỵ Sĩ", name_en: "Canadian Dollar / Swiss Franc", group: "Minors"}
+    - {s: "CADDKK", name: "Đô la Canada / Curon Đan Mạch", name_en: "Canadian Dollar / Danish Krone", group: "Exotics"}
+    - {s: "CADJPY", name: "Đô la Canada / Yên Nhật", name_en: "Canadian Dollar / Japanese Yen", group: "Minors", precision: 3}
+    - {s: "CADMXN", name: "Đô la Canada / Peso Mexico", name_en: "Canadian Dollar / Mexican Peso", group: "Exotics"}
+    - {s: "CADNOK", name: "Đô la Canada / Curon Na Uy", name_en: "Canadian Dollar / Norwegian Krone", group: "Exotics"}
+    - {s: "CADPLN", name: "Đô la Canada / Zloty Ba Lan", name_en: "Canadian Dollar / Polish Zloty", group: "Exotics"}
+    - {s: "CADSEK", name: "Đô la Canada / Curon Thuỵ Điển", name_en: "Canadian Dollar / Swedish Krona", group: "Exotics"}
+    - {s: "CADSGD", name: "Đô la Canada / Đô la Singapore", name_en: "Canadian Dollar / Singapore Dollar", group: "Exotics"}
+    - {s: "CHFDKK", name: "Franc Thuỵ Sĩ / Curon Đan Mạch", name_en: "Swiss Franc / Danish Krone", group: "Exotics"}
+    - {s: "CHFHUF", name: "Franc Thuỵ Sĩ / Forint Hungary", name_en: "Swiss Franc / Hungarian Forint", group: "Exotics", precision: 3}
+    - {s: "CHFJPY", name: "Franc Thuỵ Sĩ / Yên Nhật", name_en: "Swiss Franc / Japanese Yen", group: "Minors", precision: 3}
+    - {s: "CHFMXN", name: "Franc Thuỵ Sĩ / Peso Mexico", name_en: "Swiss Franc / Mexican Peso", group: "Exotics"}
+    - {s: "CHFNOK", name: "Franc Thuỵ Sĩ / Curon Na Uy", name_en: "Swiss Franc / Norwegian Krone", group: "Exotics"}
+    - {s: "CHFPLN", name: "Franc Thuỵ Sĩ / Zloty Ba Lan", name_en: "Swiss Franc / Polish Zloty", group: "Exotics"}
+    - {s: "CHFSEK", name: "Franc Thuỵ Sĩ / Curon Thuỵ Điển", name_en: "Swiss Franc / Swedish Krona", group: "Exotics"}
+    - {s: "CHFSGD", name: "Franc Thuỵ Sĩ / Đô la Singapore", name_en: "Swiss Franc / Singapore Dollar", group: "Exotics"}
+    - {s: "CHFTRY", name: "Franc Thuỵ Sĩ / Lira Thổ Nhĩ Kỳ", name_en: "Swiss Franc / Turkish Lira", group: "Exotics"}
+    - {s: "CHFZAR", name: "Franc Thuỵ Sĩ / Rand Nam Phi", name_en: "Swiss Franc / South African Rand", group: "Exotics"}
+    - {s: "CNHJPY", name: "Nhân dân tệ (offshore) / Yên Nhật", name_en: "Chinese Yuan (offshore) / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "DKKJPY", name: "Curon Đan Mạch / Yên Nhật", name_en: "Danish Krone / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "DKKNOK", name: "Curon Đan Mạch / Curon Na Uy", name_en: "Danish Krone / Norwegian Krone", group: "Exotics"}
+    - {s: "DKKSEK", name: "Curon Đan Mạch / Curon Thuỵ Điển", name_en: "Danish Krone / Swedish Krona", group: "Exotics"}
+    - {s: "EURAUD", name: "Euro / Đô la Úc", name_en: "Euro / Australian Dollar", group: "Minors"}
+    - {s: "EURCAD", name: "Euro / Đô la Canada", name_en: "Euro / Canadian Dollar", group: "Minors"}
+    - {s: "EURCHF", name: "Euro / Franc Thuỵ Sĩ", name_en: "Euro / Swiss Franc", group: "Minors"}
+    - {s: "EURCNH", name: "Euro / Nhân dân tệ (offshore)", name_en: "Euro / Chinese Yuan (offshore)", group: "Exotics"}
+    - {s: "EURCZK", name: "Euro / Curon Séc", name_en: "Euro / Czech Koruna", group: "Exotics"}
+    - {s: "EURDKK", name: "Euro / Curon Đan Mạch", name_en: "Euro / Danish Krone", group: "Exotics"}
+    - {s: "EURGBP", name: "Euro / Bảng Anh", name_en: "Euro / British Pound", group: "Minors"}
+    - {s: "EURHKD", name: "Euro / Đô la Hồng Kông", name_en: "Euro / Hong Kong Dollar", group: "Exotics"}
+    - {s: "EURHUF", name: "Euro / Forint Hungary", name_en: "Euro / Hungarian Forint", group: "Exotics", precision: 3}
+    - {s: "EURILS", name: "Euro / Shekel Israel", name_en: "Euro / Israeli Shekel", group: "Exotics"}
+    - {s: "EURJPY", name: "Euro / Yên Nhật", name_en: "Euro / Japanese Yen", group: "Minors", precision: 3}
+    - {s: "EURMXN", name: "Euro / Peso Mexico", name_en: "Euro / Mexican Peso", group: "Exotics"}
+    - {s: "EURNOK", name: "Euro / Curon Na Uy", name_en: "Euro / Norwegian Krone", group: "Exotics"}
+    - {s: "EURNZD", name: "Euro / Đô la New Zealand", name_en: "Euro / New Zealand Dollar", group: "Minors"}
+    - {s: "EURPLN", name: "Euro / Zloty Ba Lan", name_en: "Euro / Polish Zloty", group: "Exotics"}
+    - {s: "EURRUB", name: "Euro / Rúp Nga", name_en: "Euro / Russian Ruble", group: "Exotics"}
+    - {s: "EURRUR", name: "Euro / Rúp Nga (cũ)", name_en: "Euro / Russian Ruble (old)", group: "Exotics"}
+    - {s: "EURSEK", name: "Euro / Curon Thuỵ Điển", name_en: "Euro / Swedish Krona", group: "Exotics"}
+    - {s: "EURSGD", name: "Euro / Đô la Singapore", name_en: "Euro / Singapore Dollar", group: "Exotics"}
+    - {s: "EURTRY", name: "Euro / Lira Thổ Nhĩ Kỳ", name_en: "Euro / Turkish Lira", group: "Exotics"}
+    - {s: "EURUSD", name: "Euro / Đô la Mỹ", name_en: "Euro / US Dollar", group: "Majors"}
+    - {s: "EURZAR", name: "Euro / Rand Nam Phi", name_en: "Euro / South African Rand", group: "Exotics"}
+    - {s: "GBPAUD", name: "Bảng Anh / Đô la Úc", name_en: "British Pound / Australian Dollar", group: "Minors"}
+    - {s: "GBPCAD", name: "Bảng Anh / Đô la Canada", name_en: "British Pound / Canadian Dollar", group: "Minors"}
+    - {s: "GBPCHF", name: "Bảng Anh / Franc Thuỵ Sĩ", name_en: "British Pound / Swiss Franc", group: "Minors"}
+    - {s: "GBPCZK", name: "Bảng Anh / Curon Séc", name_en: "British Pound / Czech Koruna", group: "Exotics"}
+    - {s: "GBPDKK", name: "Bảng Anh / Curon Đan Mạch", name_en: "British Pound / Danish Krone", group: "Exotics"}
+    - {s: "GBPHKD", name: "Bảng Anh / Đô la Hồng Kông", name_en: "British Pound / Hong Kong Dollar", group: "Exotics"}
+    - {s: "GBPHUF", name: "Bảng Anh / Forint Hungary", name_en: "British Pound / Hungarian Forint", group: "Exotics", precision: 3}
+    - {s: "GBPJPY", name: "Bảng Anh / Yên Nhật", name_en: "British Pound / Japanese Yen", group: "Minors", precision: 3}
+    - {s: "GBPMXN", name: "Bảng Anh / Peso Mexico", name_en: "British Pound / Mexican Peso", group: "Exotics"}
+    - {s: "GBPNOK", name: "Bảng Anh / Curon Na Uy", name_en: "British Pound / Norwegian Krone", group: "Exotics"}
+    - {s: "GBPNZD", name: "Bảng Anh / Đô la New Zealand", name_en: "British Pound / New Zealand Dollar", group: "Minors"}
+    - {s: "GBPPLN", name: "Bảng Anh / Zloty Ba Lan", name_en: "British Pound / Polish Zloty", group: "Exotics"}
+    - {s: "GBPSEK", name: "Bảng Anh / Curon Thuỵ Điển", name_en: "British Pound / Swedish Krona", group: "Exotics"}
+    - {s: "GBPSGD", name: "Bảng Anh / Đô la Singapore", name_en: "British Pound / Singapore Dollar", group: "Exotics"}
+    - {s: "GBPTRY", name: "Bảng Anh / Lira Thổ Nhĩ Kỳ", name_en: "British Pound / Turkish Lira", group: "Exotics"}
+    - {s: "GBPUSD", name: "Bảng Anh / Đô la Mỹ", name_en: "British Pound / US Dollar", group: "Majors"}
+    - {s: "GBPZAR", name: "Bảng Anh / Rand Nam Phi", name_en: "British Pound / South African Rand", group: "Exotics"}
+    - {s: "HKDJPY", name: "Đô la Hồng Kông / Yên Nhật", name_en: "Hong Kong Dollar / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "MXNJPY", name: "Peso Mexico / Yên Nhật", name_en: "Mexican Peso / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "NOKDKK", name: "Curon Na Uy / Curon Đan Mạch", name_en: "Norwegian Krone / Danish Krone", group: "Exotics"}
+    - {s: "NOKJPY", name: "Curon Na Uy / Yên Nhật", name_en: "Norwegian Krone / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "NOKSEK", name: "Curon Na Uy / Curon Thuỵ Điển", name_en: "Norwegian Krone / Swedish Krona", group: "Exotics"}
+    - {s: "NZDCAD", name: "Đô la New Zealand / Đô la Canada", name_en: "New Zealand Dollar / Canadian Dollar", group: "Minors"}
+    - {s: "NZDCHF", name: "Đô la New Zealand / Franc Thuỵ Sĩ", name_en: "New Zealand Dollar / Swiss Franc", group: "Minors"}
+    - {s: "NZDDKK", name: "Đô la New Zealand / Curon Đan Mạch", name_en: "New Zealand Dollar / Danish Krone", group: "Exotics"}
+    - {s: "NZDHUF", name: "Đô la New Zealand / Forint Hungary", name_en: "New Zealand Dollar / Hungarian Forint", group: "Exotics", precision: 3}
+    - {s: "NZDJPY", name: "Đô la New Zealand / Yên Nhật", name_en: "New Zealand Dollar / Japanese Yen", group: "Minors", precision: 3}
+    - {s: "NZDMXN", name: "Đô la New Zealand / Peso Mexico", name_en: "New Zealand Dollar / Mexican Peso", group: "Exotics"}
+    - {s: "NZDNOK", name: "Đô la New Zealand / Curon Na Uy", name_en: "New Zealand Dollar / Norwegian Krone", group: "Exotics"}
+    - {s: "NZDSEK", name: "Đô la New Zealand / Curon Thuỵ Điển", name_en: "New Zealand Dollar / Swedish Krona", group: "Exotics"}
+    - {s: "NZDSGD", name: "Đô la New Zealand / Đô la Singapore", name_en: "New Zealand Dollar / Singapore Dollar", group: "Exotics"}
+    - {s: "NZDUSD", name: "Đô la New Zealand / Đô la Mỹ", name_en: "New Zealand Dollar / US Dollar", group: "Majors"}
+    - {s: "PLNJPY", name: "Zloty Ba Lan / Yên Nhật", name_en: "Polish Zloty / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "SEKJPY", name: "Curon Thuỵ Điển / Yên Nhật", name_en: "Swedish Krona / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "SEKNOK", name: "Curon Thuỵ Điển / Curon Na Uy", name_en: "Swedish Krona / Norwegian Krone", group: "Exotics"}
+    - {s: "SGDHKD", name: "Đô la Singapore / Đô la Hồng Kông", name_en: "Singapore Dollar / Hong Kong Dollar", group: "Exotics"}
+    - {s: "SGDJPY", name: "Đô la Singapore / Yên Nhật", name_en: "Singapore Dollar / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "TRYJPY", name: "Lira Thổ Nhĩ Kỳ / Yên Nhật", name_en: "Turkish Lira / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "USDARS", name: "Đô la Mỹ / Peso Argentina", name_en: "US Dollar / Argentine Peso", group: "Exotics"}
+    - {s: "USDBRL", name: "Đô la Mỹ / Real Brazil", name_en: "US Dollar / Brazilian Real", group: "Exotics"}
+    - {s: "USDCAD", name: "Đô la Mỹ / Đô la Canada", name_en: "US Dollar / Canadian Dollar", group: "Majors"}
+    - {s: "USDCHF", name: "Đô la Mỹ / Franc Thuỵ Sĩ", name_en: "US Dollar / Swiss Franc", group: "Majors"}
+    - {s: "USDCLP", name: "Đô la Mỹ / Peso Chile", name_en: "US Dollar / Chilean Peso", group: "Exotics", precision: 2}
+    - {s: "USDCNH", name: "Đô la Mỹ / Nhân dân tệ (offshore)", name_en: "US Dollar / Chinese Yuan (offshore)", group: "Exotics"}
+    - {s: "USDCOP", name: "Đô la Mỹ / Peso Colombia", name_en: "US Dollar / Colombian Peso", group: "Exotics", precision: 2}
+    - {s: "USDCZK", name: "Đô la Mỹ / Curon Séc", name_en: "US Dollar / Czech Koruna", group: "Exotics"}
+    - {s: "USDDKK", name: "Đô la Mỹ / Curon Đan Mạch", name_en: "US Dollar / Danish Krone", group: "Exotics"}
+    - {s: "USDGEL", name: "Đô la Mỹ / Lari Georgia", name_en: "US Dollar / Georgian Lari", group: "Exotics"}
+    - {s: "USDHKD", name: "Đô la Mỹ / Đô la Hồng Kông", name_en: "US Dollar / Hong Kong Dollar", group: "Exotics"}
+    - {s: "USDHUF", name: "Đô la Mỹ / Forint Hungary", name_en: "US Dollar / Hungarian Forint", group: "Exotics", precision: 3}
+    - {s: "USDILS", name: "Đô la Mỹ / Shekel Israel", name_en: "US Dollar / Israeli Shekel", group: "Exotics"}
+    - {s: "USDJPY", name: "Đô la Mỹ / Yên Nhật", name_en: "US Dollar / Japanese Yen", group: "Majors", precision: 3}
+    - {s: "USDMXN", name: "Đô la Mỹ / Peso Mexico", name_en: "US Dollar / Mexican Peso", group: "Exotics"}
+    - {s: "USDNOK", name: "Đô la Mỹ / Curon Na Uy", name_en: "US Dollar / Norwegian Krone", group: "Exotics"}
+    - {s: "USDPLN", name: "Đô la Mỹ / Zloty Ba Lan", name_en: "US Dollar / Polish Zloty", group: "Exotics"}
+    - {s: "USDRMB", name: "Đô la Mỹ / Nhân dân tệ", name_en: "US Dollar / Chinese Yuan", group: "Exotics"}
+    - {s: "USDRUB", name: "Đô la Mỹ / Rúp Nga", name_en: "US Dollar / Russian Ruble", group: "Exotics"}
+    - {s: "USDRUR", name: "Đô la Mỹ / Rúp Nga (cũ)", name_en: "US Dollar / Russian Ruble (old)", group: "Exotics"}
+    - {s: "USDSEK", name: "Đô la Mỹ / Curon Thuỵ Điển", name_en: "US Dollar / Swedish Krona", group: "Exotics"}
+    - {s: "USDSGD", name: "Đô la Mỹ / Đô la Singapore", name_en: "US Dollar / Singapore Dollar", group: "Exotics"}
+    - {s: "USDTHB", name: "Đô la Mỹ / Baht Thái", name_en: "US Dollar / Thai Baht", group: "Exotics"}
+    - {s: "USDTRY", name: "Đô la Mỹ / Lira Thổ Nhĩ Kỳ", name_en: "US Dollar / Turkish Lira", group: "Exotics"}
+    - {s: "USDZAR", name: "Đô la Mỹ / Rand Nam Phi", name_en: "US Dollar / South African Rand", group: "Exotics"}
+    - {s: "ZARJPY", name: "Rand Nam Phi / Yên Nhật", name_en: "South African Rand / Japanese Yen", group: "Exotics", precision: 3}
+    - {s: "USDKRW", name: "Đô la Mỹ / Won Hàn Quốc", name_en: "US Dollar / South Korean Won", group: "Exotics", precision: 2}
+    - {s: "USDINR", name: "Đô la Mỹ / Rupee Ấn Độ", name_en: "US Dollar / Indian Rupee", group: "Exotics"}
+    - {s: "USDNGN", name: "Đô la Mỹ / Naira Nigeria", name_en: "US Dollar / Nigerian Naira", group: "Exotics"}
+    - {s: "USDIDR", name: "Đô la Mỹ / Rupiah Indonesia", name_en: "US Dollar / Indonesian Rupiah", group: "Exotics", precision: 2}
+  metal:
+    - {s: "XAUUSD", name: "Vàng / Đô la Mỹ (giao ngay)", name_en: "Gold / US Dollar (spot)", group: "Kim loại quý", session: "fx_24x5"}
+    - {s: "XAUEUR", name: "Vàng / Euro (giao ngay)", name_en: "Gold / Euro (spot)", group: "Kim loại quý", session: "fx_24x5", quote: "EUR"}
+    - {s: "XAUAUD", name: "Vàng / Đô la Úc (giao ngay)", name_en: "Gold / Australian Dollar (spot)", group: "Kim loại quý", session: "fx_24x5", quote: "AUD"}
+    - {s: "XAGUSD", name: "Bạc / Đô la Mỹ (giao ngay)", name_en: "Silver / US Dollar (spot)", group: "Kim loại quý", session: "fx_24x5", precision: 3}
+    - {s: "XAGEUR", name: "Bạc / Euro (giao ngay)", name_en: "Silver / Euro (spot)", group: "Kim loại quý", session: "fx_24x5", precision: 3, quote: "EUR"}
+    - {s: "XPDUSD", name: "Palladium / Đô la Mỹ (giao ngay)", name_en: "Palladium / US Dollar (spot)", group: "Kim loại quý", session: "fx_24x5"}
+    - {s: "XPTUSD", name: "Bạch kim / Đô la Mỹ (giao ngay)", name_en: "Platinum / US Dollar (spot)", group: "Kim loại quý", session: "fx_24x5"}
+    - {s: "XAGAUD", name: "Bạc / Đô la Úc (giao ngay)", name_en: "Silver / Australian Dollar (spot)", group: "Kim loại quý", session: "fx_24x5", precision: 3, quote: "AUD"}
+    - {s: "XAUCHF", name: "Vàng / Franc Thuỵ Sĩ (giao ngay)", name_en: "Gold / Swiss Franc (spot)", group: "Kim loại quý", session: "fx_24x5", quote: "CHF"}
+    - {s: "XAUGBP", name: "Vàng / Bảng Anh (giao ngay)", name_en: "Gold / British Pound (spot)", group: "Kim loại quý", session: "fx_24x5", quote: "GBP"}
+  index:
+    - {s: "AUS200", name: "ASX 200 (CFD)", name_en: "ASX 200 Index (CFD)", group: "Châu Á - Thái Bình Dương", session: "fx_24x5", quote: "AUD"}
+    - {s: "UK100", name: "FTSE 100 (CFD)", name_en: "FTSE 100 Index (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "GBP"}
+    - {s: "ESP35", name: "IBEX 35 (CFD)", name_en: "IBEX 35 (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "EUR"}
+    - {s: "EUSTX50", name: "Euro Stoxx 50 (CFD)", name_en: "Euro Stoxx 50 (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "EUR"}
+    - {s: "FRA40", name: "CAC 40 (CFD)", name_en: "CAC 40 (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "EUR"}
+    - {s: "HK50", name: "Hang Seng 50 (CFD)", name_en: "HK50 (CFD)", group: "Châu Á - Thái Bình Dương", session: "fx_24x5", quote: "HKD"}
+    - {s: "JPN225", name: "Nikkei 225 (CFD)", name_en: "Nikkei 225 (CFD)", group: "Châu Á - Thái Bình Dương", session: "fx_24x5", quote: "JPY"}
+    - {s: "US500", name: "S&P 500 (CFD)", name_en: "US SPX 500 Index (CFD)", group: "Mỹ", session: "fx_24x5"}
+    - {s: "US30M", name: "Dow Jones 30 mini (CFD)", name_en: "US30m (CFD)", group: "Mỹ", session: "fx_24x5"}
+    - {s: "US500M", name: "S&P 500 mini (CFD)", name_en: "S&P 500mini (CFD)", group: "Mỹ", session: "fx_24x5"}
+    - {s: "USTECH100M", name: "Nasdaq 100 mini (CFD)", name_en: "USTECH100mini (CFD)", group: "Mỹ", session: "fx_24x5"}
+    - {s: "DE40", name: "DAX 40 (CFD)", name_en: "Germany 40 Index (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "EUR"}
+    - {s: "US30", name: "Dow Jones 30 (CFD)", name_en: "US Wall Street 30 Index (CFD)", group: "Mỹ", session: "fx_24x5"}
+    - {s: "USTEC", name: "Nasdaq 100 (CFD)", name_en: "US Tech 100 Index (CFD)", group: "Mỹ", session: "fx_24x5"}
+    - {s: "CA60", name: "Canada 60 (CFD)", name_en: "Canada 60 Index (CFD)", group: "Châu Mỹ", session: "fx_24x5", quote: "CAD"}
+    - {s: "CHINA50", name: "FTSE China A50 (CFD)", name_en: "FTSE China A50 Index (CFD)", group: "Châu Á - Thái Bình Dương", session: "fx_24x5"}
+    - {s: "CHINAH", name: "Trung Quốc H-shares (CFD)", name_en: "Hong Kong China H-shares Index (CFD)", group: "Châu Á - Thái Bình Dương", session: "fx_24x5", quote: "HKD"}
+    - {s: "IT40", name: "Ý 40 (CFD)", name_en: "Italy 40 Index (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "EUR"}
+    - {s: "NETH25", name: "Hà Lan 25 (CFD)", name_en: "Netherlands 25 Index (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "EUR"}
+    - {s: "NOR25", name: "Na Uy 25 (CFD)", name_en: "Norway 25 Index (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "NOK"}
+    - {s: "SA40", name: "Nam Phi 40 (CFD)", name_en: "South Africa 40 Index (CFD)", group: "Khác", session: "fx_24x5", quote: "ZAR"}
+    - {s: "SE30", name: "Thuỵ Điển 30 (CFD)", name_en: "Sweden 30 Index (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "SEK"}
+    - {s: "SWI20", name: "Thuỵ Sĩ 20 (CFD)", name_en: "Switzerland 20 Index (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "CHF"}
+    - {s: "US2000", name: "Russell 2000 (CFD)", name_en: "US Small Cap 2000 Index (CFD)", group: "Mỹ", session: "fx_24x5"}
+    - {s: "MIDDE50", name: "Đức Mid 50 (CFD)", name_en: "Germany Mid 50 Index (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "EUR"}
+    - {s: "TECHDE30", name: "Đức Tech 30 (CFD)", name_en: "Germany Tech 30 Index (CFD)", group: "Châu Âu", session: "fx_24x5", quote: "EUR"}

@@ -1,0 +1,34 @@
+# Truy vấn tuỳ chỉnh cho postgres-exporter (--extend.query-path; DEPRECATED nhưng còn chạy ở v0.18). Chỉ dùng role ts_monitor (SELECT hẹp).
+# Mục đích: độ tươi dữ liệu THEO NGUỒN (SLI cho SLO "độ tươi dữ liệu"), kích thước hypertable + tỉ lệ nén, backlog bảng alerts.
+ts_data_bars:
+  # Intraday đọc thẳng bảng bars (cửa sổ 2 ngày, chỉ chunk mới/chưa nén) để tuổi chính xác tới từng phút; D1 đọc từ cagg bars_daily_stats (D1 chậm/ngày là bình thường).
+  query: "SELECT source, tf, EXTRACT(EPOCH FROM (now() - max(ts_open)))::float8 AS age_seconds FROM bars WHERE ts_open > now() - interval '2 days' AND tf <> 'D1' GROUP BY source, tf UNION ALL SELECT source, tf, EXTRACT(EPOCH FROM (now() - max(last_bar)))::float8 FROM bars_daily_stats WHERE tf = 'D1' AND day > now() - interval '10 days' GROUP BY source, tf"
+  master: true
+  metrics:
+    - source: { usage: "LABEL", description: "nguồn dữ liệu" }
+    - tf: { usage: "LABEL", description: "khung thời gian" }
+    - age_seconds: { usage: "GAUGE", description: "tuổi bar mới nhất (giây, tính theo ts_open) theo nguồn+khung" }
+ts_data_quotes:
+  query: "SELECT source, EXTRACT(EPOCH FROM (now() - max(ts)))::float8 AS age_seconds FROM quotes WHERE ts > now() - interval '2 days' GROUP BY source"
+  master: true
+  metrics:
+    - source: { usage: "LABEL", description: "nguồn quote" }
+    - age_seconds: { usage: "GAUGE", description: "tuổi quote mới nhất (giây) theo nguồn, cửa sổ 2 ngày" }
+ts_data_news:
+  query: "SELECT EXTRACT(EPOCH FROM (now() - max(ingested_at)))::float8 AS age_seconds FROM news_items"
+  master: true
+  metrics:
+    - age_seconds: { usage: "GAUGE", description: "tuổi tin mới nhất được nạp vào DB (giây)" }
+ts_hypertable:
+  # Chỉ đọc catalog (vài ms). KHÔNG dùng hypertable_size(): với ~1900 chunk của bars nó tốn ~1,8s/lần gọi.
+  query: "SELECT ht.table_name AS name, count(*)::float8 AS chunks, count(*) FILTER (WHERE (c.status & 1) = 1)::float8 AS chunks_compressed FROM _timescaledb_catalog.chunk c JOIN _timescaledb_catalog.hypertable ht ON ht.id = c.hypertable_id GROUP BY 1"
+  master: true
+  metrics:
+    - name: { usage: "LABEL", description: "hypertable" }
+    - chunks: { usage: "GAUGE", description: "số chunk" }
+    - chunks_compressed: { usage: "GAUGE", description: "số chunk đã nén" }
+ts_alerts_backlog:
+  query: "SELECT count(*)::float8 AS last_hour FROM alerts WHERE ts > now() - interval '1 hour'"
+  master: true
+  metrics:
+    - last_hour: { usage: "GAUGE", description: "số cảnh báo ghi vào DB trong 1 giờ qua (phát hiện bão cảnh báo)" }

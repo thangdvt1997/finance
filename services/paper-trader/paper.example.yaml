@@ -1,0 +1,255 @@
+# paper-trader: cấu hình MÔ PHỎNG (không tiền thật). Sửa file này rồi restart service.
+# Mọi chi phí đặt BẢO THỦ (spread rộng, trượt giá, swap/funding tốn tiền hai chiều). Xem README để chỉnh/giải thích.
+interval_seconds: 300
+tf: D1                      # khung giờ của bar dùng để ra quyết định và khớp (khớp ở GIÁ MỞ CỬA bar kế tiếp)
+history_bars: 2000          # số bar nạp/lần/symbol (~8 năm D1): slow_trend_multiasset cần >=~254 bar; Donchian có trạng thái nên cần cửa sổ dài để hội tụ về backtest
+periods_per_year: 252
+alerts_enabled: true
+risk_windows_url: "http://api-gateway:8000/v1/risk-windows?horizon_hours=24"   # lỗi/không có -> chỉ dùng news_windows tĩnh
+risk_windows_token_env: API_TOKEN     # tên biến môi trường chứa X-API-Key (GET only)
+news_windows: []            # stub tĩnh: [{start: "2026-11-06T13:30:00Z", end: "2026-11-06T13:45:00Z", currencies: [USD], title: NFP}]
+
+# Ghi đè chi phí theo symbol (mặc định theo nhóm fx / metal / equity_vn trong config.py)
+instruments:
+  EURUSD: {spread_bps: 1.5}
+  GBPUSD: {spread_bps: 2.0}
+  USDJPY: {spread_bps: 1.5}
+  XAUUSD: {spread_bps: 3.0}
+  # --- Chi phí một chiều ≈ bps trong research/strategies/slow_trend_multiasset.yaml (spread/2 + trượt + phí = B)
+  "US:SPY": {spread_bps: 2.5, slippage_bps: 0.625, commission_bps: 0.625}
+  "US:QQQ": {spread_bps: 3, slippage_bps: 0.75, commission_bps: 0.75}
+  "US:IWM": {spread_bps: 4, slippage_bps: 1.0, commission_bps: 1.0}
+  "US:EWG": {spread_bps: 3, slippage_bps: 0.75, commission_bps: 0.75}
+  "US:FEZ": {spread_bps: 3, slippage_bps: 0.75, commission_bps: 0.75}
+  "US:EWQ": {spread_bps: 3, slippage_bps: 0.75, commission_bps: 0.75}
+  "US:EWU": {spread_bps: 3, slippage_bps: 0.75, commission_bps: 0.75}
+  "US:EWJ": {spread_bps: 4, slippage_bps: 1.0, commission_bps: 1.0}
+  "US:EWH": {spread_bps: 6, slippage_bps: 1.5, commission_bps: 1.5}
+  "US:EWA": {spread_bps: 4, slippage_bps: 1.0, commission_bps: 1.0}
+  "US:EWY": {spread_bps: 6, slippage_bps: 1.5, commission_bps: 1.5}
+  "US:INDA": {spread_bps: 8, slippage_bps: 2.0, commission_bps: 2.0}
+  "US:EWZ": {spread_bps: 8, slippage_bps: 2.0, commission_bps: 2.0}
+  "US:VNM": {spread_bps: 12, slippage_bps: 3.0, commission_bps: 3.0}
+  "US:SHY": {spread_bps: 1, slippage_bps: 0.25, commission_bps: 0.25}
+  "US:IEI": {spread_bps: 1.5, slippage_bps: 0.375, commission_bps: 0.375}
+  "US:IEF": {spread_bps: 2, slippage_bps: 0.5, commission_bps: 0.5}
+  "US:TLT": {spread_bps: 3, slippage_bps: 0.75, commission_bps: 0.75}
+  "US:GLD": {spread_bps: 3, slippage_bps: 0.75, commission_bps: 0.75}
+  "US:SLV": {spread_bps: 8, slippage_bps: 2.0, commission_bps: 2.0}
+  "US:CPER": {spread_bps: 6, slippage_bps: 1.5, commission_bps: 1.5}
+  "US:USO": {spread_bps: 6, slippage_bps: 1.5, commission_bps: 1.5}
+  "US:BNO": {spread_bps: 8, slippage_bps: 2.0, commission_bps: 2.0}
+  "US:UNG": {spread_bps: 15, slippage_bps: 3.75, commission_bps: 3.75}
+  "US:CORN": {spread_bps: 10, slippage_bps: 2.5, commission_bps: 2.5}
+  "US:WEAT": {spread_bps: 10, slippage_bps: 2.5, commission_bps: 2.5}
+  "US:SOYB": {spread_bps: 10, slippage_bps: 2.5, commission_bps: 2.5}
+  "US:CANE": {spread_bps: 12, slippage_bps: 3.0, commission_bps: 3.0}
+  AUDUSD: {spread_bps: 1.5, slippage_bps: 0.375, commission_bps: 0.375}
+  USDCAD: {spread_bps: 1.8, slippage_bps: 0.45, commission_bps: 0.45}
+  USDCHF: {spread_bps: 1.8, slippage_bps: 0.45, commission_bps: 0.45}
+  NZDUSD: {spread_bps: 2, slippage_bps: 0.5, commission_bps: 0.5}
+
+accounts:
+  # --- FX + vàng, tài khoản USD ---------------------------------------------------------------------
+  # DEPRECATED 2026-10-11: chạy plugin cũ (momentum 12-1 + MA200, vol-target nghịch đảo vol, KHÔNG ensemble/ngân sách lớp) => không khớp backtest.
+  # Journal bất biến được GIỮ nguyên (đừng xoá); tài khoản bị đóng băng (không chạy thêm bước). Thay bằng *_v2 bên dưới.
+  - id: slow_trend_fx
+    name: "[DEPRECATED] Trend chậm FX+Vàng (USD) — plugin cũ, thay bằng slow_trend_fx_v2"
+    deprecated: true
+    meaningful: false
+    strategy: slow_trend_simple
+    params: {momentum_days: 252, skip_days: 21, ma_days: 200, allow_short: true}
+    base_ccy: USD
+    initial_capital: 10000
+    universe: [EURUSD, GBPUSD, USDJPY, XAUUSD]
+    rebalance: monthly
+    benchmark: bh_fx
+    risk:
+      sizing: {mode: vol_target, target_vol: 0.10, vol_window: 60, max_scale: 3.0}
+      max_leverage: 3.0
+      max_weight: 1.0
+      max_daily_loss: 0.03
+      max_weekly_loss: 0.06
+      max_drawdown: 0.15
+      max_orders_per_minute: 30
+      min_trade_weight: 0.01
+  - id: slow_trend_fx_v2
+    name: "Trend chậm FX+Vàng v2 (ensemble 4 tín hiệu, ngân sách lớp, vol-target 10%) — khớp backtest"
+    strategy: slow_trend_multiasset
+    params_file: /cfg/strategies/slow_trend_multiasset.yaml
+    params: {asset_cap: 0.8, gross_cap: 1.5, class_gross_cap: 1.0, min_live: 3}
+    base_ccy: USD
+    initial_capital: 10000
+    universe: [EURUSD, GBPUSD, USDJPY, XAUUSD]
+    rebalance: monthly
+    benchmark: bh_fx
+    risk:
+      sizing: {mode: passthrough}              # plugin trả kind=weight đã vol-target; risk engine chỉ còn cổng an toàn
+      max_leverage: 1.5
+      max_weight: 0.8
+      max_daily_loss: 0.03
+      max_weekly_loss: 0.06
+      max_drawdown: 0.15
+      max_orders_per_minute: 30
+      min_trade_weight: 0.005
+  - id: bh_fx
+    name: "Đối chứng: giữ đều FX+Vàng (USD)"
+    strategy: buy_and_hold
+    params: {gross: 1.0}
+    base_ccy: USD
+    initial_capital: 10000
+    universe: [EURUSD, GBPUSD, USDJPY, XAUUSD]
+    rebalance: first_only
+    risk: {max_leverage: 1.0, max_weight: 0.5, max_drawdown: 0.5, max_daily_loss: 0.5, max_weekly_loss: 0.5}
+  # --- Đa tài sản (ETF Mỹ + 7 cặp FX), tài khoản USD: lịch sử D1 từ yahoo_daily/frankfurter (xem docs/DATA_SOURCE_PRIORITY.md) ---
+  # DEPRECATED 2026-10-11: plugin cũ chỉ khớp dấu 24/35 symbol so backtest, kẹt trần đòn bẩy 3x, net bán trái phiếu −1,28. Giữ journal, đóng băng.
+  - id: slow_trend_global
+    name: "[DEPRECATED] Trend chậm đa tài sản (ETF + FX, USD) — plugin cũ, thay bằng slow_trend_global_v2"
+    deprecated: true
+    meaningful: false
+    strategy: slow_trend_simple
+    params: {momentum_days: 252, skip_days: 21, ma_days: 200, allow_short: true}
+    base_ccy: USD
+    initial_capital: 100000
+    universe: ["US:SPY", "US:QQQ", "US:IWM", "US:EWG", "US:FEZ", "US:EWQ", "US:EWU", "US:EWJ", "US:EWH", "US:EWA", "US:EWY", "US:INDA", "US:EWZ", "US:VNM", "US:SHY", "US:IEI", "US:IEF", "US:TLT", "US:GLD", "US:SLV", "US:CPER", "US:USO", "US:BNO", "US:UNG", "US:CORN", "US:WEAT", "US:SOYB", "US:CANE", EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, USDCHF, NZDUSD]
+    rebalance: monthly
+    benchmark: bh_6040
+    risk:
+      sizing: {mode: vol_target, target_vol: 0.10, vol_window: 60, max_scale: 3.0}
+      max_leverage: 3.0
+      max_weight: 1.0
+      max_daily_loss: 0.03
+      max_weekly_loss: 0.06
+      max_drawdown: 0.20
+      max_orders_per_minute: 60
+      min_trade_weight: 0.01
+  # v2: ensemble 4 tín hiệu + 6 lớp tài sản ngang rủi ro + vol-target 10% (ma_engine.weights), vòng tròn khép kín bằng test hồi quy.
+  # Khác backtest (có CHỦ ĐÍCH, xem README): gộp tối đa 2,0x (backtest 8x/TB 2,3x), |w|<=0,5, mỗi lớp |w|<=0,6, tổng bán trái phiếu <=0,25.
+  - id: slow_trend_global_v2
+    name: "Trend chậm đa tài sản v2 (ensemble 4 tín hiệu, ngân sách lớp, vol-target 10%) — khớp backtest"
+    strategy: slow_trend_multiasset
+    params_file: /cfg/strategies/slow_trend_multiasset.yaml
+    base_ccy: USD
+    initial_capital: 100000
+    universe: ["US:SPY", "US:QQQ", "US:IWM", "US:EWG", "US:FEZ", "US:EWQ", "US:EWU", "US:EWJ", "US:EWH", "US:EWA", "US:EWY", "US:INDA", "US:EWZ", "US:VNM", "US:SHY", "US:IEI", "US:IEF", "US:TLT", "US:GLD", "US:SLV", "US:CPER", "US:USO", "US:BNO", "US:UNG", "US:CORN", "US:WEAT", "US:SOYB", "US:CANE", EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, USDCHF, NZDUSD]
+    rebalance: monthly
+    benchmark: bh_6040
+    risk:
+      sizing: {mode: passthrough}              # plugin trả kind=weight đã vol-target; risk engine chỉ còn cổng an toàn
+      max_leverage: 2.0
+      max_weight: 0.5
+      max_daily_loss: 0.03
+      max_weekly_loss: 0.06
+      max_drawdown: 0.20
+      max_orders_per_minute: 60
+      min_trade_weight: 0.005
+  - id: bh_6040
+    name: "Đối chứng: 60/40 (SPY/IEF)"
+    strategy: buy_and_hold
+    params: {weights: {"US:SPY": 0.6, "US:IEF": 0.4}}
+    base_ccy: USD
+    initial_capital: 100000
+    universe: ["US:SPY", "US:IEF"]
+    rebalance: first_only
+    risk: {max_leverage: 1.0, max_weight: 0.7, max_drawdown: 0.5, max_daily_loss: 0.5, max_weekly_loss: 0.5}
+  - id: slow_trend_global_replay
+    name: "[DEPRECATED] REPLAY plugin cũ từ 2026-09-01 — thay bằng slow_trend_global_replay_v2"
+    deprecated: true
+    strategy: slow_trend_simple
+    params: {momentum_days: 252, skip_days: 21, ma_days: 200, allow_short: true}
+    base_ccy: USD
+    initial_capital: 100000
+    universe: ["US:SPY", "US:QQQ", "US:IWM", "US:EWG", "US:FEZ", "US:EWQ", "US:EWU", "US:EWJ", "US:EWH", "US:EWA", "US:EWY", "US:INDA", "US:EWZ", "US:VNM", "US:SHY", "US:IEI", "US:IEF", "US:TLT", "US:GLD", "US:SLV", "US:CPER", "US:USO", "US:BNO", "US:UNG", "US:CORN", "US:WEAT", "US:SOYB", "US:CANE", EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, USDCHF, NZDUSD]
+    rebalance: monthly
+    meaningful: false
+    start_at: "2026-09-01T00:00:00Z"
+    risk:
+      sizing: {mode: vol_target, target_vol: 0.10, vol_window: 60, max_scale: 3.0}
+      max_leverage: 3.0
+      max_weight: 1.0
+      max_daily_loss: 0.03
+      max_weekly_loss: 0.06
+      max_drawdown: 0.20
+      max_orders_per_minute: 60
+      min_trade_weight: 0.01
+  - id: slow_trend_global_replay_v2
+    name: "REPLAY v2 trend chậm đa tài sản từ 2026-09-01 (kiểm tra đường ống, KHÔNG có ý nghĩa thống kê)"
+    strategy: slow_trend_multiasset
+    params_file: /cfg/strategies/slow_trend_multiasset.yaml
+    base_ccy: USD
+    initial_capital: 100000
+    universe: ["US:SPY", "US:QQQ", "US:IWM", "US:EWG", "US:FEZ", "US:EWQ", "US:EWU", "US:EWJ", "US:EWH", "US:EWA", "US:EWY", "US:INDA", "US:EWZ", "US:VNM", "US:SHY", "US:IEI", "US:IEF", "US:TLT", "US:GLD", "US:SLV", "US:CPER", "US:USO", "US:BNO", "US:UNG", "US:CORN", "US:WEAT", "US:SOYB", "US:CANE", EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, USDCHF, NZDUSD]
+    rebalance: monthly
+    meaningful: false
+    start_at: "2026-09-01T00:00:00Z"
+    risk:
+      sizing: {mode: passthrough}
+      max_leverage: 2.0
+      max_weight: 0.5
+      max_daily_loss: 0.03
+      max_weekly_loss: 0.06
+      max_drawdown: 0.20
+      max_orders_per_minute: 60
+      min_trade_weight: 0.005
+  # --- Cổ phiếu VN, tài khoản VND, chỉ long --------------------------------------------------------
+  # DEPRECATED 2026-10-11 (plugin cũ). v2 bên dưới: cùng ensemble, long-flat (backtest biến thể long_flat), không đòn bẩy.
+  - id: slow_trend_vn
+    name: "[DEPRECATED] Trend chậm cổ phiếu VN (VND, chỉ long) — plugin cũ, thay bằng slow_trend_vn_v2"
+    deprecated: true
+    meaningful: false
+    strategy: slow_trend_simple
+    params: {momentum_days: 252, skip_days: 21, ma_days: 200, allow_short: false}
+    base_ccy: VND
+    initial_capital: 500000000
+    universe: ["VN:FPT", "VN:VCB", "VN:VNM"]
+    rebalance: monthly
+    benchmark: bh_vn
+    risk:
+      sizing: {mode: vol_target, target_vol: 0.10, vol_window: 60, max_scale: 3.0}
+      max_leverage: 1.0
+      max_weight: 0.4
+      max_daily_loss: 0.03
+      max_weekly_loss: 0.06
+      max_drawdown: 0.15
+  - id: slow_trend_vn_v2
+    name: "Trend chậm cổ phiếu VN v2 (VND, long-flat, ensemble 4 tín hiệu, vol-target 10%)"
+    strategy: slow_trend_multiasset
+    params_file: /cfg/strategies/slow_trend_multiasset.yaml
+    params: {allow_short: false, asset_cap: 0.4, gross_cap: 1.0, class_gross_cap: 1.0}
+    base_ccy: VND
+    initial_capital: 500000000
+    universe: ["VN:FPT", "VN:VCB", "VN:VNM"]
+    rebalance: monthly
+    benchmark: bh_vn
+    risk:
+      sizing: {mode: passthrough}
+      max_leverage: 1.0
+      max_weight: 0.4
+      max_daily_loss: 0.03
+      max_weekly_loss: 0.06
+      max_drawdown: 0.15
+  - id: bh_vn
+    name: "Đối chứng: giữ đều cổ phiếu VN (VND)"
+    strategy: buy_and_hold
+    params: {gross: 0.99}
+    base_ccy: VND
+    initial_capital: 500000000
+    universe: ["VN:FPT", "VN:VCB", "VN:VNM"]
+    rebalance: first_only
+    risk: {max_leverage: 1.0, max_weight: 0.4, max_drawdown: 0.5, max_daily_loss: 0.5, max_weekly_loss: 0.5}
+  # --- Kiểm tra đường ống end-to-end (KHÔNG có ý nghĩa thống kê): replay 6 bar D1 hiện có với cửa sổ rút gọn -----
+  - id: smoke_fx_replay
+    name: "Smoke test đường ống (replay, cửa sổ rút gọn)"
+    meaningful: false
+    strategy: slow_trend_simple
+    params: {momentum_days: 2, skip_days: 1, ma_days: 3, allow_short: true}
+    base_ccy: USD
+    initial_capital: 10000
+    universe: [EURUSD, GBPUSD, USDJPY, XAUUSD]
+    rebalance: daily
+    start_at: "2026-10-05T00:00:00Z"
+    risk:
+      sizing: {mode: passthrough}
+      max_leverage: 1.0
+      max_weight: 0.25
+      min_trade_weight: 0.01

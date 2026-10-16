@@ -1,0 +1,85 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-2",
+ "title": "KB-2 · USDJPY M15 (backtest, điển hình -1.00R)",
+ "symbol": "USDJPY",
+ "tf": "M15",
+ "ts": "2016-03-18T00:30:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát cắt lỗ (SL) sau 20 nến. nêm/tam giác. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "dien-hinh",
+ "result": {
+  "outcome": "sl",
+  "r": -1.004,
+  "entry_ts": "2016-03-18 00:45:00",
+  "exit_ts": "2016-03-18 05:30:00",
+  "entry": 111.024,
+  "sl": 111.483472,
+  "tp": 110.105057,
+  "exit": 111.485472
+ },
+ "score": 91.1,
+ "levels": {
+  "resistance": 111.449348,
+  "support": 111.314148,
+  "wave_high": 113.814,
+  "wave_low": 110.664,
+  "entry": 111.028,
+  "sl": 111.483472,
+  "r": 0.455472,
+  "atr": 0.089886,
+  "tp_1r": 110.572528,
+  "tp_2r": 110.117057,
+  "tp_3r": 109.661585,
+  "prev_low": 110.664
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 13.6 ATR, 14 nến đỏ dài, xanh 35%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "hồi 42% sóng (1)"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "3 đỉnh thấp dần"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "2 đáy cao dần"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "co hẹp x0.12"
+  },
+  {
+   "id": 6,
+   "ok": true,
+   "detail": "nhấn chìm giảm thân 4.11 ATR, đóng dưới cạnh dưới 111.31"
+  }
+ ],
+ "points": [
+  {
+   "label": "",
+   "t": "2016-03-16T17:30:00+00:00",
+   "p": 113.814
+  },
+  {
+   "label": "(1)",
+   "t": "2016-03-17T12:00:00+00:00",
+   "p": 110.664
+  },
+  {
+   "label": "(2)",
+   "t": "2016-03-17T12:30:00+00:00",
+   "p": 111.997
+  }
+ ]
+}

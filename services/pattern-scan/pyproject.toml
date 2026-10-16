@@ -1,0 +1,23 @@
+[project]
+name = "pattern-scan"
+version = "0.1.0"
+requires-python = ">=3.12"
+description = "Quét live kịch bản Sell: pattern.signals -> ảnh (pattern-render) -> thông báo ntfy -> lệnh PAPER + sổ cái hash-chain. CHỈ thông tin/paper."
+dependencies = ["tscommon", "pattern-render", "asyncpg>=0.29", "pyyaml>=6", "redis>=5.0", "pydantic>=2.7", "prometheus-client>=0.20", "fastapi>=0.110", "uvicorn>=0.29"]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "fakeredis>=2.23", "pytest-asyncio>=0.23", "httpx>=0.27"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+pattern_scan = ["*.yaml"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

@@ -1,0 +1,14 @@
+# Allowlist biến môi trường theo service (ARCH_AUDIT S-5): infra/ops/gen_service_env.sh đọc file này + infra/.env rồi sinh infra/env/<service>.env
+# (chmod 600, git-ignore) — mỗi container CHỈ nhận các biến nó cần, không còn `env_file: .env` toàn bộ (mật khẩu superuser, token các service khác...).
+# Cú pháp:  <service>: <TÊN|PATTERN-glob> ...   (biến tường minh trong `environment:` của compose KHÔNG cần khai ở đây; chỉ khai biến đọc trực tiếp từ .env).
+# Thêm biến mới cho 1 service => thêm vào dòng của service đó rồi chạy lại gen_service_env.sh + recreate service.
+storage-writer:    LOG_LEVEL STORAGE_*
+market-collector:  LOG_LEVEL USER_AGENT PROVIDERS ALLOW_RISKY_PROVIDERS FRANKFURTER_* BACKFILL_* TWELVEDATA_* VNSTOCK_* ALPACA_* OANDA_* TIINGO_* TRUEFX_* DUKASCOPY_* CRYPTO_* GAP_* EMPTY_* ERROR_* RECONCILE_* OUTPUT_TFS YAHOO_* MC_* MARKET_COLLECTOR_*
+news-collector:    LOG_LEVEL USER_AGENT NC_* FRED_* BLS_* FMP_* MARKETAUX_* NEWS_COLLECTOR_*
+expert-collector:  LOG_LEVEL USER_AGENT EC_* MYFXBOOK_* EXPERT_COLLECTOR_*
+mt-bridge:         LOG_LEVEL MT_* BRIDGE_*
+alert-service:     LOG_LEVEL USER_AGENT TELEGRAM_* APPRISE_* ALERT_* BACKLOG_* BREAKER_* DEDUPE_* DIGEST_* MAX_DELIVERIES MAX_INFLIGHT RATE_LIMIT_PER_MIN RECLAIM_* SEND_* ROUTES_FILE RULES_FILE
+api-gateway:       LOG_LEVEL USER_AGENT CORS_* AUTH_DISABLED WS_MAX_CONNECTIONS MAX_PAGE_SIZE AUTH_TRUST_SECRET CACHE_* RT_*
+auth:              LOG_LEVEL AUTH_SECRET_KEY AUTH_COOKIE_* AUTH_MASTER_* AUTH_CLIENT_* AUTH_MAX_FAILS AUTH_LOCK_MINUTES AUTH_IP_* AUTH_PAIRING_DAYS AUTH_MIN_PASSWORD_LEN AUTH_PUBLIC_PREFIXES AUTH_TOTP_ISSUER BRIDGE_AUTH_TOKEN AUTH_BRIDGE_URL AUTH_SELF_REGISTER* AUTH_MAX_UNCLAIMED FLEET_INTERNAL_TOKEN
+# Các service còn lại (briefing, briefing-llm, risk-monitor, reporter, analytics, pattern-engine, nlp, paper-trader, alert-rules, vn-market, journal) KHÔNG dùng env_file: mọi biến nằm tường minh trong compose `environment:`.
+# DB: các service trên KHÔNG nhận DATABASE_URL (không dùng DB). Chỉ storage-writer (ts_writer), api-gateway/risk-monitor (ts_ro) và các service tools tự khai role hẹp trong compose; không pattern nào ở đây được khớp POSTGRES_*.

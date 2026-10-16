@@ -1,0 +1,86 @@
+# ID|duong dan (glob, tuong doi repo)|nhan (-, deprecated, legacy, laptop)|mo ta
+S-001|infra/ops/auth_bootstrap_master.sh|-|tao/khoi phuc tai khoan master (mat khau ngau nhien -> file 0600)
+S-002|infra/ops/backfill_canon_hist.py|-|nap lich su canon M15/H1/H4/D1 tu parquet MT5 (idempotent)
+S-003|infra/ops/backfill_hist.py|-|backfill D1 qua market-collector (chay trong container)
+S-004|infra/ops/backfill_mt5hist.py|-|nap lich su native MT5 vao bars (source mt5hist)
+S-005|infra/ops/backup_offsite.sh|-|day backup ma hoa ra ngoai (rclone/rsync), mac dinh dry-run
+S-006|infra/ops/bt_art.sh|deprecated|sinh artifact backtest trong container pe-research (backtest da dung)
+S-007|infra/ops/bt_summary.py|-|sinh summary.json tu so lenh dong bang
+S-008|infra/ops/check_hist.sql|-|kiem chat luong lich su D1 (doc-chi)
+S-009|infra/ops/ci_vps.sh|-|CI tren VPS: ruff + pytest + quet tinh + trivy + SBOM
+S-010|infra/ops/class_demo.py|-|demo dau-cuoi Lop hoc AI (chay trong api-gateway)
+S-011|infra/ops/deploy_local.sh|-|deploy truc tiep tren VPS (kiem tra, build, healthy, smoke, rollback)
+S-012|infra/ops/feed_latency.py|-|do p50/p95 do tre MT5->bridge
+S-013|infra/ops/gatus.yaml infra/ops/gatus.d/*.yaml infra/ops/gatus.d/*.disabled|-|cau hinh health-check Gatus (11 file)
+S-015|infra/ops/gen_assets_mt5.py|-|sinh danh muc symbol MT5 tu symbols.csv
+S-016|infra/ops/gen_mt_hmac.sh|-|sinh HMAC secret cho tai khoan mt-bridge
+S-017|infra/ops/gen_service_env.sh|-|sinh infra/env/<service>.env theo allowlist
+S-018|infra/ops/gen_vapid.sh|-|sinh khoa Web Push (VAPID) + Fernet
+S-019|infra/ops/hardening_audit.sh|-|kiem tra hardening container
+S-020|infra/ops/lock_deps.py|-|sinh requirements.lock co hash
+S-021|infra/ops/lock_deps.sh|-|chay lock_deps.py trong container tam
+S-022|infra/ops/notify.sh|-|gui canh bao tu host vao alert-service
+S-023|infra/ops/redis_acl_render.sh|-|sinh users.acl Redis tu .env + manifest (+--load, --check)
+S-024|infra/ops/redis_acl_services.manifest infra/ops/service_env.manifest|-|manifest ACL Redis + allowlist env
+S-026|infra/ops/release.sh|-|quan ly release (snapshot/record/list/current)
+S-027|infra/ops/rollback.sh|-|rollback ma + image ve release truoc
+S-028|infra/ops/rotate_secret.sh|-|xoay token ngau nhien trong .env
+S-029|infra/ops/run_rt_tests.sh|-|pytest api-gateway chon file trong container tam
+S-030|infra/ops/run_tests.sh|-|pytest libs/common + service trong container tam
+S-031|infra/ops/smoke.sh|-|smoke test dau-cuoi (Playwright 3 vai) - cong deploy
+S-032|infra/ops/sops_encrypt_env.sh|-|ma hoa/giai ma .env bang SOPS+age (chua bat buoc)
+S-033|infra/ops/top_cves.py|-|in CVE noi bat tu bao cao trivy
+S-034|infra/ops/trivy_scan.sh|-|quet CVE moi image
+S-035|infra/ops/tests/test_backfill_canon_hist.py|-|unit test resample_utc
+S-036|deploy.sh|-|deploy.sh goc (laptop->VPS; tren VPS chuyen sang deploy_local)
+S-040|infra/backup/backup_watch.sh|-|giam sat do tuoi backup (timer moi gio)
+S-041|infra/backup/offsite.sh|-|day backup ma hoa ra ngoai bang rclone (ban cu)
+S-042|infra/backup/offsite.env.example|-|mau cau hinh off-site
+S-043|infra/backup/pg_backup.sh|-|backup pg_dump ma hoa + xac minh + giu KEEP ban
+S-044|infra/backup/pg_basebackup.sh|-|base backup vat ly (PITR)
+S-045|infra/backup/pg_restore_test.sh|-|thu khoi phuc dump vao DB tam + kiem sau
+S-046|infra/backup/pitr_restore_test.sh|-|dien tap PITR trong container tam
+S-050|mt-agent/lab/chk.sh|-|kiem tra dau-cuoi lab (doc-chi)
+S-051|mt-agent/lab/chk2.sh|-|dem du lieu mt* trong DB/redis (doc-chi)
+S-052|mt-agent/lab/put-ea.sh|laptop|day EA len lab qua SFTP (laptop)
+S-053|mt-agent/lab/put.sh|laptop|sftp-put qua bastion (laptop)
+S-054|mt-agent/lab/rotate-and-deploy.sh|legacy|xoay token MT + build lai mt-bridge (thay bang rotate_secret.sh)
+S-055|mt-agent/lab/rs.sh|laptop|ssh-run qua bastion (laptop)
+S-056|mt-agent/lab/runimp.sh|-|importer lich su trong image analytics
+S-057|mt-agent/lab/provision.py|-|tao/xoa tai khoan lab trong container auth
+S-060|mt-agent/lab-feed/scripts/patch_ini.py|-|sua file ini UTF-16 cua MT
+S-061|mt-agent/lab-feed/scripts/patch_chr.py|-|chen khoi expert vao chart MT4
+S-062|mt-agent/lab-feed/scripts/tcp-fwd.py|-|forwarder TCP (MT4 cong 80)
+S-063|mt-agent/lab-feed/scripts/hmac_check.py|-|kiem chung HMAC tren bridge
+S-064|mt-agent/lab-feed/scripts/run-feed.sh|-|tao lai container mtlab-mt5-feed
+S-065|mt-agent/lab-feed/scripts/allow-url-mt4.sh mt-agent/lab-feed/scripts/allow-url.sh mt-agent/lab-feed/scripts/run-script-mt4.sh mt-agent/lab-feed/scripts/shot.sh mt-agent/lab-feed/scripts/post-start.sh|-|tu dong hoa GUI MT bang xdotool (trong container)
+S-066|mt-agent/lab-feed/scripts/compile.sh mt-agent/lab-feed/scripts/compile-feed.sh|-|bien dich EA bang MetaEditor/wine (trong container)
+S-067|mt-agent/lab-feed/scripts/start-feed.sh mt-agent/lab-feed/scripts/start-term.sh mt-agent/lab-feed/scripts/start-mt4.sh mt-agent/lab-feed/scripts/start-mt5.sh mt-agent/lab-feed/scripts/portable-init.sh mt-agent/lab-feed/scripts/retry-setup.sh mt-agent/lab-feed/scripts/dbg.sh mt-agent/lab-feed/scripts/logs.sh|-|khoi dong/gan loi terminal MT trong container
+S-068|mt-agent/lab-feed/scripts/install-python-wine.sh mt-agent/lab-feed/scripts/py.sh mt-agent/lab-feed/scripts/mt5_probe.py|-|Python Windows trong Wine (thu adapter mt5_direct)
+S-069|mt-agent/lab-feed/scripts/grab.sh|laptop|tai anh ve laptop qua SFTP
+S-070|mt-agent/lab-feed/compose.perf.yml|-|ghi de compose uu tien CPU cho mtlab-mt5
+S-078|mt-agent/lab-feed/scripts/start-term.sh.bak-20261014|deprecated|ban sao luu cu cua start-term.sh
+S-090|data/mtlab-hist/driver.sh|deprecated|driver backfill native qua terminal hist (da xong)
+S-091|data/mtlab-hist/driver_q.sh|deprecated|driver hang doi nhieu terminal (queue rong)
+S-092|data/mtlab-hist/loadguard.sh|deprecated|dung terminal hist khi load>40
+S-093|data/mtlab-hist/takeover.sh|deprecated|chuyen driver cu sang driver_q (PID cung)
+S-094|data/mtlab-hist/runimp.sh|deprecated|importer cho driver
+S-095|data/mtlab-hist/st.sh|deprecated|xem trang thai terminal hist
+S-096|services/data-keeper/src/data_keeper/histload.py|-|CLI nap lich su (data-keeper)
+S-100|infra/db/apply_migration.sh|-|ap 1 file migration SQL
+S-101|infra/db/create_*_role.sh|-|tao role Postgres han che cho tung service (14 file)
+S-102|infra/host/install_backup_timer.sh infra/host/install_tunnel.sh infra/host/ufw_allow_node_exporter.sh|-|cai timer/tunnel/ufw tren host
+S-103|infra/host/tunnel_url.sh|-|lay URL tunnel cloudflare
+S-110|infra/perf/*.sh|-|do hieu nang k6/Playwright/A-B (ab_*: mot lan)
+S-120|tests/e2e/*.sh tests/e2e/*.py|-|bo test e2e/pentest (agent ts)
+S-121|tests/qa/*.sh tests/qa/*.py tests/qa/*.mjs|-|cong cu QA cua cac agent
+S-130|infra/ops/digest.py infra/ops/digest.sh|-|digest LLM local -> docs/handoff/DIGEST.md (cron 30 phut)
+S-131|infra/ops/tokens_report.py|-|dem token Claude/local -> TOKENS.md + .prom
+S-132|infra/ops/feed_e2e.py|-|do p50/p95 tick->hub/bus->hub/tick->queue/hub->browser tai gateway (doc-chi)
+S-133|infra/ops/la infra/ops/la_lib/*.py infra/ops/la_bench/*.py|-|la: local agent CLI + router + bo benchmark 20 task
+S-135|infra/ops/llm_node.sh|-|them/bot node llama.cpp Tier A cho LB local-llm
+S-136|infra/local-llm/guard.sh|-|tu choi khoi dong model khi load host cao
+S-137|infra/ops/merge_old_bars_chunks.sh|-|gop chunk bars cu theo nam (thay doi DB that khi chay)
+S-138|infra/ops/status_brief.sh|-|tom tat trang thai stack + phien tmux + dk metrics (doc-chi)
+S-139|infra/local-llm/config.yaml infra/local-llm/nodes.list infra/jaeger/config.yaml infra/grafana/gen_dashboard_llm.py infra/grafana/dashboards/local-llm.json|-|cau hinh local-llm / jaeger / dashboard Grafana local-llm
+S-141|mt-agent/lab-feed/ea/MQL5/Scripts/*.mq5|-|EA script MQL5 (FeedProbe, DealFixture, Export, Range)

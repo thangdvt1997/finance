@@ -1,0 +1,26 @@
+{
+  "name": "Tài khoản MT của tôi",
+  "short_name": "Tài khoản",
+  "description": "Theo dõi tài khoản MT4/MT5 của bạn: vốn, vị thế, rủi ro, nhật ký (chỉ theo dõi, không đặt lệnh).",
+  "lang": "vi",
+  "dir": "ltr",
+  "id": "/c/",
+  "start_url": "/c/#/tong-quan",
+  "scope": "/c/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#090d13",
+  "background_color": "#090d13",
+  "categories": ["finance", "business"],
+  "icons": [
+    { "src": "/c/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/c/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/c/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/c/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/c/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Vị thế", "short_name": "Vị thế", "url": "/c/#/vi-the", "icons": [{ "src": "/c/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Rủi ro", "short_name": "Rủi ro", "url": "/c/#/rui-ro", "icons": [{ "src": "/c/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ]
+}

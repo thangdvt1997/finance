@@ -1,0 +1,170 @@
+[
+ [
+  "B-001",
+  "EXAMPLE_donchian.yaml: khop so mau (n=120, E=0.469R)",
+  "PASS",
+  "n=120 E=0.4687"
+ ],
+ [
+  "B-002",
+  "EXAMPLE_donchian.yaml: tai lap (2 lan chay: hash trades.csv/equity.svg, report.json bang nhau)",
+  "PASS",
+  ""
+ ],
+ [
+  "B-003",
+  "EXAMPLE_from_image.yaml: khop so mau (n=39, E=-0.162R)",
+  "PASS",
+  "n=39 E=-0.1621"
+ ],
+ [
+  "B-004",
+  "EXAMPLE_from_image.yaml: tai lap (2 lan chay: hash trades.csv/equity.svg, report.json bang nhau)",
+  "PASS",
+  ""
+ ],
+ [
+  "B-005",
+  "EXAMPLE_donchian.yaml: khop ket qua luu san trong runs/KB-EX-DONCHIAN",
+  "PASS",
+  ""
+ ],
+ [
+  "B-006",
+  "EXAMPLE_from_image.yaml: khop ket qua luu san trong runs/KB-EX-IMG-2DINH",
+  "PASS",
+  ""
+ ],
+ [
+  "B-007",
+  "YAML thieu truong bat buoc (costs) -> tu choi co thong bao",
+  "PASS",
+  ""
+ ],
+ [
+  "B-008",
+  "YAML timeframe sai enum -> tu choi",
+  "PASS",
+  ""
+ ],
+ [
+  "B-009",
+  "YAML khong parse duoc -> tu choi (khong treo)",
+  "PASS",
+  ""
+ ],
+ [
+  "B-010",
+  "YAML rong -> tu choi",
+  "PASS",
+  ""
+ ],
+ [
+  "B-011",
+  "ten symbol chua ky tu nguy hiem -> schema tu choi",
+  "PASS",
+  ""
+ ],
+ [
+  "B-012",
+  "symbol khong co du lieu -> bao loi ro, ma thoat !=0",
+  "PASS",
+  "Không có dữ liệu NOSUCHSYM_H4.parquet"
+ ],
+ [
+  "B-013",
+  "symbol path traversal -> tu choi",
+  "PASS",
+  ""
+ ],
+ [
+  "B-014",
+  "DSL chen ma: \"__import__('os').system('touch /tmp/qa_b\" -> bi chan",
+  "PASS",
+  "(chan bang exception, khong thong bao than thien)"
+ ],
+ [
+  "B-015",
+  "DSL chen ma: \"open('/etc/passwd').read()\" -> bi chan",
+  "PASS",
+  "(chan bang exception, khong thong bao than thien)"
+ ],
+ [
+  "B-016",
+  "DSL chen ma: 'close.__class__' -> bi chan",
+  "PASS",
+  "(chan bang exception, khong thong bao than thien)"
+ ],
+ [
+  "B-017",
+  "DSL chen ma: '[x for x in close]' -> bi chan",
+  "PASS",
+  "(chan bang exception, khong thong bao than thien)"
+ ],
+ [
+  "B-018",
+  "DSL chen ma: '(lambda: 1)()' -> bi chan",
+  "PASS",
+  "(chan bang exception, khong thong bao than thien)"
+ ],
+ [
+  "B-019",
+  "DSL chen ma: \"exec('1')\" -> bi chan",
+  "PASS",
+  "(chan bang exception, khong thong bao than thien)"
+ ],
+ [
+  "B-020",
+  "sua YAML sau dang ky (cung id) -> TỪ CHỐI",
+  "PASS",
+  ""
+ ],
+ [
+  "B-021",
+  "luoi sweep > gioi han -> tu choi",
+  "PASS",
+  "Lưới 1000 tổ hợp > giới hạn 60 (dò nhiều = tự lừa mình). Giảm sweep."
+ ],
+ [
+  "B-022",
+  "data_scope=test (mo test khoa) -> schema tu choi",
+  "PASS",
+  ""
+ ],
+ [
+  "B-023",
+  "ma runner chi doc split train/val, khong co duong mo test",
+  "PASS",
+  ""
+ ],
+ [
+  "B-024",
+  "symbol co file nhung dev rong (0 nen) -> bao loi ro, khong IndexError",
+  "PASS",
+  ""
+ ],
+ [
+  "B-025",
+  "R10 freeze.json: hash code khop",
+  "PASS",
+  "lech: "
+ ],
+ [
+  "B-026",
+  "R10 freeze.json: hash dev_results khop",
+  "PASS",
+  ""
+ ],
+ [
+  "B-027",
+  "R10 freeze.json: hash panel khop",
+  "PASS",
+  ""
+ ],
+ [
+  "B-028",
+  "R10 preregistration.md khop .sha256 va freeze.prereg",
+  "PASS",
+  "file=07161ccd6ccb sha256file=07161ccd6ccb freeze=07161ccd6ccb"
+ ]
+]

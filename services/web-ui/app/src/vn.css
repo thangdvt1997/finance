@@ -1,0 +1,37 @@
+/* Trang Chứng khoán VN: quy ước bảng điện Việt Nam — xanh lá tăng, đỏ giảm, vàng tham chiếu, tím trần, xanh lơ sàn. */
+:root, :root[data-theme="dark"] { --vn-ceil: #b985ff; --vn-floor: #3ccbea; --vn-ceil-bg: rgba(185,133,255,.16); --vn-floor-bg: rgba(60,203,234,.14); }
+:root[data-theme="light"] { --vn-ceil: #7a3fd0; --vn-floor: #0a6f88; --vn-ceil-bg: rgba(122,63,208,.1); --vn-floor-bg: rgba(11,122,150,.1); }
+
+.px-ceil { color: var(--vn-ceil); } .px-floor { color: var(--vn-floor); } .px-ref { color: var(--accent); }
+.chip.ceil { color: var(--vn-ceil); background: var(--vn-ceil-bg); border-color: transparent; }
+.chip.floorc { color: var(--vn-floor); background: var(--vn-floor-bg); border-color: transparent; }
+
+/* Thẻ chỉ số */
+.vn-idx { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(176px, 1fr)); }
+.vn-idx-card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: .6rem .75rem; display: grid; gap: .15rem; min-width: 0;
+  border-top: 2px solid var(--line2); }
+.vn-idx-card.up { border-top-color: var(--up); } .vn-idx-card.down { border-top-color: var(--down); }
+.vn-idx-card .nm { font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; gap: .4rem; }
+
+/* Thanh độ rộng: tăng | đứng | giảm (mỗi đoạn có số, không chỉ màu) */
+.vn-bar { display: flex; height: 22px; border-radius: 5px; overflow: hidden; gap: 2px; background: var(--panel); }
+.vn-bar > span { display: grid; place-items: center; font-size: 11px; font-weight: 650; min-width: 0; color: var(--bg); }
+.vn-bar .a { background: var(--up); } .vn-bar .u { background: var(--accent); } .vn-bar .d { background: var(--down); } .vn-bar .n { background: var(--line2); color: var(--fg); }
+
+/* Thang màu heatmap */
+.vn-scale { display: flex; align-items: center; gap: .5rem; font-size: 11px; color: var(--muted); }
+.vn-scale i { display: block; height: 8px; flex: 1; max-width: 220px; border-radius: 4px; background: linear-gradient(90deg, var(--down), var(--panel2), var(--up)); }
+
+.vn-tabs { display: flex; gap: .25rem; overflow-x: auto; border-bottom: 1px solid var(--line); scrollbar-width: none; }
+.vn-tabs button { all: unset; cursor: pointer; padding: .55rem .85rem; font-size: 13px; font-weight: 560; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; }
+.vn-tabs button:hover { color: var(--fg); }
+.vn-tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.vn-tabs button:focus-visible { outline: 2px solid var(--accent); border-radius: 4px; }
+
+.vn-2 { display: grid; gap: .75rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1100px) { .vn-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .vn-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.vn-3 { display: grid; gap: .75rem; grid-template-columns: minmax(0, 1fr); }
+.vn-filter { display: grid; gap: .5rem .75rem; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); align-items: end; }
+.vn-filter label { display: grid; gap: .15rem; font-size: 11.5px; color: var(--muted); }
+.vn-filter .field { width: 100%; }
+.vn-ev { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr); gap: .6rem; padding: .5rem 0; border-bottom: 1px solid var(--line); }

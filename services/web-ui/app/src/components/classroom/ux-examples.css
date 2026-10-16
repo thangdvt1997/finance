@@ -1,0 +1,48 @@
+/* Lưới ví dụ + thẻ kết quả test (AI Training Class). Dùng biến màu design system; chạm >=40px; không tràn. */
+.xg { display: grid; gap: .75rem; min-width: 0; }
+.xg-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: .5rem; }
+.xg-stat { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: .45rem .6rem; min-width: 0; }
+.xg-stat b { display: block; font-size: 20px; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.xg-stat span { font-size: 12px; color: var(--muted); }
+.xg-grid { display: grid; list-style: none !important; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.xg-card { border: 2px solid var(--line); border-radius: 10px; background: var(--panel2); padding: .5rem; display: grid; gap: .4rem; min-width: 0; align-content: start; }
+.xg-card.cur { border-color: var(--info); box-shadow: 0 0 0 2px color-mix(in srgb, var(--info) 30%, transparent); }
+.xg-card.v-dung { border-left-color: var(--up); } .xg-card.v-sai { border-left-color: var(--down); } .xg-card.v-gan_dung { border-left-color: var(--accent); }
+.xg-img { position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; border-radius: 6px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); padding: 0; cursor: zoom-in; }
+.xg-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.xg-img svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.xg-no { position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; color: var(--muted); }
+.xg-num { position: absolute; top: 4px; left: 4px; min-width: 22px; height: 22px; border-radius: 11px; background: var(--fg); color: var(--bg, var(--panel)); font-size: 12px; font-weight: 700; display: grid; place-items: center; padding: 0 5px; }
+.xg-meta { display: flex; flex-wrap: wrap; gap: .1rem .6rem; font-size: 12px; }
+.xg-card > * { min-width: 0; max-width: 100%; }
+.xg-vbtns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .3rem; }
+.xg-vbtns .btn { min-height: 40px; height: auto; justify-content: center; gap: .25rem; padding: 0 .2rem; font-size: 12px; white-space: nowrap; min-width: 0; }
+@media (max-width: 420px) { .xg-vbtns kbd { display: none; } }
+.xg-vbtns kbd, .xg-keys kbd { font: 600 11px/1 ui-monospace, monospace; border: 1px solid var(--line2); border-radius: 4px; padding: 2px 4px; background: var(--panel); color: var(--muted); }
+.xg-reason { min-height: 40px; }
+.xg-learn { border: 1px solid var(--line2); border-left: 4px solid var(--info); border-radius: 8px; background: var(--panel); padding: .6rem .75rem; display: grid; gap: .3rem; font-size: 13px; }
+.xg-learn h3 { margin: 0; font-size: 13px; font-weight: 650; }
+.xg-learn ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .2rem; list-style: disc; }
+.xg-keys { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: .3rem .8rem; align-items: center; }
+.xg-empty { border: 1px dashed var(--line2); border-radius: 10px; padding: 1.2rem; text-align: center; display: grid; gap: .4rem; justify-items: center; }
+.xg-empty code { font-size: 13px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; padding: .25rem .5rem; }
+.xg-card:focus-visible, .xg:focus-visible { outline: 2px solid var(--info); outline-offset: 2px; }
+
+.tr { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); padding: .7rem .8rem; display: grid; gap: .6rem; min-width: 0; margin: .25rem 0; }
+.tr-head { display: flex; flex-wrap: wrap; gap: .4rem .6rem; align-items: center; }
+.tr-warn { display: flex; gap: .55rem; align-items: flex-start; padding: .6rem .7rem; border-radius: 8px; border: 1px solid color-mix(in srgb, var(--down) 55%, transparent); border-left: 5px solid var(--down); background: var(--down-bg, color-mix(in srgb, var(--down) 12%, var(--panel))); font-size: 13px; }
+.tr-warn.neutral { border-color: color-mix(in srgb, var(--accent) 55%, transparent); border-left-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--panel)); }
+.tr-warn.pos { border-color: color-mix(in srgb, var(--info) 55%, transparent); border-left-color: var(--info); background: color-mix(in srgb, var(--info) 10%, var(--panel)); }
+.tr-warn svg { flex: none; margin-top: 2px; }
+.tr-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+.tr-tbl th, .tr-tbl td { text-align: left; padding: .35rem .4rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tr-tbl th { font-weight: 500; color: var(--muted); width: 46%; }
+.tr-tbl td { font-variant-numeric: tabular-nums; font-weight: 600; overflow-wrap: anywhere; }
+.tr-tbl td small { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+.tr-eq { width: 100%; height: 90px; display: block; border: 1px solid var(--line); border-radius: 6px; background: var(--panel2); }
+.tr-actions { display: flex; flex-wrap: wrap; gap: .4rem; }
+.tr-actions .btn { min-height: 40px; }
+.tr-lock { border: 1px solid var(--line2); border-radius: 8px; padding: .6rem; display: grid; gap: .4rem; background: var(--panel2); font-size: 12.5px; }
+.tr-lock .row { display: flex; gap: .4rem; flex-wrap: wrap; }
+.tr-lock .cr-inp { min-height: 40px; flex: 1 1 160px; }
+.xg .btn, .xg-empty .btn, .tr .btn { min-height: 40px; height: auto; }

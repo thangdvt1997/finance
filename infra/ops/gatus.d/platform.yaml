@@ -1,0 +1,79 @@
+# Các service/exporter bổ sung (2026-10-12). Gatus nạp cả thư mục /cfg/gatus.d. Cảnh báo -> alert-service như gatus.yaml.
+endpoints:
+  - name: analytics
+    group: services
+    url: "http://analytics:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "analytics không phản hồi" }
+  - name: pattern-engine
+    group: services
+    url: "http://pattern-engine:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "pattern-engine không phản hồi" }
+  - name: pattern-scan
+    group: services
+    url: "http://pattern-scan:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "pattern-scan không phản hồi" }
+  - name: nlp
+    group: services
+    url: "http://nlp:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "nlp không phản hồi" }
+  - name: paper-trader
+    group: services
+    url: "http://paper-trader:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "paper-trader không phản hồi" }
+  - name: risk-monitor
+    group: services
+    url: "http://risk-monitor:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "risk-monitor không phản hồi" }
+  - name: reporter
+    group: services
+    url: "http://reporter:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "reporter không phản hồi" }
+  - name: postgres-exporter
+    group: ops
+    url: "http://postgres-exporter:9187/"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "postgres-exporter không phản hồi" }
+  - name: redis-exporter
+    group: ops
+    url: "http://redis-exporter:9121/health"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "redis-exporter không phản hồi" }
+  - name: cadvisor
+    group: ops
+    url: "http://cadvisor:8080/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "cadvisor không phản hồi" }
+  - name: ntfy
+    group: ops
+    url: "http://ntfy:80/v1/health"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "ntfy không phản hồi" }

@@ -1,0 +1,6 @@
+# GDELT DOC 2.0 artlist. Gioi han ~1 req/5s (client ep 5.5s/host). timespan: 1h|6h|1d...
+queries:
+  - {id: forex,   query: '(forex OR "central bank" OR "interest rate" OR inflation) sourcelang:english', symbols: [], timespan: 1h, maxrecords: 50}
+  - {id: gold,    query: '(gold price OR bullion) sourcelang:english', symbols: [XAUUSD], timespan: 1h, maxrecords: 40}
+  - {id: oil,     query: '(crude oil OR OPEC OR "Brent crude") sourcelang:english', symbols: [USOIL], timespan: 1h, maxrecords: 40}
+  - {id: vn_stock, query: '(chung khoan OR VN-Index OR "co phieu") sourcelang:vietnamese', symbols: ["VN:VNINDEX"], timespan: 3h, maxrecords: 40}

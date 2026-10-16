@@ -1,0 +1,219 @@
+{
+  "uid": "ts-market-overview",
+  "title": "Market overview",
+  "schemaVersion": 39,
+  "version": 1,
+  "editable": true,
+  "refresh": "30s",
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "tags": [
+    "trading-system"
+  ],
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Bars gần đây",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 10
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "pg"
+          },
+          "rawSql": "SELECT symbol, tf, ts_open AS time, o, h, l, c, v, source FROM bars ORDER BY ts_open DESC LIMIT 50",
+          "format": "table",
+          "rawQuery": true,
+          "editorMode": "code"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Số bar theo symbol (24h)",
+      "type": "barchart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pg"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 10
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "pg"
+          },
+          "rawSql": "SELECT symbol, count(*) AS bars FROM bars WHERE ts_open > now() - interval '24 hours' GROUP BY symbol ORDER BY 2 DESC LIMIT 30",
+          "format": "table",
+          "rawQuery": true,
+          "editorMode": "code"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Tin mới nhất",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 10,
+        "w": 12,
+        "h": 10
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "pg"
+          },
+          "rawSql": "SELECT published_at AS time, source, title, symbols, sentiment, url FROM news_items ORDER BY published_at DESC NULLS LAST LIMIT 30",
+          "format": "table",
+          "rawQuery": true,
+          "editorMode": "code"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Lịch kinh tế sắp tới (impact cao/vừa)",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pg"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 10,
+        "w": 12,
+        "h": 10
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "pg"
+          },
+          "rawSql": "SELECT ts AS time, country, title, impact, forecast, previous, actual FROM calendar_events WHERE ts > now() - interval '6 hours' AND impact IN ('high','med') ORDER BY ts LIMIT 30",
+          "format": "table",
+          "rawQuery": true,
+          "editorMode": "code"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Cảnh báo gần đây",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 20,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "pg"
+          },
+          "rawSql": "SELECT ts AS time, level, title, body, tags, delivered FROM alerts ORDER BY ts DESC LIMIT 30",
+          "format": "table",
+          "rawQuery": true,
+          "editorMode": "code"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Tín hiệu chuyên gia gần đây",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pg"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 20,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "pg"
+          },
+          "rawSql": "SELECT opened_at AS time, expert_id, source, symbol, side, entry, sl, tp, status FROM expert_signals ORDER BY opened_at DESC LIMIT 30",
+          "format": "table",
+          "rawQuery": true,
+          "editorMode": "code"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Equity tài khoản (read-only)",
+      "type": "timeseries",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pg"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 29,
+        "w": 24,
+        "h": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "pg"
+          },
+          "rawSql": "SELECT ts AS time, account_id AS metric, equity FROM account_snapshots WHERE $__timeFilter(ts) ORDER BY ts",
+          "format": "time_series",
+          "rawQuery": true,
+          "editorMode": "code"
+        }
+      ]
+    }
+  ]
+}

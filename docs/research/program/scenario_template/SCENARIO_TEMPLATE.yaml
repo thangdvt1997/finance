@@ -1,0 +1,101 @@
+# =====================================================================
+# SCENARIO_TEMPLATE.yaml - mẫu khai báo KỊCH BẢN GIAO DỊCH MỚI (schema_version 1)
+# Quy trình: người dùng điền file này (+ ảnh minh hoạ) -> scenario_runner.py
+#   1) validate  2) ĐĂNG KÝ GIẢ THUYẾT TRƯỚC (hash + thời điểm; sau đó không sửa được)
+#   3) walk-forward chỉ trên dev (train+val) 4) chi phí thật 5) baseline ngẫu nhiên
+#   6) bootstrap CI, DSR, PBO 7) sổ lệnh CSV + đường vốn SVG + báo cáo MD/JSON
+#   8) tập TEST KHOÁ: KHÔNG mở mặc định; chỉ mở 1 lần duy nhất khi người dùng cho phép.
+# Chỉ nghiên cứu / paper. Không có lệnh thật.
+# =====================================================================
+schema_version: 1
+
+# ---- 1. Nhận dạng ----------------------------------------------------
+id: KB-USER-001                 # chữ/số/gạch ngang, duy nhất
+name: "Tên kịch bản"            # tên hiển thị
+author: "<AUTHOR>"              # tuỳ chọn
+description: |                  # mô tả giả thuyết bằng lời: vì sao kịch bản này nên có edge?
+  Giả thuyết: ...
+hypothesis:                     # ĐĂNG KÝ TRƯỚC (bắt buộc): kỳ vọng định lượng trước khi chạy
+  direction: both               # long | short | both
+  expected_edge: "kỳ vọng > 0 R/lệnh sau chi phí"
+  falsifier: "bác bỏ nếu kỳ vọng OOS <= 0 hoặc p so với ngẫu nhiên > 0.10"
+
+# ---- 2. Thị trường & khung ------------------------------------------
+market:
+  symbols: [BTCUSD]             # mã trong data/research/patterns/bars (vd BTCUSD, XAUUSD, EURUSD)
+  timeframe: H4                 # M1 M5 M15 H1 H4 D1
+  # nguồn dữ liệu do runner chọn từ kho dữ liệu có sẵn; không khai tên nguồn ở đây
+
+# ---- 3. Tham số (có thể dò) -----------------------------------------
+# Dùng trong DSL dưới dạng $ten. default = giá trị cố định; sweep = danh sách cho phép dò
+# (mỗi tổ hợp tính là 1 "thử nghiệm" -> bị phạt trong DSR/PBO; dò càng nhiều càng khó qua cổng).
+params:
+  n:  {default: 20, sweep: [10, 20, 40]}
+  atrn: {default: 14}
+  slm: {default: 2.0, sweep: [1.5, 2.0, 3.0]}
+
+# ---- 4. Điều kiện vào/ra (DSL đơn giản) ------------------------------
+# DSL = biểu thức Python AN TOÀN (chỉ số học, so sánh, and/or/not, & | ~, hàm trong danh sách).
+# Chuỗi có sẵn: open high low close volume (tên viết thường)
+# Hàm: sma(x,n) ema(x,n) highest(x,n) lowest(x,n) atr(n) rsi(n) stdev(x,n) shift(x,k) (k>0 = quá khứ)
+#      abs(x) minimum(a,b) maximum(a,b) cross_above(a,b) cross_below(a,b) where(c,a,b)
+# Điều kiện đánh giá tại ĐÓNG nến t; vào lệnh tại MỞ nến t+1 (không nhìn tương lai).
+# highest/lowest bao gồm nến hiện tại; muốn "phá kênh trước đó" dùng shift(highest(high,$n),1).
+entry:
+  long:  "close > shift(highest(high, $n), 1)"
+  short: "close < shift(lowest(low, $n), 1)"
+  filter: null                  # điều kiện lọc chung (vd "atr($atrn) > sma(atr($atrn), 50)"), null = không lọc
+  one_position: true            # chỉ 1 vị thế tại một thời điểm
+
+exit:
+  stop_loss:                    # BẮT BUỘC (để tính R)
+    type: atr                   # atr (n, mult) | pct (value, % giá vào) | level (expr = mức giá DSL)
+    n: "$atrn"
+    mult: "$slm"
+  take_profit:                  # tuỳ chọn
+    type: r_multiple            # r_multiple (r) | none
+    r: 3.0
+  time_stop_bars: 60            # thoát sau tối đa N nến (null = không)
+  exit_expr:                    # thoát theo điều kiện, tại mở nến sau (null = không)
+    long: "close < shift(lowest(low, $n), 1)"
+    short: "close > shift(highest(high, $n), 1)"
+  intrabar_priority: sl_first   # nếu SL và TP cùng nằm trong 1 nến: sl_first (bảo thủ, mặc định)
+
+# ---- 5. Ảnh minh hoạ (tuỳ chọn; để người xem đối chiếu, runner KHÔNG đọc ảnh) ----
+illustrations:
+  - path: docs/research/program/scenario_template/img/ten_anh.png
+    caption: "Ví dụ kịch bản đẹp"
+    transcribed_rules: |        # BẮT BUỘC nếu có ảnh: người/ LLM chuyển điều kiện nhìn thấy trong ảnh -> chữ -> DSL
+      - Mô tả từng điều kiện trong ảnh, ánh xạ sang entry.long/short phía trên.
+
+# ---- 6. Chi phí (tính trên mỗi vòng vào-ra, theo % giá, mỗi chiều) -----
+costs:
+  spread_bps: 5                 # nửa-spread tương đương (bps giá) mỗi chiều
+  slippage_bps: 2
+  commission_bps: 4             # phí sàn / chiều
+  funding_bps_per_day: 0        # phí qua đêm (swap) ước lượng, bps/ngày
+
+# ---- 7. Quy trình kiểm định ---------------------------------------
+validation:
+  data_scope: dev               # dev = train+val (mặc định, test KHOÁ không mở); không có giá trị khác trong runner
+  walk_forward:
+    folds: 5                    # số khối OOS liên tiếp
+    min_train_frac: 0.40        # phần dev đầu tiên dành cho train của fold 1 (anchored, mở rộng dần)
+    embargo_bars: 5
+    select_by: expectancy_r     # tiêu chí chọn tham số trong mẫu
+    min_trades_is: 20
+  random_baseline: {runs: 300, seed: 7}     # vào lệnh ngẫu nhiên, cùng luật thoát/ cùng số lệnh
+  bootstrap: {runs: 2000, seed: 11}         # CI 95% của kỳ vọng R OOS
+  pbo_blocks: 8                 # CSCV (cần sweep >= 2 tổ hợp)
+
+# ---- 8. Tiêu chí chấp nhận (đăng ký TRƯỚC; mọi điều kiện phải đạt) ----
+acceptance:
+  min_oos_trades: 100
+  min_expectancy_r: 0.10        # kỳ vọng OOS (R/lệnh, sau chi phí)
+  ci_low_gt: 0.0                # cận dưới CI 95% bootstrap > giá trị này
+  max_p_vs_random: 0.05
+  max_pbo: 0.50                 # bỏ qua nếu không có sweep
+  min_dsr: 0.50                 # Deflated Sharpe Ratio (xác suất) bỏ qua nếu n_trials = 1
+  min_positive_folds_frac: 0.60 # tỷ lệ fold OOS có kỳ vọng > 0
+# Kết luận có thể là: REJECT (mặc định kỳ vọng), CANDIDATE (qua cổng dev, mới đủ điều kiện xin mở test khoá),
+# KHÔNG BAO GIỜ tự động "đưa vào giao dịch".

@@ -1,0 +1,1317 @@
+{
+ "generated_at": "2026-10-15T04:46:59+00:00",
+ "method": "HMM-3 (Gaussian, full cov, lọc tiến) + KMeans-3; đặc trưng: log vol 20 ngày, t-stat xu hướng 20 ngày (D1)",
+ "locks": "tập test KHÔNG dùng cho số đo; chỉ suy trạng thái hiện tại bằng mô hình đóng băng",
+ "horizon_days": 5,
+ "n_null": 2000,
+ "missing": [
+  "BTCUSD (chưa có lịch sử D1 trong kho nghiên cứu)"
+ ],
+ "verdict": {
+  "n_symbols": {
+   "holdout": 9,
+   "val": 9
+  },
+  "vol_predictive": {
+   "holdout": 9,
+   "val": 2
+  },
+  "hmm_beats_simple_vol_baseline": {
+   "holdout": 3,
+   "val": 6
+  },
+  "mean_dwell_days_hmm": 26.0,
+  "direction_cells": 28,
+  "direction_cells_abs_t_gt_2": 0,
+  "summary_vi": "Regime HMM bền (trung bình ~26 ngày/trạng thái; K-means chuyển nhiều hơn, ~9 ngày). Dự báo biến động ngắn hạn kế tiếp khác ngẫu nhiên ở 9/9 mã trên holdout dài (nhiều năm) nhưng chỉ 2/9 mã trên val ngắn (~153 ngày, ít sức mạnh thống kê). HMM chỉ hơn đường cơ sở đơn giản (tercile vol 20 ngày) ở 3/9 (holdout) và 6/9 (val): phần lớn thông tin đã nằm trong vol gần đây. Không có bằng chứng regime dự báo HƯỚNG giá (theo xu hướng trong từng trạng thái: 0/28 ô có |t|>2; ngẫu nhiên kỳ vọng ~1). Chỉ dùng regime để điều chỉnh rủi ro/bật-tắt kịch bản, không để đoán hướng."
+ },
+ "symbols": [
+  {
+   "symbol": "EURUSD",
+   "n_days": 14363,
+   "first_day": "1971-01-31",
+   "fit_days": 9832,
+   "holdout_days": 4215,
+   "val_days": 153,
+   "eval": {
+    "holdout": {
+     "n": 4215,
+     "hmm": {
+      "vol_eta2": 0.2132,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 33.2,
+      "switches_per_100d": 3.0,
+      "share": [
+       0.398,
+       0.431,
+       0.171
+      ],
+      "fwd_lvol_mean": [
+       -5.715,
+       -5.386,
+       -5.065
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.1186,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 9.5,
+      "switches_per_100d": 10.5,
+      "share": [
+       0.147,
+       0.391,
+       0.463
+      ],
+      "fwd_lvol_mean": [
+       -5.881,
+       -5.412,
+       -5.372
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.2033,
+      "vol_p_vs_shifted": 0.0005
+     },
+     "direction_trend_follow": {
+      "Biến động thấp": {
+       "n": 335,
+       "mean_trend_follow_ret_pct": 0.0407,
+       "t": 0.8
+      },
+      "Biến động vừa": {
+       "n": 363,
+       "mean_trend_follow_ret_pct": 0.0244,
+       "t": 0.39
+      },
+      "Biến động cao": {
+       "n": 145,
+       "mean_trend_follow_ret_pct": -0.0788,
+       "t": -0.62
+      }
+     }
+    },
+    "val": {
+     "n": 153,
+     "hmm": {
+      "vol_eta2": 0.1129,
+      "vol_p_vs_shifted": 0.2184,
+      "mean_dwell_days": 38.2,
+      "switches_per_100d": 2.0,
+      "share": [
+       0.588,
+       0.412,
+       0.0
+      ],
+      "fwd_lvol_mean": [
+       -5.998,
+       -5.626,
+       null
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.1402,
+      "vol_p_vs_shifted": 0.3658,
+      "mean_dwell_days": 8.5,
+      "switches_per_100d": 11.1,
+      "share": [
+       0.412,
+       0.301,
+       0.288
+      ],
+      "fwd_lvol_mean": [
+       -6.087,
+       -5.652,
+       -5.699
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.0568,
+      "vol_p_vs_shifted": 0.4988
+     },
+     "direction_trend_follow": {}
+    }
+   },
+   "states_fit": [
+    {
+     "label": "Biến động thấp",
+     "share": 0.275,
+     "ann_vol_pct": 5.09,
+     "mean_t20": -0.21
+    },
+    {
+     "label": "Biến động vừa",
+     "share": 0.404,
+     "ann_vol_pct": 8.7,
+     "mean_t20": 0.12
+    },
+    {
+     "label": "Biến động cao",
+     "share": 0.321,
+     "ann_vol_pct": 13.75,
+     "mean_t20": 0.27
+    }
+   ],
+   "current": {
+    "as_of": "2026-10-13",
+    "state": 0,
+    "label": "Biến động thấp",
+    "prob": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "days_in_state": 129,
+    "ann_vol_pct": 4.88,
+    "trend_t20": -2.08,
+    "trend": "xu hướng giảm",
+    "kmeans_label": "Biến động cao",
+    "vol_percentile": 10.0
+   }
+  },
+  {
+   "symbol": "GBPUSD",
+   "n_days": 8671,
+   "first_day": "1993-06-08",
+   "fit_days": 5848,
+   "holdout_days": 2507,
+   "val_days": 153,
+   "eval": {
+    "holdout": {
+     "n": 2507,
+     "hmm": {
+      "vol_eta2": 0.0602,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 18.8,
+      "switches_per_100d": 5.3,
+      "share": [
+       0.28,
+       0.421,
+       0.299
+      ],
+      "fwd_lvol_mean": [
+       -5.58,
+       -5.418,
+       -5.256
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.0573,
+      "vol_p_vs_shifted": 0.003,
+      "mean_dwell_days": 8.4,
+      "switches_per_100d": 11.8,
+      "share": [
+       0.302,
+       0.339,
+       0.359
+      ],
+      "fwd_lvol_mean": [
+       -5.486,
+       -5.521,
+       -5.255
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.0737,
+      "vol_p_vs_shifted": 0.0005
+     },
+     "direction_trend_follow": {
+      "Biến động thấp": {
+       "n": 141,
+       "mean_trend_follow_ret_pct": 0.014,
+       "t": 0.17
+      },
+      "Biến động vừa": {
+       "n": 209,
+       "mean_trend_follow_ret_pct": 0.0592,
+       "t": 0.64
+      },
+      "Biến động cao": {
+       "n": 152,
+       "mean_trend_follow_ret_pct": -0.2531,
+       "t": -1.72
+      }
+     }
+    },
+    "val": {
+     "n": 153,
+     "hmm": {
+      "vol_eta2": 0.0349,
+      "vol_p_vs_shifted": 0.3768,
+      "mean_dwell_days": 21.9,
+      "switches_per_100d": 3.9,
+      "share": [
+       0.627,
+       0.34,
+       0.033
+      ],
+      "fwd_lvol_mean": [
+       -5.681,
+       -5.562,
+       -5.883
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.0477,
+      "vol_p_vs_shifted": 0.1494,
+      "mean_dwell_days": 5.9,
+      "switches_per_100d": 16.3,
+      "share": [
+       0.49,
+       0.444,
+       0.065
+      ],
+      "fwd_lvol_mean": [
+       -5.566,
+       -5.711,
+       -5.814
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.0178,
+      "vol_p_vs_shifted": 0.4398
+     },
+     "direction_trend_follow": {
+      "Biến động thấp": {
+       "n": 20,
+       "mean_trend_follow_ret_pct": 0.0735,
+       "t": 0.35
+      }
+     }
+    }
+   },
+   "states_fit": [
+    {
+     "label": "Biến động thấp",
+     "share": 0.285,
+     "ann_vol_pct": 5.56,
+     "mean_t20": -0.19
+    },
+    {
+     "label": "Biến động vừa",
+     "share": 0.446,
+     "ann_vol_pct": 8.07,
+     "mean_t20": -0.13
+    },
+    {
+     "label": "Biến động cao",
+     "share": 0.268,
+     "ann_vol_pct": 11.11,
+     "mean_t20": 0.59
+    }
+   ],
+   "current": {
+    "as_of": "2026-10-13",
+    "state": 0,
+    "label": "Biến động thấp",
+    "prob": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "days_in_state": 46,
+    "ann_vol_pct": 5.17,
+    "trend_t20": -0.97,
+    "trend": "đi ngang",
+    "kmeans_label": "Biến động vừa",
+    "vol_percentile": 11.0
+   }
+  },
+  {
+   "symbol": "USDJPY",
+   "n_days": 14366,
+   "first_day": "1971-01-31",
+   "fit_days": 9835,
+   "holdout_days": 4215,
+   "val_days": 153,
+   "eval": {
+    "holdout": {
+     "n": 4215,
+     "hmm": {
+      "vol_eta2": 0.1442,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 26.8,
+      "switches_per_100d": 3.7,
+      "share": [
+       0.182,
+       0.513,
+       0.305
+      ],
+      "fwd_lvol_mean": [
+       -5.777,
+       -5.494,
+       -5.154
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.0163,
+      "vol_p_vs_shifted": 0.005,
+      "mean_dwell_days": 10.2,
+      "switches_per_100d": 9.8,
+      "share": [
+       0.0,
+       0.569,
+       0.431
+      ],
+      "fwd_lvol_mean": [
+       null,
+       -5.505,
+       -5.357
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.1768,
+      "vol_p_vs_shifted": 0.0005
+     },
+     "direction_trend_follow": {
+      "Biến động thấp": {
+       "n": 153,
+       "mean_trend_follow_ret_pct": -0.1123,
+       "t": -1.55
+      },
+      "Biến động vừa": {
+       "n": 438,
+       "mean_trend_follow_ret_pct": 0.0394,
+       "t": 0.71
+      },
+      "Biến động cao": {
+       "n": 252,
+       "mean_trend_follow_ret_pct": -0.187,
+       "t": -1.85
+      }
+     }
+    },
+    "val": {
+     "n": 153,
+     "hmm": {
+      "vol_eta2": 0.0,
+      "vol_p_vs_shifted": 0.97,
+      "mean_dwell_days": 25.5,
+      "switches_per_100d": 3.3,
+      "share": [
+       0.0,
+       0.699,
+       0.301
+      ],
+      "fwd_lvol_mean": [
+       null,
+       -5.441,
+       -5.445
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.0174,
+      "vol_p_vs_shifted": 0.2969,
+      "mean_dwell_days": 6.7,
+      "switches_per_100d": 14.4,
+      "share": [
+       0.0,
+       0.732,
+       0.268
+      ],
+      "fwd_lvol_mean": [
+       null,
+       -5.475,
+       -5.352
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.0537,
+      "vol_p_vs_shifted": 0.3183
+     },
+     "direction_trend_follow": {
+      "Biến động vừa": {
+       "n": 22,
+       "mean_trend_follow_ret_pct": -0.1167,
+       "t": -0.49
+      }
+     }
+    }
+   },
+   "states_fit": [
+    {
+     "label": "Biến động thấp",
+     "share": 0.185,
+     "ann_vol_pct": 5.06,
+     "mean_t20": -0.23
+    },
+    {
+     "label": "Biến động vừa",
+     "share": 0.419,
+     "ann_vol_pct": 7.87,
+     "mean_t20": 0.5
+    },
+    {
+     "label": "Biến động cao",
+     "share": 0.397,
+     "ann_vol_pct": 12.77,
+     "mean_t20": -0.49
+    }
+   ],
+   "current": {
+    "as_of": "2026-10-13",
+    "state": 1,
+    "label": "Biến động vừa",
+    "prob": [
+     0.003,
+     0.997,
+     0.0
+    ],
+    "days_in_state": 9,
+    "ann_vol_pct": 5.54,
+    "trend_t20": 1.07,
+    "trend": "xu hướng tăng",
+    "kmeans_label": "Biến động vừa",
+    "vol_percentile": 18.0
+   }
+  },
+  {
+   "symbol": "XAUUSD",
+   "n_days": 5721,
+   "first_day": "2004-07-11",
+   "fit_days": 3784,
+   "holdout_days": 1622,
+   "val_days": 153,
+   "eval": {
+    "holdout": {
+     "n": 1622,
+     "hmm": {
+      "vol_eta2": 0.1012,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 19.8,
+      "switches_per_100d": 5.0,
+      "share": [
+       0.34,
+       0.433,
+       0.227
+      ],
+      "fwd_lvol_mean": [
+       -5.058,
+       -4.872,
+       -4.629
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.1027,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 10.3,
+      "switches_per_100d": 9.7,
+      "share": [
+       0.385,
+       0.411,
+       0.203
+      ],
+      "fwd_lvol_mean": [
+       -5.054,
+       -4.843,
+       -4.625
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.0983,
+      "vol_p_vs_shifted": 0.0005
+     },
+     "direction_trend_follow": {
+      "Biến động thấp": {
+       "n": 110,
+       "mean_trend_follow_ret_pct": 0.284,
+       "t": 1.48
+      },
+      "Biến động vừa": {
+       "n": 142,
+       "mean_trend_follow_ret_pct": 0.0253,
+       "t": 0.15
+      },
+      "Biến động cao": {
+       "n": 73,
+       "mean_trend_follow_ret_pct": -0.4315,
+       "t": -1.55
+      }
+     }
+    },
+    "val": {
+     "n": 153,
+     "hmm": {
+      "vol_eta2": 0.132,
+      "vol_p_vs_shifted": 0.4818,
+      "mean_dwell_days": 21.9,
+      "switches_per_100d": 3.9,
+      "share": [
+       0.203,
+       0.229,
+       0.569
+      ],
+      "fwd_lvol_mean": [
+       -4.63,
+       -4.841,
+       -4.279
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.1655,
+      "vol_p_vs_shifted": 0.2899,
+      "mean_dwell_days": 15.3,
+      "switches_per_100d": 5.9,
+      "share": [
+       0.065,
+       0.451,
+       0.484
+      ],
+      "fwd_lvol_mean": [
+       -5.216,
+       -4.625,
+       -4.243
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.1771,
+      "vol_p_vs_shifted": 0.3873
+     },
+     "direction_trend_follow": {}
+    }
+   },
+   "states_fit": [
+    {
+     "label": "Biến động thấp",
+     "share": 0.324,
+     "ann_vol_pct": 9.9,
+     "mean_t20": 0.15
+    },
+    {
+     "label": "Biến động vừa",
+     "share": 0.306,
+     "ann_vol_pct": 14.01,
+     "mean_t20": 0.22
+    },
+    {
+     "label": "Biến động cao",
+     "share": 0.37,
+     "ann_vol_pct": 23.69,
+     "mean_t20": 0.16
+    }
+   ],
+   "current": {
+    "as_of": "2026-10-13",
+    "state": 2,
+    "label": "Biến động cao",
+    "prob": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "days_in_state": 206,
+    "ann_vol_pct": 20.84,
+    "trend_t20": -0.55,
+    "trend": "đi ngang",
+    "kmeans_label": "Biến động cao",
+    "vol_percentile": 79.0
+   }
+  },
+  {
+   "symbol": "XAGUSD",
+   "n_days": 4602,
+   "first_day": "2008-12-04",
+   "fit_days": 2999,
+   "holdout_days": 1286,
+   "val_days": 154,
+   "eval": {
+    "holdout": {
+     "n": 1286,
+     "hmm": {
+      "vol_eta2": 0.1,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 21.8,
+      "switches_per_100d": 4.5,
+      "share": [
+       0.131,
+       0.522,
+       0.348
+      ],
+      "fwd_lvol_mean": [
+       -4.261,
+       -4.333,
+       -4.007
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.0378,
+      "vol_p_vs_shifted": 0.028,
+      "mean_dwell_days": 7.7,
+      "switches_per_100d": 12.8,
+      "share": [
+       0.28,
+       0.309,
+       0.411
+      ],
+      "fwd_lvol_mean": [
+       -4.318,
+       -4.253,
+       -4.103
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.1029,
+      "vol_p_vs_shifted": 0.0005
+     },
+     "direction_trend_follow": {
+      "Biến động thấp": {
+       "n": 32,
+       "mean_trend_follow_ret_pct": 0.0084,
+       "t": 0.01
+      },
+      "Biến động vừa": {
+       "n": 136,
+       "mean_trend_follow_ret_pct": -0.5418,
+       "t": -1.72
+      },
+      "Biến động cao": {
+       "n": 90,
+       "mean_trend_follow_ret_pct": -0.2276,
+       "t": -0.44
+      }
+     }
+    },
+    "val": {
+     "n": 154,
+     "hmm": {
+      "vol_eta2": 0.3993,
+      "vol_p_vs_shifted": 0.2289,
+      "mean_dwell_days": 51.3,
+      "switches_per_100d": 1.3,
+      "share": [
+       0.136,
+       0.117,
+       0.747
+      ],
+      "fwd_lvol_mean": [
+       -4.343,
+       -4.464,
+       -3.396
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.2436,
+      "vol_p_vs_shifted": 0.1344,
+      "mean_dwell_days": 9.6,
+      "switches_per_100d": 9.7,
+      "share": [
+       0.071,
+       0.442,
+       0.487
+      ],
+      "fwd_lvol_mean": [
+       -4.453,
+       -3.87,
+       -3.333
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.3836,
+      "vol_p_vs_shifted": 0.1889
+     },
+     "direction_trend_follow": {
+      "Biến động cao": {
+       "n": 23,
+       "mean_trend_follow_ret_pct": 1.1471,
+       "t": 0.54
+      }
+     }
+    }
+   },
+   "states_fit": [
+    {
+     "label": "Biến động thấp",
+     "share": 0.363,
+     "ann_vol_pct": 16.03,
+     "mean_t20": -0.2
+    },
+    {
+     "label": "Biến động vừa",
+     "share": 0.315,
+     "ann_vol_pct": 24.61,
+     "mean_t20": -0.05
+    },
+    {
+     "label": "Biến động cao",
+     "share": 0.322,
+     "ann_vol_pct": 38.38,
+     "mean_t20": 0.51
+    }
+   ],
+   "current": {
+    "as_of": "2026-10-14",
+    "state": 2,
+    "label": "Biến động cao",
+    "prob": [
+     0.0,
+     0.003,
+     0.997
+    ],
+    "days_in_state": 273,
+    "ann_vol_pct": 38.12,
+    "trend_t20": -1.49,
+    "trend": "xu hướng giảm",
+    "kmeans_label": "Biến động cao",
+    "vol_percentile": 88.0
+   }
+  },
+  {
+   "symbol": "US500",
+   "n_days": 3611,
+   "first_day": "2012-09-02",
+   "fit_days": 2328,
+   "holdout_days": 998,
+   "val_days": 127,
+   "eval": {
+    "holdout": {
+     "n": 998,
+     "hmm": {
+      "vol_eta2": 0.1283,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 27.7,
+      "switches_per_100d": 3.5,
+      "share": [
+       0.075,
+       0.362,
+       0.563
+      ],
+      "fwd_lvol_mean": [
+       -5.029,
+       -5.053,
+       -4.626
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.2389,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 7.7,
+      "switches_per_100d": 12.8,
+      "share": [
+       0.208,
+       0.281,
+       0.511
+      ],
+      "fwd_lvol_mean": [
+       -5.176,
+       -5.042,
+       -4.534
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.1381,
+      "vol_p_vs_shifted": 0.0005
+     },
+     "direction_trend_follow": {
+      "Biến động vừa": {
+       "n": 73,
+       "mean_trend_follow_ret_pct": 0.3874,
+       "t": 1.99
+      },
+      "Biến động cao": {
+       "n": 113,
+       "mean_trend_follow_ret_pct": -0.0489,
+       "t": -0.17
+      }
+     }
+    },
+    "val": {
+     "n": 127,
+     "hmm": {
+      "vol_eta2": 0.0226,
+      "vol_p_vs_shifted": 0.8411,
+      "mean_dwell_days": 12.7,
+      "switches_per_100d": 7.1,
+      "share": [
+       0.094,
+       0.386,
+       0.52
+      ],
+      "fwd_lvol_mean": [
+       -5.084,
+       -5.009,
+       -5.183
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.0292,
+      "vol_p_vs_shifted": 0.8486,
+      "mean_dwell_days": 9.8,
+      "switches_per_100d": 9.4,
+      "share": [
+       0.118,
+       0.551,
+       0.331
+      ],
+      "fwd_lvol_mean": [
+       -5.018,
+       -5.19,
+       -4.999
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.06,
+      "vol_p_vs_shifted": 0.4373
+     },
+     "direction_trend_follow": {}
+    }
+   },
+   "states_fit": [
+    {
+     "label": "Biến động thấp",
+     "share": 0.314,
+     "ann_vol_pct": 6.75,
+     "mean_t20": 1.04
+    },
+    {
+     "label": "Biến động vừa",
+     "share": 0.356,
+     "ann_vol_pct": 10.84,
+     "mean_t20": 0.58
+    },
+    {
+     "label": "Biến động cao",
+     "share": 0.331,
+     "ann_vol_pct": 21.8,
+     "mean_t20": 0.01
+    }
+   ],
+   "current": {
+    "as_of": "2026-10-13",
+    "state": 1,
+    "label": "Biến động vừa",
+    "prob": [
+     0.007,
+     0.992,
+     0.001
+    ],
+    "days_in_state": 17,
+    "ann_vol_pct": 9.5,
+    "trend_t20": 1.02,
+    "trend": "xu hướng tăng",
+    "kmeans_label": "Biến động vừa",
+    "vol_percentile": 39.0
+   }
+  },
+  {
+   "symbol": "US30",
+   "n_days": 3612,
+   "first_day": "2012-09-02",
+   "fit_days": 2328,
+   "holdout_days": 999,
+   "val_days": 127,
+   "eval": {
+    "holdout": {
+     "n": 999,
+     "hmm": {
+      "vol_eta2": 0.105,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 22.7,
+      "switches_per_100d": 4.3,
+      "share": [
+       0.213,
+       0.439,
+       0.347
+      ],
+      "fwd_lvol_mean": [
+       -5.166,
+       -5.023,
+       -4.707
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.1528,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 10.1,
+      "switches_per_100d": 9.8,
+      "share": [
+       0.211,
+       0.449,
+       0.339
+      ],
+      "fwd_lvol_mean": [
+       -5.211,
+       -5.037,
+       -4.653
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.1211,
+      "vol_p_vs_shifted": 0.0005
+     },
+     "direction_trend_follow": {
+      "Biến động thấp": {
+       "n": 42,
+       "mean_trend_follow_ret_pct": 0.1063,
+       "t": 0.44
+      },
+      "Biến động vừa": {
+       "n": 87,
+       "mean_trend_follow_ret_pct": -0.0623,
+       "t": -0.28
+      },
+      "Biến động cao": {
+       "n": 71,
+       "mean_trend_follow_ret_pct": -0.1683,
+       "t": -0.57
+      }
+     }
+    },
+    "val": {
+     "n": 127,
+     "hmm": {
+      "vol_eta2": 0.232,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 31.8,
+      "switches_per_100d": 2.4,
+      "share": [
+       0.039,
+       0.811,
+       0.15
+      ],
+      "fwd_lvol_mean": [
+       -4.701,
+       -5.0,
+       -5.612
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.0075,
+      "vol_p_vs_shifted": 0.8566,
+      "mean_dwell_days": 6.3,
+      "switches_per_100d": 15.0,
+      "share": [
+       0.15,
+       0.819,
+       0.031
+      ],
+      "fwd_lvol_mean": [
+       -5.012,
+       -5.099,
+       -4.926
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.084,
+      "vol_p_vs_shifted": 0.2629
+     },
+     "direction_trend_follow": {
+      "Biến động vừa": {
+       "n": 21,
+       "mean_trend_follow_ret_pct": -0.3114,
+       "t": -0.88
+      }
+     }
+    }
+   },
+   "states_fit": [
+    {
+     "label": "Biến động thấp",
+     "share": 0.402,
+     "ann_vol_pct": 7.11,
+     "mean_t20": 0.97
+    },
+    {
+     "label": "Biến động vừa",
+     "share": 0.363,
+     "ann_vol_pct": 11.89,
+     "mean_t20": 0.35
+    },
+    {
+     "label": "Biến động cao",
+     "share": 0.235,
+     "ann_vol_pct": 24.83,
+     "mean_t20": -0.02
+    }
+   ],
+   "current": {
+    "as_of": "2026-10-13",
+    "state": 1,
+    "label": "Biến động vừa",
+    "prob": [
+     0.082,
+     0.916,
+     0.002
+    ],
+    "days_in_state": 23,
+    "ann_vol_pct": 8.92,
+    "trend_t20": 0.2,
+    "trend": "đi ngang",
+    "kmeans_label": "Biến động vừa",
+    "vol_percentile": 37.0
+   }
+  },
+  {
+   "symbol": "USTEC",
+   "n_days": 1047,
+   "first_day": "2022-08-02",
+   "fit_days": 533,
+   "holdout_days": 229,
+   "val_days": 127,
+   "eval": {
+    "holdout": {
+     "n": 229,
+     "hmm": {
+      "vol_eta2": 0.1664,
+      "vol_p_vs_shifted": 0.048,
+      "mean_dwell_days": 17.6,
+      "switches_per_100d": 5.2,
+      "share": [
+       0.367,
+       0.397,
+       0.236
+      ],
+      "fwd_lvol_mean": [
+       -4.708,
+       -4.704,
+       -4.107
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.2084,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 7.9,
+      "switches_per_100d": 12.2,
+      "share": [
+       0.402,
+       0.358,
+       0.24
+      ],
+      "fwd_lvol_mean": [
+       -4.816,
+       -4.603,
+       -4.086
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.0795,
+      "vol_p_vs_shifted": 0.2094
+     },
+     "direction_trend_follow": {}
+    },
+    "val": {
+     "n": 127,
+     "hmm": {
+      "vol_eta2": 0.2327,
+      "vol_p_vs_shifted": 0.012,
+      "mean_dwell_days": 21.2,
+      "switches_per_100d": 3.9,
+      "share": [
+       0.465,
+       0.472,
+       0.063
+      ],
+      "fwd_lvol_mean": [
+       -4.901,
+       -4.514,
+       -5.518
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.0781,
+      "vol_p_vs_shifted": 0.2199,
+      "mean_dwell_days": 9.1,
+      "switches_per_100d": 10.2,
+      "share": [
+       0.362,
+       0.575,
+       0.063
+      ],
+      "fwd_lvol_mean": [
+       -4.882,
+       -4.634,
+       -5.165
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.0207,
+      "vol_p_vs_shifted": 0.7736
+     },
+     "direction_trend_follow": {}
+    }
+   },
+   "states_fit": [
+    {
+     "label": "Biến động thấp",
+     "share": 0.445,
+     "ann_vol_pct": 14.27,
+     "mean_t20": 1.06
+    },
+    {
+     "label": "Biến động vừa",
+     "share": 0.336,
+     "ann_vol_pct": 20.01,
+     "mean_t20": 0.24
+    },
+    {
+     "label": "Biến động cao",
+     "share": 0.22,
+     "ann_vol_pct": 30.78,
+     "mean_t20": -0.51
+    }
+   ],
+   "current": {
+    "as_of": "2026-10-13",
+    "state": 0,
+    "label": "Biến động thấp",
+    "prob": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "days_in_state": 33,
+    "ann_vol_pct": 15.44,
+    "trend_t20": 1.04,
+    "trend": "xu hướng tăng",
+    "kmeans_label": "Biến động thấp",
+    "vol_percentile": 34.0
+   }
+  },
+  {
+   "symbol": "DE40",
+   "n_days": 3560,
+   "first_day": "2012-09-02",
+   "fit_days": 2296,
+   "holdout_days": 984,
+   "val_days": 124,
+   "eval": {
+    "holdout": {
+     "n": 984,
+     "hmm": {
+      "vol_eta2": 0.079,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 24.6,
+      "switches_per_100d": 4.0,
+      "share": [
+       0.545,
+       0.211,
+       0.244
+      ],
+      "fwd_lvol_mean": [
+       -4.979,
+       -4.925,
+       -4.51
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.1284,
+      "vol_p_vs_shifted": 0.0005,
+      "mean_dwell_days": 10.1,
+      "switches_per_100d": 9.8,
+      "share": [
+       0.295,
+       0.471,
+       0.235
+      ],
+      "fwd_lvol_mean": [
+       -5.073,
+       -4.934,
+       -4.414
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.1189,
+      "vol_p_vs_shifted": 0.0005
+     },
+     "direction_trend_follow": {
+      "Biến động thấp": {
+       "n": 107,
+       "mean_trend_follow_ret_pct": -0.2149,
+       "t": -1.16
+      },
+      "Biến động vừa": {
+       "n": 42,
+       "mean_trend_follow_ret_pct": -0.0765,
+       "t": -0.26
+      },
+      "Biến động cao": {
+       "n": 48,
+       "mean_trend_follow_ret_pct": -0.1449,
+       "t": -0.24
+      }
+     }
+    },
+    "val": {
+     "n": 124,
+     "hmm": {
+      "vol_eta2": 0.0475,
+      "vol_p_vs_shifted": 0.2489,
+      "mean_dwell_days": 31.0,
+      "switches_per_100d": 2.4,
+      "share": [
+       0.871,
+       0.129,
+       0.0
+      ],
+      "fwd_lvol_mean": [
+       -4.917,
+       -5.204,
+       null
+      ]
+     },
+     "kmeans": {
+      "vol_eta2": 0.0139,
+      "vol_p_vs_shifted": 0.3393,
+      "mean_dwell_days": 8.3,
+      "switches_per_100d": 11.3,
+      "share": [
+       0.266,
+       0.734,
+       0.0
+      ],
+      "fwd_lvol_mean": [
+       -5.04,
+       -4.922,
+       null
+      ]
+     },
+     "baseline_vol20_tercile": {
+      "vol_eta2": 0.0175,
+      "vol_p_vs_shifted": 0.4168
+     },
+     "direction_trend_follow": {
+      "Biến động thấp": {
+       "n": 23,
+       "mean_trend_follow_ret_pct": -0.3862,
+       "t": -1.03
+      }
+     }
+    }
+   },
+   "states_fit": [
+    {
+     "label": "Biến động thấp",
+     "share": 0.389,
+     "ann_vol_pct": 10.85,
+     "mean_t20": 0.44
+    },
+    {
+     "label": "Biến động vừa",
+     "share": 0.385,
+     "ann_vol_pct": 16.51,
+     "mean_t20": 0.34
+    },
+    {
+     "label": "Biến động cao",
+     "share": 0.226,
+     "ann_vol_pct": 29.16,
+     "mean_t20": 0.11
+    }
+   ],
+   "current": {
+    "as_of": "2026-10-14",
+    "state": 0,
+    "label": "Biến động thấp",
+    "prob": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "days_in_state": 40,
+    "ann_vol_pct": 12.36,
+    "trend_t20": -0.53,
+    "trend": "đi ngang",
+    "kmeans_label": "Biến động vừa",
+    "vol_percentile": 31.0
+   }
+  }
+ ]
+}

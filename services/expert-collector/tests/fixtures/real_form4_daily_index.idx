@@ -1,0 +1,16 @@
+Description:           Daily Index of EDGAR Dissemination Feed by Form Type
+Last Data Received:    Oct 9, 2026
+Comments:              webmaster@sec.gov
+Anonymous FTP:         ftp://ftp.sec.gov/edgar/
+
+
+
+
+Form Type   Company Name                                                  CIK
+      Date Filed  File Name
+---------------------------------------------------------------------------------------------------------------------------------------------
+1-A              Timeplast, Inc.                                               1933967     20261009    edgar/data/1933967/0001104659-26-114962.txt
+4                3M CO                                                         66740       20261009    edgar/data/66740/0000066740-26-000293.txt
+4                3M CO                                                         66740       20261009    edgar/data/66740/0000066740-26-000294.txt
+4                SONIC AUTOMOTIVE INC                                          1043509     20261009    edgar/data/1043509/0001460471-26-000008.txt
+4/A              Example Amended Form Corp                                     1111111     20261009    edgar/data/1111111/0001111111-26-000001.txt

@@ -1,0 +1,16 @@
+# Quy uy tin theo doi qua SEC 13F-HR (tre toi da ~45 ngay sau cuoi quy; chi co co phieu Long My).
+# CIK DA XAC MINH 2026-10-11 qua data.sec.gov/submissions (ten khop, co 13F-HR gan day). Loai: Scion (1649339, 13F cuoi 2025-09-30, da ngung nop),
+# Greenlight (1079114, 13F cuoi 2023-12-31). Pershing Square: 13F-HR gan nhat quy 2026-03-31 (chua thay quy 06-30).
+top_n: 50
+funds:
+  - {cik: "0001067983", name: "Berkshire Hathaway Inc"}          # 13F-HR 2026-06-30, filed 2026-08-14
+  - {cik: "0001350694", name: "Bridgewater Associates, LP"}      # 2026-06-30
+  - {cik: "0001336528", name: "Pershing Square Capital Management"}  # 2026-03-31
+  - {cik: "0001037389", name: "Renaissance Technologies LLC"}    # 2026-06-30
+  - {cik: "0001029160", name: "Soros Fund Management LLC"}       # 2026-06-30
+  - {cik: "0001656456", name: "Appaloosa LP"}                    # 2026-06-30
+  - {cik: "0001040273", name: "Third Point LLC"}                 # 2026-06-30
+  - {cik: "0001536411", name: "Duquesne Family Office LLC"}      # 2026-06-30
+  - {cik: "0001061768", name: "Baupost Group LLC"}               # 2026-06-30
+  - {cik: "0001167483", name: "Tiger Global Management LLC"}     # 2026-06-30
+  - {cik: "0001791786", name: "Elliott Investment Management L.P."}  # 2026-06-30

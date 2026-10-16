@@ -1,0 +1,110 @@
+# STRATEGY CARD — slow_trend_multiasset (trend chậm đa tài sản). Bất biến theo phiên bản: đổi nội dung = tăng `version` + commit.
+# Mọi con số backtest lấy từ docs/research/MULTI_ASSET_BACKTEST.md và research/results/ma_analysis.json, ma_main_configs.csv (1990-02 → 2026-10, 'Ensemble|M').
+# Giai đoạn của TỪNG tài khoản được TÍNH TỰ ĐỘNG (paper_trader/card.py) từ dữ liệu forward thật; thẻ này chỉ khai báo tiêu chí.
+id: slow_trend_multiasset
+name: "Trend chậm đa tài sản (ensemble 4 tín hiệu, 6 lớp tài sản, vol-target 10%)"
+strategy: slow_trend_multiasset          # plugin trong paper-trader
+version: 2
+declared_stage: paper                     # IDEA → BACKTESTED → PAPER → PILOT → LIVE → RETIRED (chỉ người đổi được; hệ thống không tự lên PILOT/LIVE)
+role: "Lớp đa dạng hoá / bảo hiểm đuôi (20–30% rủi ro) cạnh cổ phiếu/trái phiếu — KHÔNG phải nguồn alpha độc lập"
+status_note: "Không phải khuyến nghị đầu tư. Mô phỏng thuần, không tiền thật."
+
+description: >
+  Mỗi tài sản (35 mã: 14 cổ phiếu, 4 trái phiếu, 7 FX, kim loại, năng lượng, nông sản) cho tín hiệu ∈ [-1, +1] là trung bình 4 bộ:
+  TSMOM 12-1; TSMOM 1/3/12 tháng; dấu (I − SMA200); Donchian 200/100. Ngân sách rủi ro chia ngang 6 lớp tài sản; vol-target danh mục 10%/năm
+  (L = min(lmax, 10%/σ ex-ante), Σ EWMA halflife 60 + shrink 20%). Tái cân bằng hàng tháng, khớp ở open bar kế tiếp (lag ≥ 1 phiên).
+hypothesis: >
+  Xu hướng giá dài hạn kéo dài do phản ứng chậm/herding và dòng tiền phòng ngừa (time-series momentum — Moskowitz-Ooi-Pedersen 2012; Hurst-Ooi-Pedersen).
+  Kỳ vọng: Sharpe dương khiêm tốn, tương quan ≈ 0 với 60/40, lợi suất lồi (convexity) ở khủng hoảng (2000-02, 2008, 2020, 2022).
+  Điều kiện làm giả thuyết sai: Sharpe forward ≤ 0 kéo dài, tương quan với 60/40 tiến về dương mạnh, hoặc chi phí thực > 2x giả định.
+data:
+  source: "Backtest: Yahoo/FRED/ECB (chuỗi excess return, 35 tài sản; xem MULTI_ASSET_BACKTEST §1). Paper: ETF/FX giá thô từ yahoo_daily/frankfurter (docs/DATA_SOURCE_PRIORITY.md)."
+  known_gaps:
+    - "ETF/FX giá thô vs chuỗi excess của backtest (carry xấp xỉ: cash_rate 4% hằng số, FX không có carry lãi suất)"
+    - "VN chỉ có ETF VNM (USD); không có VN-Index gốc"
+    - "Paper có trần chủ đích (gộp 2,0x, |w| ≤ 0,5, lớp ≤ 0,6, bán trái phiếu ≤ 0,25) — khác backtest (8x/3x)"
+fixed_params:                             # tham số cố định theo văn liệu, KHÔNG tối ưu trên dữ liệu (hash thực tế: /paper/accounts/{id}/card → params_hash)
+  signal: [tsmom_12_1, tsmom_1_3_12, ma200, donchian_200_100]
+  combine: mean
+  target_vol: 0.10
+  asset_vol: "EWMA span 60, sàn 1%"
+  cov: "EWMA halflife 60, shrink 20%"
+  rebalance: monthly
+  lmax: 3.0
+# Hash tham số đã KHOÁ theo tài khoản (sha256 của {strategy, params}); khác hash -> tiêu chí 'params_lock' đỏ + đình chỉ giai đoạn.
+locked_params_hash:                       # khoá 2026-10-12 (đọc từ /paper/accounts/<id>/card sau khi phiên bản cấu hình v1 được ghi)
+  slow_trend_global_v2: "868f50f7f04004f417770480a7f99450347158c994a28d90e926f5c344382742"
+  slow_trend_fx_v2: "02df47f6b091a248c353e75ff4ba365169fd06ecd97803aa762177e165df5829"
+  slow_trend_vn_v2: "0e3e49e06ef25624084fe47a72e0b50da519afc1ae8d31c6c0ccf01c388ef256"
+
+applies_to:                               # chỉ tài khoản cùng universe/tham số với backtest mới được so kỳ vọng (drift monitor)
+  accounts: [slow_trend_global_v2]
+  note: "slow_trend_fx_v2 (4 mã) và slow_trend_vn_v2 (cổ phiếu VN) KHÔNG có backtest cùng tham số: chỉ chạy tiêu chí chung, không có drift so backtest."
+
+backtest:
+  source: "research/results/ma_main_configs.csv (Ensemble|M), ma_analysis.json"
+  period: "1990-02-02 → 2026-10-09 (36,7 năm)"
+  sharpe: 0.553
+  sharpe_ci95: [0.210, 0.870]             # stationary bootstrap (ma_analysis.json boot_sharpe)
+  vol: 0.0951
+  cagr_total: 0.0800
+  cagr_excess: 0.0510
+  max_dd: -0.2352
+  calmar: 0.340
+  sortino: 0.777
+  skew: -0.261
+  excess_kurtosis: 3.15
+  pct_loss_years: 0.286
+  avg_gross: 2.33
+  turnover_yr: 11.95
+  cost_drag_yr: 0.0108                    # chi phí đã trừ (Sharpe 0,67 → 0,55)
+  n_trials: 52
+  dsr: 0.868                              # < 0,95 đã đặt trước => KHÔNG qua deflated Sharpe
+  placebo_p: 0.0067                       # p(placebo ≥ quan sát)
+  vs_6040: {sharpe_diff_ci95: [-0.546, 0.418], p_le0: 0.61, corr_monthly: -0.077}
+  by_period_sharpe: {"1990-2009": "0,67-0,74", "2010-2019": 0.16, "2020-2026": 0.59, "35_assets_from_2012": 0.29}
+expectation:
+  sharpe_forward: [0.3, 0.5]              # kỳ vọng thực tế sau chi phí (thấp hơn lịch sử)
+  max_dd_range: [-0.30, -0.20]
+  negative_years_share: 0.30
+costs_assumed:
+  one_way_bps: {eq: "2.5-12", bond: "1-3", fx: "1-2", metal: "3-8", energy: "6-15", agri: "10-12"}
+  pre_2010_multiplier: 1.5
+  stress: {cost_x2_sharpe: 0.44, cost_x3_sharpe: 0.33}
+  rule: "Paper dùng đúng các mức này (paper.example.yaml instruments) => tỷ lệ chi phí thực/giả định ≈ 1 + phần biên độ bar."
+
+backtest_gates:                           # BACKTESTED → PAPER (đã đánh giá lúc nghiên cứu; hiển thị trung thực kể cả mục KHÔNG đạt)
+  - {id: sharpe_positive, label: "Sharpe > 0 (bootstrap)", result: pass, detail: "p ≈ 0,0005"}
+  - {id: placebo, label: "Thắng placebo dịch tín hiệu", result: pass, detail: "p = 0,7%"}
+  - {id: cost_x2, label: "Chi phí x2 vẫn dương", result: pass, detail: "Sharpe 0,44"}
+  - {id: dsr, label: "Deflated Sharpe ≥ 0,95", result: fail, detail: "0,87 (0,74 nếu tính 200 lần thử)"}
+  - {id: beats_6040, label: "Thắng 60/40 có ý nghĩa", result: fail, detail: "CI chênh Sharpe [-0,55; +0,42], p(≤0)=0,61"}
+  - {id: stability, label: "Ổn định theo thời gian/tham số", result: fail, detail: "Sharpe 2010-19 chỉ 0,16; lookback 3-6 tháng 0,11-0,28"}
+
+gates:                                    # PAPER → XÉT DUYỆT (đề xuất, hiệu chỉnh được; ngưỡng đặt TRƯỚC khi nhìn kết quả)
+  paper_to_review:
+    min_weeks: 12                         # STRATEGY_OPTIONS: 8-12 tuần; chọn cận trên
+    min_trading_days: 60
+    min_fills: 30
+    min_rebalances: 3
+    min_sharpe: 0.0                       # Sharpe điểm ≥ 0 (CI ở 12 tuần rộng ±2 nên không dùng cận dưới làm tiêu chí)
+    max_drawdown: 0.15                    # |MaxDD| ≤ 15% (giới hạn kill-switch cứng của tài khoản là 20%)
+    max_exec_cost_ratio: 1.5              # chi phí thực / giả định
+    require_no_drift_red: true
+    require_chain_ok: true
+    require_never_locked: true
+    require_config_stable: true           # đổi tham số giữa chừng = làm lại từ đầu
+stop_conditions:
+  - "Drawdown vượt 1,5x MaxDD backtest (−35%) hoặc kill-switch khoá cứng"
+  - "CUSUM đỏ (Sharpe live lệch xuống tới mức -0,5 so với kỳ vọng) kéo dài sau rà soát"
+  - "Chi phí thực > 2x giả định (chiến lược nhạy chi phí)"
+  - "Hash-chain đứt hoặc tham số đổi so với hash khoá"
+known_risks:
+  - "Thập kỷ 2010-2019 gần như không sinh lời; Sharpe suy giảm theo thời gian"
+  - "Mẫu forward còn rất ngắn: 12 tuần KHÔNG đủ để phân biệt Sharpe 0,5 với 0 (cần ~13 năm cho 95%)"
+  - "Chi phí/thuế/margin/thanh khoản/T+2/biên độ VN chưa mô phỏng đầy đủ"
+approval:                                 # người điền; hệ thống không bao giờ tự điền
+  stage_approved: paper
+  approved_by: null
+  approved_at: null
+  legal_gates: {G1: open, G2: open, G3: open}

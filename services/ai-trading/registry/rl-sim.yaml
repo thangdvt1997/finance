@@ -1,0 +1,10 @@
+id: rl-sim
+name: "Học tăng cường (mô phỏng)"
+module: rl
+status: research
+summary: "RL (ES tuyến tính + Q-learning bảng) trên H1 EURUSD/XAUUSD/US500, walk-forward trên val, 10 seed, chi phí thật; chỉ mô phỏng paper."
+verdict: no_edge
+warning: "Không có edge sau chi phí: Q-learning ~0/âm; ES chỉ học thiên lệch mua trong giai đoạn tăng giá và thua mua&giữ (vàng 1,72 vs 2,75 Sharpe). DSR trung vị <= 0,17 (60 lần thử). Dữ liệu ngắn (~2 năm), val ~8 tháng, một chế độ giá: nguy cơ overfitting cao. Không dùng cho paper/live."
+honesty_note: "Báo cả kết quả không đẹp; toàn bộ phân bố 10 seed, không chọn seed. TEST khoá không mở. Không đặt lệnh."
+report: docs/research/RL_PROTOTYPE.md
+metrics: {expectancy_r: null, p_vs_random: null, trades: null, sharpe_oos_es: {EURUSD: 0.44, XAUUSD: 1.72, US500: 0.78}, sharpe_oos_q: {EURUSD: -0.90, XAUUSD: -0.08, US500: -0.45}, sharpe_buy_hold: {EURUSD: 0.46, XAUUSD: 2.75, US500: 1.02}, dsr_median_max: 0.17, n_trials: 60}

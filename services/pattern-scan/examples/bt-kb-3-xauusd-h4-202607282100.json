@@ -1,0 +1,92 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-3",
+ "title": "KB-3 · XAUUSD H4 (backtest, giai đoạn kiểm tra khoá -1.00R)",
+ "symbol": "XAUUSD",
+ "tf": "H4",
+ "ts": "2026-07-28T21:00:00+00:00",
+ "note": "Mô phỏng lịch sử (tập kiểm tra khoá): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát cắt lỗ (SL) sau 32 nến. vai-đầu-vai. Không phải khuyến nghị.",
+ "period": "test",
+ "pick": "test",
+ "result": {
+  "outcome": "sl",
+  "r": -1.0,
+  "entry_ts": "2026-07-29 01:00:00",
+  "exit_ts": "2026-08-05 05:00:00",
+  "entry": 4021.78,
+  "sl": 4173.351561,
+  "tp": 3718.636878,
+  "exit": 4173.401561
+ },
+ "score": 94.5,
+ "levels": {
+  "neckline": 3984.335,
+  "head": 4166.0,
+  "left_shoulder": 4102.56,
+  "right_shoulder": 4116.23,
+  "range_high": 4203.03,
+  "range_low": 3959.56,
+  "measured_move": 3802.67,
+  "entry": 4021.83,
+  "sl": 4173.351561,
+  "r": 151.521561,
+  "atr": 29.406244,
+  "tp_1r": 3870.308439,
+  "tp_2r": 3718.786878,
+  "tp_3r": 3567.265317
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 14.1 ATR, 10 nến đỏ dài, xanh 40%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "đi ngang 123 nến, biên 8.3 ATR"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "vai-đầu-vai: vai 4102.56/4116.23, đầu 4166.00, cổ 3984.34"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "giá 4026.38 về gần đường cổ 3984.34"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "cụm 3 nến thân nhỏ (<= 0.37 ATR) sát đường cổ 3984.34"
+  }
+ ],
+ "points": [
+  {
+   "label": "LS",
+   "t": "2026-07-14T09:00:00+00:00",
+   "p": 4102.56
+  },
+  {
+   "label": "",
+   "t": "2026-07-17T13:00:00+00:00",
+   "p": 3959.56
+  },
+  {
+   "label": "H",
+   "t": "2026-07-22T13:00:00+00:00",
+   "p": 4166.0
+  },
+  {
+   "label": "",
+   "t": "2026-07-26T21:00:00+00:00",
+   "p": 4009.11
+  },
+  {
+   "label": "RS",
+   "t": "2026-07-26T21:00:00+00:00",
+   "p": 4116.23
+  }
+ ]
+}

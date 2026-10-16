@@ -1,0 +1,102 @@
+# Feed MT5 toan bo cap (126 forex + 10 kim loai + 26 chi so). Ten metric: docs/handoff/FEED_ALL_contract.md muc Metrics.
+# Kiem tra: docker run --rm -v $PWD/infra/prometheus:/p:ro --entrypoint promtool prom/prometheus:v3.13.4 check rules /p/rules_feed.yml
+# Lich phien (UTC): fx dong T6 22:00 -> CN 22:00 (+30' an han); kim loai them nghi 22:00-23:00 hang ngay; chi so T2-T6 08:00-20:00;
+# nghi le 25/12, 1/1 ca ngay; 24/12 + 31/12 sau 21:00. Luat im lang chi chay khi feed:market_open==1; metric chua co => luat khong khop (khong bao gia).
+groups:
+  - name: tradingsys-feed-calendar
+    interval: 30s
+    rules:
+      - record: feed:market_open
+        labels: { class: fx }
+        expr: |
+          vector(1) and on() (
+            ((day_of_week() >= 1 and day_of_week() <= 4) or (day_of_week() == 5 and hour() < 22) or (day_of_week() == 0 and hour() >= 22))
+            unless on() (day_of_week() == 0 and hour() == 22 and minute() < 30)
+            unless on() ((month() == 12 and day_of_month() == 25) or (month() == 1 and day_of_month() == 1))
+            unless on() ((month() == 12 and (day_of_month() == 24 or day_of_month() == 31)) and hour() >= 21)
+          )
+      - record: feed:market_open
+        labels: { class: metal }
+        expr: |
+          feed:market_open{class="fx"} and on() (hour() != 22)
+      - record: feed:market_open
+        labels: { class: index }
+        expr: |
+          vector(1) and on() (
+            day_of_week() >= 1 and day_of_week() <= 5 and hour() >= 8 and hour() < 20
+            unless on() ((month() == 12 and day_of_month() == 25) or (month() == 1 and day_of_month() == 1))
+            unless on() ((month() == 12 and (day_of_month() == 24 or day_of_month() == 31)) and hour() >= 15)
+          )
+  - name: tradingsys-feed-recording
+    interval: 15s
+    rules:
+      - record: feed:tick_rate
+        expr: sum by (class) (rate(mtbridge_feed_ticks_total[1m]))
+      - record: feed:quote_age_seconds_max
+        expr: max by (class) (time() - mtbridge_feed_symbol_last_quote_timestamp)
+      # symbol im lang: tuoi quote > 600s (exotic tick thua) khi thi truong mo; 0 khi dong
+      - record: feed:symbols_silent
+        expr: |
+          (count by (class) ((time() - mtbridge_feed_symbol_last_quote_timestamp) > 600) or (feed:market_open * 0))
+          * on(class) group_left() feed:market_open
+      - record: feed:symbols_active
+        expr: count by (class) ((time() - mtbridge_feed_symbol_last_quote_timestamp) <= 600)
+      - record: feed:latency_p50_seconds
+        expr: histogram_quantile(0.5, sum by (le, class) (rate(mtbridge_feed_latency_seconds_bucket[5m])))
+      - record: feed:latency_p95_seconds
+        expr: histogram_quantile(0.95, sum by (le, class) (rate(mtbridge_feed_latency_seconds_bucket[5m])))
+      # Gatus doc: 1 = khoe (hoac thi truong dong / chua co metric), 0 = mat feed trong phien mo
+      - record: feed:ok
+        expr: |
+          1 - (clamp_max(count((min by (class) (time() - mtbridge_feed_symbol_last_quote_timestamp{class="fx"}) > 120) and on(class) feed:market_open == 1), 1) or vector(0))
+  - name: tradingsys-feed
+    rules:
+      - alert: FeedFxNoQuotes
+        expr: (min by (class) (time() - mtbridge_feed_symbol_last_quote_timestamp{class="fx"}) > 120) and on(class) feed:market_open == 1
+        for: 2m
+        labels: { severity: critical, component: feed }
+        annotations: { summary: "Feed FX mat HOAN TOAN >120s trong gio mo cua", description: "Khong symbol FX nao co quote moi. Kiem tra EA market-feed / mt-bridge / terminal Wine (docs/VAN_HANH.md muc Feed toan bo cap)." }
+      - alert: FeedMetalNoQuotes
+        expr: (min(time() - mtbridge_feed_symbol_last_quote_timestamp{class="metal"}) > 180) and on() (feed:market_open{class="metal"} == 1)
+        for: 3m
+        labels: { severity: warning, component: feed }
+        annotations: { summary: "Feed kim loai mat >180s trong gio mo cua", description: "Khong kim loai nao co quote moi (loai tru nghi 22-23h UTC, cuoi tuan, le)." }
+      - alert: FeedIndexNoQuotes
+        expr: (min(time() - mtbridge_feed_symbol_last_quote_timestamp{class="index"}) > 300) and on() (feed:market_open{class="index"} == 1)
+        for: 5m
+        labels: { severity: warning, component: feed }
+        annotations: { summary: "Feed chi so mat >300s (T2-T6 08-20h UTC)", description: "Khong chi so nao co quote moi." }
+      - alert: FeedSymbolsSilentHigh
+        expr: feed:symbols_silent{class="fx"} > on(class) 0.25 * mtbridge_feed_symbols_expected{class="fx"}
+        for: 10m
+        labels: { severity: warning, component: feed }
+        annotations: { summary: "Hon 25% symbol FX im lang >10 phut khi thi truong mo", description: "{{ $value }} symbol im lang. Danh sach: topk(30, time()-mtbridge_feed_symbol_last_quote_timestamp{class=\"fx\"}) tren Prometheus/Grafana." }
+      - alert: FeedTickRateLow
+        expr: feed:tick_rate{class="fx"} < 5 and on(class) feed:market_open == 1
+        for: 10m
+        labels: { severity: warning, component: feed }
+        annotations: { summary: "Tick/s FX thap bat thuong (<5/s) khi thi truong mo", description: "{{ $value | humanize }} tick/s (ky vong ~100+ khi du 126 cap)." }
+      - alert: FeedLatencyP95High
+        expr: feed:latency_p95_seconds > 2 and on(class) feed:market_open == 1
+        for: 5m
+        labels: { severity: warning, component: feed }
+        annotations: { summary: "Tre MT5->bridge p95 >2s ({{ $labels.class }})", description: "p95 = {{ $value | humanizeDuration }}. Kiem tra tai terminal/VPS, hang doi EA, lech dong ho." }
+      - alert: FeedLatencyP50High
+        expr: feed:latency_p50_seconds > 0.75 and on(class) feed:market_open == 1
+        for: 10m
+        labels: { severity: warning, component: feed }
+        annotations: { summary: "Tre MT5->bridge p50 >0,75s ({{ $labels.class }})", description: "p50 = {{ $value | humanizeDuration }}." }
+      - alert: FeedReconnectStorm
+        expr: sum by (account) (increase(mtbridge_feed_reconnect_total[10m])) > 3
+        labels: { severity: warning, component: feed }
+        annotations: { summary: "EA feed {{ $labels.account }} ket noi lai >3 lan/10 phut", description: "Terminal/EA khong on dinh hoac token/HMAC bi tu choi." }
+      - alert: FeedEaOffline
+        expr: (mtbridge_account_connected{account=~".*-feed"} == 0) and on() (feed:market_open{class="fx"} == 1)
+        for: 3m
+        labels: { severity: critical, component: feed }
+        annotations: { summary: "EA feed {{ $labels.account }} mat ket noi trong gio mo cua", description: "mt-bridge khong nhan heartbeat EA feed." }
+      - alert: FeedBatchesRejected
+        expr: sum(rate(mtbridge_feed_batches_total{result=~"rejected|error|rate_limited"}[5m])) > 0.1
+        for: 5m
+        labels: { severity: warning, component: feed }
+        annotations: { summary: "Bridge tu choi/loi batch cua EA feed", description: "{{ $value | humanize }} batch/s bi tu choi/loi/429." }

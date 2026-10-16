@@ -1,0 +1,16 @@
+# local-llm (llama-swap). Nếu gỡ service khỏi compose thì xóa file này.
+endpoints:
+  - name: local-llm
+    group: services
+    url: "http://local-llm:8080/v1/models"
+    interval: 60s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 3000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "local-llm không phản hồi" }
+  - name: ai-pool-lb
+    group: services
+    url: "http://ai-pool-lb:8080/health"
+    interval: 60s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 3000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "ai-pool-lb: không còn node pool nào" }

@@ -1,0 +1,106 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-1",
+ "title": "KB-1 · USDJPY H4 (backtest, thua -1.00R)",
+ "symbol": "USDJPY",
+ "tf": "H4",
+ "ts": "2011-06-29T09:00:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát cắt lỗ (SL) sau 36 nến. hồi-vượt đỉnh-2 đỉnh giảm. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "thua",
+ "result": {
+  "outcome": "sl",
+  "r": -1.004,
+  "entry_ts": "2011-06-29 13:00:00",
+  "exit_ts": "2011-07-07 09:00:00",
+  "entry": 80.801,
+  "sl": 81.311006,
+  "tp": 79.780988,
+  "exit": 81.313006
+ },
+ "score": 82.4,
+ "levels": {
+  "wave_high": 82.229,
+  "wave_low": 79.694,
+  "high_4": 81.258,
+  "low_3": 80.009,
+  "high_5": 81.182,
+  "entry": 80.804,
+  "sl": 81.311006,
+  "r": 0.507006,
+  "atr": 0.212025,
+  "tp_1r": 80.296994,
+  "tp_2r": 79.789988,
+  "tp_3r": 79.282981,
+  "prev_low": 80.009
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 10.4 ATR, 8 nến đỏ dài, xanh 39%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "hồi 53% sóng (1)"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "sóng (3)/(2) = 0.77"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "vượt đỉnh (2) 20% sóng (3)"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "2 đỉnh giảm dần"
+  },
+  {
+   "id": 6,
+   "ok": true,
+   "detail": "nhấn chìm giảm thân 1.53 ATR dưới đỉnh (5) 81.18"
+  }
+ ],
+ "points": [
+  {
+   "label": "",
+   "t": "2011-05-19T09:00:00+00:00",
+   "p": 82.229
+  },
+  {
+   "label": "(1)",
+   "t": "2011-06-08T09:00:00+00:00",
+   "p": 79.694
+  },
+  {
+   "label": "(2)",
+   "t": "2011-06-15T09:00:00+00:00",
+   "p": 81.047
+  },
+  {
+   "label": "(3)",
+   "t": "2011-06-22T13:00:00+00:00",
+   "p": 80.009
+  },
+  {
+   "label": "(4)",
+   "t": "2011-06-28T13:00:00+00:00",
+   "p": 81.258
+  },
+  {
+   "label": "",
+   "t": "2011-06-28T21:00:00+00:00",
+   "p": 80.936
+  },
+  {
+   "label": "(5)",
+   "t": "2011-06-29T05:00:00+00:00",
+   "p": 81.182
+  }
+ ]
+}

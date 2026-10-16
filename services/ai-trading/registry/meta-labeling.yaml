@@ -1,0 +1,20 @@
+# C1 xong 2026-10-15: kết quả thật trên dev+val (TEST khoá không mở). Báo cáo: docs/research/META_LABELING.md
+id: meta-labeling
+name: "Meta-labeling (López de Prado)"
+module: ml
+status: research
+summary: "Tín hiệu KB-1..4 (dev+val, 8.290 lệnh) làm ứng viên; logistic + LightGBM nhỏ lọc theo ATR/regime biến động/phiên/khoảng cách S-R/độ nén/volume. Purged K-fold + embargo 5 ngày, walk-forward 2012+ (6.994 lệnh), đối chứng ngẫu nhiên 2.000 hoán vị, DSR, PBO, chi phí x2."
+verdict: no_edge
+warning: "Lọc ML không cứu được edge: kỹ năng xếp hạng rất nhỏ (AUC 0,54), giảm lỗ nhưng mọi cấu hình vẫn <= 0 R sau chi phí (tốt nhất logit top 10% +0,003 R, CI chứa 0, DSR 0,11, chi phí x2 -> âm; GBM cùng nhóm -0,115 R)."
+honesty_note: "Phần 'ít lỗ hơn' chủ yếu do chọn lệnh có chi phí/R thấp (sl_atr, ATR lớn), không phải dự đoán hướng giá. Không có dữ liệu lịch tin kinh tế nên chưa thử đặc trưng tin. TEST khoá không mở; chỉ nghiên cứu/paper."
+metrics:
+  expectancy_r: -0.0548
+  expectancy_r_baseline_all: -0.1052
+  best_cell_expectancy_r: 0.0031
+  best_cell_ci95: [-0.0658, 0.0765]
+  auc_oos: 0.5388
+  p_vs_random: 0.0005
+  trades: 3496
+  dsr_best_cell: 0.1119
+  pbo: 0.0061
+  report: docs/research/META_LABELING.md

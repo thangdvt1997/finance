@@ -1,0 +1,11 @@
+# C2 xong 2026-10-15. Hiện vật: docs/research/regime/summary.json (chạy lại: services/ai-trading/research/regime_research.py). API: /v1/ai-trading/regime
+id: regime
+name: "Phát hiện regime (HMM / k-means)"
+module: ml
+status: research
+summary: "HMM 3 trạng thái (hmmlearn, lọc nhân quả) + k-means trên log-biến động 20 ngày và t-stat xu hướng 20 ngày, D1: EURUSD, GBPUSD, USDJPY, XAUUSD, XAGUSD, US500, US30, USTEC, DE40 (chưa có BTCUSD trong kho lịch sử). Chia train 70% / holdout 30% cuối của train / val; tập test khoá không dùng cho số đo. Null: dịch vòng nhãn (2.000 lần)."
+verdict: unproven
+warning: "Regime mô tả biến động hiện tại, KHÔNG dự báo hướng giá: 0/28 ô theo-xu-hướng có |t|>2. Dự báo biến động ngắn hạn kế tiếp khác ngẫu nhiên ở 9/9 mã trên holdout dài nhưng chỉ 2/9 trên val ngắn, và HMM chỉ hơn đường cơ sở đơn giản (tercile vol 20 ngày) ở 3/9 (holdout) và 6/9 (val)."
+honesty_note: "Giá trị thực tế: điều chỉnh kích thước rủi ro/bật-tắt kịch bản theo biến động, không phải tạo tín hiệu. HMM bền (~26 ngày/trạng thái) hơn k-means (~9 ngày). Nhãn trạng thái sắp theo biến động nên 'Biến động cao/thấp' là tương đối theo từng mã. Chỉ nghiên cứu/paper."
+metrics: {expectancy_r: null, p_vs_random: null, trades: null}
+doc: docs/research/REGIME_C2.md

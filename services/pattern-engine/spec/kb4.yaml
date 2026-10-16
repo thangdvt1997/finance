@@ -1,0 +1,32 @@
+id: KB-4
+name: "KB-4: đi ngang - nến dài phá đáy - chuỗi nến đỏ - đi ngang mới 3 đỉnh giảm dần - nến nén"
+side: sell
+summary: >
+  (1) Đi ngang trước đó -> (2) nến thân rất dài phá cạnh dưới -> (3) chuỗi nến đỏ liên tiếp -> (4) đi ngang mới
+  -> (5) 3 đỉnh giảm dần -> (6) nến thân nhỏ nén lại => Sell (cụm nến nén thứ 3 ĐÓNG).
+steps:
+  1: "(1) Thị trường đi ngang (hộp)"
+  2: "(2) Nến thân rất dài phá cạnh dưới hộp"
+  3: "(3) Chuỗi nến đỏ liên tiếp, sóng giảm dẫn hướng"
+  4: "(4) Đi ngang mới"
+  5: "(5) 3 đỉnh giảm dần"
+  6: "(6) Nến thân nhỏ nén lại (đóng nến)"
+invalidation:
+  - "Giá ĐÓNG CỬA vượt đỉnh đầu tiên của vùng đi ngang mới + 0.25 ATR"
+  - "Đóng cửa thủng đáy sóng dẫn quá 0.75 ATR mà chưa có cụm nén"
+  - "Quá trigger_window nến sau đỉnh thứ 3"
+params:
+  box_bars: 40
+  box_min_bars: 20
+  box_max_atr: 8.0
+  box_max_net_ratio: 0.6
+  breakdown_within: 12
+  breakdown_body_atr: 2.0      # "nến thân RẤT dài" (> long_body_atr)
+  follow_red_min: 3
+  n_highs: 3
+  retr_max: 0.8
+  trigger_window: 30
+  cluster_above_atr: 0.25
+levels:
+  sl: "đỉnh đầu tiên của vùng đi ngang mới + sl_buffer_atr × ATR"
+  tp: "entry - m×R; tham chiếu: đáy sóng dẫn"

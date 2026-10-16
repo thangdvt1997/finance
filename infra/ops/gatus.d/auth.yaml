@@ -1,0 +1,9 @@
+# auth (đăng nhập master/client). Nếu gỡ service khỏi compose thì xóa file này. Kiểm /readyz = có kết nối DB (ts_auth).
+endpoints:
+  - name: auth
+    group: services
+    url: "http://auth:8000/readyz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "auth không phản hồi: không ai đăng nhập được" }

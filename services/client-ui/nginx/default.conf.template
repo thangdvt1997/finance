@@ -1,0 +1,287 @@
+# Cổng của ỨNG DỤNG CLIENT (PWA tại /c/). Container nginx riêng, KHÔNG dùng chung cấu hình/cổng với web-ui của master.
+# envsubst khi khởi động: chỉ ${API_KEY} ${GATEWAY_UPSTREAM} ${AUTH_UPSTREAM} ${AUTH_TRUST_SECRET} (biến nginx như $host giữ nguyên). KHÔNG in file đã render ra log.
+#
+# Luồng:  trình duyệt --cookie phiên HttpOnly--> /c/api/v1/*  --auth_request /auth/verify--> api-gateway (X-API-Key + X-User-Id/X-Role/X-Accounts do nginx đặt)
+#                                                /c/auth/*     --------------------------> dịch vụ auth (whitelist đường dẫn)
+# Header danh tính CHỈ do nginx đặt từ phản hồi /auth/verify; mọi header cùng tên do client gửi đều bị ghi đè.
+
+set_real_ip_from 127.0.0.1;
+set_real_ip_from 10.0.0.0/8;
+set_real_ip_from 172.16.0.0/12;
+set_real_ip_from 192.168.0.0/16;
+real_ip_header CF-Connecting-IP;
+real_ip_recursive on;
+
+limit_req_zone $binary_remote_addr zone=capi_rl:10m rate=15r/s;
+limit_req_zone $binary_remote_addr zone=clogin_rl:10m rate=10r/m;   # đăng nhập/ghép cặp: chống dò mật khẩu (auth còn khoá tạm theo tài khoản)
+limit_req_zone $binary_remote_addr zone=cauth_rl:10m rate=60r/m;
+limit_req_zone $binary_remote_addr zone=cstatic_rl:10m rate=40r/s;
+limit_req_status 429;
+# Realtime rt.v1 (WS/SSE): đếm kết nối đồng thời theo IP thật (zone riêng, không đụng các zone khác)
+limit_conn_zone $binary_remote_addr zone=crt_conn:10m;
+map $http_upgrade $connection_upgrade { default upgrade; "" close; }
+
+# ---- Whitelist đọc: client CHỈ được gọi các endpoint dưới đây (gateway còn lọc theo tài khoản). Còn lại 404 -> không với tới /system, /paper, /reports, /experts...
+map $uri $api_ok {
+    default 0;
+    "~^/c/api/v1/rt(/sse)?$" 1;
+    "~^/c/api/v1/(accounts|equity-history|risk-windows|symbols|symbols/classes|quotes/latest|bars|news|calendar)$" 1;
+    "~^/c/api/v1/risk/accounts(/[A-Za-z0-9_.:%-]{1,80})?$" 1;
+    "~^/c/api/v1/accounts/[A-Za-z0-9_.:%-]{1,80}/orders$" 1;
+    "~^/c/api/v1/journal/[A-Za-z0-9_.:%-]{1,80}/(summary|deals|discipline|notes|excursions|review)$" 1;
+    "~^/c/api/v1/journal/[A-Za-z0-9_.:%-]{1,80}/notes/(deal|week|day)/[A-Za-z0-9_-]{1,40}$" 1;
+    "~^/c/api/v1/analytics/(overview|screener|symbol/[A-Za-z0-9:._-]{1,32})$" 1;
+    "~^/c/api/v1/briefing/(latest|list|[0-9a-fA-F-]{36})$" 1;
+    "~^/c/api/v1/experts/(leaderboard|consensus|feed|methodology|[A-Za-z0-9:._-]{1,64}/track-record)$" 1;   # track record chuyên gia: dữ liệu công khai, không theo tài khoản
+    "~^/c/api/v1/ai-trading/(overview|regime|consensus|arena|strategies|strategies/[A-Za-z0-9_.:-]{1,64})$" 1;   # AI Trading (ban rut gon: gateway ep audience=client)
+    "~^/c/api/v1/patterns/(live|setup|trades|stats|spec|examples|media/[A-Za-z0-9_-]{1,80}\.png|examples/[A-Za-z0-9_.-]{1,120}\.png)$" 1;   # kịch bản Sell: tín hiệu CHUNG + kết quả paper (gateway lọc armed/triggered cho client)
+    "~^/c/api/v1/user/(csrf|rules|rule-events|push|rules/[0-9a-fA-F-]{36}|rules/preview|rules/[0-9a-fA-F-]{36}/preview|push/(subscribe|unsubscribe|test))$" 1;
+    "~^/c/api/v1/user/(limits|limits/history|notifications|notifications/read|client-prefs|push/devices|tickets)$" 1;
+    "~^/c/api/v1/user/push/devices/[0-9a-f]{16}$" 1;
+    "~^/c/api/v1/account-reports(/[A-Za-z0-9_.:%-]{1,80}/[0-9]{4}-[0-9]{2}-[0-9]{2}/(html|pdf))?$" 1;   # báo cáo theo tài khoản (chỉ bản đã phát hành; gateway lọc theo tài khoản)
+}
+# ---- Whitelist ghi: chỉ quy tắc cảnh báo cá nhân + ghi chú/tag nhật ký. KHÔNG có route đặt lệnh.
+map "$request_method:$uri" $method_ok {
+    default 0;
+    "~^(GET|HEAD):" 1;
+    "~^POST:/c/api/v1/user/rules(/preview|/[0-9a-fA-F-]{36}/preview)?$" 1;
+    "~^POST:/c/api/v1/user/push/(subscribe|unsubscribe|test)$" 1;
+    "~^(PUT|DELETE):/c/api/v1/user/rules/[0-9a-fA-F-]{36}$" 1;
+    "~^PUT:/c/api/v1/user/(limits|client-prefs)$" 1;
+    "~^POST:/c/api/v1/user/(notifications/read|tickets)$" 1;
+    "~^DELETE:/c/api/v1/user/push/devices/[0-9a-f]{16}$" 1;
+    "~^(PUT|DELETE):/c/api/v1/journal/[A-Za-z0-9_.:%-]{1,80}/notes/(deal|week|day)/[A-Za-z0-9_-]{1,40}$" 1;
+}
+map $request_method $write_key { default ""; POST $binary_remote_addr; PUT $binary_remote_addr; DELETE $binary_remote_addr; }
+limit_req_zone $write_key zone=cwrite_rl:10m rate=30r/m;
+
+# ---- Whitelist /auth: chỉ các đường dẫn dành cho CLIENT (route quản trị của master KHÔNG lộ qua đây).
+map "$request_method:$uri" $auth_ok {
+    default 0;
+    "~^POST:/c/auth/(login|pair|logout|logout-all|change-password)$" 1;
+    "~^GET:/c/auth/(me|sessions)$" 1;
+    "~^POST:/c/auth/sessions/[0-9a-f]{64}/revoke$" 1;
+    "~^(GET|PUT):/c/auth/client/notify$" 1;       # khách tự bật/tắt thông báo khi sát/vi phạm luật (mặc định TẮT; docs/FLEET_MGMT.md)
+}
+# Origin (nếu có) phải trùng Host (kể cả cổng) — chống CSRF cho request đổi trạng thái
+map $http_origin $origin_host { default "-"; "" ""; "~^https?://(?<oh>[^/]+)$" $oh; }
+
+server {
+    listen 8080 default_server;
+    server_name _;
+    server_tokens off;
+
+    root /usr/share/nginx/html;
+    charset utf-8;
+    resolver 127.0.0.11 valid=10s ipv6=off;       # DNS nội bộ docker; không resolve lúc khởi động để nginx vẫn lên khi auth/gateway chưa sẵn sàng
+    set $gateway "${GATEWAY_UPSTREAM}";
+    set $auth_up "${AUTH_UPSTREAM}";
+
+    client_max_body_size 16k;
+    client_body_timeout 10s;
+    client_header_timeout 10s;
+    keepalive_timeout 30s;
+
+    gzip on;
+    gzip_vary on;
+    gzip_comp_level 5;
+    gzip_min_length 512;
+    gzip_types text/plain text/css application/javascript text/javascript application/json image/svg+xml;
+
+    location = /healthz { access_log off; default_type text/plain; return 200 "ok\n"; }
+
+    location = / { return 302 /c/; }
+    location = /c { return 301 /c/; }
+
+    # ---- Xác thực nội bộ: hỏi dịch vụ auth bằng cookie phiên của client. 200 + X-User-Id/X-Role/X-Accounts, 401 nếu chưa đăng nhập.
+    location = /_verify {
+        internal;
+        proxy_pass $auth_up/auth/verify;
+        proxy_pass_request_body off;
+        proxy_set_header Content-Length "";
+        proxy_set_header Host $host;
+        proxy_set_header Cookie $http_cookie;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        # KHÔNG gửi X-Original-URI: auth coi tiền tố /c/ là công khai (vỏ tĩnh) -> sẽ trả anon cho /c/api/. Thiếu header = bắt buộc có phiên.
+        proxy_set_header X-Original-URI "";
+        proxy_connect_timeout 2s;
+        proxy_read_timeout 3s;
+    }
+    location @unauth { default_type application/json; add_header Cache-Control "no-store" always; return 401 '{"detail":"unauthenticated"}'; }
+    location @authdown { default_type application/json; add_header Cache-Control "no-store" always; return 503 '{"detail":"auth_unavailable"}'; }
+
+    # ---- Realtime rt.v1 (docs/REALTIME.md): WS /c/api/v1/rt + SSE /c/api/v1/rt/sse -> gateway /v1/rt[/sse]. Cần phiên hợp lệ; cookie KHÔNG chuyển xuống gateway.
+    # Gateway tự kiểm Origin so với Host/X-Forwarded-Host và quyền a:/e: theo X-Accounts. Chỉ GET (WS handshake/SSE); không có đường ghi.
+    location = /c/api/v1/rt {
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "no-store" always;
+        if ($api_ok = 0) { return 404; }
+        if ($request_method != GET) { return 405; }
+        set $rtchk "";
+        if ($origin_host != "") { set $rtchk "o"; }
+        if ($origin_host = $http_host) { set $rtchk ""; }
+        if ($rtchk != "") { return 403; }
+        limit_conn crt_conn 20;
+        limit_conn_status 429;
+        auth_request /_verify;
+        auth_request_set $u_id $upstream_http_x_user_id;
+        auth_request_set $u_role $upstream_http_x_role;
+        auth_request_set $u_accts $upstream_http_x_accounts;
+        error_page 401 = @unauth;
+        error_page 500 502 503 504 = @authdown;
+
+        rewrite ^/c/api/(.*)$ /$1 break;
+        proxy_pass $gateway;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-API-Key "${API_KEY}";
+        proxy_set_header X-User-Id $u_id;
+        proxy_set_header X-Role $u_role;
+        proxy_set_header X-Accounts $u_accts;
+        proxy_set_header X-Auth-Secret "${AUTH_TRUST_SECRET}";
+        proxy_set_header Cookie "";
+        proxy_set_header Authorization "";
+        proxy_connect_timeout 3s;
+        proxy_read_timeout 3700s;
+        proxy_send_timeout 3700s;
+        proxy_buffering off;
+        proxy_hide_header X-Powered-By;
+    }
+    location = /c/api/v1/rt/sse {
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "no-store" always;
+        add_header X-Accel-Buffering "no" always;
+        if ($api_ok = 0) { return 404; }
+        if ($request_method != GET) { return 405; }
+        set $rtchk "";
+        if ($origin_host != "") { set $rtchk "o"; }
+        if ($origin_host = $http_host) { set $rtchk ""; }
+        if ($rtchk != "") { return 403; }
+        limit_conn crt_conn 20;
+        limit_conn_status 429;
+        auth_request /_verify;
+        auth_request_set $u_id $upstream_http_x_user_id;
+        auth_request_set $u_role $upstream_http_x_role;
+        auth_request_set $u_accts $upstream_http_x_accounts;
+        error_page 401 = @unauth;
+        error_page 500 502 503 504 = @authdown;
+
+        rewrite ^/c/api/(.*)$ /$1 break;
+        proxy_pass $gateway;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-API-Key "${API_KEY}";
+        proxy_set_header X-User-Id $u_id;
+        proxy_set_header X-Role $u_role;
+        proxy_set_header X-Accounts $u_accts;
+        proxy_set_header X-Auth-Secret "${AUTH_TRUST_SECRET}";
+        proxy_set_header Cookie "";
+        proxy_set_header Authorization "";
+        proxy_connect_timeout 3s;
+        proxy_read_timeout 3700s;
+        proxy_send_timeout 3700s;
+        proxy_buffering off;
+        proxy_cache off;
+        gzip off;
+        proxy_hide_header X-Powered-By;
+    }
+
+    # ---- Dữ liệu (gateway). Bắt buộc có phiên hợp lệ; danh tính do nginx chèn.
+    location ^~ /c/api/ {
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "no-store" always;
+        if ($api_ok = 0) { return 404; }
+        if ($method_ok = 0) { return 405; }
+        limit_req zone=capi_rl burst=60 nodelay;
+        limit_req zone=cwrite_rl burst=10 nodelay;
+        set $wchk "$request_method";
+        if ($origin_host = $http_host) { set $wchk "${wchk}+"; }
+        if ($http_sec_fetch_site = "cross-site") { set $wchk "${wchk}X"; }
+        if ($wchk ~ "^(POST|PUT|DELETE)(X|\+X)?$") { return 403; }
+
+        auth_request /_verify;
+        auth_request_set $u_id $upstream_http_x_user_id;
+        auth_request_set $u_role $upstream_http_x_role;
+        auth_request_set $u_accts $upstream_http_x_accounts;
+        error_page 401 = @unauth;
+        error_page 500 502 503 504 = @authdown;
+
+        rewrite ^/c/api/(.*)$ /$1 break;
+        proxy_pass $gateway;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-API-Key "${API_KEY}";
+        proxy_set_header X-User-Id $u_id;
+        proxy_set_header X-Role $u_role;
+        proxy_set_header X-Accounts $u_accts;
+        proxy_set_header X-Auth-Secret "${AUTH_TRUST_SECRET}";   # bí mật nginx<->gateway: gateway chỉ tin 3 header trên khi khớp
+        proxy_set_header Cookie "";
+        proxy_set_header Authorization "";
+        proxy_connect_timeout 3s;
+        proxy_read_timeout 20s;
+        proxy_hide_header X-Powered-By;
+    }
+
+    # ---- Auth (đăng nhập / ghép cặp / phiên): chỉ whitelist; không auth_request (đây chính là nơi tạo phiên).
+    location ~ ^/c/auth/(login|pair)$ {
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "no-store" always;
+        if ($auth_ok = 0) { return 405; }
+        if ($origin_host != $http_host) { return 403; }
+        limit_req zone=clogin_rl burst=5 nodelay;
+        client_max_body_size 2k;
+        rewrite ^/c/(auth/.*)$ /$1 break;
+        proxy_pass $auth_up;
+        include /etc/nginx/snippets/auth-proxy.conf;
+    }
+    location ~ "^/c/auth/(logout|logout-all|change-password|me|client/notify|sessions(/[0-9a-f]{64}/revoke)?)$" {
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "no-store" always;
+        if ($auth_ok = 0) { return 405; }
+        set $achk "$request_method";
+        if ($origin_host = $http_host) { set $achk "${achk}+"; }
+        if ($achk ~ "^(POST|PUT)$") { return 403; }   # request đổi trạng thái mà Origin thiếu/khác Host
+        limit_req zone=cauth_rl burst=20 nodelay;
+        client_max_body_size 2k;
+        rewrite ^/c/(auth/.*)$ /$1 break;
+        proxy_pass $auth_up;
+        include /etc/nginx/snippets/auth-proxy.conf;
+    }
+    location /c/auth/ { return 404; }   # (không ^~: để các location regex bên trên được ưu tiên)
+
+    # ---- PWA
+    location = /c/sw.js {
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "no-cache" always;
+        add_header Service-Worker-Allowed "/c/" always;
+        try_files $uri =404;
+    }
+    location = /c/manifest.webmanifest {
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "no-cache" always;
+        default_type application/manifest+json;
+        try_files $uri =404;
+    }
+    location /c/assets/ {
+        include /etc/nginx/snippets/security-headers.conf;
+        limit_req zone=cstatic_rl burst=120 nodelay;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        try_files $uri =404;
+    }
+    location /c/ {
+        include /etc/nginx/snippets/security-headers.conf;
+        limit_req zone=cstatic_rl burst=120 nodelay;
+        add_header Cache-Control "no-cache" always;
+        try_files $uri /c/index.html;
+    }
+    location / { return 404; }
+    location ~ /\. { deny all; return 404; }
+}

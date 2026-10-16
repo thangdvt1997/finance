@@ -1,0 +1,92 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-3",
+ "title": "KB-3 · USDJPY M15 (backtest, thua -1.00R)",
+ "symbol": "USDJPY",
+ "tf": "M15",
+ "ts": "2017-01-17T20:00:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát cắt lỗ (SL) sau 70 nến. vai-đầu-vai. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "thua",
+ "result": {
+  "outcome": "sl",
+  "r": -1.002,
+  "entry_ts": "2017-01-17 20:15:00",
+  "exit_ts": "2017-01-18 13:30:00",
+  "entry": 112.674,
+  "sl": 113.62054,
+  "tp": 110.780919,
+  "exit": 113.62254
+ },
+ "score": 96.9,
+ "levels": {
+  "neckline": 112.6995,
+  "head": 113.58,
+  "left_shoulder": 113.293,
+  "right_shoulder": 113.105,
+  "range_high": 114.386,
+  "range_low": 112.625,
+  "measured_move": 111.819,
+  "entry": 112.676,
+  "sl": 113.62054,
+  "r": 0.94454,
+  "atr": 0.162162,
+  "tp_1r": 111.73146,
+  "tp_2r": 110.786919,
+  "tp_3r": 109.842379
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 12.2 ATR, 8 nến đỏ dài, xanh 36%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "đi ngang 149 nến, biên 10.9 ATR"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "vai-đầu-vai: vai 113.29/113.11, đầu 113.58, cổ 112.70"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "giá 112.66 về gần đường cổ 112.70"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "cụm 3 nến thân nhỏ (<= 0.21 ATR) sát đường cổ 112.70"
+  }
+ ],
+ "points": [
+  {
+   "label": "LS",
+   "t": "2017-01-17T10:30:00+00:00",
+   "p": 113.293
+  },
+  {
+   "label": "",
+   "t": "2017-01-17T11:30:00+00:00",
+   "p": 112.723
+  },
+  {
+   "label": "H",
+   "t": "2017-01-17T12:45:00+00:00",
+   "p": 113.58
+  },
+  {
+   "label": "",
+   "t": "2017-01-17T16:30:00+00:00",
+   "p": 112.676
+  },
+  {
+   "label": "RS",
+   "t": "2017-01-17T18:30:00+00:00",
+   "p": 113.105
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+# Tham số chiến lược `slow_trend_multiasset` (v2: ensemble 4 tín hiệu — khớp backtest research/multiasset/ma_engine.py).
+# Tín hiệu (momentum 12-1, 1/3/12 tháng, MA200, Donchian 200/100), ngân sách rủi ro 6 lớp và vol-target 10% KHÔNG chỉnh được ở đây:
+# chúng là hằng số trong mã plugin (tham số cố định theo văn liệu, KHÔNG tối ưu). Chỉ các núm vận hành dưới đây được phép đổi.
+params:
+  target_vol: 0.10          # vol mục tiêu năm hoá của danh mục (backtest: 10%)
+  lmax: 3.0                 # đòn bẩy tối đa của hệ số vol-target L = min(lmax, target/vol_ex_ante)  (backtest: 3.0)
+  # --- trần đòn bẩy cho tài khoản mô phỏng khả thi (backtest: asset_cap 3.0, gross_cap 8.0, TB gộp ~2,3x; không có trần lớp) ---
+  asset_cap: 0.5            # |w| tối đa mỗi tài sản (tỷ trọng danh nghĩa / vốn)
+  gross_cap: 2.0            # tổng |w| tối đa (đòn bẩy gộp)
+  class_gross_cap: 0.6      # tổng |w| tối đa mỗi lớp tài sản
+  short_class_cap: {bond: 0.25}   # tổng vị thế BÁN tối đa của lớp trái phiếu (tránh net short trái phiếu cực đoan)
+  allow_short: true         # true = long_short (PRIMARY của backtest); false = long_flat
+  # --- xử lý ETF giá thô vs chuỗi 'excess return' của backtest ---
+  adjust_carry: true        # cộng (cổ tức − tiền mặt) cho cổ phiếu, trừ tiền mặt cho hàng hoá; trái phiếu/FX: net 0 (xem README: giới hạn)
+  cash_rate: 0.04           # lãi suất tiền mặt USD/năm (xấp xỉ T-bill 3M; chưa đọc FRED tự động)
+  min_live: 3               # tối thiểu số tài sản có tín hiệu để mở vị thế (backtest: 3)
+  max_stale_days: 10        # bar cuối cũ hơn N ngày so với lịch chung => loại khỏi lần tái cân bằng
+  history_required: 300     # engine coi là thiếu dữ liệu nếu ít hơn

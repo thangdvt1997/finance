@@ -1,0 +1,44 @@
+# Project mtlab. Mang: tradingsys_internal (external) de goi mt-bridge:8000. VNC chi bind 127.0.0.1.
+x-mt: &mt
+  image: mtlab-wine:9
+  build: ./image
+  restart: unless-stopped
+  stop_grace_period: 40s
+  cpus: 2
+  mem_limit: 3g
+  shm_size: 512m
+  networks: [tsnet]
+  volumes:
+    - ./scripts:/mtlab:ro
+    - ./dl:/dl:ro
+    - ./ea:/ea:ro
+    - ./out:/out
+services:
+  mt5:
+    <<: *mt
+    container_name: mtlab-mt5
+    mem_limit: 10g  # xuat lich su M1 nhieu ma (MaxBars 100M): terminal giu M1 moi ma da xuat (~5.7g sau 4 ma); 3g gay swap nang
+    environment: { MT_KIND: mt5, WINEPREFIX: /wine, WINEDLLOVERRIDES: "mscoree,mshtml=d" }
+    env_file: [./secrets-mt5.env]
+    ports: ["127.0.0.1:5901:5900"]
+    volumes:
+      - mt5wine:/wine
+      - ./scripts:/mtlab:ro
+      - ./dl:/dl:ro
+      - ./ea:/ea:ro
+      - ./out:/out
+  mt4:
+    <<: *mt
+    container_name: mtlab-mt4
+    environment: { MT_KIND: mt4, MT_MODE: "${MT4_MODE:-smoke}", WINEPREFIX: /wine, WINEDLLOVERRIDES: "mscoree,mshtml=d" }
+    env_file: [./secrets-mt4.env]
+    ports: ["127.0.0.1:5902:5900"]
+    volumes:
+      - mt4wine:/wine
+      - ./scripts:/mtlab:ro
+      - ./dl:/dl:ro
+      - ./ea:/ea:ro
+      - ./out:/out
+networks:
+  tsnet: { external: true, name: tradingsys_internal }
+volumes: { mt5wine: {}, mt4wine: {} }

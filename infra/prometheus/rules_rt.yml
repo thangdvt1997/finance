@@ -1,0 +1,59 @@
+# Realtime hub (api-gateway/realtime.py: metric rt_*) + chặng EA->bridge. Mô tả: docs/REALTIME.md §7, docs/OBSERVABILITY.md §6.
+# Kiểm tra: promtool check rules /p/rules_rt.yml (xem docs/OBSERVABILITY.md §2). Alertmanager route sẵn có -> alert-service.
+# Giờ giao dịch (UTC): T2-T6 (day_of_week 1-5) và 02:00-20:59 UTC; ngoài khung này thị trường FX/CFD nghỉ nên không báo.
+groups:
+  - name: tradingsys-realtime
+    rules:
+      - alert: RtHubStalled
+        expr: time() - rt_hub_last_read_timestamp > 30
+        for: 2m
+        labels: { severity: critical, component: realtime }
+        annotations: { summary: "Realtime hub không đọc được bus >30s", description: "Lần đọc bus thành công cuối cách đây {{ $value | humanizeDuration }}. Kiểm tra api-gateway/redis (docs/REALTIME.md)." }
+      - alert: RtNoQuotesWeekday
+        expr: (sum(rate(rt_bus_events_total{stream="md.quotes"}[5m])) == 0) and on() (day_of_week() >= 1 and day_of_week() <= 5 and hour() >= 2 and hour() < 21)
+        for: 5m
+        labels: { severity: critical, component: realtime }
+        annotations: { summary: "Không có quote nào qua hub trong giờ giao dịch (T2-T6)", description: "rate(rt_bus_events_total{stream=md.quotes}) = 0 suốt 5 phút: EA/bridge/collector ngừng phát hoặc hub đứng." }
+      - alert: RtSilentSymbolsHigh
+        # dịu cuối tuần (T7/CN): FX nghỉ nên nhiều symbol im lặng là bình thường. Ngưỡng 50% (vòng 3 QA): 9 symbol FX/vàng từ dukascopy là nguồn trễ ~10-25 phút theo thiết kế (quote phát sau mỗi lần poll M1) nên luôn im lặng >90s; 20% làm cảnh báo nhấp nháy pending vĩnh viễn
+        expr: (rt_silent_symbols > 0.5 * rt_symbols_tracked and rt_symbols_tracked > 0) and on() (day_of_week() >= 1 and day_of_week() <= 5)
+        for: 10m
+        labels: { severity: warning, component: realtime }
+        annotations: { summary: "Hơn 50% symbol im lặng", description: "{{ $value }} symbol im lặng quá ngưỡng RT_SILENT_S." }
+      - alert: RtBusLagP95
+        expr: histogram_quantile(0.95, sum by (le) (rate(rt_bus_to_gateway_seconds_bucket[5m]))) > 0.5
+        for: 5m
+        labels: { severity: warning, component: realtime }
+        annotations: { summary: "Độ trễ bus->hub p95 >0,5s", description: "p95 = {{ $value | humanizeDuration }} (Event.ts -> hub đọc). Kiểm tra tải Redis/hub." }
+      - alert: RtClientNetP95High
+        expr: histogram_quantile(0.95, sum by (le) (rate(rt_client_net_seconds_bucket[5m]))) > 1
+        for: 5m
+        labels: { severity: warning, component: realtime }
+        annotations: { summary: "Độ trễ gateway->trình duyệt p95 >1s", description: "p95 = {{ $value | humanizeDuration }} (do client báo, đã hiệu chỉnh offset)." }
+      - alert: RtSlowClientsClosing
+        expr: sum(rate(rt_closed_total{reason="slow"}[5m])) > 0.1
+        for: 5m
+        labels: { severity: warning, component: realtime }
+        annotations: { summary: "Nhiều client bị đóng vì chậm", description: "{{ $value | humanize }} kết nối/s bị đóng lý do slow." }
+      - alert: RtDropRate
+        # coalesced = gộp tick có chủ đích (không báo); overflow = tràn hàng đợi
+        expr: sum(rate(rt_dropped_total{reason="overflow"}[5m])) > 0
+        for: 5m
+        labels: { severity: warning, component: realtime }
+        annotations: { summary: "Hub bỏ tin do tràn hàng đợi (overflow)", description: "{{ $value | humanize }} tin/s bị bỏ." }
+      - alert: RtConnectionsNearCap
+        # cap = 2500 (hardcode, khớp RT_MAX_CONNS mặc định; đổi cap thì sửa luật này)
+        expr: sum(rt_connections) > 0.8 * 2500
+        for: 5m
+        labels: { severity: warning, component: realtime }
+        annotations: { summary: "Kết nối realtime >80% trần 2500", description: "Đang có {{ $value }} kết nối." }
+      - alert: RtRejectedConnections
+        expr: sum(rate(rt_conn_attempts_total{result=~"capacity|user_limit"}[5m])) > 0
+        for: 5m
+        labels: { severity: warning, component: realtime }
+        annotations: { summary: "Hub từ chối kết nối (capacity/user_limit)", description: "{{ $value | humanize }} kết nối/s bị từ chối." }
+      - alert: RtGatewayCpuHigh
+        expr: sum(rate(container_cpu_usage_seconds_total{container_label_com_docker_compose_project="tradingsys",container_label_com_docker_compose_service="api-gateway"}[5m])) > 0.8
+        for: 10m
+        labels: { severity: warning, component: realtime }
+        annotations: { summary: "api-gateway dùng >0,8 nhân CPU kéo dài", description: "CPU = {{ $value | humanize }} nhân (hub là asyncio đơn luồng ~1 nhân: gần trần)." }

@@ -1,0 +1,85 @@
+# Chủ đề tin tài chính (en + vi, bỏ dấu khi so khớp). weight: mức ảnh hưởng thị trường (0..1) dùng tính `importance`.
+# Từ khoá viết hoa ngắn (CPI, GDP, NFP, PMI...) phân biệt hoa/thường (xem entities.yaml).
+topics:
+  monetary_policy:   # lãi suất / chính sách tiền tệ
+    weight: 0.9
+    keywords: ["interest rate", "rate cut", "rate hike", "rate decision", "monetary policy", "FOMC", "Fed", "ECB", "BoE", "BoJ",
+               "quantitative", "tightening", "easing", "policy rate", "dot plot", "lãi suất", "chính sách tiền tệ", "điều hành tiền tệ",
+               "tăng lãi suất", "giảm lãi suất", "room tín dụng", "hạ lãi suất", "nới lỏng", "thắt chặt", "tái cấp vốn", "yield", "bond yield", "lợi suất"]
+  inflation:
+    weight: 0.9
+    keywords: ["inflation", "CPI", "PCE", "PPI", "consumer price", "producer price", "price pressures", "disinflation", "lạm phát",
+               "chỉ số giá tiêu dùng", "giá tiêu dùng", "CPI tăng"]
+  jobs:
+    weight: 0.85
+    keywords: ["payrolls", "nonfarm", "non-farm", "NFP", "unemployment", "jobless", "jobs report", "labor market", "labour market",
+               "layoffs", "job cuts", "việc làm", "thất nghiệp", "sa thải", "lao động"]
+  growth:
+    weight: 0.7
+    keywords: ["GDP", "PMI", "retail sales", "industrial production", "recession", "economic growth", "slowdown", "consumer confidence",
+               "tăng trưởng GDP", "tăng trưởng kinh tế", "suy thoái", "sản xuất công nghiệp", "bán lẻ"]
+  geopolitics:
+    weight: 0.8
+    keywords: ["war", "conflict", "sanctions", "missile", "invasion", "ceasefire", "tensions", "Middle East", "Ukraine", "Russia", "Iran",
+               "Israel", "Gaza", "Taiwan", "North Korea", "attack", "de-escalation", "chiến sự", "xung đột", "căng thẳng", "trừng phạt",
+               "chiến tranh", "Trung Đông", "đình chiến"]
+  trade_tariffs:
+    weight: 0.75
+    keywords: ["tariff", "tariffs", "trade war", "trade deal", "trade talks", "export ban", "import duty", "thuế quan", "chiến tranh thương mại",
+               "thỏa thuận thương mại", "thuế đối ứng", "hạn ngạch"]
+  energy:
+    weight: 0.7
+    keywords: ["oil", "crude", "OPEC", "natural gas", "LNG", "refinery", "diesel", "gasoline", "petrol", "energy crisis", "dầu thô", "giá dầu",
+               "xăng dầu", "khí đốt", "năng lượng", "điện"]
+  precious_metals:
+    weight: 0.6
+    keywords: ["gold", "silver", "bullion", "safe haven", "safe-haven", "vàng", "giá vàng", "kim loại quý", "SJC", "vàng miếng"]
+  corporate:
+    weight: 0.5
+    keywords: ["earnings", "profit", "revenue", "guidance", "dividend", "buyback", "merger", "acquisition", "takeover", "IPO", "bankruptcy",
+               "lawsuit", "sues", "layoff", "launch", "lợi nhuận", "doanh thu", "cổ tức", "mua lại", "sáp nhập", "phát hành", "huy động vốn",
+               "trái phiếu doanh nghiệp", "kết quả kinh doanh", "thoái vốn", "cổ phiếu", "tăng trần", "giảm sàn", "tự doanh", "margin"]
+  banking_credit:
+    weight: 0.55
+    keywords: ["bank run", "credit", "bad loans", "non-performing", "capital requirement", "stress test", "liquidity", "default", "ngân hàng",
+               "nợ xấu", "tín dụng", "thanh khoản", "trái phiếu"]
+  sovereign_rating:
+    weight: 0.7
+    keywords: ["credit rating", "downgrade", "upgrade", "outlook", "Moody", "Fitch", "S&P Global Ratings", "R&I", "tín nhiệm", "xếp hạng", "nâng hạng",
+               "hạ bậc"]
+  fx_markets:
+    weight: 0.55
+    keywords: ["currency", "dollar", "euro", "yen", "sterling", "forex", "exchange rate", "devaluation", "intervention", "tỷ giá", "ngoại hối", "đồng USD",
+               "đô la"]
+  equities:
+    weight: 0.45
+    keywords: ["stocks", "equities", "shares", "S&P 500", "Nasdaq", "Dow", "rally", "selloff", "sell-off", "VN-Index", "VNINDEX", "chứng khoán",
+               "cổ phiếu", "thị trường", "khối ngoại", "dòng tiền"]
+  crypto:
+    weight: 0.45
+    keywords: ["Bitcoin", "BTC", "crypto", "cryptocurrency", "Ethereum", "stablecoin", "tiền mã hóa", "tiền số", "tiền điện tử"]
+  real_estate:
+    weight: 0.4
+    keywords: ["property", "housing", "mortgage", "real estate", "bất động sản", "nhà ở", "địa ốc", "đất nền"]
+  regulation_policy:
+    weight: 0.4
+    keywords: ["regulation", "regulator", "proposes", "SEC", "nghị định", "thông tư", "dự thảo", "quy định",
+               "chính phủ", "Quốc hội"]
+  tech_ai:
+    weight: 0.35
+    keywords: ["AI", "artificial intelligence", "chip", "semiconductor", "OpenAI", "Nvidia", "trí tuệ nhân tạo", "bán dẫn"]
+
+# Mức quan trọng: score = min(1, 0.55*max(topic.weight) + 0.15*min(2, n_topics-1)/2 + 0.2*strong + 0.1*sym + src_boost + 0.1*|sentiment|*conf)
+importance:
+  strong_words: ["emergency", "unexpected", "surprise", "record", "plunge", "surge", "soar", "crash", "collapse", "default", "bankruptcy", "war",
+                 "shock", "halt", "suspend", "khẩn cấp", "bất ngờ", "kỷ lục", "lao dốc", "sụp đổ", "vỡ nợ", "phá sản", "tăng trần", "giảm sàn", "sốc"]
+  routine_words: ["speech", "minutes", "calendar", "schedule", "annual report", "consultation", "appointment", "lecture", "new director", "bài phát biểu",
+                  "biên bản", "lịch", "tuần qua", "phân tích kỹ thuật", "góc nhìn", "nhịp đập thị trường", "blog"]
+  source_boost:        # theo tiền tố `source` (cộng điểm cho nguồn chính thống phát dữ liệu số liệu)
+    bls_: 0.2
+    fed_press: 0.1
+    ecb_press: 0.1
+    boe_news: 0.05
+    boj_whatsnew: 0.05
+    sec_press: 0.05
+  thresholds: {med: 0.4, high: 0.65}

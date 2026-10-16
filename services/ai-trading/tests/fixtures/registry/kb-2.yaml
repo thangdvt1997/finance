@@ -1,0 +1,14 @@
+# Kịch bản nến & sóng KB-2 (module pattern). Số liệu backtest KHÔNG chép ở đây: đọc thật từ docs/research/pattern_sell/summary.json.
+id: KB-2
+name: "KB-2 - Nêm/tam giác sau hồi 50%"
+module: pattern
+status: research
+summary: "Hồi khoảng 50% nhịp giảm rồi nén thành nêm/tam giác; Sell khi phá cạnh dưới. Backtest walk-forward 2008-2025 + test khoá 2026 (chi phí thật)."
+verdict: no_edge
+warning: "Không có edge sau chi phí: kỳ vọng âm ở walk-forward ngoài mẫu và ở tập test khoá, không hơn vào lệnh ngẫu nhiên. Không dùng để giao dịch."
+honesty_note: "Kết quả trung thực, không làm đẹp: kỳ vọng R/lệnh sau spread+trượt+phí là ÂM ở cả dev/val và test khoá (chạy 1 lần). Deflated Sharpe = 0, PBO = 0,86. Tập test khoá của KB này có mẫu nhỏ nên CI rộng; kết luận mạnh nhất ở mức gộp 4 KB (n=433, -0,26 R, p so với ngẫu nhiên = 0,97)."
+doc: docs/research/PATTERN_SELL_BACKTEST.md
+source:
+  type: pattern_sell
+  kb: KB-2
+  agg_max_dd_r_test: 120.5   # max drawdown (R) của test khoá GỘP 4 KB (PATTERN_SELL_BACKTEST.md mục 5); không có số riêng từng KB

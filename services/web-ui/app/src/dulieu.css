@@ -1,0 +1,27 @@
+/* Trang "Dữ liệu": bảng phủ mã x khung. Màu lấy từ token chủ đề; trạng thái luôn có ký hiệu + chữ (không chỉ dựa vào màu). */
+.dk-wrap { max-height: 560px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.dk-tbl { border-collapse: separate; border-spacing: 0; font-size: 12px; width: max-content; min-width: 100%; }
+.dk-tbl th, .dk-tbl td { padding: 0; border-bottom: 1px solid var(--line); }
+.dk-tbl thead th { position: sticky; top: 0; z-index: 2; background: var(--panel); color: var(--muted); font-size: 11px; font-weight: 600; padding: .4rem .25rem; text-align: center; min-width: 38px; }
+.dk-tbl .dk-sym { position: sticky; left: 0; z-index: 1; background: var(--panel); text-align: left; padding: .3rem .6rem; min-width: 120px; font-weight: 600; white-space: nowrap; border-right: 1px solid var(--line); }
+.dk-tbl thead .dk-sym { z-index: 3; }
+.dk-tbl .dk-st { padding: .3rem .5rem; white-space: nowrap; text-align: left; min-width: 96px; }
+.dk-tbl tbody tr:hover td, .dk-tbl tbody tr:hover th { background: var(--panel2); }
+.dk-cell { display: flex; align-items: center; justify-content: center; height: 26px; min-width: 38px; font-size: 11px; font-weight: 700; line-height: 1; }
+.dk-OK { color: var(--up); background: var(--up-bg); }
+.dk-CLOSED { color: var(--muted); background: color-mix(in srgb, var(--info) 9%, transparent); }
+.dk-SLOW { color: var(--accent); background: var(--accent-bg); }
+.dk-BROKEN { color: var(--down); background: var(--down-bg); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--down) 45%, transparent); }
+.dk-gap { margin-left: 2px; font-size: 9.5px; opacity: .85; }
+.dk-legend { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: 11.5px; color: var(--muted); align-items: center; }
+.dk-legend i { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 18px; border-radius: 4px; font-style: normal; font-weight: 700; font-size: 11px; margin-right: .3rem; }
+.dk-stats { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); }
+.dk-diag li { margin: .15rem 0; }
+.dk-log { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.dk-log li { display: grid; grid-template-columns: 7.5rem 1fr; gap: .6rem; padding: .45rem 0; border-bottom: 1px solid var(--line); font-size: 12.5px; }
+.dk-log li:last-child { border-bottom: 0; }
+.dk-filters { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .6rem; }
+@media (max-width: 640px) { .dk-log li { grid-template-columns: 1fr; gap: .1rem; } .dk-wrap { max-height: 70vh; } .dk-tbl .dk-sym { min-width: 96px; } }
+@media (prefers-reduced-motion: reduce) { .dk-spin { animation: none !important; } }
+.dk-spin { animation: dkspin 1s linear infinite; }
+@keyframes dkspin { to { transform: rotate(360deg); } }

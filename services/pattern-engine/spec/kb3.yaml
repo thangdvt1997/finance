@@ -1,0 +1,34 @@
+id: KB-3
+name: "KB-3: giảm - đi ngang biên đều - vai-đầu-vai thuận - cụm 3 nến nén ở đường cổ"
+side: sell
+summary: >
+  Sóng giảm mạnh (1) -> đi ngang biên độ đều, nến thân vừa (2) -> vai-đầu-vai (3-7), vai phải (7) giảm về đường cổ
+  -> cụm 3 nến thân nhỏ nén tại đường cổ (8): báo khi cụm xuất hiện (nến thứ 3 ĐÓNG).
+steps:
+  1: "(1) Sóng giảm dẫn hướng mạnh"
+  2: "(2) Đi ngang biên độ đều, nến thân vừa"
+  3: "(3-7) Vai-đầu-vai (vai ≈ nhau, đầu cao hơn, đường cổ phẳng)"
+  4: "(7) Giá giảm về sát đường cổ"
+  5: "(8) Cụm 3 nến thân nhỏ nén ở đường cổ (đóng nến)"
+invalidation:
+  - "Nến chạm lên quá đỉnh đầu, hoặc đóng cửa vượt vai phải + 0.25 ATR"
+  - "Đóng cửa thủng đường cổ quá 1 ATR mà chưa có cụm nén"
+  - "Quá max_after_rs_bars nến kể từ vai phải"
+params:
+  lead_min_atr: 8.0            # [HIỆU CHỈNH] sóng dẫn đủ dài (golden = 10.6 ATR; 7.0 ATR là hình vai-đầu-vai nhỏ bắt nhầm)
+  lead_max_pivots_back: 30
+  max_after_rs_bars: 90
+  range_min_bars: 40
+  range_min_atr: 7.0           # biên đi ngang >= 7 ATR (golden = 7.9 ATR)
+  range_max_lead_ratio: 1.2    # biên đi ngang <= 1.2 × độ cao sóng dẫn
+  range_below_lead_ratio: 0.6  # đáy vùng đi ngang không thấp hơn đáy sóng dẫn quá 0.6 × sóng dẫn
+  range_max_mean_body_atr: 1.0 # nến thân vừa: thân trung bình <= 1.0 ATR
+  head_min_ratio: 0.12         # đầu cao hơn mỗi vai >= 12% chiều cao đầu-cổ
+  shoulder_tol: 0.40           # |vai trái - vai phải| <= 40% chiều cao đầu-cổ
+  neck_tol: 0.35               # |đáy1 - đáy2| <= 35% chiều cao đầu-cổ
+  neck_in_lower: 0.45          # đường cổ nằm ở 45% dưới của vùng đi ngang
+  neck_near_atr: 3.0           # giá đóng cửa <= đường cổ + 3 ATR
+  neck_break_atr: 1.0          # cho phép thủng đường cổ tối đa 1 ATR
+levels:
+  sl: "đỉnh đầu + sl_buffer_atr × ATR"
+  tp: "entry - m×R; tham chiếu: measured move = đường cổ - (đầu - đường cổ)"

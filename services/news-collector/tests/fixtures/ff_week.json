@@ -1,0 +1,4 @@
+[{"title":"Non-Farm Employment Change","country":"USD","date":"2026-10-12T08:30:00-04:00","impact":"High","forecast":"150K","previous":"142K"},
+ {"title":"Bank Holiday","country":"JPY","date":"2026-10-12T00:00:00-04:00","impact":"Holiday","forecast":"","previous":""},
+ {"title":"CPI y/y","country":"EUR","date":"2026-10-13T05:00:00-04:00","impact":"Medium","forecast":"2.1%","previous":"2.0%","actual":"2.2%"},
+ {"title":"broken","country":"USD","date":"not-a-date","impact":"Low"}]

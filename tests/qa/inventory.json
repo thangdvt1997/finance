@@ -1,0 +1,6170 @@
+{
+ "generated": "2026-10-16T08:13:47Z",
+ "items": [
+  {
+   "id": "API:api-gateway:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/bars",
+   "cat": "api",
+   "desc": "GET /v1/bars - Nến OHLCV",
+   "test": "tests/qa/api/run_api.py --only /v1/bars",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/quotes/latest",
+   "cat": "api",
+   "desc": "GET /v1/quotes/latest - Giá mới nhất mỗi symbol",
+   "test": "tests/qa/api/run_api.py --only /v1/quotes/latest",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/news",
+   "cat": "api",
+   "desc": "GET /v1/news - Tin tức (mới nhất trước)",
+   "test": "tests/qa/api/run_api.py --only /v1/news",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/calendar",
+   "cat": "api",
+   "desc": "GET /v1/calendar - Lịch kinh tế (mặc định: từ hôm qua, sự kiện sắp tới trước)",
+   "test": "tests/qa/api/run_api.py --only /v1/calendar",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/experts",
+   "cat": "api",
+   "desc": "GET /v1/experts - Danh sách chuyên gia theo dõi",
+   "test": "tests/qa/api/run_api.py --only /v1/experts",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/expert-signals",
+   "cat": "api",
+   "desc": "GET /v1/expert-signals - Tín hiệu chuyên gia",
+   "test": "tests/qa/api/run_api.py --only /v1/expert-signals",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/expert-opinions",
+   "cat": "api",
+   "desc": "GET /v1/expert-opinions - Ý kiến chuyên gia/tổ chức (tham khảo, không phải khuyến nghị)",
+   "test": "tests/qa/api/run_api.py --only /v1/expert-opinions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/expert-positions",
+   "cat": "api",
+   "desc": "GET /v1/expert-positions - Vị thế công khai của chuyên gia",
+   "test": "tests/qa/api/run_api.py --only /v1/expert-positions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/accounts",
+   "cat": "api",
+   "desc": "GET /v1/accounts - Snapshot tài khoản mới nhất (read-only)",
+   "test": "tests/qa/api/run_api.py --only /v1/accounts",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/accounts/{account_id}/orders",
+   "cat": "api",
+   "desc": "GET /v1/accounts/{account_id}/orders - Lệnh chờ của 1 tài khoản (read-only; client chỉ tài khoản của mình)",
+   "test": "tests/qa/api/run_api.py --only /v1/accounts/{account_id}/orders",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/me",
+   "cat": "api",
+   "desc": "GET /v1/me - Vai trò + danh sách tài khoản MT hợp lệ của phiên hiện tại (do nginx/auth xác thực)",
+   "test": "tests/qa/api/run_api.py --only /v1/me",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/alerts",
+   "cat": "api",
+   "desc": "GET /v1/alerts - Cảnh báo gần đây",
+   "test": "tests/qa/api/run_api.py --only /v1/alerts",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/overview",
+   "cat": "api",
+   "desc": "GET /v1/overview - Tổng hợp cho dashboard",
+   "test": "tests/qa/api/run_api.py --only /v1/overview",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/equity-history",
+   "cat": "api",
+   "desc": "GET /v1/equity-history - Lịch sử equity/balance/margin của 1 tài khoản",
+   "test": "tests/qa/api/run_api.py --only /v1/equity-history",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/analytics/overview",
+   "cat": "api",
+   "desc": "GET /v1/analytics/overview - Phân tích: trạng thái mọi symbol × khung + tổng hợp (heatmap)",
+   "test": "tests/qa/api/run_api.py --only /v1/analytics/overview",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/analytics/symbol/{symbol}",
+   "cat": "api",
+   "desc": "GET /v1/analytics/symbol/{symbol} - Phân tích chi tiết 1 symbol: chỉ báo, trạng thái, chuỗi vẽ biểu đồ, phiên",
+   "test": "tests/qa/api/run_api.py --only /v1/analytics/symbol/{symbol}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/analytics/screener",
+   "cat": "api",
+   "desc": "GET /v1/analytics/screener - Bộ lọc: lọc/sắp xếp symbol theo điều kiện chỉ báo (không phải tín hiệu mua/bán)",
+   "test": "tests/qa/api/run_api.py --only /v1/analytics/screener",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/analytics/correlation",
+   "cat": "api",
+   "desc": "GET /v1/analytics/correlation - Ma trận tương quan lăn (log-return) + cặp mạnh nhất + cặp đổi chiều",
+   "test": "tests/qa/api/run_api.py --only /v1/analytics/correlation",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/analytics/sessions",
+   "cat": "api",
+   "desc": "GET /v1/analytics/sessions - Thống kê theo phiên Tokyo/London/NY và biên độ trung bình theo giờ (UTC)",
+   "test": "tests/qa/api/run_api.py --only /v1/analytics/sessions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/system",
+   "cat": "api",
+   "desc": "GET /v1/system - Trạng thái hệ thống: service, stream, độ mới dữ liệu",
+   "test": "tests/qa/api/run_api.py --only /v1/system",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/symbols",
+   "cat": "api",
+   "desc": "GET /v1/symbols - Symbol co du lieu + loai tai san (class), ten, nhom, phien, gia/% thay doi",
+   "test": "tests/qa/api/run_api.py --only /v1/symbols",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/symbols/classes",
+   "cat": "api",
+   "desc": "GET /v1/symbols/classes - Cac loai tai san + so symbol co du lieu moi loai (va nhom con)",
+   "test": "tests/qa/api/run_api.py --only /v1/symbols/classes",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/risk-windows",
+   "cat": "api",
+   "desc": "GET /v1/risk-windows - Cua so rui ro tin (T-15..T+30 quanh su kien HIGH) theo symbol: hien tai + sap toi 24h",
+   "test": "tests/qa/api/run_api.py --only /v1/risk-windows",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/risk-windows/status",
+   "cat": "api",
+   "desc": "GET /v1/risk-windows/status - Tong quan: symbol nao dang/sap trong cua so rui ro, cua so ke tiep, cau hinh dang dung",
+   "test": "tests/qa/api/run_api.py --only /v1/risk-windows/status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/paper/{rest}",
+   "cat": "api",
+   "desc": "GET /v1/paper/{rest} - Giao dịch MÔ PHỎNG (proxy chỉ-đọc tới paper-trader): tài khoản, equity, vị thế, lệnh, kill-switch, t",
+   "test": "tests/qa/api/run_api.py --only /v1/paper/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/reports",
+   "cat": "api",
+   "desc": "GET /v1/reports - Danh sách báo cáo ngày/tuần (proxy chỉ-đọc tới reporter)",
+   "test": "tests/qa/api/run_api.py --only /v1/reports",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/reports/{kind}/{name}",
+   "cat": "api",
+   "desc": "GET /v1/reports/{kind}/{name} - Tải báo cáo: {YYYY-MM-DD}.html hoặc .pdf",
+   "test": "tests/qa/api/run_api.py --only /v1/reports/{kind}/{name}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/vn/{rest}",
+   "cat": "api",
+   "desc": "GET /v1/vn/{rest} - Chứng khoán Việt Nam cuối ngày (proxy chỉ-đọc tới vn-market): tổng quan, heatmap ngành, top, trần/sà",
+   "test": "tests/qa/api/run_api.py --only /v1/vn/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/risk/{rest}",
+   "cat": "api",
+   "desc": "GET /v1/risk/{rest} - Rủi ro tài khoản MT/paper (proxy chỉ-đọc tới risk-monitor): margin, exposure, drawdown, VaR/ES, stre",
+   "test": "tests/qa/api/run_api.py --only /v1/risk/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns",
+   "cat": "api",
+   "desc": "GET /v1/patterns - Tín hiệu kịch bản Sell (KB-1..KB-4) trên nến đã đóng: trạng thái, điểm, mức gợi ý, checklist (CHỈ th",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/spec",
+   "cat": "api",
+   "desc": "GET /v1/patterns/spec - Định nghĩa kịch bản Sell: tên, các bước (checklist), điều kiện huỷ, tham số",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/spec",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/overview",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/overview - Tổng quan AI Trading: thẻ chiến lược + cảnh báo trung thực + arena paper",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/overview",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/strategies",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/strategies - Danh sách thẻ chiến lược/mô hình",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/strategies",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/strategies/{sid}",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/strategies/{sid} - Chi tiết chiến lược (client: rút gọn, không ảnh/ví dụ)",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/strategies/{sid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/arena",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/arena - Bảng xếp hạng paper",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/arena",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/lab",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/lab - Lab: thí nghiệm đã chạy + backlog ý tưởng [master]",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/lab",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/media/{kind}/{name}",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/media/{kind}/{name} - Ảnh biểu đồ/ví dụ backtest [master]",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/media/{kind}/{name}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/ledger.csv",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/ledger.csv - Tải sổ lệnh CSV của 1 chiến lược [master]",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/ledger.csv",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/guardrail",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/guardrail - [master] Guardrail rủi ro của sổ paper: kill-switch, lỗ ngày, cửa sổ tin, cỡ vị thế, hash-chain",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/guardrail",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/ledger/verify",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/ledger/verify - [master] Xác minh hash-chain sổ lệnh paper (có neo ngoài DB)",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/ledger/verify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:POST:/v1/ai-trading/guardrail/killswitch",
+   "cat": "api",
+   "desc": "POST /v1/ai-trading/guardrail/killswitch - [master + Origin + CSRF] Bật/tắt kill-switch của sổ paper",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/guardrail/killswitch",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:POST:/v1/ai-trading/jobs",
+   "cat": "api",
+   "desc": "POST /v1/ai-trading/jobs - Master: tạo job nền cho kịch bản người dùng nạp (type + strategy_id [+ confirm])",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/jobs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:POST:/v1/ai-trading/scenarios",
+   "cat": "api",
+   "desc": "POST /v1/ai-trading/scenarios - Master: nạp Kịch bản mới (YAML + ảnh mẫu base64, tối đa 5 ảnh x 700KB)",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/scenarios",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:POST:/v1/ai-trading/scenarios/{sid}/jobs",
+   "cat": "api",
+   "desc": "POST /v1/ai-trading/scenarios/{sid}/jobs - Master: chạy job nền (detector_test | backtest | final_test cần confirm = id kịch bản)",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/scenarios/{sid}/jobs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/scenarios/{sid}/jobs",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/scenarios/{sid}/jobs - Master: lịch sử job của kịch bản",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/scenarios/{sid}/jobs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/scenarios/{sid}/images/{name}",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/scenarios/{sid}/images/{name} - Master: ảnh mẫu của kịch bản",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/scenarios/{sid}/images/{name}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/jobs/{jid}",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/jobs/{jid} - Master: trạng thái job",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/jobs/{jid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/regime",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/regime - Regime thị trường (HMM/k-means) + báo cáo trung thực; client: rút gọn",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/regime",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/consensus",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/consensus - Đồng thuận chuyên gia + độ tin cậy (client: rút gọn)",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/consensus",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/analyst",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/analyst - [master] AI analyst: bối cảnh + giải thích kịch bản (AI tạo, không phải lời khuyên)",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/analyst",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/ai-trading/class/{sub}",
+   "cat": "api",
+   "desc": "GET /v1/ai-trading/class/{sub} - [master|expert] AI Training Class: đọc (phòng/tin/hồ sơ/nhãn/biên bản)",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/class/{sub}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:POST:/v1/ai-trading/class/{sub}",
+   "cat": "api",
+   "desc": "POST /v1/ai-trading/class/{sub} - [master|expert + Origin + CSRF] AI Training Class: ghi (tin nhắn SSE, đính kèm, action, nhãn, hồ sơ)",
+   "test": "tests/qa/api/run_api.py --only /v1/ai-trading/class/{sub}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/live",
+   "cat": "api",
+   "desc": "GET /v1/patterns/live - Setup kịch bản Sell theo trạng thái (hiện tại/lịch sử) + ảnh + lệnh paper (CHỈ thông tin)",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/live",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/setup",
+   "cat": "api",
+   "desc": "GET /v1/patterns/setup - Chi tiết 1 setup: sự kiện, checklist, mức gợi ý, điểm đánh dấu biểu đồ",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/setup",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/media/{eid}.png",
+   "cat": "api",
+   "desc": "GET /v1/patterns/media/{eid}.png - Ảnh kịch bản (PNG) của 1 sự kiện",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/media/{eid}.png",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/trades",
+   "cat": "api",
+   "desc": "GET /v1/patterns/trades - Lệnh PAPER (mô phỏng) của tín hiệu đã kích hoạt",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/trades",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/stats",
+   "cat": "api",
+   "desc": "GET /v1/patterns/stats - Thống kê paper (đơn vị R) theo KB/khung/mã + kiểm sổ cái hash-chain",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/stats",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/examples",
+   "cat": "api",
+   "desc": "GET /v1/patterns/examples - Thư viện ví dụ kịch bản (mẫu chuẩn + tín hiệu đã kích hoạt)",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/examples",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/examples/{xid}.png",
+   "cat": "api",
+   "desc": "GET /v1/patterns/examples/{xid}.png - Ảnh ví dụ (PNG)",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/examples/{xid}.png",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/backtest/summary",
+   "cat": "api",
+   "desc": "GET /v1/patterns/backtest/summary - Tóm tắt backtest kịch bản Sell (dev/val/test khoá) + danh sách hiện vật [master]",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/backtest/summary",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/patterns/backtest/{kind}/{name}",
+   "cat": "api",
+   "desc": "GET /v1/patterns/backtest/{kind}/{name} - Ảnh biểu đồ/ví dụ backtest hoặc CSV tải về [master]",
+   "test": "tests/qa/api/run_api.py --only /v1/patterns/backtest/{kind}/{name}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/data-sources",
+   "cat": "api",
+   "desc": "GET /v1/data-sources - Trang thai luong du lieu (HIDE_SOURCES: an danh) + doi chieu gia",
+   "test": "tests/qa/api/run_api.py --only /v1/data-sources",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/user/csrf",
+   "cat": "api",
+   "desc": "GET /v1/user/csrf - Token CSRF cho các route ghi cấu hình (hiệu lực 1-2 giờ)",
+   "test": "tests/qa/api/run_api.py --only /v1/user/csrf",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/user/{rest}",
+   "cat": "api",
+   "desc": "GET /v1/user/{rest} - Proxy whitelist tới alert-rules: quy tắc cảnh báo + tuỳ chọn (ghi cần CSRF)",
+   "test": "tests/qa/api/run_api.py --only /v1/user/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:POST:/v1/user/{rest}",
+   "cat": "api",
+   "desc": "POST /v1/user/{rest} - Proxy whitelist tới alert-rules: quy tắc cảnh báo + tuỳ chọn (ghi cần CSRF)",
+   "test": "tests/qa/api/run_api.py --only /v1/user/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:PUT:/v1/user/{rest}",
+   "cat": "api",
+   "desc": "PUT /v1/user/{rest} - Proxy whitelist tới alert-rules: quy tắc cảnh báo + tuỳ chọn (ghi cần CSRF)",
+   "test": "tests/qa/api/run_api.py --only /v1/user/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:DELETE:/v1/user/{rest}",
+   "cat": "api",
+   "desc": "DELETE /v1/user/{rest} - Proxy whitelist tới alert-rules: quy tắc cảnh báo + tuỳ chọn (ghi cần CSRF)",
+   "test": "tests/qa/api/run_api.py --only /v1/user/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/journal/{rest}",
+   "cat": "api",
+   "desc": "GET /v1/journal/{rest} - Nhật ký giao dịch (proxy whitelist tới journal): thống kê/deal/kỷ luật/MAE-MFE/review; ghi chỉ cho t",
+   "test": "tests/qa/api/run_api.py --only /v1/journal/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:PUT:/v1/journal/{rest}",
+   "cat": "api",
+   "desc": "PUT /v1/journal/{rest} - Nhật ký giao dịch (proxy whitelist tới journal): thống kê/deal/kỷ luật/MAE-MFE/review; ghi chỉ cho t",
+   "test": "tests/qa/api/run_api.py --only /v1/journal/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:DELETE:/v1/journal/{rest}",
+   "cat": "api",
+   "desc": "DELETE /v1/journal/{rest} - Nhật ký giao dịch (proxy whitelist tới journal): thống kê/deal/kỷ luật/MAE-MFE/review; ghi chỉ cho t",
+   "test": "tests/qa/api/run_api.py --only /v1/journal/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/account-reports",
+   "cat": "api",
+   "desc": "GET /v1/account-reports - Danh sách báo cáo của 1 tài khoản (client: chỉ bản đã phát hành)",
+   "test": "tests/qa/api/run_api.py --only /v1/account-reports",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/account-reports/{account_id}/{period}/{ext}",
+   "cat": "api",
+   "desc": "GET /v1/account-reports/{account_id}/{period}/{ext} - Tải báo cáo HTML/PDF của tài khoản (?kind=daily|weekly|monthly để chọn khi trùng kỳ)",
+   "test": "tests/qa/api/run_api.py --only /v1/account-reports/{account_id}/{period}/{ext}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:POST:/v1/account-reports/generate",
+   "cat": "api",
+   "desc": "POST /v1/account-reports/generate - Master: sinh báo cáo cho 1 tài khoản (mặc định CHƯA phát hành)",
+   "test": "tests/qa/api/run_api.py --only /v1/account-reports/generate",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:POST:/v1/account-reports/release",
+   "cat": "api",
+   "desc": "POST /v1/account-reports/release - Master: phát hành / thu hồi báo cáo cho khách",
+   "test": "tests/qa/api/run_api.py --only /v1/account-reports/release",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/account-report-schedules",
+   "cat": "api",
+   "desc": "GET /v1/account-report-schedules - Master: bảng lịch báo cáo theo phạm vi",
+   "test": "tests/qa/api/run_api.py --only /v1/account-report-schedules",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:PUT:/v1/account-report-schedules",
+   "cat": "api",
+   "desc": "PUT /v1/account-report-schedules - Master: thay bảng lịch {schedules:[{schedule_id?,scope,kind,hour,enabled,auto_release}]}",
+   "test": "tests/qa/api/run_api.py --only /v1/account-report-schedules",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/experts/leaderboard",
+   "cat": "api",
+   "desc": "GET /v1/experts/leaderboard - Bảng xếp hạng chuyên gia (thống kê có kiểm định, n, KTC; chưa đủ mẫu không xếp hạng)",
+   "test": "tests/qa/api/run_api.py --only /v1/experts/leaderboard",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/experts/consensus",
+   "cat": "api",
+   "desc": "GET /v1/experts/consensus - Đồng thuận chuyên gia có trọng số theo thành tích (chỉ tham khảo)",
+   "test": "tests/qa/api/run_api.py --only /v1/experts/consensus",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/experts/feed",
+   "cat": "api",
+   "desc": "GET /v1/experts/feed - Dòng quan điểm chuyên gia mới nhất (nhãn trung lập)",
+   "test": "tests/qa/api/run_api.py --only /v1/experts/feed",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/experts/methodology",
+   "cat": "api",
+   "desc": "GET /v1/experts/methodology - Phương pháp chấm điểm chuyên gia",
+   "test": "tests/qa/api/run_api.py --only /v1/experts/methodology",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/experts/chain/verify",
+   "cat": "api",
+   "desc": "GET /v1/experts/chain/verify - Kiểm tra chuỗi băm bất biến (chỉ master/service)",
+   "test": "tests/qa/api/run_api.py --only /v1/experts/chain/verify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/experts/{entity_id}/track-record",
+   "cat": "api",
+   "desc": "GET /v1/experts/{entity_id}/track-record - Hồ sơ thành tích một chuyên gia",
+   "test": "tests/qa/api/run_api.py --only /v1/experts/{entity_id}/track-record",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/briefing/{rest}",
+   "cat": "api",
+   "desc": "GET /v1/briefing/{rest} - Bản tin thị trường do AI tóm tắt (chỉ đọc): mới nhất / danh sách / chi tiết; có trích dẫn tới tin gố",
+   "test": "tests/qa/api/run_api.py --only /v1/briefing/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/data/{rest}",
+   "cat": "api",
+   "desc": "GET /v1/data/{rest} - [master] Phủ dữ liệu mã x khung, báo cáo ngày, nhật ký quyết định",
+   "test": "tests/qa/api/run_api.py --only /v1/data/{rest}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:POST:/v1/data/recheck",
+   "cat": "api",
+   "desc": "POST /v1/data/recheck - [master + Origin + CSRF] Kiểm tra lại dữ liệu ngay (nhẹ, giới hạn tần suất)",
+   "test": "tests/qa/api/run_api.py --only /v1/data/recheck",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/strength",
+   "cat": "api",
+   "desc": "GET /v1/intel/strength - Sức mạnh 8 tiền tệ chính (H1/H4/D1) tính từ các cặp quy về USD",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/strength",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/fx",
+   "cat": "api",
+   "desc": "GET /v1/intel/fx - Heatmap cặp × khung (28 cặp) và ma trận tỷ giá chéo 8×8",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/fx",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/heatmap",
+   "cat": "api",
+   "desc": "GET /v1/intel/heatmap - Bản đồ nhiệt theo nhóm tài sản: % thay đổi + kích thước theo giá trị giao dịch 20 phiên",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/heatmap",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/movers",
+   "cat": "api",
+   "desc": "GET /v1/intel/movers - Top tăng/giảm/biến động/khối lượng, gần đỉnh-đáy 52 tuần, gap",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/movers",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/stats",
+   "cat": "api",
+   "desc": "GET /v1/intel/stats - ATR%, độ biến động thực hiện 20 phiên (+phân vị 1 năm), khoảng cách SMA, beta so với benchmark",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/stats",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/correlation",
+   "cat": "api",
+   "desc": "GET /v1/intel/correlation - Ma trận tương quan lợi suất log của danh sách mã được chọn",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/correlation",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/correlation/rolling",
+   "cat": "api",
+   "desc": "GET /v1/intel/correlation/rolling - Tương quan lăn giữa 2 mã",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/correlation/rolling",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/distribution",
+   "cat": "api",
+   "desc": "GET /v1/intel/distribution - Phân phối lợi suất ngày của 1 mã (histogram, độ lệch, kurtosis, VaR/ES lịch sử)",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/distribution",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/pulse",
+   "cat": "api",
+   "desc": "GET /v1/intel/pulse - Market Pulse: độ biến động, độ rộng, xu hướng theo lớp tài sản, tâm lý tin tức",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/pulse",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/news",
+   "cat": "api",
+   "desc": "GET /v1/intel/news - Terminal tin tức: tìm toàn văn, lọc mã/chủ đề/mức quan trọng/cảm xúc, phân trang theo thời gian",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/news",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/news/topics",
+   "cat": "api",
+   "desc": "GET /v1/intel/news/topics - Thống kê chủ đề tin trong N giờ gần nhất (số tin, cảm xúc trung bình)",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/news/topics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/news/related",
+   "cat": "api",
+   "desc": "GET /v1/intel/news/related - Tin liên quan: cùng mã/chủ đề, tiêu đề tương tự",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/news/related",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/calendar/indicators",
+   "cat": "api",
+   "desc": "GET /v1/intel/calendar/indicators - Chỉ số kinh tế lặp lại (≥2 lần) để xem lịch sử thực tế/dự báo/kỳ trước",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/calendar/indicators",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/calendar/history",
+   "cat": "api",
+   "desc": "GET /v1/intel/calendar/history - Lịch sử 1 chỉ số: thực tế / dự báo / kỳ trước theo thời gian",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/calendar/history",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/intel/cot",
+   "cat": "api",
+   "desc": "GET /v1/intel/cot - Vị thế đầu cơ lớn hàng tuần theo mã: chuỗi net, phân vị, thay đổi tuần (tham khảo)",
+   "test": "tests/qa/api/run_api.py --only /v1/intel/cot",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/readyz",
+   "cat": "api",
+   "desc": "GET /readyz - Kiểm tra kết nối DB",
+   "test": "tests/qa/api/run_api.py --only /readyz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/login",
+   "cat": "api",
+   "desc": "POST /auth/login - Đăng nhập bằng ID MT (nền tảng + số tài khoản) hoặc master",
+   "test": "tests/qa/api/run_api.py --only /auth/login",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/logout",
+   "cat": "api",
+   "desc": "POST /auth/logout - Logout",
+   "test": "tests/qa/api/run_api.py --only /auth/logout",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/me",
+   "cat": "api",
+   "desc": "GET /auth/me - Người dùng hiện tại + danh sách tài khoản MT được phép",
+   "test": "tests/qa/api/run_api.py --only /auth/me",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/change-password",
+   "cat": "api",
+   "desc": "POST /auth/change-password - Change Password",
+   "test": "tests/qa/api/run_api.py --only /auth/change-password",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/pair",
+   "cat": "api",
+   "desc": "POST /auth/pair - Ghép cặp lần đầu bằng mã (EA/master cấp) và đặt mật khẩu",
+   "test": "tests/qa/api/run_api.py --only /auth/pair",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/sessions",
+   "cat": "api",
+   "desc": "GET /auth/sessions - Phiên đăng nhập của tôi",
+   "test": "tests/qa/api/run_api.py --only /auth/sessions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/sessions/{sid}/revoke",
+   "cat": "api",
+   "desc": "POST /auth/sessions/{sid}/revoke - Revoke Mine",
+   "test": "tests/qa/api/run_api.py --only /auth/sessions/{sid}/revoke",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/logout-all",
+   "cat": "api",
+   "desc": "POST /auth/logout-all - Logout All",
+   "test": "tests/qa/api/run_api.py --only /auth/logout-all",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/totp/setup",
+   "cat": "api",
+   "desc": "POST /auth/totp/setup - Totp Setup",
+   "test": "tests/qa/api/run_api.py --only /auth/totp/setup",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/totp/enable",
+   "cat": "api",
+   "desc": "POST /auth/totp/enable - Totp Enable",
+   "test": "tests/qa/api/run_api.py --only /auth/totp/enable",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/totp/disable",
+   "cat": "api",
+   "desc": "POST /auth/totp/disable - Totp Disable",
+   "test": "tests/qa/api/run_api.py --only /auth/totp/disable",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/accounts",
+   "cat": "api",
+   "desc": "GET /auth/admin/accounts - Adm Accounts",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/accounts",
+   "cat": "api",
+   "desc": "POST /auth/admin/accounts - Tạo tài khoản MT + client; trả passcode/pairing/EA token/HMAC MỘT lần",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/accounts/{account_id}",
+   "cat": "api",
+   "desc": "GET /auth/admin/accounts/{account_id} - Adm Get",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:PATCH:/auth/admin/accounts/{account_id}",
+   "cat": "api",
+   "desc": "PATCH /auth/admin/accounts/{account_id} - Adm Patch",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:DELETE:/auth/admin/accounts/{account_id}",
+   "cat": "api",
+   "desc": "DELETE /auth/admin/accounts/{account_id} - Adm Delete",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/accounts/{account_id}/suspend",
+   "cat": "api",
+   "desc": "POST /auth/admin/accounts/{account_id}/suspend - Adm Suspend",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/suspend",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/accounts/{account_id}/activate",
+   "cat": "api",
+   "desc": "POST /auth/admin/accounts/{account_id}/activate - Adm Activate",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/activate",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/accounts/{account_id}/reset-passcode",
+   "cat": "api",
+   "desc": "POST /auth/admin/accounts/{account_id}/reset-passcode - Adm Reset",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/reset-passcode",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/accounts/{account_id}/rotate-ea-token",
+   "cat": "api",
+   "desc": "POST /auth/admin/accounts/{account_id}/rotate-ea-token - Adm Rot Token",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/rotate-ea-token",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/accounts/{account_id}/rotate-hmac",
+   "cat": "api",
+   "desc": "POST /auth/admin/accounts/{account_id}/rotate-hmac - Adm Rot Hmac",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/rotate-hmac",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/accounts/{account_id}/pairing-code",
+   "cat": "api",
+   "desc": "POST /auth/admin/accounts/{account_id}/pairing-code - Adm Pairing",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/pairing-code",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/users",
+   "cat": "api",
+   "desc": "GET /auth/admin/users - Adm Users",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/users",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/users/{user_id}/{action}",
+   "cat": "api",
+   "desc": "POST /auth/admin/users/{user_id}/{action} - unlock | revoke-sessions | suspend | activate",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/users/{user_id}/{action}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/users/{user_id}/accounts",
+   "cat": "api",
+   "desc": "POST /auth/admin/users/{user_id}/accounts - Adm Link",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/users/{user_id}/accounts",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:DELETE:/auth/admin/users/{user_id}/accounts/{account_id}",
+   "cat": "api",
+   "desc": "DELETE /auth/admin/users/{user_id}/accounts/{account_id} - Adm Unlink",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/users/{user_id}/accounts/{account_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/sessions",
+   "cat": "api",
+   "desc": "GET /auth/admin/sessions - Adm Sessions",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/sessions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/sessions/{sid}/revoke",
+   "cat": "api",
+   "desc": "POST /auth/admin/sessions/{sid}/revoke - Adm Revoke",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/sessions/{sid}/revoke",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/audit",
+   "cat": "api",
+   "desc": "GET /auth/admin/audit - Adm Audit",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/audit",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/audit/verify",
+   "cat": "api",
+   "desc": "GET /auth/admin/audit/verify - Kiểm tra toàn vẹn chuỗi băm của audit_log",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/audit/verify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/fleet",
+   "cat": "api",
+   "desc": "GET /auth/admin/fleet - Danh sách đội tài khoản (lọc/sắp xếp/đếm)",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/fleet",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/groups",
+   "cat": "api",
+   "desc": "GET /auth/admin/groups - Groups",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/groups",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/groups",
+   "cat": "api",
+   "desc": "POST /auth/admin/groups - Group Create",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/groups",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:PATCH:/auth/admin/groups/{gid}",
+   "cat": "api",
+   "desc": "PATCH /auth/admin/groups/{gid} - Group Patch",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/groups/{gid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:DELETE:/auth/admin/groups/{gid}",
+   "cat": "api",
+   "desc": "DELETE /auth/admin/groups/{gid} - Group Delete",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/groups/{gid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/groups/{gid}/members",
+   "cat": "api",
+   "desc": "POST /auth/admin/groups/{gid}/members - Group Add",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/groups/{gid}/members",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:DELETE:/auth/admin/groups/{gid}/members/{account_id}",
+   "cat": "api",
+   "desc": "DELETE /auth/admin/groups/{gid}/members/{account_id} - Group Rm",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/groups/{gid}/members/{account_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/groups/{gid}/policy",
+   "cat": "api",
+   "desc": "GET /auth/admin/groups/{gid}/policy - Policy Get",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/groups/{gid}/policy",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:PUT:/auth/admin/groups/{gid}/policy",
+   "cat": "api",
+   "desc": "PUT /auth/admin/groups/{gid}/policy - Policy Put",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/groups/{gid}/policy",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:PUT:/auth/admin/accounts/{account_id}/groups",
+   "cat": "api",
+   "desc": "PUT /auth/admin/accounts/{account_id}/groups - Acc Groups",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/groups",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:PUT:/auth/admin/accounts/{account_id}/tags",
+   "cat": "api",
+   "desc": "PUT /auth/admin/accounts/{account_id}/tags - Acc Tags",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/tags",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/tags",
+   "cat": "api",
+   "desc": "GET /auth/admin/tags - Tags",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/tags",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/views",
+   "cat": "api",
+   "desc": "GET /auth/admin/views - Views",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/views",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/views",
+   "cat": "api",
+   "desc": "POST /auth/admin/views - View Create",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/views",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:DELETE:/auth/admin/views/{vid}",
+   "cat": "api",
+   "desc": "DELETE /auth/admin/views/{vid} - View Delete",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/views/{vid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/accounts/{account_id}/notes",
+   "cat": "api",
+   "desc": "GET /auth/admin/accounts/{account_id}/notes - Notes",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/notes",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/accounts/{account_id}/notes",
+   "cat": "api",
+   "desc": "POST /auth/admin/accounts/{account_id}/notes - Note Add",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/accounts/{account_id}/notes",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/bulk/prepare",
+   "cat": "api",
+   "desc": "POST /auth/admin/bulk/prepare - Bước 1/2: xem trước thao tác hàng loạt",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/bulk/prepare",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/bulk/execute",
+   "cat": "api",
+   "desc": "POST /auth/admin/bulk/execute - Bước 2/2: xác nhận bằng cụm 'XAC NHAN <n>'",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/bulk/execute",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/import/preview",
+   "cat": "api",
+   "desc": "POST /auth/admin/import/preview - Import Preview",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/import/preview",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/import/commit",
+   "cat": "api",
+   "desc": "POST /auth/admin/import/commit - Import Commit",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/import/commit",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/rules/presets",
+   "cat": "api",
+   "desc": "GET /auth/admin/rules/presets - Presets",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/rules/presets",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/rules/templates",
+   "cat": "api",
+   "desc": "GET /auth/admin/rules/templates - Templates",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/rules/templates",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/rules/templates",
+   "cat": "api",
+   "desc": "POST /auth/admin/rules/templates - Template Create",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/rules/templates",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:PUT:/auth/admin/rules/templates/{tid}",
+   "cat": "api",
+   "desc": "PUT /auth/admin/rules/templates/{tid} - Template Put",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/rules/templates/{tid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:DELETE:/auth/admin/rules/templates/{tid}",
+   "cat": "api",
+   "desc": "DELETE /auth/admin/rules/templates/{tid} - Template Delete",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/rules/templates/{tid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/rules/assignments",
+   "cat": "api",
+   "desc": "GET /auth/admin/rules/assignments - Assignments",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/rules/assignments",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/rules/assignments",
+   "cat": "api",
+   "desc": "POST /auth/admin/rules/assignments - Assign Create",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/rules/assignments",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:PATCH:/auth/admin/rules/assignments/{aid}",
+   "cat": "api",
+   "desc": "PATCH /auth/admin/rules/assignments/{aid} - Assign Patch",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/rules/assignments/{aid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:DELETE:/auth/admin/rules/assignments/{aid}",
+   "cat": "api",
+   "desc": "DELETE /auth/admin/rules/assignments/{aid} - Assign Delete",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/rules/assignments/{aid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/compliance",
+   "cat": "api",
+   "desc": "GET /auth/admin/compliance - Bảng tuân thủ luật toàn đội",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/compliance",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/incidents",
+   "cat": "api",
+   "desc": "GET /auth/admin/incidents - Incidents",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/incidents/assignees",
+   "cat": "api",
+   "desc": "GET /auth/admin/incidents/assignees - Assignees",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents/assignees",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/incidents/bulk",
+   "cat": "api",
+   "desc": "POST /auth/admin/incidents/bulk - Inc Bulk",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents/bulk",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/incidents/{iid}",
+   "cat": "api",
+   "desc": "GET /auth/admin/incidents/{iid} - Inc Get",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents/{iid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/incidents/{iid}/ack",
+   "cat": "api",
+   "desc": "POST /auth/admin/incidents/{iid}/ack - Inc Ack",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents/{iid}/ack",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/incidents/{iid}/reopen",
+   "cat": "api",
+   "desc": "POST /auth/admin/incidents/{iid}/reopen - Inc Reopen",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents/{iid}/reopen",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route khong nhan body: chi kiem anon/vai/CSRF (khong goi de tranh tac dung phu)"
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/incidents/{iid}/assign",
+   "cat": "api",
+   "desc": "POST /auth/admin/incidents/{iid}/assign - Inc Assign",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents/{iid}/assign",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/incidents/{iid}/snooze",
+   "cat": "api",
+   "desc": "POST /auth/admin/incidents/{iid}/snooze - Inc Snooze",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents/{iid}/snooze",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/incidents/{iid}/resolve",
+   "cat": "api",
+   "desc": "POST /auth/admin/incidents/{iid}/resolve - Inc Resolve",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents/{iid}/resolve",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/incidents/{iid}/notes",
+   "cat": "api",
+   "desc": "POST /auth/admin/incidents/{iid}/notes - Inc Note",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/incidents/{iid}/notes",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/roles",
+   "cat": "api",
+   "desc": "GET /auth/admin/roles - Roles",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/roles",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/staff",
+   "cat": "api",
+   "desc": "GET /auth/admin/staff - Staff",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/staff",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/staff",
+   "cat": "api",
+   "desc": "POST /auth/admin/staff - Staff Create",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/staff",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:PATCH:/auth/admin/staff/{user_id}",
+   "cat": "api",
+   "desc": "PATCH /auth/admin/staff/{user_id} - Staff Patch",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/staff/{user_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/view-as",
+   "cat": "api",
+   "desc": "POST /auth/admin/view-as - Xem như khách hàng (chỉ-đọc): lý do bắt buộc, hết hạn",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/view-as",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:POST:/auth/admin/view-as/end",
+   "cat": "api",
+   "desc": "POST /auth/admin/view-as/end - View As End",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/view-as/end",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/admin/view-as/active",
+   "cat": "api",
+   "desc": "GET /auth/admin/view-as/active - View As Active",
+   "test": "tests/qa/api/run_api.py --only /auth/admin/view-as/active",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:GET:/auth/client/notify",
+   "cat": "api",
+   "desc": "GET /auth/client/notify - Notify Get",
+   "test": "tests/qa/api/run_api.py --only /auth/client/notify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:auth:PUT:/auth/client/notify",
+   "cat": "api",
+   "desc": "PUT /auth/client/notify - Notify Put",
+   "test": "tests/qa/api/run_api.py --only /auth/client/notify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/regime",
+   "cat": "api",
+   "desc": "GET /ai/regime - Regime",
+   "test": "tests/qa/api/run_api.py --only /ai/regime",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/consensus",
+   "cat": "api",
+   "desc": "GET /ai/consensus - Consensus",
+   "test": "tests/qa/api/run_api.py --only /ai/consensus",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/analyst-context",
+   "cat": "api",
+   "desc": "GET /ai/analyst-context - Analyst Context",
+   "test": "tests/qa/api/run_api.py --only /ai/analyst-context",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/guardrail",
+   "cat": "api",
+   "desc": "GET /ai/guardrail - Guardrail",
+   "test": "tests/qa/api/run_api.py --only /ai/guardrail",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/ai/guardrail/killswitch",
+   "cat": "api",
+   "desc": "POST /ai/guardrail/killswitch - Killswitch",
+   "test": "tests/qa/api/run_api.py --only /ai/guardrail/killswitch",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/ledger/verify",
+   "cat": "api",
+   "desc": "GET /ai/ledger/verify - Ledger Verify",
+   "test": "tests/qa/api/run_api.py --only /ai/ledger/verify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/overview",
+   "cat": "api",
+   "desc": "GET /ai/overview - Overview",
+   "test": "tests/qa/api/run_api.py --only /ai/overview",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/strategies",
+   "cat": "api",
+   "desc": "GET /ai/strategies - Strategies",
+   "test": "tests/qa/api/run_api.py --only /ai/strategies",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/strategies/{sid}",
+   "cat": "api",
+   "desc": "GET /ai/strategies/{sid} - Strategy",
+   "test": "tests/qa/api/run_api.py --only /ai/strategies/{sid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/lab",
+   "cat": "api",
+   "desc": "GET /ai/lab - Lab",
+   "test": "tests/qa/api/run_api.py --only /ai/lab",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/arena",
+   "cat": "api",
+   "desc": "GET /ai/arena - Arena",
+   "test": "tests/qa/api/run_api.py --only /ai/arena",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/media/{kind}/{name}",
+   "cat": "api",
+   "desc": "GET /ai/media/{kind}/{name} - Media",
+   "test": "tests/qa/api/run_api.py --only /ai/media/{kind}/{name}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/ledger.csv",
+   "cat": "api",
+   "desc": "GET /ai/ledger.csv - Ledger",
+   "test": "tests/qa/api/run_api.py --only /ai/ledger.csv",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/ai/scenarios",
+   "cat": "api",
+   "desc": "POST /ai/scenarios - Create Scenario",
+   "test": "tests/qa/api/run_api.py --only /ai/scenarios",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/scenarios/{sid}/images/{name}",
+   "cat": "api",
+   "desc": "GET /ai/scenarios/{sid}/images/{name} - Scenario Image",
+   "test": "tests/qa/api/run_api.py --only /ai/scenarios/{sid}/images/{name}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/status",
+   "cat": "api",
+   "desc": "GET /class/status - Status",
+   "test": "tests/qa/api/run_api.py --only /class/status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms",
+   "cat": "api",
+   "desc": "GET /class/rooms - Rooms",
+   "test": "tests/qa/api/run_api.py --only /class/rooms",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms",
+   "cat": "api",
+   "desc": "POST /class/rooms - Create Room",
+   "test": "tests/qa/api/run_api.py --only /class/rooms",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid} - Get Room",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/members",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/members - Add Member",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/members",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/pins",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/pins - Pins",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/pins",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/messages",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/messages - Post Message",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/messages",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/messages/{mid}/review",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/messages/{mid}/review - Review",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/messages/{mid}/review",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/attachments",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/attachments - Attach",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/attachments",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}/media/{aid}",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid}/media/{aid} - Media",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/media/{aid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/actions",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/actions - Post Action",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/actions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}/actions",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid}/actions - List Actions",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/actions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/actions/{aid}/confirm",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/actions/{aid}/confirm - Confirm",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/actions/{aid}/confirm",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}/actions/{aid}",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid}/actions/{aid} - Get Action",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/actions/{aid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/final-test",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/final-test - Final Test",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/final-test",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/labels",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/labels - Add Label",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/labels",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}/labels",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid}/labels - Get Labels",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/labels",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}/profile",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid}/profile - Get Profile",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/profile",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}/profile/versions/{v}",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid}/profile/versions/{v} - Get Version",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/profile/versions/{v}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}/profile/diff",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid}/profile/diff - Get Diff",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/profile/diff",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/profile/export",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/profile/export - Export",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/profile/export",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}/minutes.md",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid}/minutes.md - Minutes",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/minutes.md",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/rooms/{rid}/canvas",
+   "cat": "api",
+   "desc": "GET /class/rooms/{rid}/canvas - Canvas",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/canvas",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/canvas/{key}/confirm",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/canvas/{key}/confirm - Canvas Confirm",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/canvas/{key}/confirm",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/class/rooms/{rid}/canvas/{key}/edit",
+   "cat": "api",
+   "desc": "POST /class/rooms/{rid}/canvas/{key}/edit - Canvas Edit",
+   "test": "tests/qa/api/run_api.py --only /class/rooms/{rid}/canvas/{key}/edit",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/templates",
+   "cat": "api",
+   "desc": "GET /class/templates - Templates",
+   "test": "tests/qa/api/run_api.py --only /class/templates",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/class/demo/script",
+   "cat": "api",
+   "desc": "GET /class/demo/script - Demo Script",
+   "test": "tests/qa/api/run_api.py --only /class/demo/script",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/ai/scenarios/{sid}/jobs",
+   "cat": "api",
+   "desc": "POST /ai/scenarios/{sid}/jobs - Create Scenario Job",
+   "test": "tests/qa/api/run_api.py --only /ai/scenarios/{sid}/jobs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/scenarios/{sid}/jobs",
+   "cat": "api",
+   "desc": "GET /ai/scenarios/{sid}/jobs - Scenario Jobs",
+   "test": "tests/qa/api/run_api.py --only /ai/scenarios/{sid}/jobs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:POST:/ai/jobs",
+   "cat": "api",
+   "desc": "POST /ai/jobs - Create Job",
+   "test": "tests/qa/api/run_api.py --only /ai/jobs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:ai-trading:GET:/ai/jobs/{jid}",
+   "cat": "api",
+   "desc": "GET /ai/jobs/{jid} - Get Job",
+   "test": "tests/qa/api/run_api.py --only /ai/jobs/{jid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:data-keeper:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:data-keeper:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:data-keeper:GET:/v1/data/health",
+   "cat": "api",
+   "desc": "GET /v1/data/health - Phủ dữ liệu mã x khung + chẩn đoán (master)",
+   "test": "tests/qa/api/run_api.py --only /v1/data/health",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:data-keeper:POST:/v1/data/recheck",
+   "cat": "api",
+   "desc": "POST /v1/data/recheck - Kiểm tra lại ngay (nhẹ, giới hạn tần suất)",
+   "test": "tests/qa/api/run_api.py --only /v1/data/recheck",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:data-keeper:GET:/v1/data/report/daily",
+   "cat": "api",
+   "desc": "GET /v1/data/report/daily - Báo cáo hằng ngày",
+   "test": "tests/qa/api/run_api.py --only /v1/data/report/daily",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:data-keeper:GET:/v1/data/decisions",
+   "cat": "api",
+   "desc": "GET /v1/data/decisions - Nhật ký quyết định có giải thích",
+   "test": "tests/qa/api/run_api.py --only /v1/data/decisions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:briefing:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:briefing:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:briefing:GET:/analyst",
+   "cat": "api",
+   "desc": "GET /analyst - Analyst Ep",
+   "test": "tests/qa/api/run_api.py --only /analyst",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:briefing:GET:/briefing/latest",
+   "cat": "api",
+   "desc": "GET /briefing/latest - Latest",
+   "test": "tests/qa/api/run_api.py --only /briefing/latest",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:briefing:GET:/briefing/list",
+   "cat": "api",
+   "desc": "GET /briefing/list - Blist",
+   "test": "tests/qa/api/run_api.py --only /briefing/list",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:briefing:GET:/briefing/{bid}",
+   "cat": "api",
+   "desc": "GET /briefing/{bid} - One",
+   "test": "tests/qa/api/run_api.py --only /briefing/{bid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:briefing:POST:/internal/run",
+   "cat": "api",
+   "desc": "POST /internal/run - Run",
+   "test": "tests/qa/api/run_api.py --only /internal/run",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:briefing:GET:/internal/status",
+   "cat": "api",
+   "desc": "GET /internal/status - Status",
+   "test": "tests/qa/api/run_api.py --only /internal/status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:analytics:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:analytics:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:analytics:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Kết quả chu kỳ gần nhất",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Status",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/journal/accounts",
+   "cat": "api",
+   "desc": "GET /journal/accounts - Accounts",
+   "test": "tests/qa/api/run_api.py --only /journal/accounts",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/journal/{account_id}/summary",
+   "cat": "api",
+   "desc": "GET /journal/{account_id}/summary - Summary",
+   "test": "tests/qa/api/run_api.py --only /journal/{account_id}/summary",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/journal/{account_id}/deals",
+   "cat": "api",
+   "desc": "GET /journal/{account_id}/deals - Deals",
+   "test": "tests/qa/api/run_api.py --only /journal/{account_id}/deals",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/journal/{account_id}/discipline",
+   "cat": "api",
+   "desc": "GET /journal/{account_id}/discipline - Disc Ep",
+   "test": "tests/qa/api/run_api.py --only /journal/{account_id}/discipline",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/journal/{account_id}/excursions",
+   "cat": "api",
+   "desc": "GET /journal/{account_id}/excursions - Exc",
+   "test": "tests/qa/api/run_api.py --only /journal/{account_id}/excursions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/journal/{account_id}/review",
+   "cat": "api",
+   "desc": "GET /journal/{account_id}/review - Review Ep",
+   "test": "tests/qa/api/run_api.py --only /journal/{account_id}/review",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:GET:/journal/{account_id}/notes",
+   "cat": "api",
+   "desc": "GET /journal/{account_id}/notes - List Notes",
+   "test": "tests/qa/api/run_api.py --only /journal/{account_id}/notes",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:PUT:/journal/{account_id}/notes/{kind}/{ref}",
+   "cat": "api",
+   "desc": "PUT /journal/{account_id}/notes/{kind}/{ref} - Put Note",
+   "test": "tests/qa/api/run_api.py --only /journal/{account_id}/notes/{kind}/{ref}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:journal:DELETE:/journal/{account_id}/notes/{kind}/{ref}",
+   "cat": "api",
+   "desc": "DELETE /journal/{account_id}/notes/{kind}/{ref} - Del Note",
+   "test": "tests/qa/api/run_api.py --only /journal/{account_id}/notes/{kind}/{ref}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:reporter:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:GET:/account-reports",
+   "cat": "api",
+   "desc": "GET /account-reports - Danh sách báo cáo của một tài khoản",
+   "test": "tests/qa/api/run_api.py --only /account-reports",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:POST:/account-reports/generate",
+   "cat": "api",
+   "desc": "POST /account-reports/generate - Sinh báo cáo ngay (master; mặc định chưa phát hành)",
+   "test": "tests/qa/api/run_api.py --only /account-reports/generate",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:POST:/account-reports/release",
+   "cat": "api",
+   "desc": "POST /account-reports/release - Phát hành / thu hồi báo cáo cho khách",
+   "test": "tests/qa/api/run_api.py --only /account-reports/release",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:GET:/account-reports/{account_id}/{period}/{ext}",
+   "cat": "api",
+   "desc": "GET /account-reports/{account_id}/{period}/{ext} - Tải file báo cáo (html|pdf)",
+   "test": "tests/qa/api/run_api.py --only /account-reports/{account_id}/{period}/{ext}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:DELETE:/account-reports/{account_id}",
+   "cat": "api",
+   "desc": "DELETE /account-reports/{account_id} - Xoá mọi báo cáo của một tài khoản (nội bộ; dọn dữ liệu)",
+   "test": "tests/qa/api/run_api.py --only /account-reports/{account_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:reporter:GET:/account-report-schedules",
+   "cat": "api",
+   "desc": "GET /account-report-schedules - Bảng lịch báo cáo theo tài khoản",
+   "test": "tests/qa/api/run_api.py --only /account-report-schedules",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:PUT:/account-report-schedules",
+   "cat": "api",
+   "desc": "PUT /account-report-schedules - Thay toàn bộ bảng lịch (đã kiểm tra)",
+   "test": "tests/qa/api/run_api.py --only /account-report-schedules",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:POST:/account-report-schedules",
+   "cat": "api",
+   "desc": "POST /account-report-schedules - Thêm/sửa một lịch",
+   "test": "tests/qa/api/run_api.py --only /account-report-schedules",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:DELETE:/account-report-schedules/{schedule_id}",
+   "cat": "api",
+   "desc": "DELETE /account-report-schedules/{schedule_id} - Xoá một lịch",
+   "test": "tests/qa/api/run_api.py --only /account-report-schedules/{schedule_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:reporter:GET:/reports",
+   "cat": "api",
+   "desc": "GET /reports - Danh sách báo cáo (mới nhất trước)",
+   "test": "tests/qa/api/run_api.py --only /reports",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:GET:/reports/{kind}/{name}",
+   "cat": "api",
+   "desc": "GET /reports/{kind}/{name} - Tải file báo cáo: {YYYY-MM-DD}.html|pdf",
+   "test": "tests/qa/api/run_api.py --only /reports/{kind}/{name}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:reporter:POST:/generate",
+   "cat": "api",
+   "desc": "POST /generate - Sinh báo cáo ngay (CHỈ nội bộ, không expose qua gateway)",
+   "test": "tests/qa/api/run_api.py --only /generate",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:risk-monitor:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:risk-monitor:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:risk-monitor:GET:/risk/accounts",
+   "cat": "api",
+   "desc": "GET /risk/accounts - Tóm tắt rủi ro mọi tài khoản (MT + paper), READ-ONLY",
+   "test": "tests/qa/api/run_api.py --only /risk/accounts",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:risk-monitor:GET:/risk/accounts/{account_id}",
+   "cat": "api",
+   "desc": "GET /risk/accounts/{account_id} - Báo cáo rủi ro đầy đủ 1 tài khoản",
+   "test": "tests/qa/api/run_api.py --only /risk/accounts/{account_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:risk-monitor:GET:/risk/config",
+   "cat": "api",
+   "desc": "GET /risk/config - Ngưỡng ngân sách rủi ro + danh sách kịch bản (chỉ đọc)",
+   "test": "tests/qa/api/run_api.py --only /risk/config",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:risk-monitor:GET:/risk/rules/status",
+   "cat": "api",
+   "desc": "GET /risk/rules/status - Kết quả đánh giá mẫu luật đội tài khoản gần nhất (chỉ đọc)",
+   "test": "tests/qa/api/run_api.py --only /risk/rules/status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:risk-monitor:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Chu kỳ gần nhất",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:track-record:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:track-record:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:track-record:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Status",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:track-record:GET:/track/leaderboard",
+   "cat": "api",
+   "desc": "GET /track/leaderboard - Leaderboard",
+   "test": "tests/qa/api/run_api.py --only /track/leaderboard",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:track-record:GET:/track/experts/{entity_id}/track-record",
+   "cat": "api",
+   "desc": "GET /track/experts/{entity_id}/track-record - Track Record",
+   "test": "tests/qa/api/run_api.py --only /track/experts/{entity_id}/track-record",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:track-record:GET:/track/consensus",
+   "cat": "api",
+   "desc": "GET /track/consensus - Consensus Ep",
+   "test": "tests/qa/api/run_api.py --only /track/consensus",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:track-record:GET:/track/feed",
+   "cat": "api",
+   "desc": "GET /track/feed - Feed",
+   "test": "tests/qa/api/run_api.py --only /track/feed",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:track-record:GET:/track/methodology",
+   "cat": "api",
+   "desc": "GET /track/methodology - Methodology",
+   "test": "tests/qa/api/run_api.py --only /track/methodology",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:track-record:GET:/track/chain/verify",
+   "cat": "api",
+   "desc": "GET /track/chain/verify - Chain Verify",
+   "test": "tests/qa/api/run_api.py --only /track/chain/verify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/status",
+   "cat": "api",
+   "desc": "GET /vn/status - Status",
+   "test": "tests/qa/api/run_api.py --only /vn/status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/rules",
+   "cat": "api",
+   "desc": "GET /vn/rules - Get Rules",
+   "test": "tests/qa/api/run_api.py --only /vn/rules",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/session",
+   "cat": "api",
+   "desc": "GET /vn/session - Session",
+   "test": "tests/qa/api/run_api.py --only /vn/session",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/overview",
+   "cat": "api",
+   "desc": "GET /vn/overview - Overview",
+   "test": "tests/qa/api/run_api.py --only /vn/overview",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/indices",
+   "cat": "api",
+   "desc": "GET /vn/indices - Indices",
+   "test": "tests/qa/api/run_api.py --only /vn/indices",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/index/{code}",
+   "cat": "api",
+   "desc": "GET /vn/index/{code} - Index Series",
+   "test": "tests/qa/api/run_api.py --only /vn/index/{code}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/heatmap",
+   "cat": "api",
+   "desc": "GET /vn/heatmap - Heatmap",
+   "test": "tests/qa/api/run_api.py --only /vn/heatmap",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/sectors",
+   "cat": "api",
+   "desc": "GET /vn/sectors - Sectors",
+   "test": "tests/qa/api/run_api.py --only /vn/sectors",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/movers",
+   "cat": "api",
+   "desc": "GET /vn/movers - Movers",
+   "test": "tests/qa/api/run_api.py --only /vn/movers",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/limits",
+   "cat": "api",
+   "desc": "GET /vn/limits - Limits",
+   "test": "tests/qa/api/run_api.py --only /vn/limits",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/breadth",
+   "cat": "api",
+   "desc": "GET /vn/breadth - Breadth",
+   "test": "tests/qa/api/run_api.py --only /vn/breadth",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/liquidity",
+   "cat": "api",
+   "desc": "GET /vn/liquidity - Liquidity",
+   "test": "tests/qa/api/run_api.py --only /vn/liquidity",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/foreign",
+   "cat": "api",
+   "desc": "GET /vn/foreign - Foreign",
+   "test": "tests/qa/api/run_api.py --only /vn/foreign",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/screener",
+   "cat": "api",
+   "desc": "GET /vn/screener - Screener",
+   "test": "tests/qa/api/run_api.py --only /vn/screener",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/symbols",
+   "cat": "api",
+   "desc": "GET /vn/symbols - Symbols",
+   "test": "tests/qa/api/run_api.py --only /vn/symbols",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/symbol/{code}",
+   "cat": "api",
+   "desc": "GET /vn/symbol/{code} - Symbol",
+   "test": "tests/qa/api/run_api.py --only /vn/symbol/{code}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/events",
+   "cat": "api",
+   "desc": "GET /vn/events - Events",
+   "test": "tests/qa/api/run_api.py --only /vn/events",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:vn-market:GET:/vn/news",
+   "cat": "api",
+   "desc": "GET /vn/news - Vn News",
+   "test": "tests/qa/api/run_api.py --only /vn/news",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Kết quả chu kỳ gần nhất",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/strategies",
+   "cat": "api",
+   "desc": "GET /paper/strategies - Plugin chiến lược đã đăng ký",
+   "test": "tests/qa/api/run_api.py --only /paper/strategies",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts",
+   "cat": "api",
+   "desc": "GET /paper/accounts - Danh sách tài khoản mô phỏng",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/overview",
+   "cat": "api",
+   "desc": "GET /paper/overview - Tổng quan cho UI: tài khoản + sparkline + thống kê chính",
+   "test": "tests/qa/api/run_api.py --only /paper/overview",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id} - Chi tiết tài khoản",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/equity",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/equity - Đường equity (+ benchmark chuẩn hoá về 100)",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/equity",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/positions",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/positions - Vị thế mô phỏng hiện tại",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/positions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/orders",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/orders - Lệnh mô phỏng gần nhất",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/orders",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/fills",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/fills - Fill mô phỏng gần nhất",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/fills",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/events",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/events - Journal sự kiện (bất biến)",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/events",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/events",
+   "cat": "api",
+   "desc": "GET /paper/events - Journal sự kiện mọi tài khoản",
+   "test": "tests/qa/api/run_api.py --only /paper/events",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/kill-switch",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/kill-switch - Trạng thái kill-switch + giới hạn rủi ro",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/kill-switch",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/stats",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/stats - Thống kê hiệu suất/rủi ro (empyrical)",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/stats",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/performance",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/performance - Hiệu suất + khoảng tin cậy (bootstrap), rolling, benchmark, đóng góp lớp tài sản, đòn bẩy",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/performance",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/tca",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/tca - TCA: chi phí/slippage mô phỏng vs giả định, chi phí luỹ kế, vòng quay",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/tca",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/drift",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/drift - Giám sát suy giảm: CUSUM/kiểm định so với kỳ vọng backtest; tách tín hiệu vs thực thi",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/drift",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/card",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/card - Strategy card + giai đoạn tính tự động + tiêu chí chuyển giai đoạn",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/card",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/verify",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/verify - Xác minh hash-chain journal của tài khoản",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/verify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/verify",
+   "cat": "api",
+   "desc": "GET /paper/verify - Xác minh hash-chain journal mọi tài khoản (ok=false -> đứt/bị sửa)",
+   "test": "tests/qa/api/run_api.py --only /paper/verify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/accounts/{account_id}/config-versions",
+   "cat": "api",
+   "desc": "GET /paper/accounts/{account_id}/config-versions - Lịch sử phiên bản cấu hình bất biến (hash)",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/config-versions",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:GET:/paper/governance",
+   "cat": "api",
+   "desc": "GET /paper/governance - Tổng quan quản trị: giai đoạn chiến lược, drift, hash-chain, phiên bản cấu hình",
+   "test": "tests/qa/api/run_api.py --only /paper/governance",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:paper-trader:POST:/paper/accounts/{account_id}/kill-switch/reset",
+   "cat": "api",
+   "desc": "POST /paper/accounts/{account_id}/kill-switch/reset - Reset kill-switch (cần X-Admin-Token)",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/kill-switch/reset",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:paper-trader:POST:/paper/accounts/{account_id}/kill-switch/halt",
+   "cat": "api",
+   "desc": "POST /paper/accounts/{account_id}/kill-switch/halt - Khoá chiến lược thủ công (cần X-Admin-Token)",
+   "test": "tests/qa/api/run_api.py --only /paper/accounts/{account_id}/kill-switch/halt",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:alert-rules:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Status",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/rules",
+   "cat": "api",
+   "desc": "GET /rules - List Rules",
+   "test": "tests/qa/api/run_api.py --only /rules",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:POST:/rules",
+   "cat": "api",
+   "desc": "POST /rules - Create Rule",
+   "test": "tests/qa/api/run_api.py --only /rules",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:POST:/rules/preview",
+   "cat": "api",
+   "desc": "POST /rules/preview - Preview New",
+   "test": "tests/qa/api/run_api.py --only /rules/preview",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:POST:/rules/{rid}/preview",
+   "cat": "api",
+   "desc": "POST /rules/{rid}/preview - Preview Saved",
+   "test": "tests/qa/api/run_api.py --only /rules/{rid}/preview",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:alert-rules:PUT:/rules/{rid}",
+   "cat": "api",
+   "desc": "PUT /rules/{rid} - Update Rule",
+   "test": "tests/qa/api/run_api.py --only /rules/{rid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:DELETE:/rules/{rid}",
+   "cat": "api",
+   "desc": "DELETE /rules/{rid} - Delete Rule",
+   "test": "tests/qa/api/run_api.py --only /rules/{rid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:alert-rules:GET:/rule-events",
+   "cat": "api",
+   "desc": "GET /rule-events - Events",
+   "test": "tests/qa/api/run_api.py --only /rule-events",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/prefs",
+   "cat": "api",
+   "desc": "GET /prefs - Get Prefs",
+   "test": "tests/qa/api/run_api.py --only /prefs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:PUT:/prefs",
+   "cat": "api",
+   "desc": "PUT /prefs - Put Prefs",
+   "test": "tests/qa/api/run_api.py --only /prefs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/push",
+   "cat": "api",
+   "desc": "GET /push - Push Info",
+   "test": "tests/qa/api/run_api.py --only /push",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:POST:/push/subscribe",
+   "cat": "api",
+   "desc": "POST /push/subscribe - Push Subscribe",
+   "test": "tests/qa/api/run_api.py --only /push/subscribe",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:POST:/push/unsubscribe",
+   "cat": "api",
+   "desc": "POST /push/unsubscribe - Push Unsubscribe",
+   "test": "tests/qa/api/run_api.py --only /push/unsubscribe",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:POST:/push/test",
+   "cat": "api",
+   "desc": "POST /push/test - Push Test",
+   "test": "tests/qa/api/run_api.py --only /push/test",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:alert-rules:GET:/limits",
+   "cat": "api",
+   "desc": "GET /limits - Limits Get",
+   "test": "tests/qa/api/run_api.py --only /limits",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:PUT:/limits",
+   "cat": "api",
+   "desc": "PUT /limits - Limits Put",
+   "test": "tests/qa/api/run_api.py --only /limits",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/limits/history",
+   "cat": "api",
+   "desc": "GET /limits/history - Limits History",
+   "test": "tests/qa/api/run_api.py --only /limits/history",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/notifications",
+   "cat": "api",
+   "desc": "GET /notifications - Notif Get",
+   "test": "tests/qa/api/run_api.py --only /notifications",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:POST:/notifications/read",
+   "cat": "api",
+   "desc": "POST /notifications/read - Notif Read",
+   "test": "tests/qa/api/run_api.py --only /notifications/read",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:POST:/internal/notifications",
+   "cat": "api",
+   "desc": "POST /internal/notifications - Internal Notify",
+   "test": "tests/qa/api/run_api.py --only /internal/notifications",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/client-prefs",
+   "cat": "api",
+   "desc": "GET /client-prefs - Prefs Get",
+   "test": "tests/qa/api/run_api.py --only /client-prefs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:PUT:/client-prefs",
+   "cat": "api",
+   "desc": "PUT /client-prefs - Prefs Put",
+   "test": "tests/qa/api/run_api.py --only /client-prefs",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/push/devices",
+   "cat": "api",
+   "desc": "GET /push/devices - Devices",
+   "test": "tests/qa/api/run_api.py --only /push/devices",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:DELETE:/push/devices/{did}",
+   "cat": "api",
+   "desc": "DELETE /push/devices/{did} - Device Del",
+   "test": "tests/qa/api/run_api.py --only /push/devices/{did}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": "route hanh dong khong nhan body: khong goi voi token (tranh tac dung phu); chi kiem xac thuc"
+  },
+  {
+   "id": "API:alert-rules:POST:/tickets",
+   "cat": "api",
+   "desc": "POST /tickets - Ticket Create",
+   "test": "tests/qa/api/run_api.py --only /tickets",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:GET:/tickets",
+   "cat": "api",
+   "desc": "GET /tickets - Ticket List",
+   "test": "tests/qa/api/run_api.py --only /tickets",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:alert-rules:PUT:/tickets/{tid}",
+   "cat": "api",
+   "desc": "PUT /tickets/{tid} - Ticket Put",
+   "test": "tests/qa/api/run_api.py --only /tickets/{tid}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Status",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/setups",
+   "cat": "api",
+   "desc": "GET /scan/setups - Setup kịch bản (gộp sự kiện) + ảnh + lệnh paper",
+   "test": "tests/qa/api/run_api.py --only /scan/setups",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/setup",
+   "cat": "api",
+   "desc": "GET /scan/setup - Chi tiết 1 setup + điểm đánh dấu cho biểu đồ",
+   "test": "tests/qa/api/run_api.py --only /scan/setup",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/media/{eid}.png",
+   "cat": "api",
+   "desc": "GET /scan/media/{eid}.png - Ảnh PNG của 1 sự kiện",
+   "test": "tests/qa/api/run_api.py --only /scan/media/{eid}.png",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/trades",
+   "cat": "api",
+   "desc": "GET /scan/trades - Lệnh PAPER của tín hiệu đã kích hoạt",
+   "test": "tests/qa/api/run_api.py --only /scan/trades",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/trades/r",
+   "cat": "api",
+   "desc": "GET /scan/trades/r - Chuỗi R của lệnh paper đã đóng (gọn, không replay) cho arena",
+   "test": "tests/qa/api/run_api.py --only /scan/trades/r",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/stats",
+   "cat": "api",
+   "desc": "GET /scan/stats - Thống kê paper theo R (mặc định bỏ lệnh replay)",
+   "test": "tests/qa/api/run_api.py --only /scan/stats",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/ledger/verify",
+   "cat": "api",
+   "desc": "GET /scan/ledger/verify - Xác minh hash-chain sổ paper (+ neo ngoài DB để phát hiện cắt đuôi)",
+   "test": "tests/qa/api/run_api.py --only /scan/ledger/verify",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/guardrail",
+   "cat": "api",
+   "desc": "GET /scan/guardrail - Trạng thái guardrail rủi ro của sổ paper (kill-switch, lỗ ngày, tin, cỡ vị thế)",
+   "test": "tests/qa/api/run_api.py --only /scan/guardrail",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/examples",
+   "cat": "api",
+   "desc": "GET /scan/examples - Thư viện ví dụ: mẫu chuẩn + tín hiệu live đã kích hoạt",
+   "test": "tests/qa/api/run_api.py --only /scan/examples",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/examples/{xid}.png",
+   "cat": "api",
+   "desc": "GET /scan/examples/{xid}.png - Example Png",
+   "test": "tests/qa/api/run_api.py --only /scan/examples/{xid}.png",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/backtest/summary",
+   "cat": "api",
+   "desc": "GET /scan/backtest/summary - Tóm tắt backtest (dev/val/test khoá) + danh sách biểu đồ/ví dụ/tệp tải",
+   "test": "tests/qa/api/run_api.py --only /scan/backtest/summary",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-scan:GET:/scan/backtest/{kind}/{name}",
+   "cat": "api",
+   "desc": "GET /scan/backtest/{kind}/{name} - Ảnh biểu đồ/ví dụ backtest hoặc tệp CSV tải về",
+   "test": "tests/qa/api/run_api.py --only /scan/backtest/{kind}/{name}",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-engine:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-engine:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-engine:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Kết quả chu kỳ gần nhất",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-engine:GET:/patterns",
+   "cat": "api",
+   "desc": "GET /patterns - Tín hiệu kịch bản gần nhất (gateway lọc theo vai trò)",
+   "test": "tests/qa/api/run_api.py --only /patterns",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-engine:GET:/patterns/spec",
+   "cat": "api",
+   "desc": "GET /patterns/spec - Định nghĩa các kịch bản (tên, bước, tham số)",
+   "test": "tests/qa/api/run_api.py --only /patterns/spec",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:pattern-render:-",
+   "cat": "api",
+   "desc": "- - - ",
+   "test": "tests/qa/api/run_api.py --only -",
+   "status": "BỎ QUA",
+   "owner": "ts",
+   "note": "không có openapi (URLError: <urlopen error [Errno -3] Temporary failure in name resolution>); service không phơi route H"
+  },
+  {
+   "id": "API:nlp:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:nlp:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:nlp:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Status",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:nlp:GET:/v1/sentiment",
+   "cat": "api",
+   "desc": "GET /v1/sentiment - Sentiment",
+   "test": "tests/qa/api/run_api.py --only /v1/sentiment",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:nlp:POST:/v1/analyze",
+   "cat": "api",
+   "desc": "POST /v1/analyze - Analyze",
+   "test": "tests/qa/api/run_api.py --only /v1/analyze",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:mt-bridge:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:mt-bridge:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:mt-bridge:POST:/ingest/v1",
+   "cat": "api",
+   "desc": "POST /ingest/v1 - Ingest",
+   "test": "tests/qa/api/run_api.py --only /ingest/v1",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:mt-bridge:POST:/ingest/v1/register",
+   "cat": "api",
+   "desc": "POST /ingest/v1/register - Register",
+   "test": "tests/qa/api/run_api.py --only /ingest/v1/register",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:mt-bridge:POST:/internal/invalidate",
+   "cat": "api",
+   "desc": "POST /internal/invalidate - Invalidate",
+   "test": "tests/qa/api/run_api.py --only /internal/invalidate",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:mt-bridge:GET:/accounts",
+   "cat": "api",
+   "desc": "GET /accounts - Accounts",
+   "test": "tests/qa/api/run_api.py --only /accounts",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:alert-service:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:alert-service:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:alert-service:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Status",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:alert-service:POST:/webhook/alertmanager",
+   "cat": "api",
+   "desc": "POST /webhook/alertmanager - Alertmanager Webhook",
+   "test": "tests/qa/api/run_api.py --only /webhook/alertmanager",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:market-collector:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:market-collector:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:market-collector:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Status",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:market-collector:GET:/providers",
+   "cat": "api",
+   "desc": "GET /providers - Providers",
+   "test": "tests/qa/api/run_api.py --only /providers",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:market-collector:GET:/reconcile",
+   "cat": "api",
+   "desc": "GET /reconcile - Reconcile",
+   "test": "tests/qa/api/run_api.py --only /reconcile",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:market-collector:POST:/backfill",
+   "cat": "api",
+   "desc": "POST /backfill - Backfill",
+   "test": "tests/qa/api/run_api.py --only /backfill",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:news-collector:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:news-collector:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:news-collector:GET:/providers",
+   "cat": "api",
+   "desc": "GET /providers - Providers",
+   "test": "tests/qa/api/run_api.py --only /providers",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:news-collector:GET:/status",
+   "cat": "api",
+   "desc": "GET /status - Status",
+   "test": "tests/qa/api/run_api.py --only /status",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:expert-collector:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:expert-collector:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:expert-collector:GET:/experts",
+   "cat": "api",
+   "desc": "GET /experts - Experts",
+   "test": "tests/qa/api/run_api.py --only /experts",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:expert-collector:GET:/opinions",
+   "cat": "api",
+   "desc": "GET /opinions - Opinions",
+   "test": "tests/qa/api/run_api.py --only /opinions",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:expert-collector:GET:/experts/{expert_id}",
+   "cat": "api",
+   "desc": "GET /experts/{expert_id} - Expert",
+   "test": "tests/qa/api/run_api.py --only /experts/{expert_id}",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:storage-writer:GET:/healthz",
+   "cat": "api",
+   "desc": "GET /healthz - Healthz",
+   "test": "tests/qa/api/run_api.py --only /healthz",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:storage-writer:GET:/metrics",
+   "cat": "api",
+   "desc": "GET /metrics - Metrics",
+   "test": "tests/qa/api/run_api.py --only /metrics",
+   "status": "PASS",
+   "owner": "feed",
+   "note": "BO QUA: duong gia realtime/feed (phien feed so huu) - chi kiem xac thuc"
+  },
+  {
+   "id": "API:briefing-llm:-",
+   "cat": "api",
+   "desc": "- - - ",
+   "test": "tests/qa/api/run_api.py --only -",
+   "status": "BỎ QUA",
+   "owner": "ts",
+   "note": "không có openapi (URLError: <urlopen error [Errno 111] Connection refused>); service không phơi route HTTP/đã gỡ"
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/rt/stats",
+   "cat": "api",
+   "desc": "GET /v1/rt/stats - thống kê realtime",
+   "test": "tests/qa/api/run_api.py --only /v1/rt/stats",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/rt/sse",
+   "cat": "api",
+   "desc": "GET /v1/rt/sse - SSE realtime",
+   "test": "tests/qa/api/run_api.py --only /v1/rt/sse",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "API:api-gateway:GET:/v1/stream",
+   "cat": "api",
+   "desc": "GET /v1/stream - WS stream (HTTP probe)",
+   "test": "tests/qa/api/run_api.py --only /v1/stream",
+   "status": "PASS",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-001",
+   "cat": "script",
+   "desc": "infra/ops/auth_bootstrap_master.sh - tao/khoi phuc tai khoan master (mat khau ngau nhien -> file 0600)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-001",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-002",
+   "cat": "script",
+   "desc": "infra/ops/backfill_canon_hist.py - nap lich su canon M15/H1/H4/D1 tu parquet MT5 (idempotent)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-002",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-003",
+   "cat": "script",
+   "desc": "infra/ops/backfill_hist.py - backfill D1 qua market-collector (chay trong container)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-003",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-004",
+   "cat": "script",
+   "desc": "infra/ops/backfill_mt5hist.py - nap lich su native MT5 vao bars (source mt5hist)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-004",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-005",
+   "cat": "script",
+   "desc": "infra/ops/backup_offsite.sh - day backup ma hoa ra ngoai (rclone/rsync), mac dinh dry-run",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-005",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-006",
+   "cat": "script",
+   "desc": "infra/ops/bt_art.sh - sinh artifact backtest trong container pe-research (backtest da dung)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-006",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": "deprecated"
+  },
+  {
+   "id": "SCR:S-007",
+   "cat": "script",
+   "desc": "infra/ops/bt_summary.py - sinh summary.json tu so lenh dong bang",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-007",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-008",
+   "cat": "script",
+   "desc": "infra/ops/check_hist.sql - kiem chat luong lich su D1 (doc-chi)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-008",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-009",
+   "cat": "script",
+   "desc": "infra/ops/ci_vps.sh - CI tren VPS: ruff + pytest + quet tinh + trivy + SBOM",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-009",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-010",
+   "cat": "script",
+   "desc": "infra/ops/class_demo.py - demo dau-cuoi Lop hoc AI (chay trong api-gateway)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-010",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-011",
+   "cat": "script",
+   "desc": "infra/ops/deploy_local.sh - deploy truc tiep tren VPS (kiem tra, build, healthy, smoke, rollback)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-011",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-012",
+   "cat": "script",
+   "desc": "infra/ops/feed_latency.py - do p50/p95 do tre MT5->bridge",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-012",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-013",
+   "cat": "script",
+   "desc": "infra/ops/gatus.yaml infra/ops/gatus.d/*.yaml infra/ops/gatus.d/*.disabled - cau hinh health-check Gatus (11 file)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-013",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-015",
+   "cat": "script",
+   "desc": "infra/ops/gen_assets_mt5.py - sinh danh muc symbol MT5 tu symbols.csv",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-015",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-016",
+   "cat": "script",
+   "desc": "infra/ops/gen_mt_hmac.sh - sinh HMAC secret cho tai khoan mt-bridge",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-016",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-017",
+   "cat": "script",
+   "desc": "infra/ops/gen_service_env.sh - sinh infra/env/<service>.env theo allowlist",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-017",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-018",
+   "cat": "script",
+   "desc": "infra/ops/gen_vapid.sh - sinh khoa Web Push (VAPID) + Fernet",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-018",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-019",
+   "cat": "script",
+   "desc": "infra/ops/hardening_audit.sh - kiem tra hardening container",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-019",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-020",
+   "cat": "script",
+   "desc": "infra/ops/lock_deps.py - sinh requirements.lock co hash",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-020",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-021",
+   "cat": "script",
+   "desc": "infra/ops/lock_deps.sh - chay lock_deps.py trong container tam",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-021",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-022",
+   "cat": "script",
+   "desc": "infra/ops/notify.sh - gui canh bao tu host vao alert-service",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-022",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-023",
+   "cat": "script",
+   "desc": "infra/ops/redis_acl_render.sh - sinh users.acl Redis tu .env + manifest (+--load, --check)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-023",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-024",
+   "cat": "script",
+   "desc": "infra/ops/redis_acl_services.manifest infra/ops/service_env.manifest - manifest ACL Redis + allowlist env",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-024",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-026",
+   "cat": "script",
+   "desc": "infra/ops/release.sh - quan ly release (snapshot/record/list/current)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-026",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-027",
+   "cat": "script",
+   "desc": "infra/ops/rollback.sh - rollback ma + image ve release truoc",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-027",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-028",
+   "cat": "script",
+   "desc": "infra/ops/rotate_secret.sh - xoay token ngau nhien trong .env",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-028",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-029",
+   "cat": "script",
+   "desc": "infra/ops/run_rt_tests.sh - pytest api-gateway chon file trong container tam",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-029",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-030",
+   "cat": "script",
+   "desc": "infra/ops/run_tests.sh - pytest libs/common + service trong container tam",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-030",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-031",
+   "cat": "script",
+   "desc": "infra/ops/smoke.sh - smoke test dau-cuoi (Playwright 3 vai) - cong deploy",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-031",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-032",
+   "cat": "script",
+   "desc": "infra/ops/sops_encrypt_env.sh - ma hoa/giai ma .env bang SOPS+age (chua bat buoc)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-032",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-033",
+   "cat": "script",
+   "desc": "infra/ops/top_cves.py - in CVE noi bat tu bao cao trivy",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-033",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-034",
+   "cat": "script",
+   "desc": "infra/ops/trivy_scan.sh - quet CVE moi image",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-034",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-035",
+   "cat": "script",
+   "desc": "infra/ops/tests/test_backfill_canon_hist.py - unit test resample_utc",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-035",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-036",
+   "cat": "script",
+   "desc": "deploy.sh - deploy.sh goc (laptop->VPS; tren VPS chuyen sang deploy_local)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-036",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-040",
+   "cat": "script",
+   "desc": "infra/backup/backup_watch.sh - giam sat do tuoi backup (timer moi gio)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-040",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-041",
+   "cat": "script",
+   "desc": "infra/backup/offsite.sh - day backup ma hoa ra ngoai bang rclone (ban cu)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-041",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-042",
+   "cat": "script",
+   "desc": "infra/backup/offsite.env.example - mau cau hinh off-site",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-042",
+   "status": "PASS(tĩnh)",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-043",
+   "cat": "script",
+   "desc": "infra/backup/pg_backup.sh - backup pg_dump ma hoa + xac minh + giu KEEP ban",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-043",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-044",
+   "cat": "script",
+   "desc": "infra/backup/pg_basebackup.sh - base backup vat ly (PITR)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-044",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-045",
+   "cat": "script",
+   "desc": "infra/backup/pg_restore_test.sh - thu khoi phuc dump vao DB tam + kiem sau",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-045",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-046",
+   "cat": "script",
+   "desc": "infra/backup/pitr_restore_test.sh - dien tap PITR trong container tam",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-046",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-050",
+   "cat": "script",
+   "desc": "mt-agent/lab/chk.sh - kiem tra dau-cuoi lab (doc-chi)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-050",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-051",
+   "cat": "script",
+   "desc": "mt-agent/lab/chk2.sh - dem du lieu mt* trong DB/redis (doc-chi)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-051",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-052",
+   "cat": "script",
+   "desc": "mt-agent/lab/put-ea.sh - day EA len lab qua SFTP (laptop)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-052",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-053",
+   "cat": "script",
+   "desc": "mt-agent/lab/put.sh - sftp-put qua bastion (laptop)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-053",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-054",
+   "cat": "script",
+   "desc": "mt-agent/lab/rotate-and-deploy.sh - xoay token MT + build lai mt-bridge (thay bang rotate_secret.sh)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-054",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-055",
+   "cat": "script",
+   "desc": "mt-agent/lab/rs.sh - ssh-run qua bastion (laptop)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-055",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-056",
+   "cat": "script",
+   "desc": "mt-agent/lab/runimp.sh - importer lich su trong image analytics",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-056",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-057",
+   "cat": "script",
+   "desc": "mt-agent/lab/provision.py - tao/xoa tai khoan lab trong container auth",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-057",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-060",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/patch_ini.py - sua file ini UTF-16 cua MT",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-060",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-061",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/patch_chr.py - chen khoi expert vao chart MT4",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-061",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-062",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/tcp-fwd.py - forwarder TCP (MT4 cong 80)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-062",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-063",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/hmac_check.py - kiem chung HMAC tren bridge",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-063",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-064",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/run-feed.sh - tao lai container mtlab-mt5-feed",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-064",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-065",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/allow-url-mt4.sh mt-agent/lab-feed/scripts/allow-url.sh mt-agent/lab-feed/scripts/run-script-mt4.sh mt-agent/lab-feed/scripts/shot.sh mt-agent/lab-feed/scripts/post-start.sh - tu dong hoa GUI MT bang xdotool (trong container)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-065",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-066",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/compile.sh mt-agent/lab-feed/scripts/compile-feed.sh - bien dich EA bang MetaEditor/wine (trong container)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-066",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-067",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/start-feed.sh mt-agent/lab-feed/scripts/start-term.sh mt-agent/lab-feed/scripts/start-mt4.sh mt-agent/lab-feed/scripts/start-mt5.sh mt-agent/lab-feed/scripts/portable-init.sh mt-agent/lab-feed/scripts/retry-setup.sh mt-agent/lab-feed/scripts/dbg.sh mt-agent/lab-feed/scripts/logs.sh - khoi dong/gan loi terminal MT trong container",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-067",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-068",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/install-python-wine.sh mt-agent/lab-feed/scripts/py.sh mt-agent/lab-feed/scripts/mt5_probe.py - Python Windows trong Wine (thu adapter mt5_direct)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-068",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-069",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/grab.sh - tai anh ve laptop qua SFTP",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-069",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-070",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/compose.perf.yml - ghi de compose uu tien CPU cho mtlab-mt5",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-070",
+   "status": "PASS(tĩnh)",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-078",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/scripts/start-term.sh.bak-20261014 - ban sao luu cu cua start-term.sh",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-078",
+   "status": "PASS",
+   "owner": "research",
+   "note": "deprecated"
+  },
+  {
+   "id": "SCR:S-090",
+   "cat": "script",
+   "desc": "data/mtlab-hist/driver.sh - driver backfill native qua terminal hist (da xong)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-090",
+   "status": "PASS*",
+   "owner": "research",
+   "note": "deprecated"
+  },
+  {
+   "id": "SCR:S-091",
+   "cat": "script",
+   "desc": "data/mtlab-hist/driver_q.sh - driver hang doi nhieu terminal (queue rong)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-091",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": "deprecated"
+  },
+  {
+   "id": "SCR:S-092",
+   "cat": "script",
+   "desc": "data/mtlab-hist/loadguard.sh - dung terminal hist khi load>40",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-092",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": "deprecated"
+  },
+  {
+   "id": "SCR:S-093",
+   "cat": "script",
+   "desc": "data/mtlab-hist/takeover.sh - chuyen driver cu sang driver_q (PID cung)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-093",
+   "status": "PASS",
+   "owner": "research",
+   "note": "deprecated"
+  },
+  {
+   "id": "SCR:S-094",
+   "cat": "script",
+   "desc": "data/mtlab-hist/runimp.sh - importer cho driver",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-094",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": "deprecated"
+  },
+  {
+   "id": "SCR:S-095",
+   "cat": "script",
+   "desc": "data/mtlab-hist/st.sh - xem trang thai terminal hist",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-095",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": "deprecated"
+  },
+  {
+   "id": "SCR:S-096",
+   "cat": "script",
+   "desc": "services/data-keeper/src/data_keeper/histload.py - CLI nap lich su (data-keeper)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-096",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-100",
+   "cat": "script",
+   "desc": "infra/db/apply_migration.sh - ap 1 file migration SQL",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-100",
+   "status": "PASS*",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-101",
+   "cat": "script",
+   "desc": "infra/db/create_*_role.sh - tao role Postgres han che cho tung service (14 file)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-101",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-102",
+   "cat": "script",
+   "desc": "infra/host/install_backup_timer.sh infra/host/install_tunnel.sh infra/host/ufw_allow_node_exporter.sh - cai timer/tunnel/ufw tren host",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-102",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-103",
+   "cat": "script",
+   "desc": "infra/host/tunnel_url.sh - lay URL tunnel cloudflare",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-103",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-110",
+   "cat": "script",
+   "desc": "infra/perf/*.sh - do hieu nang k6/Playwright/A-B (ab_*: mot lan)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-110",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-120",
+   "cat": "script",
+   "desc": "tests/e2e/*.sh tests/e2e/*.py - bo test e2e/pentest (agent ts)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-120",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-121",
+   "cat": "script",
+   "desc": "tests/qa/*.sh tests/qa/*.py tests/qa/*.mjs - cong cu QA cua cac agent",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-121",
+   "status": "BỎ QUA",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-130",
+   "cat": "script",
+   "desc": "infra/ops/digest.py infra/ops/digest.sh - digest LLM local -> docs/handoff/DIGEST.md (cron 30 phut)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-130",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-131",
+   "cat": "script",
+   "desc": "infra/ops/tokens_report.py - dem token Claude/local -> TOKENS.md + .prom",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-131",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-132",
+   "cat": "script",
+   "desc": "infra/ops/feed_e2e.py - do p50/p95 tick->hub/bus->hub/tick->queue/hub->browser tai gateway (doc-chi)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-132",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-133",
+   "cat": "script",
+   "desc": "infra/ops/la infra/ops/la_lib/*.py infra/ops/la_bench/*.py - la: local agent CLI + router + bo benchmark 20 task",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-133",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-135",
+   "cat": "script",
+   "desc": "infra/ops/llm_node.sh - them/bot node llama.cpp Tier A cho LB local-llm",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-135",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-136",
+   "cat": "script",
+   "desc": "infra/local-llm/guard.sh - tu choi khoi dong model khi load host cao",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-136",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-137",
+   "cat": "script",
+   "desc": "infra/ops/merge_old_bars_chunks.sh - gop chunk bars cu theo nam (thay doi DB that khi chay)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-137",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-138",
+   "cat": "script",
+   "desc": "infra/ops/status_brief.sh - tom tat trang thai stack + phien tmux + dk metrics (doc-chi)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-138",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-139",
+   "cat": "script",
+   "desc": "infra/local-llm/config.yaml infra/local-llm/nodes.list infra/jaeger/config.yaml infra/grafana/gen_dashboard_llm.py infra/grafana/dashboards/local-llm.json - cau hinh local-llm / jaeger / dashboard Grafana local-llm",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-139",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCR:S-141",
+   "cat": "script",
+   "desc": "mt-agent/lab-feed/ea/MQL5/Scripts/*.mq5 - EA script MQL5 (FeedProbe, DealFixture, Export, Range)",
+   "test": "bash tests/qa/research/scripts/run_scripts.sh --only S-141",
+   "status": "PASS",
+   "owner": "research",
+   "note": ""
+  },
+  {
+   "id": "SCRX:infra/ops/deploy_q.sh",
+   "cat": "script",
+   "desc": "infra/ops/deploy_q.sh",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "bash -n"
+  },
+  {
+   "id": "SCRX:infra/ops/smoke_full_bg.sh",
+   "cat": "script",
+   "desc": "infra/ops/smoke_full_bg.sh",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "bash -n"
+  },
+  {
+   "id": "SCRX:infra/ops/smoke_quick.sh",
+   "cat": "script",
+   "desc": "infra/ops/smoke_quick.sh",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "bash -n"
+  },
+  {
+   "id": "SCRX:infra/ops/fill_canon_gap.py",
+   "cat": "script",
+   "desc": "infra/ops/fill_canon_gap.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:services/client-ui/scripts/i18n-check.cjs",
+   "cat": "script",
+   "desc": "services/client-ui/scripts/i18n-check.cjs",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "node --check"
+  },
+  {
+   "id": "SCRX:services/client-ui/scripts/lint-sources.cjs",
+   "cat": "script",
+   "desc": "services/client-ui/scripts/lint-sources.cjs",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "node --check"
+  },
+  {
+   "id": "SCRX:services/nlp/scripts/export_onnx.py",
+   "cat": "script",
+   "desc": "services/nlp/scripts/export_onnx.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:services/nlp/scripts/loadtest_feed.py",
+   "cat": "script",
+   "desc": "services/nlp/scripts/loadtest_feed.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:services/nlp/scripts/smoke_real.py",
+   "cat": "script",
+   "desc": "services/nlp/scripts/smoke_real.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:services/web-ui/scripts/lint-sources.cjs",
+   "cat": "script",
+   "desc": "services/web-ui/scripts/lint-sources.cjs",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "node --check"
+  },
+  {
+   "id": "SCRX:services/web-ui/scripts/make-htpasswd.sh",
+   "cat": "script",
+   "desc": "services/web-ui/scripts/make-htpasswd.sh",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "bash -n"
+  },
+  {
+   "id": "SCRX:tests/qa/api/build_inventory.py",
+   "cat": "script",
+   "desc": "tests/qa/api/build_inventory.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "qa",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:tests/qa/api/gen_function_inventory.py",
+   "cat": "script",
+   "desc": "tests/qa/api/gen_function_inventory.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "qa",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:tests/qa/api/gen_inventory.py",
+   "cat": "script",
+   "desc": "tests/qa/api/gen_inventory.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "qa",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:tests/qa/api/run_api.py",
+   "cat": "script",
+   "desc": "tests/qa/api/run_api.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "qa",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:tests/qa/api/run_extra.py",
+   "cat": "script",
+   "desc": "tests/qa/api/run_extra.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "qa",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:tests/qa/auth/c_cleanup_rooms.sh",
+   "cat": "script",
+   "desc": "tests/qa/auth/c_cleanup_rooms.sh",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "qa",
+   "note": "bash -n"
+  },
+  {
+   "id": "SCRX:tests/qa/auth/c_matrix.py",
+   "cat": "script",
+   "desc": "tests/qa/auth/c_matrix.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "qa",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:tests/run_pytest_all.sh",
+   "cat": "script",
+   "desc": "tests/run_pytest_all.sh",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "bash -n"
+  },
+  {
+   "id": "SCRX:infra/perf/bench.js",
+   "cat": "script",
+   "desc": "infra/perf/bench.js",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "node --check"
+  },
+  {
+   "id": "SCRX:infra/perf/gw_profile.py",
+   "cat": "script",
+   "desc": "infra/perf/gw_profile.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:infra/perf/pageload.mjs",
+   "cat": "script",
+   "desc": "infra/perf/pageload.mjs",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "node --check"
+  },
+  {
+   "id": "SCRX:infra/perf/perf_session.py",
+   "cat": "script",
+   "desc": "infra/perf/perf_session.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:infra/perf/rt_latency_report.py",
+   "cat": "script",
+   "desc": "infra/perf/rt_latency_report.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "py_compile"
+  },
+  {
+   "id": "SCRX:infra/perf/ws_load.py",
+   "cat": "script",
+   "desc": "infra/perf/ws_load.py",
+   "test": "kiem tinh: bash -n / py_compile (+ ghi o results.json neu chay that)",
+   "status": "PASS (tĩnh)",
+   "owner": "research",
+   "note": "py_compile"
+  },
+  {
+   "id": "UI-M:ai-trading",
+   "cat": "ui-master",
+   "desc": "Trang master /ai-trading - AI Trading (vai [\"master\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "UI-M:ban-do-nhiet",
+   "cat": "ui-master",
+   "desc": "Trang master /ban-do-nhiet - Bản đồ nhiệt (vai master)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:ban-tin",
+   "cat": "ui-master",
+   "desc": "Trang master /ban-tin - Bản tin (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:bao-cao",
+   "cat": "ui-master",
+   "desc": "Trang master /bao-cao - Báo cáo (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:bao-cao-khach",
+   "cat": "ui-master",
+   "desc": "Trang master /bao-cao-khach - Báo cáo khách (vai [\"master\", \"analyst\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:cai-dat",
+   "cat": "ui-master",
+   "desc": "Trang master /cai-dat - Cài đặt (vai [\"master\", \"client\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:canh-bao",
+   "cat": "ui-master",
+   "desc": "Trang master /canh-bao - Cảnh báo (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:chung-khoan-vn",
+   "cat": "ui-master",
+   "desc": "Trang master /chung-khoan-vn - Chứng khoán VN (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:chuyen-gia",
+   "cat": "ui-master",
+   "desc": "Trang master /chuyen-gia - Chuyên gia (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:danh-sach",
+   "cat": "ui-master",
+   "desc": "Trang master /danh-sach - Danh sách theo dõi (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:design",
+   "cat": "ui-master",
+   "desc": "Trang master /design - Design system (vai [\"master\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:doi-tai-khoan",
+   "cat": "ui-master",
+   "desc": "Trang master /doi-tai-khoan - Đội tài khoản (vai [\"master\", \"support\", \"analyst\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:du-lieu",
+   "cat": "ui-master",
+   "desc": "Trang master /du-lieu - Dữ liệu (vai [\"master\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:gioi-thieu",
+   "cat": "ui-master",
+   "desc": "Trang master /gioi-thieu - Giới thiệu (vai [\"master\", \"client\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:he-thong",
+   "cat": "ui-master",
+   "desc": "Trang master /he-thong - Hệ thống (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:khach-hang",
+   "cat": "ui-master",
+   "desc": "Trang master /khach-hang - Khách hàng (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:kich-ban",
+   "cat": "ui-master",
+   "desc": "Trang master /kich-ban - Kịch bản (vai [\"master\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "ux",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:kiem-toan",
+   "cat": "ui-master",
+   "desc": "Trang master /kiem-toan - Nhật ký kiểm toán (vai [\"master\", \"auditor\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:lich",
+   "cat": "ui-master",
+   "desc": "Trang master /lich - Lịch kinh tế (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:lop-hoc-ai",
+   "cat": "ui-master",
+   "desc": "Trang master /lop-hoc-ai - AI Training Class (vai [\"expert\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "UI-M:luat",
+   "cat": "ui-master",
+   "desc": "Trang master /luat - Luật & tuân thủ (vai [\"master\", \"analyst\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:mo-phong",
+   "cat": "ui-master",
+   "desc": "Trang master /mo-phong - Mô phỏng (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:movers",
+   "cat": "ui-master",
+   "desc": "Trang master /movers - Movers & biến động (vai master)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:nhat-ky",
+   "cat": "ui-master",
+   "desc": "Trang master /nhat-ky - Nhật ký (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:nhip-thi-truong",
+   "cat": "ui-master",
+   "desc": "Trang master /nhip-thi-truong - Nhịp thị trường (vai master)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:phan-tich",
+   "cat": "ui-master",
+   "desc": "Trang master /phan-tich - Phân tích (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:phien-giao-dich",
+   "cat": "ui-master",
+   "desc": "Trang master /phien-giao-dich - Phiên giao dịch (vai master)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:phien-thiet-bi",
+   "cat": "ui-master",
+   "desc": "Trang master /phien-thiet-bi - Phiên & thiết bị (vai [\"master\", \"support\", \"analyst\", \"auditor\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:su-co",
+   "cat": "ui-master",
+   "desc": "Trang master /su-co - Sự cố (vai [\"master\", \"support\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:suc-manh-tien-te",
+   "cat": "ui-master",
+   "desc": "Trang master /suc-manh-tien-te - Sức mạnh tiền tệ (vai master)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:tai-khoan",
+   "cat": "ui-master",
+   "desc": "Trang master /tai-khoan - Tài khoản (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:terminal",
+   "cat": "ui-master",
+   "desc": "Trang master /terminal - Terminal (vai [\"master\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d2_run.sh terminal.mjs: 10 widget, không tràn ngang; lần 1 có 409 PUT /user/prefs do tranh chấp prefs dùng chung với phiên khác, lần 2 sạch"
+  },
+  {
+   "id": "UI-M:thi-truong",
+   "cat": "ui-master",
+   "desc": "Trang master /thi-truong - Thị trường (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d2_run.sh (d2_matrix 60 kiểm tra: 4 độ phân giải x sáng/tối; chart dựng, không NaN/tràn/lộ nguồn)"
+  },
+  {
+   "id": "UI-M:tin-tuc",
+   "cat": "ui-master",
+   "desc": "Trang master /tin-tuc - Tin tức (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:tong-quan",
+   "cat": "ui-master",
+   "desc": "Trang master /tong-quan - Tổng quan (vai M)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:tro-giup",
+   "cat": "ui-master",
+   "desc": "Trang master /tro-giup - Trợ giúp (vai [\"master\", \"client\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:tuong-quan-rui-ro",
+   "cat": "ui-master",
+   "desc": "Trang master /tuong-quan-rui-ro - Tương quan & rủi ro (vai master)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:vai-tro",
+   "cat": "ui-master",
+   "desc": "Trang master /vai-tro - Vai trò & nhân sự (vai [\"master\"])",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-M:vi-the-lon",
+   "cat": "ui-master",
+   "desc": "Trang master /vi-the-lon - Vị thế lớn & đồng thuận (vai master)",
+   "test": "tests/qa/d1_run.sh (d1_pages) / smoke.sh / d2_run.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "d1_pages 1366x768 tối/vi: 0 vấn đề"
+  },
+  {
+   "id": "UI-C:ai-trading",
+   "cat": "ui-client",
+   "desc": "Trang client #/ai-trading",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:ban-tin",
+   "cat": "ui-client",
+   "desc": "Trang client #/ban-tin",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:bao-cao",
+   "cat": "ui-client",
+   "desc": "Trang client #/bao-cao",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:canh-bao",
+   "cat": "ui-client",
+   "desc": "Trang client #/canh-bao",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:chuyen-gia",
+   "cat": "ui-client",
+   "desc": "Trang client #/chuyen-gia",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:danh-muc",
+   "cat": "ui-client",
+   "desc": "Trang client #/danh-muc",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:gioi-han",
+   "cat": "ui-client",
+   "desc": "Trang client #/gioi-han",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:ho-so",
+   "cat": "ui-client",
+   "desc": "Trang client #/ho-so",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:hom-nay",
+   "cat": "ui-client",
+   "desc": "Trang client #/hom-nay",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:kich-ban",
+   "cat": "ui-client",
+   "desc": "Trang client #/kich-ban",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:nhat-ky",
+   "cat": "ui-client",
+   "desc": "Trang client #/nhat-ky",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:rui-ro",
+   "cat": "ui-client",
+   "desc": "Trang client #/rui-ro",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:thi-truong",
+   "cat": "ui-client",
+   "desc": "Trang client #/thi-truong",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:thong-bao",
+   "cat": "ui-client",
+   "desc": "Trang client #/thong-bao",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:tin-hieu",
+   "cat": "ui-client",
+   "desc": "Trang client #/tin-hieu",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:tin-lich",
+   "cat": "ui-client",
+   "desc": "Trang client #/tin-lich",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:tong-quan",
+   "cat": "ui-client",
+   "desc": "Trang client #/tong-quan",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:tro-giup",
+   "cat": "ui-client",
+   "desc": "Trang client #/tro-giup",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "UI-C:vi-the",
+   "cat": "ui-client",
+   "desc": "Trang client #/vi-the",
+   "test": "tests/qa/eg_client_matrix.sh + eg_client_flows.sh + smoke.sh",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "eg_client_matrix (16 tổ hợp ngôn ngữ x độ phân giải x theme)"
+  },
+  {
+   "id": "INF-C:ai-trading",
+   "cat": "infra",
+   "desc": "Container compose ai-trading",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 20 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:ai-trading-worker",
+   "cat": "infra",
+   "desc": "Container compose ai-trading-worker",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 23 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:alert-rules",
+   "cat": "infra",
+   "desc": "Container compose alert-rules",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 34 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:alert-service",
+   "cat": "infra",
+   "desc": "Container compose alert-service",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 12 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:alertmanager",
+   "cat": "infra",
+   "desc": "Container compose alertmanager",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 8 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:analytics",
+   "cat": "infra",
+   "desc": "Container compose analytics",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 20 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:api-gateway",
+   "cat": "infra",
+   "desc": "Container compose api-gateway",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 6 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:auth",
+   "cat": "infra",
+   "desc": "Container compose auth",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 21 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:briefing",
+   "cat": "infra",
+   "desc": "Container compose briefing",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 2 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:briefing-llm",
+   "cat": "infra",
+   "desc": "Container compose briefing-llm",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 36 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:cadvisor",
+   "cat": "infra",
+   "desc": "Container compose cadvisor",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 45 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:client-ui",
+   "cat": "infra",
+   "desc": "Container compose client-ui",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 19 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:data-keeper",
+   "cat": "infra",
+   "desc": "Container compose data-keeper",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 20 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:docker-socket-proxy",
+   "cat": "infra",
+   "desc": "Container compose docker-socket-proxy",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 43 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:expert-collector",
+   "cat": "infra",
+   "desc": "Container compose expert-collector",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 21 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:gatus",
+   "cat": "infra",
+   "desc": "Container compose gatus",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 41 hours; restart=0"
+  },
+  {
+   "id": "INF-C:grafana",
+   "cat": "infra",
+   "desc": "Container compose grafana",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 22 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:jaeger",
+   "cat": "infra",
+   "desc": "Container compose jaeger",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 22 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:journal",
+   "cat": "infra",
+   "desc": "Container compose journal",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 23 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:local-llm",
+   "cat": "infra",
+   "desc": "Container compose local-llm",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 22 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:market-collector",
+   "cat": "infra",
+   "desc": "Container compose market-collector",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 21 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:mt-bridge",
+   "cat": "infra",
+   "desc": "Container compose mt-bridge",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 31 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:news-collector",
+   "cat": "infra",
+   "desc": "Container compose news-collector",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 21 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:nlp",
+   "cat": "infra",
+   "desc": "Container compose nlp",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 21 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:ntfy",
+   "cat": "infra",
+   "desc": "Container compose ntfy",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 44 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:paper-trader",
+   "cat": "infra",
+   "desc": "Container compose paper-trader",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 20 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:pattern-engine",
+   "cat": "infra",
+   "desc": "Container compose pattern-engine",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 20 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:pattern-scan",
+   "cat": "infra",
+   "desc": "Container compose pattern-scan",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 20 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:postgres-exporter",
+   "cat": "infra",
+   "desc": "Container compose postgres-exporter",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 45 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:prometheus",
+   "cat": "infra",
+   "desc": "Container compose prometheus",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 8 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:redis",
+   "cat": "infra",
+   "desc": "Container compose redis",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 31 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:redis-cache",
+   "cat": "infra",
+   "desc": "Container compose redis-cache",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 45 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:redis-exporter",
+   "cat": "infra",
+   "desc": "Container compose redis-exporter",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 45 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:reporter",
+   "cat": "infra",
+   "desc": "Container compose reporter",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 4 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:risk-monitor",
+   "cat": "infra",
+   "desc": "Container compose risk-monitor",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 35 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:storage-writer",
+   "cat": "infra",
+   "desc": "Container compose storage-writer",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 20 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:textfile-exporter",
+   "cat": "infra",
+   "desc": "Container compose textfile-exporter",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 45 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:timescaledb",
+   "cat": "infra",
+   "desc": "Container compose timescaledb",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 4 days (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:track-record",
+   "cat": "infra",
+   "desc": "Container compose track-record",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 3 minutes (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:vn-market",
+   "cat": "infra",
+   "desc": "Container compose vn-market",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 22 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-C:web-ui",
+   "cat": "infra",
+   "desc": "Container compose web-ui",
+   "test": "docker inspect health/restart (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "Up 19 hours (healthy); restart=0"
+  },
+  {
+   "id": "INF-T:tradingsys-backup.timer",
+   "cat": "infra",
+   "desc": "systemd timer tradingsys-backup.timer",
+   "test": "systemctl is-active + lan chay gan nhat",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "active; next=Sat 2026-10-17 03:11:09 UTC"
+  },
+  {
+   "id": "INF-T:tradingsys-backupwatch.timer",
+   "cat": "infra",
+   "desc": "systemd timer tradingsys-backupwatch.timer",
+   "test": "systemctl is-active + lan chay gan nhat",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "active; next=Fri 2026-10-16 08:18:49 UTC"
+  },
+  {
+   "id": "INF-T:tradingsys-basebackup.timer",
+   "cat": "infra",
+   "desc": "systemd timer tradingsys-basebackup.timer",
+   "test": "systemctl is-active + lan chay gan nhat",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "active; next=Sun 2026-10-18 02:31:35 UTC"
+  },
+  {
+   "id": "INF-T:tradingsys-restoretest.timer",
+   "cat": "infra",
+   "desc": "systemd timer tradingsys-restoretest.timer",
+   "test": "systemctl is-active + lan chay gan nhat",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "active; next=Sun 2026-10-18 04:30:37 UTC"
+  },
+  {
+   "id": "INF-T:cron-digest",
+   "cat": "infra",
+   "desc": "cron */30 infra/ops/digest.sh",
+   "test": "crontab -l + digest.sh chay duoc, DIGEST.md moi",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "cron có digest.sh; DIGEST.md cập nhật 13 phút trước"
+  },
+  {
+   "id": "INF-R:rules.yml",
+   "cat": "infra",
+   "desc": "Luat Prometheus infra/prometheus/rules.yml",
+   "test": "Prometheus API /rules: health ok moi luat",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "27 luật, lỗi=[]"
+  },
+  {
+   "id": "INF-R:rules_feed.yml",
+   "cat": "infra",
+   "desc": "Luat Prometheus infra/prometheus/rules_feed.yml",
+   "test": "Prometheus API /rules: health ok moi luat",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "20 luật, lỗi=[]"
+  },
+  {
+   "id": "INF-R:rules_rt.yml",
+   "cat": "infra",
+   "desc": "Luat Prometheus infra/prometheus/rules_rt.yml",
+   "test": "Prometheus API /rules: health ok moi luat",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "10 luật, lỗi=[]"
+  },
+  {
+   "id": "INF-R:rules_slo.yml",
+   "cat": "infra",
+   "desc": "Luat Prometheus infra/prometheus/rules_slo.yml",
+   "test": "Prometheus API /rules: health ok moi luat",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "42 luật, lỗi=[]"
+  },
+  {
+   "id": "INF-P:targets",
+   "cat": "infra",
+   "desc": "Prometheus scrape targets",
+   "test": "a_infra.sh (targets down = 0)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "31 targets, down=[]"
+  },
+  {
+   "id": "INF-P:alertmanager",
+   "cat": "infra",
+   "desc": "Alertmanager routing",
+   "test": "amtool/ API /api/v2/status",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "API /api/v2/status trả cấu hình"
+  },
+  {
+   "id": "INF-G:cache-latency.json",
+   "cat": "infra",
+   "desc": "Grafana dashboard cache-latency.json",
+   "test": "JSON hop le + Grafana API /api/search thay duoc",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "JSON hợp lệ (20 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+  },
+  {
+   "id": "INF-G:data_keeper.json",
+   "cat": "infra",
+   "desc": "Grafana dashboard data_keeper.json",
+   "test": "JSON hop le + Grafana API /api/search thay duoc",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "JSON hợp lệ (17 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+  },
+  {
+   "id": "INF-G:feed_all.json",
+   "cat": "infra",
+   "desc": "Grafana dashboard feed_all.json",
+   "test": "JSON hop le + Grafana API /api/search thay duoc",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "JSON hợp lệ (22 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+  },
+  {
+   "id": "INF-G:local-llm.json",
+   "cat": "infra",
+   "desc": "Grafana dashboard local-llm.json",
+   "test": "JSON hop le + Grafana API /api/search thay duoc",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "JSON hợp lệ (13 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+  },
+  {
+   "id": "INF-G:market-overview.json",
+   "cat": "infra",
+   "desc": "Grafana dashboard market-overview.json",
+   "test": "JSON hop le + Grafana API /api/search thay duoc",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "JSON hợp lệ (7 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+  },
+  {
+   "id": "INF-G:platform-health.json",
+   "cat": "infra",
+   "desc": "Grafana dashboard platform-health.json",
+   "test": "JSON hop le + Grafana API /api/search thay duoc",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "JSON hợp lệ (7 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+  },
+  {
+   "id": "INF-G:realtime.json",
+   "cat": "infra",
+   "desc": "Grafana dashboard realtime.json",
+   "test": "JSON hop le + Grafana API /api/search thay duoc",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "JSON hợp lệ (38 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+  },
+  {
+   "id": "INF-G:resources-db.json",
+   "cat": "infra",
+   "desc": "Grafana dashboard resources-db.json",
+   "test": "JSON hop le + Grafana API /api/search thay duoc",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "JSON hợp lệ (33 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+  },
+  {
+   "id": "INF-G:slo-observability.json",
+   "cat": "infra",
+   "desc": "Grafana dashboard slo-observability.json",
+   "test": "JSON hop le + Grafana API /api/search thay duoc",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "JSON hợp lệ (36 panel); Grafana API cần auth, chỉ kiểm tĩnh"
+  },
+  {
+   "id": "INF-GT:alert-rules.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/alert-rules.yaml (1 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "1 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:auth.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/auth.yaml (1 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "1 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:briefing.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/briefing.yaml (1 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "1 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:feed_all.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/feed_all.yaml (1 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "1 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:journal.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/journal.yaml (1 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "1 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:local-llm.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/local-llm.yaml (1 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "1 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:platform.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/platform.yaml (11 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "11 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:platform_extra.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/platform_extra.yaml (6 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "6 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:vn-market.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/vn-market.yaml (1 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "1 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:web-ui.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.d/web-ui.yaml (1 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "1 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "INF-GT:gatus.yaml",
+   "cat": "infra",
+   "desc": "Gatus infra/ops/gatus.yaml (0 endpoint)",
+   "test": "log gatus 10 phut khong success=false (a_infra.sh)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "0 endpoint, lỗi=[], không thấy=[]"
+  },
+  {
+   "id": "AI:ai-trading/classroom/machine.py",
+   "cat": "ai",
+   "desc": "May trang thai hoi sau (phong hoc AI)",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/classroom/one_to_ten.py",
+   "cat": "ai",
+   "desc": "Hoc 1 hieu 10",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/classroom/commands.py",
+   "cat": "ai",
+   "desc": "Nhan y dinh / lenh (VN co dau, khong dau, viet tat)",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/classroom/extract.py",
+   "cat": "ai",
+   "desc": "Trich xuat y tuong -> kich ban",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/classroom/safety.py",
+   "cat": "ai",
+   "desc": "An toan / chong injection",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/classroom/store.py",
+   "cat": "ai",
+   "desc": "Bo nho / luu hoi thoai",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/classroom/llm.py",
+   "cat": "ai",
+   "desc": "LLM client lop hoc (local/API, fallback)",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/classroom/checklist.py",
+   "cat": "ai",
+   "desc": "Checklist kich ban",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/classroom/export.py",
+   "cat": "ai",
+   "desc": "Xuat kich ban",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/arena.py",
+   "cat": "ai",
+   "desc": "Arena / consensus AI",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "AI:ai-trading/scenario_store.py",
+   "cat": "ai",
+   "desc": "Kho kich ban",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "AI:briefing/src",
+   "cat": "ai",
+   "desc": "Ban tin sang (LLM briefing)",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "AI:nlp/src",
+   "cat": "ai",
+   "desc": "NLP tin tuc (sentiment ONNX)",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ts",
+   "note": ""
+  },
+  {
+   "id": "AI:data-keeper/src",
+   "cat": "ai",
+   "desc": "Data-keeper (phat hien gap, lap, LLM)",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "feed",
+   "note": ""
+  },
+  {
+   "id": "AI:pattern-engine/src",
+   "cat": "ai",
+   "desc": "Pattern engine + scenario_runner/backtest runner",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "PASS",
+   "owner": "research",
+   "note": "pytest 37 passed (research 2026-10-16, run_pytest_docker.sh pattern-engine); không chạy backtest (đã dừng)"
+  },
+  {
+   "id": "AI:pattern-scan/src",
+   "cat": "ai",
+   "desc": "Quet kich ban live",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "PASS",
+   "owner": "research",
+   "note": "pytest 33 passed (research 2026-10-16, run_pytest_docker.sh pattern-scan); không quét live"
+  },
+  {
+   "id": "AI:../infra/ops/la_lib/llm.py",
+   "cat": "ai",
+   "desc": "LLMClient local/node pool (la_lib)",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "AI:../infra/local-llm",
+   "cat": "ai",
+   "desc": "Local LLM server",
+   "test": "pytest service + golden set (ux/ts); xem docs/handoff/TASK_classroom_ux.md",
+   "status": "CHƯA TEST",
+   "owner": "ux",
+   "note": ""
+  },
+  {
+   "id": "FLAG:EXPERT_COLLECTOR_ENABLED",
+   "cat": "flag",
+   "desc": "Co cau hinh EXPERT_COLLECTOR_ENABLED (infra/.env.example)",
+   "test": "ton tai trong env + service doc duoc (grep code)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "dùng trong services/web-ui/app/src/pages/Overview.jsx, services/web-ui/app/src/pages/Experts.jsx, services/web-ui/app/dist/assets/index-DF3NRC1l.js"
+  },
+  {
+   "id": "FLAG:MARKET_COLLECTOR_ENABLED",
+   "cat": "flag",
+   "desc": "Co cau hinh MARKET_COLLECTOR_ENABLED (infra/.env.example)",
+   "test": "ton tai trong env + service doc duoc (grep code)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "dùng trong infra/docker-compose.yml"
+  },
+  {
+   "id": "FLAG:MT_ENABLED",
+   "cat": "flag",
+   "desc": "Co cau hinh MT_ENABLED (infra/.env.example)",
+   "test": "ton tai trong env + service doc duoc (grep code)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "dùng trong services/web-ui/app/src/pages/Overview.jsx, services/web-ui/app/src/pages/Accounts.jsx, services/web-ui/app/dist/assets/index-DF3NRC1l.js"
+  },
+  {
+   "id": "FLAG:NEWS_COLLECTOR_ENABLED",
+   "cat": "flag",
+   "desc": "Co cau hinh NEWS_COLLECTOR_ENABLED (infra/.env.example)",
+   "test": "ton tai trong env + service doc duoc (grep code)",
+   "status": "PASS",
+   "owner": "qa",
+   "note": "dùng trong infra/docker-compose.yml"
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+/* Trang "Kịch bản" (Scenarios.jsx). Tiền tố sc- để không đụng index.css. Màu chỉ dùng token CSS (sáng/tối). */
+.sc-banner { font-size: 13px; }
+.sc-filters { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.sc-filters select.field { width: auto; min-width: 9.5rem; flex: 1 1 9.5rem; max-width: 14rem; }
+.sc-filters .seg { flex: 0 0 auto; }
+
+.sc-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .sc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { .sc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.sc-card { display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); color: inherit; text-decoration: none; overflow: hidden; transition: border-color .15s; }
+.sc-card:hover, .sc-card:focus-visible { border-color: var(--line2); }
+.sc-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sc-cbody { display: grid; gap: .45rem; padding: .65rem .8rem .75rem; min-width: 0; }
+.sc-ctop { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; min-width: 0; }
+.sc-score { font-weight: 650; font-size: 13px; padding: 1px 7px; border-radius: 6px; border: 1px solid var(--line2); }
+.sc-clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ảnh */
+.sc-img, .sc-noimg { position: relative; display: block; width: 100%; background: #000; overflow: hidden; }
+.sc-img img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.sc-img.zoomable { border: 0; padding: 0; cursor: zoom-in; font: inherit; color: inherit; border-radius: 10px; }
+.sc-img.zoomable:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sc-zoomhint { position: absolute; right: 6px; bottom: 6px; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; background: rgba(0,0,0,.6); color: #fff; }
+.sc-noimg { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; background: var(--panel2); color: var(--faint); font-size: 12px; }
+.sc-thumb { aspect-ratio: 16 / 7.5; }
+.sc-big { aspect-ratio: 16 / 7.5; border-radius: 10px; }
+.sc-tlimg { width: 92px; flex: none; aspect-ratio: 16 / 9; border-radius: 6px; }
+.sc-gimg { aspect-ratio: 16 / 7.5; border-radius: 10px; }
+
+/* mức giá */
+.sc-levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(5.6rem, 1fr)); gap: .35rem; margin: 0; }
+.sc-levels > div { min-width: 0; border: 1px solid var(--line); border-radius: 8px; padding: .3rem .45rem; background: var(--panel2); }
+.sc-levels dt { font-size: 11px; color: var(--muted); font-weight: 600; }
+.sc-levels dd { margin: 0; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sc-levels dd.acc { color: var(--accent); } .sc-levels dd.up { color: var(--up); } .sc-levels dd.down { color: var(--down); }
+/* thẻ: dạng dòng gọn "Entry 2,620.22  SL 2,680.13 ..." xuống dòng theo từng mục */
+.sc-levels.compact { display: flex; flex-wrap: wrap; gap: .2rem .8rem; }
+.sc-levels.compact > div { display: inline-flex; align-items: baseline; gap: .3rem; border: 0; padding: 0; background: none; }
+.sc-levels.compact dd { font-size: 12.5px; }
+
+/* chi tiết */
+.sc-detail { display: grid; gap: .75rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1100px) { .sc-detail { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: start; } }
+.sc-chart { position: relative; width: 100%; }
+.sc-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; font-size: 13px; }
+.sc-steps li { display: flex; gap: .5rem; align-items: flex-start; color: var(--muted); }
+.sc-steps li svg { flex: none; margin-top: 1px; color: var(--faint); }
+.sc-steps li.ok { color: var(--fg); }
+.sc-steps li.ok svg { color: var(--up); }
+.sc-steps small { color: var(--faint); font-size: 12px; }
+.sc-steps.plain li { color: var(--muted); font-size: 12.5px; }
+.sc-tl { list-style: none; margin: 0; padding: 0 0 0 .9rem; display: grid; gap: .6rem; border-left: 2px solid var(--line); }
+.sc-tl li { position: relative; display: flex; gap: .6rem; align-items: center; }
+.sc-tl li::before { content: ""; position: absolute; left: calc(-.9rem - 6px); top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; background: var(--info); border: 2px solid var(--panel); }
+.sc-tl li.triggered::before { background: var(--down); }
+.sc-legs { list-style: none; margin: .55rem 0 0; padding: 0; display: grid; gap: .35rem; font-size: 13px; }
+.sc-legs li { display: flex; align-items: center; gap: .5rem; padding: .3rem .5rem; border: 1px solid var(--line); border-radius: 8px; }
+.sc-tcard { color: inherit; text-decoration: none; }
+
+/* thư viện */
+.sc-gallery { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 640px) { .sc-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .sc-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.sc-gallery figure { margin: 0; display: grid; gap: .4rem; }
+.sc-gallery figcaption { font-size: 12.5px; color: var(--muted); min-width: 0; }
+.sc-gallery figcaption b { color: var(--fg); }
+
+/* giới thiệu */
+.sc-notes { margin: 0; padding-left: 1.1rem; display: grid; gap: .35rem; font-size: 13px; color: var(--muted); }
+.sc-spec { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .sc-spec { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* phóng to ảnh */
+.sc-zoom { position: fixed; inset: 0; z-index: 80; background: rgba(0,0,0,.86); display: flex; align-items: center; justify-content: center; padding: 3rem .5rem 1rem; animation: fade-in .15s ease-out both; }
+.sc-zoom img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; box-shadow: var(--shadow); }
+.sc-zoom-x { position: absolute; top: .6rem; right: .6rem; background: var(--panel) !important; }

@@ -1,0 +1,84 @@
+PASS desktop-dark tổng quan hiển thị bản đồ nhiệt 
+PASS desktop-dark banner minh hoạ 
+PASS desktop-dark tổng quan không tràn ngang [1440,1440]
+PASS desktop-dark tổng quan không lộ tên nguồn 
+PASS desktop-dark danh sách không tràn ngang [1440,1440]
+PASS desktop-dark lọc tìm kiếm 
+PASS desktop-dark lọc vi phạm 
+PASS desktop-dark chi tiết không lộ tên nguồn 
+PASS desktop-dark nút xác nhận khoá khi chưa gõ số 
+PASS desktop-dark nút xác nhận mở khi gõ đúng 
+PASS desktop-dark thẻ onboarding hiện bí mật 
+PASS desktop-dark nút Đóng khoá đến khi tick 
+PASS desktop-dark banner xem như khách 
+PASS desktop-dark thẻ có passcode+pairing+token+HMAC+hướng dẫn 
+FAIL desktop-dark tài khoản thử đã xoá 
+PASS desktop-dark audit có bản ghi tạo/xoá 
+PASS desktop-dark audit không tràn ngang [1440,1440]
+PASS desktop-dark có thông báo EA mất kết nối 
+PASS desktop-dark có thông báo đăng nhập sai 
+PASS desktop-dark thông báo không tràn ngang [1440,1440]
+PASS desktop-dark không lỗi JS 
+PASS desktop-light tổng quan hiển thị bản đồ nhiệt 
+PASS desktop-light banner minh hoạ 
+PASS desktop-light tổng quan không tràn ngang [1440,1440]
+PASS desktop-light tổng quan không lộ tên nguồn 
+PASS desktop-light danh sách không tràn ngang [1440,1440]
+PASS desktop-light lọc tìm kiếm 
+PASS desktop-light lọc vi phạm 
+PASS desktop-light chi tiết không lộ tên nguồn 
+PASS desktop-light nút xác nhận khoá khi chưa gõ số 
+PASS desktop-light nút xác nhận mở khi gõ đúng 
+PASS desktop-light thẻ onboarding hiện bí mật 
+PASS desktop-light nút Đóng khoá đến khi tick 
+PASS desktop-light banner xem như khách 
+PASS desktop-light thẻ có passcode+pairing+token+HMAC+hướng dẫn 
+FAIL desktop-light tài khoản thử đã xoá 
+PASS desktop-light audit có bản ghi tạo/xoá 
+PASS desktop-light audit không tràn ngang [1440,1440]
+PASS desktop-light có thông báo EA mất kết nối 
+PASS desktop-light có thông báo đăng nhập sai 
+PASS desktop-light thông báo không tràn ngang [1440,1440]
+PASS desktop-light không lỗi JS 
+PASS mobile-dark tổng quan hiển thị bản đồ nhiệt 
+PASS mobile-dark banner minh hoạ 
+PASS mobile-dark tổng quan không tràn ngang [390,390]
+PASS mobile-dark tổng quan không lộ tên nguồn 
+PASS mobile-dark danh sách không tràn ngang [390,390]
+PASS mobile-dark lọc tìm kiếm 
+PASS mobile-dark lọc vi phạm 
+PASS mobile-dark chi tiết không lộ tên nguồn 
+PASS mobile-dark nút xác nhận khoá khi chưa gõ số 
+PASS mobile-dark nút xác nhận mở khi gõ đúng 
+PASS mobile-dark thẻ onboarding hiện bí mật 
+PASS mobile-dark nút Đóng khoá đến khi tick 
+PASS mobile-dark banner xem như khách 
+PASS mobile-dark thẻ có passcode+pairing+token+HMAC+hướng dẫn 
+FAIL mobile-dark tài khoản thử đã xoá 
+PASS mobile-dark audit có bản ghi tạo/xoá 
+PASS mobile-dark audit không tràn ngang [390,390]
+PASS mobile-dark có thông báo EA mất kết nối 
+PASS mobile-dark có thông báo đăng nhập sai 
+PASS mobile-dark thông báo không tràn ngang [390,390]
+PASS mobile-dark không lỗi JS 
+PASS mobile-light tổng quan hiển thị bản đồ nhiệt 
+PASS mobile-light banner minh hoạ 
+PASS mobile-light tổng quan không tràn ngang [390,390]
+PASS mobile-light tổng quan không lộ tên nguồn 
+PASS mobile-light danh sách không tràn ngang [390,390]
+PASS mobile-light lọc tìm kiếm 
+PASS mobile-light lọc vi phạm 
+PASS mobile-light chi tiết không lộ tên nguồn 
+PASS mobile-light nút xác nhận khoá khi chưa gõ số 
+PASS mobile-light nút xác nhận mở khi gõ đúng 
+PASS mobile-light thẻ onboarding hiện bí mật 
+PASS mobile-light nút Đóng khoá đến khi tick 
+PASS mobile-light banner xem như khách 
+PASS mobile-light thẻ có passcode+pairing+token+HMAC+hướng dẫn 
+FAIL mobile-light tài khoản thử đã xoá 
+PASS mobile-light audit có bản ghi tạo/xoá 
+PASS mobile-light audit không tràn ngang [390,390]
+PASS mobile-light có thông báo EA mất kết nối 
+PASS mobile-light có thông báo đăng nhập sai 
+PASS mobile-light thông báo không tràn ngang [390,390]
+PASS mobile-light không lỗi JS 

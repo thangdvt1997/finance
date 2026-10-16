@@ -1,0 +1,197 @@
+[
+ {
+  "name": "Đăng nhập sai -> thông báo chung",
+  "pass": true,
+  "extra": "Số tài khoản hoặc mật khẩu cổng không đúng."
+ },
+ {
+  "name": "Passcode ban đầu -> màn hình bắt buộc đổi mật khẩu",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "name": "Chưa đổi mật khẩu -> API dữ liệu bị từ chối",
+  "pass": true,
+  "extra": "status 401"
+ },
+ {
+  "name": "Đổi mật khẩu thành công -> vào ứng dụng",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "name": "GET /accounts chỉ trả tài khoản của tôi",
+  "pass": true,
+  "extra": "status 200 []"
+ },
+ {
+  "name": "GET /auth/me trả đúng tài khoản",
+  "pass": true,
+  "extra": "{\"user_id\":\"02900c38-664a-4c11-aa07-3bfd2b2c8418\",\"role\":\"client\",\"login\":\"mt5:99900001\",\"display_na"
+ },
+ {
+  "name": "IDOR chặn: /risk/accounts/mt5%3A12345678",
+  "pass": true,
+  "extra": "status 403"
+ },
+ {
+  "name": "IDOR chặn: /journal/mt5%3A12345678/summary",
+  "pass": true,
+  "extra": "status 403"
+ },
+ {
+  "name": "IDOR chặn: /equity-history?account_id=mt5%3A12345678",
+  "pass": true,
+  "extra": "status 403"
+ },
+ {
+  "name": "IDOR chặn: /risk/accounts/mt4%3A7654321",
+  "pass": true,
+  "extra": "status 403"
+ },
+ {
+  "name": "IDOR chặn: /journal/mt4%3A7654321/summary",
+  "pass": true,
+  "extra": "status 403"
+ },
+ {
+  "name": "IDOR chặn: /equity-history?account_id=mt4%3A7654321",
+  "pass": true,
+  "extra": "status 403"
+ },
+ {
+  "name": "IDOR chặn: /risk/accounts/demo-1",
+  "pass": true,
+  "extra": "status 403"
+ },
+ {
+  "name": "IDOR chặn: /journal/demo-1/summary",
+  "pass": true,
+  "extra": "status 403"
+ },
+ {
+  "name": "IDOR chặn: /equity-history?account_id=demo-1",
+  "pass": true,
+  "extra": "status 403"
+ },
+ {
+  "name": "Endpoint quản trị/hệ thống không lộ: /c/api/v1/system",
+  "pass": true,
+  "extra": "status 404"
+ },
+ {
+  "name": "Endpoint quản trị/hệ thống không lộ: /c/api/v1/paper/accounts",
+  "pass": true,
+  "extra": "status 404"
+ },
+ {
+  "name": "Endpoint quản trị/hệ thống không lộ: /c/api/v1/reports",
+  "pass": true,
+  "extra": "status 404"
+ },
+ {
+  "name": "Endpoint quản trị/hệ thống không lộ: /c/api/v1/data-sources",
+  "pass": true,
+  "extra": "status 404"
+ },
+ {
+  "name": "Endpoint quản trị/hệ thống không lộ: /c/auth/admin/accounts",
+  "pass": true,
+  "extra": "status 404"
+ },
+ {
+  "name": "Endpoint quản trị/hệ thống không lộ: /c/auth/verify",
+  "pass": true,
+  "extra": "status 404"
+ },
+ {
+  "name": "Không có route ghi/đặt lệnh (POST /accounts)",
+  "pass": true,
+  "extra": "status 405"
+ },
+ {
+  "name": "Trang tong-quan hiển thị",
+  "pass": true,
+  "extra": "Tổng quan"
+ },
+ {
+  "name": "Trang vi-the hiển thị",
+  "pass": true,
+  "extra": "Vị thế & lệnh chờ"
+ },
+ {
+  "name": "Trang rui-ro hiển thị",
+  "pass": true,
+  "extra": "Rủi ro tài khoản"
+ },
+ {
+  "name": "Trang nhat-ky hiển thị",
+  "pass": true,
+  "extra": "Nhật ký giao dịch"
+ },
+ {
+  "name": "Trang thi-truong hiển thị",
+  "pass": true,
+  "extra": "Thị trường"
+ },
+ {
+  "name": "Trang tin-lich hiển thị",
+  "pass": true,
+  "extra": "Tin & Lịch kinh tế"
+ },
+ {
+  "name": "Trang tin-hieu hiển thị",
+  "pass": true,
+  "extra": "Phân tích kỹ thuật"
+ },
+ {
+  "name": "Trang canh-bao hiển thị",
+  "pass": true,
+  "extra": "Cảnh báo của tôi"
+ },
+ {
+  "name": "Trang ho-so hiển thị",
+  "pass": true,
+  "extra": "Hồ sơ & bảo mật"
+ },
+ {
+  "name": "Không có lỗi JS trang",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "name": "Hồ sơ có danh sách phiên",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "name": "Đăng xuất -> về màn hình đăng nhập",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "name": "Sau đăng xuất API trả 401",
+  "pass": true,
+  "extra": "status 401"
+ },
+ {
+  "name": "Passcode cũ không còn dùng được",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "name": "Đăng nhập bằng mật khẩu mới",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "name": "Không có phiên -> /api trả 401",
+  "pass": true,
+  "extra": "status 401"
+ },
+ {
+  "name": "Đăng xuất mọi thiết bị",
+  "pass": true,
+  "extra": ""
+ }
+]

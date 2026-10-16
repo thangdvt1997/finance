@@ -1,0 +1,11 @@
+# Ngay QUYET DINH cua cac phien hop FOMC (cong bo 14:00 ET). Lay tu lich cong bo cua Fed; DA DOI CHIEU 2026-10-11
+# voi https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm (8/8 khop: Jan 27-28, Mar 17-18, Apr 28-29, Jun 16-17, Jul 28-29, Sep 15-16, Oct 27-28, Dec 8-9). Doi chieu lai moi nam.
+decision_dates:
+  - 2026-01-28
+  - 2026-03-18
+  - 2026-04-29
+  - 2026-06-17
+  - 2026-07-29
+  - 2026-09-16
+  - 2026-10-28
+  - 2026-12-09

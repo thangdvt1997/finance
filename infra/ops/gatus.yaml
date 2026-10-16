@@ -1,0 +1,65 @@
+# Gatus (container tradingsys-gatus): kiểm tra /healthz 7 service + TCP Redis/TimescaleDB. UI: http://127.0.0.1:8590
+# Cảnh báo -> alert-service /webhook/alertmanager (định dạng Alertmanager v4) -> dedupe/rate-limit -> Telegram + Apprise(ntfy).
+# Web-ui nằm ở ops/gatus.d/web-ui.yaml (Gatus nạp cả thư mục /cfg).
+storage:
+  type: sqlite
+  path: /data/gatus.db
+metrics: true            # /metrics dạng Prometheus (gatus_results_*), có thể thêm vào prometheus.yml sau
+ui:
+  title: trading-system status
+  header: trading-system
+web:
+  address: 0.0.0.0
+  port: 8080
+
+alerting:
+  custom:
+    url: "http://alert-service:8000/webhook/alertmanager"
+    method: POST
+    headers:
+      Content-Type: application/json
+    body: |
+      {"alerts":[{"status":"[ALERT_TRIGGERED_OR_RESOLVED]",
+        "labels":{"alertname":"Gatus:[ENDPOINT_GROUP]/[ENDPOINT_NAME]","severity":"critical","service":"[ENDPOINT_NAME]"},
+        "annotations":{"summary":"Gatus: [ENDPOINT_NAME] lỗi","description":"[ALERT_DESCRIPTION] [RESULT_ERRORS]"}}]}
+    placeholders:
+      ALERT_TRIGGERED_OR_RESOLVED:
+        TRIGGERED: "firing"
+        RESOLVED: "resolved"
+
+# Mẫu dùng chung qua YAML anchor
+x-http: &http
+  interval: 30s
+  conditions:
+    - "[STATUS] == 200"
+    - "[RESPONSE_TIME] < 2000"
+  alerts:
+    - type: custom
+      failure-threshold: 3
+      success-threshold: 2
+      send-on-resolved: true
+      description: "healthz không đạt 3 lần liên tiếp"
+x-tcp: &tcp
+  interval: 30s
+  conditions:
+    - "[CONNECTED] == true"
+  alerts:
+    - type: custom
+      failure-threshold: 3
+      success-threshold: 2
+      send-on-resolved: true
+      description: "không kết nối được cổng TCP"
+
+endpoints:
+  - { name: storage-writer,   group: services, url: "http://storage-writer:8000/healthz",   <<: *http }
+  - { name: market-collector, group: services, url: "http://market-collector:8000/healthz", <<: *http }
+  - { name: news-collector,   group: services, url: "http://news-collector:8000/healthz",   <<: *http }
+  - { name: expert-collector, group: services, url: "http://expert-collector:8000/healthz", <<: *http }
+  - { name: mt-bridge,        group: services, url: "http://mt-bridge:8000/healthz",        <<: *http }
+  - { name: alert-service,    group: services, url: "http://alert-service:8000/healthz",    <<: *http }
+  - { name: api-gateway,      group: services, url: "http://api-gateway:8000/healthz",      <<: *http }
+  - { name: redis,            group: data,     url: "tcp://redis:6379",       <<: *tcp }
+  - { name: timescaledb,      group: data,     url: "tcp://timescaledb:5432", <<: *tcp }
+  - { name: prometheus,       group: ops,      url: "http://prometheus:9090/-/healthy", <<: *http }
+  - { name: alertmanager,     group: ops,      url: "http://alertmanager:9093/-/healthy", <<: *http }
+  - { name: grafana,          group: ops,      url: "http://grafana:3000/api/health", <<: *http }

@@ -1,0 +1,92 @@
+{
+ "kind": "backtest",
+ "pattern": "KB-3",
+ "title": "KB-3 · XAUUSD H4 (backtest, điển hình -0.41R)",
+ "symbol": "XAUUSD",
+ "tf": "H4",
+ "ts": "2018-09-10T13:00:00+00:00",
+ "note": "Mô phỏng lịch sử (ngoài mẫu walk-forward): Sell ở giá mở nến sau tín hiệu, SL theo cấu trúc, TP 2.0R, đã trừ chi phí; thoát hết thời gian giữ sau 100 nến. vai-đầu-vai. Không phải khuyến nghị.",
+ "period": "dev-oos",
+ "pick": "dien-hinh",
+ "result": {
+  "outcome": "time",
+  "r": -0.405,
+  "entry_ts": "2018-09-10 17:00:00",
+  "exit_ts": "2018-10-03 05:00:00",
+  "entry": 1196.22,
+  "sl": 1215.309942,
+  "tp": 1158.040116,
+  "exit": 1203.96
+ },
+ "score": 93.1,
+ "levels": {
+  "neckline": 1186.37,
+  "head": 1214.21,
+  "left_shoulder": 1201.52,
+  "right_shoulder": 1206.95,
+  "range_high": 1214.21,
+  "range_low": 1163.68,
+  "measured_move": 1158.53,
+  "entry": 1196.26,
+  "sl": 1215.309942,
+  "r": 19.049942,
+  "atr": 4.399768,
+  "tp_1r": 1177.210058,
+  "tp_2r": 1158.160116,
+  "tp_3r": 1139.110174
+ },
+ "steps": [
+  {
+   "id": 1,
+   "ok": true,
+   "detail": "sóng dẫn 19.3 ATR, 25 nến đỏ dài, xanh 36%"
+  },
+  {
+   "id": 2,
+   "ok": true,
+   "detail": "đi ngang 104 nến, biên 11.5 ATR"
+  },
+  {
+   "id": 3,
+   "ok": true,
+   "detail": "vai-đầu-vai: vai 1201.52/1206.95, đầu 1214.21, cổ 1186.37"
+  },
+  {
+   "id": 4,
+   "ok": true,
+   "detail": "giá 1195.74 về gần đường cổ 1186.37"
+  },
+  {
+   "id": 5,
+   "ok": true,
+   "detail": "cụm 3 nến thân nhỏ (<= 0.36 ATR) sát đường cổ 1186.37"
+  }
+ ],
+ "points": [
+  {
+   "label": "LS",
+   "t": "2018-08-22T09:00:00+00:00",
+   "p": 1201.52
+  },
+  {
+   "label": "",
+   "t": "2018-08-23T21:00:00+00:00",
+   "p": 1183.18
+  },
+  {
+   "label": "H",
+   "t": "2018-08-28T09:00:00+00:00",
+   "p": 1214.21
+  },
+  {
+   "label": "",
+   "t": "2018-09-04T13:00:00+00:00",
+   "p": 1189.56
+  },
+  {
+   "label": "RS",
+   "t": "2018-09-06T13:00:00+00:00",
+   "p": 1206.95
+  }
+ ]
+}

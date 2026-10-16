@@ -1,0 +1,19 @@
+[project]
+name = "ai-trading-worker"
+version = "0.1.0"
+requires-python = ">=3.12"
+description = "Worker nền tab AI Trading: detector thử, golden test, backtest trung thực + test khoá riêng cho Kịch bản mới. CHỈ nghiên cứu/paper."
+dependencies = ["numpy>=2", "pandas>=2.2", "pyarrow>=15", "pyyaml>=6"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

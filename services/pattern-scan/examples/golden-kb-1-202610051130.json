@@ -1,0 +1,62 @@
+{
+ "kind": "golden",
+ "pattern": "KB-1",
+ "title": "KB-1 · XAUUSD M15 (mẫu chuẩn)",
+ "symbol": "XAUUSD",
+ "tf": "M15",
+ "ts": "2026-10-05T11:45:00+00:00",
+ "note": "Ảnh mẫu 2: hồi - giảm nhẹ - hồi vượt đỉnh - 2 đỉnh giảm dần - nhấn chìm giảm.",
+ "levels": {
+  "wave_high": 4259.0,
+  "wave_low": 4153.8,
+  "high_4": 4198.9,
+  "low_3": 4152.3,
+  "high_5": 4197.1,
+  "entry": 4182.8,
+  "sl": 4200.52507,
+  "r": 17.72507,
+  "atr": 6.50027,
+  "tp_1r": 4165.07493,
+  "tp_2r": 4147.34987,
+  "tp_3r": 4129.6248,
+  "prev_low": 4152.3
+ },
+ "steps": [
+  {
+   "id": 1,
+   "label": "(1) Sóng giảm dẫn hướng mạnh",
+   "ok": true,
+   "detail": "sóng dẫn 7.3 ATR, 4 nến đỏ dài, xanh 12%"
+  },
+  {
+   "id": 2,
+   "label": "(2) Hồi lên <= ~50% sóng (1)",
+   "ok": true,
+   "detail": "hồi 35% sóng (1)"
+  },
+  {
+   "id": 3,
+   "label": "(3) Giảm nhẹ ≈ sóng (2) (±25%)",
+   "ok": true,
+   "detail": "sóng (3)/(2) = 1.04"
+  },
+  {
+   "id": 4,
+   "label": "(4) Hồi vượt đỉnh (2) một chút (<= 25% sóng (3))",
+   "ok": true,
+   "detail": "vượt đỉnh (2) 20% sóng (3)"
+  },
+  {
+   "id": 5,
+   "label": "(5) Đi ngang tạo 2 đỉnh giảm dần",
+   "ok": true,
+   "detail": "2 đỉnh giảm dần"
+  },
+  {
+   "id": 6,
+   "label": "(6) Nến nhấn chìm giảm thân dài (đóng nến)",
+   "ok": true,
+   "detail": "nhấn chìm giảm thân 2.0 ATR dưới đỉnh (5) 4197.10"
+  }
+ ]
+}

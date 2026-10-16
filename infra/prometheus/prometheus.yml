@@ -1,0 +1,96 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+# Luật + Alertmanager nằm trong docker-compose.ops.yml (mount /etc/prometheus/rules.yml). Thiếu file -> không có luật, không lỗi.
+rule_files:
+  - /etc/prometheus/rules*.yml
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager:9093"]
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs: [{ targets: ["localhost:9090"] }]
+  - job_name: services
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["storage-writer:8000"]
+        labels: { service: storage-writer }
+      - targets: ["market-collector:8000"]
+        labels: { service: market-collector }
+      - targets: ["news-collector:8000"]
+        labels: { service: news-collector }
+      - targets: ["expert-collector:8000"]
+        labels: { service: expert-collector }
+      - targets: ["mt-bridge:8000"]
+        labels: { service: mt-bridge }
+      - targets: ["alert-service:8000"]
+        labels: { service: alert-service }
+      - targets: ["api-gateway:8000"]
+        labels: { service: api-gateway }
+      - targets: ["alert-rules:8000"]
+        labels: { service: alert-rules }
+      - targets: ["vn-market:8000"]
+        labels: { service: vn-market }
+      - targets: ["data-keeper:8000"]
+        labels: { service: data-keeper }
+      - targets: ["reporter:8000"]
+        labels: { service: reporter }
+      - targets: ["risk-monitor:8000"]
+        labels: { service: risk-monitor }
+      - targets: ["analytics:8000"]
+        labels: { service: analytics }
+      - targets: ["pattern-engine:8000"]
+        labels: { service: pattern-engine }
+      - targets: ["pattern-scan:8000"]
+        labels: { service: pattern-scan }
+      - targets: ["ai-trading:8000"]
+        labels: { service: ai-trading }
+      - targets: ["nlp:8000"]
+        labels: { service: nlp }
+      - targets: ["paper-trader:8000"]
+        labels: { service: paper-trader }
+      - targets: ["journal:8000"]
+        labels: { service: journal }
+      - targets: ["track-record:8000"]
+        labels: { service: track-record }
+      - targets: ["auth:8000"]
+        labels: { service: auth }
+      - targets: ["briefing:8000"]
+        labels: { service: briefing }
+  # Chỉ có khi chạy docker-compose.ops.yml (alertmanager + extra_hosts host.docker.internal).
+  - job_name: alertmanager
+    static_configs: [{ targets: ["alertmanager:9093"] }]
+  # ---- Exporter hạ tầng (docker-compose.ops.yml / tools.yml) ----
+  - job_name: postgres
+    scrape_interval: 60s
+    static_configs: [{ targets: ["postgres-exporter:9187"], labels: { service: timescaledb } }]
+  - job_name: redis
+    static_configs: [{ targets: ["redis-exporter:9121"], labels: { service: redis } }]
+  - job_name: backup            # textfile: tuổi backup/restore-test/PITR/off-site (infra/backup/backup_watch.sh)
+    static_configs: [{ targets: ["textfile-exporter:9100"], labels: { service: backup } }]
+  - job_name: local-llm         # llama-swap /metrics (token in/out, yeu cau, model dang nap, CPU); KHONG scrape /upstream/* (se kich hoat nap model)
+    scrape_interval: 30s
+    static_configs: [{ targets: ["local-llm:8080"], labels: { service: local-llm } }]
+  - job_name: ai-pool-lb        # router pool node llama.cpp (pool_lb.py): token, yeu cau, node up/busy
+    scrape_interval: 30s
+    static_configs: [{ targets: ["ai-pool-lb:8080"], labels: { service: ai-pool-lb } }]
+  - job_name: gatus             # kết quả probe healthz của Gatus (gatus_results_*)
+    metrics_path: /metrics
+    static_configs: [{ targets: ["gatus:8080"], labels: { service: gatus } }]
+  - job_name: cadvisor          # chỉ giữ container thuộc project tradingsys (không kéo series của hệ thống khác trên host dùng chung)
+    scrape_interval: 30s
+    static_configs: [{ targets: ["cadvisor:8080"], labels: { service: cadvisor } }]
+    metric_relabel_configs:
+      - source_labels: [container_label_com_docker_compose_project]
+        regex: tradingsys
+        action: keep
+  # node_exporter CÓ SẴN trên host (systemd node_exporter.service :9100) — không cài thêm.
+  # Cần ufw allow từ subnet tradingsys_internal tới 9100 (xem infra/host/ufw_allow_node_exporter.sh).
+  - job_name: node
+    static_configs:
+      - targets: ["host.docker.internal:9100"]
+        labels: { service: host }

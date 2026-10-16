@@ -1,0 +1,9 @@
+.git
+.venv
+**/__pycache__
+**/*.pyc
+**/node_modules
+services/web-ui/app/dist
+services/web-ui/docs
+infra/.env
+infra/web-ui/auth/htpasswd

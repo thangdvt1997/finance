@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Đăng nhập</title>
+<link rel="stylesheet" href="/auth/static/login.css">
+</head>
+<body>
+<main class="card">
+  <h1>Đăng nhập</h1>
+  <p class="muted" id="subtitle">Nhập ID tài khoản MT và mật khẩu cổng.</p>
+
+  <form id="f-login" autocomplete="on">
+    <label>Loại tài khoản
+      <select id="platform" name="platform">
+        <option value="mt5">MetaTrader 5</option>
+        <option value="mt4">MetaTrader 4</option>
+        <option value="master">Quản trị (master)</option>
+      </select>
+    </label>
+    <label><span id="login-label">Số tài khoản</span>
+      <input id="login" name="username" inputmode="text" autocomplete="username" required maxlength="32">
+    </label>
+    <label id="server-row">Máy chủ broker (nếu trùng số)
+      <input id="server" name="server" maxlength="64" autocomplete="off">
+    </label>
+    <label>Mật khẩu
+      <input id="secret" name="password" type="password" autocomplete="current-password" required maxlength="256">
+    </label>
+    <label id="totp-row" hidden>Mã xác thực 2 bước
+      <input id="totp" inputmode="numeric" pattern="[0-9 ]{6,8}" maxlength="8" autocomplete="one-time-code">
+    </label>
+    <button type="submit" id="btn-login">Đăng nhập</button>
+    <p class="link"><a href="#" id="to-pair">Tôi có mã ghép cặp</a></p>
+  </form>
+
+  <form id="f-change" hidden>
+    <p class="muted">Bạn cần đặt mật khẩu mới trước khi tiếp tục (tối thiểu 10 ký tự).</p>
+    <label>Mật khẩu hiện tại <input id="cur" type="password" autocomplete="current-password" required maxlength="256"></label>
+    <label>Mật khẩu mới <input id="new1" type="password" autocomplete="new-password" required maxlength="128"></label>
+    <label>Nhập lại mật khẩu mới <input id="new2" type="password" autocomplete="new-password" required maxlength="128"></label>
+    <button type="submit">Đổi mật khẩu</button>
+  </form>
+
+  <form id="f-pair" hidden>
+    <p class="muted">Nhập mã ghép cặp (hiển thị trong nhật ký Experts của EA hoặc do quản trị cấp) và đặt mật khẩu.</p>
+    <label>Loại tài khoản
+      <select id="p-platform"><option value="mt5">MetaTrader 5</option><option value="mt4">MetaTrader 4</option></select>
+    </label>
+    <label>Số tài khoản <input id="p-login" inputmode="numeric" pattern="[0-9]+" required maxlength="16"></label>
+    <label>Mã ghép cặp <input id="p-code" autocomplete="off" required maxlength="40"></label>
+    <label>Mật khẩu mới <input id="p-new1" type="password" autocomplete="new-password" required maxlength="128"></label>
+    <label>Nhập lại mật khẩu <input id="p-new2" type="password" autocomplete="new-password" required maxlength="128"></label>
+    <button type="submit">Ghép cặp</button>
+    <p class="link"><a href="#" id="to-login">Quay lại đăng nhập</a></p>
+  </form>
+
+  <p id="msg" role="alert" class="msg" hidden></p>
+</main>
+<script src="/auth/static/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+# SLO / burn-rate + cảnh báo hạ tầng (ARCH_AUDIT O-1/O-2). Mô tả SLO: docs/SLO.md. Kiểm tra: promtool check rules (xem docs/OBSERVABILITY.md).
+# Mẫu burn-rate nhiều cửa sổ (Google SRE Workbook): fast = 1h&5m (critical), slow = 6h&30m (warning). Có chốt lưu lượng tối thiểu để tránh báo giả khi gần như không có request.
+groups:
+  - name: tradingsys-slo-recording
+    interval: 30s
+    rules:
+      # ---- SLO-1: tính sẵn có API (99,5% request /v1 không 5xx / 30 ngày) ----
+      - record: slo:api_requests:rate5m
+        expr: sum(rate(gateway_http_requests_total[5m]))
+      - record: slo:api_error_ratio:rate5m
+        expr: (sum(rate(gateway_http_requests_total{status=~"5.."}[5m])) or vector(0)) / clamp_min(sum(rate(gateway_http_requests_total[5m])), 1e-9)
+      - record: slo:api_error_ratio:rate30m
+        expr: (sum(rate(gateway_http_requests_total{status=~"5.."}[30m])) or vector(0)) / clamp_min(sum(rate(gateway_http_requests_total[30m])), 1e-9)
+      - record: slo:api_error_ratio:rate1h
+        expr: (sum(rate(gateway_http_requests_total{status=~"5.."}[1h])) or vector(0)) / clamp_min(sum(rate(gateway_http_requests_total[1h])), 1e-9)
+      - record: slo:api_error_ratio:rate6h
+        expr: (sum(rate(gateway_http_requests_total{status=~"5.."}[6h])) or vector(0)) / clamp_min(sum(rate(gateway_http_requests_total[6h])), 1e-9)
+      # ---- SLO-2: độ trễ API (95% request /v1 < 500ms / 30 ngày); tỉ lệ request CHẬM = 1 - (<=0,5s / tất cả) ----
+      - record: slo:api_slow_ratio:rate5m
+        expr: 1 - (sum(rate(gateway_http_request_seconds_bucket{le="0.5"}[5m])) / clamp_min(sum(rate(gateway_http_request_seconds_count[5m])), 1e-9))
+      - record: slo:api_slow_ratio:rate30m
+        expr: 1 - (sum(rate(gateway_http_request_seconds_bucket{le="0.5"}[30m])) / clamp_min(sum(rate(gateway_http_request_seconds_count[30m])), 1e-9))
+      - record: slo:api_slow_ratio:rate1h
+        expr: 1 - (sum(rate(gateway_http_request_seconds_bucket{le="0.5"}[1h])) / clamp_min(sum(rate(gateway_http_request_seconds_count[1h])), 1e-9))
+      - record: slo:api_slow_ratio:rate6h
+        expr: 1 - (sum(rate(gateway_http_request_seconds_bucket{le="0.5"}[6h])) / clamp_min(sum(rate(gateway_http_request_seconds_count[6h])), 1e-9))
+      - record: slo:api_latency_p95:5m
+        expr: histogram_quantile(0.95, sum by (le) (rate(gateway_http_request_seconds_bucket[5m])))
+      # ---- SLO-3: độ tươi dữ liệu (canary luôn-mở = crypto_ccxt: quote <120s, bar M1 <300s; mục tiêu 99% thời gian / 30 ngày) ----
+      - record: slo:data_fresh:crypto
+        expr: (max(ts_data_quotes_age_seconds{source="crypto_ccxt"}) < bool 120) * (max(ts_data_bars_age_seconds{source="crypto_ccxt",tf="M1"}) < bool 300)
+      # ---- SLO-4: bus (độ trễ xử lý): storage-writer không để backlog > 1000 sự kiện (mục tiêu 99,9%) ----
+      - record: slo:bus_ok
+        expr: max(sw_stream_lag) < bool 1000
+
+  - name: tradingsys-slo-burn
+    rules:
+      - alert: SloApiAvailabilityFastBurn
+        expr: (slo:api_error_ratio:rate1h > (14.4 * 0.005) and slo:api_error_ratio:rate5m > (14.4 * 0.005)) and on() slo:api_requests:rate5m > 0.02
+        for: 2m
+        labels: { severity: critical, slo: api-availability }
+        annotations: { summary: "SLO sẵn có API đốt ngân sách lỗi rất nhanh (14,4x)", description: "Tỉ lệ 5xx 1h = {{ $value | humanizePercentage }} (mục tiêu <=0,5%). Với tốc độ này hết ngân sách 30 ngày trong ~2 ngày. Xem docs/SLO.md." }
+      - alert: SloApiAvailabilitySlowBurn
+        expr: (slo:api_error_ratio:rate6h > (6 * 0.005) and slo:api_error_ratio:rate30m > (6 * 0.005)) and on() slo:api_requests:rate5m > 0.02
+        for: 15m
+        labels: { severity: warning, slo: api-availability }
+        annotations: { summary: "SLO sẵn có API đốt ngân sách chậm (6x)", description: "Tỉ lệ 5xx 6h = {{ $value | humanizePercentage }}." }
+      - alert: SloApiLatencyFastBurn
+        expr: (slo:api_slow_ratio:rate1h > (6 * 0.05) and slo:api_slow_ratio:rate5m > (6 * 0.05)) and on() slo:api_requests:rate5m > 0.02
+        for: 5m
+        labels: { severity: critical, slo: api-latency }
+        annotations: { summary: "SLO độ trễ API đốt nhanh: >30% request /v1 chậm hơn 500ms", description: "Tỉ lệ chậm 1h = {{ $value | humanizePercentage }}." }
+      - alert: SloApiLatencySlowBurn
+        expr: (slo:api_slow_ratio:rate6h > (2 * 0.05) and slo:api_slow_ratio:rate30m > (2 * 0.05)) and on() slo:api_requests:rate5m > 0.02
+        for: 30m
+        labels: { severity: warning, slo: api-latency }
+        annotations: { summary: "SLO độ trễ API đốt chậm: >10% request chậm hơn 500ms trong 6h", description: "Tỉ lệ chậm 6h = {{ $value | humanizePercentage }}." }
+      - alert: SloDataFreshnessFastBurn
+        # canary crypto 24/7: không tươi >14,4% trong 1h VÀ trong 5 phút gần nhất cũng vượt ngưỡng
+        expr: (1 - avg_over_time(slo:data_fresh:crypto[1h])) > (14.4 * 0.01) and (1 - avg_over_time(slo:data_fresh:crypto[5m])) > (14.4 * 0.01)
+        for: 5m
+        labels: { severity: critical, slo: data-freshness }
+        annotations: { summary: "SLO độ tươi dữ liệu đốt nhanh: nguồn crypto (canary) không cập nhật", description: "Quote >120s hoặc bar M1 >300s trong {{ $value | humanizePercentage }} của 1h qua. Kiểm tra market-collector/nguồn." }
+      - alert: SloDataFreshnessSlowBurn
+        expr: (1 - avg_over_time(slo:data_fresh:crypto[6h])) > (6 * 0.01) and (1 - avg_over_time(slo:data_fresh:crypto[30m])) > (6 * 0.01)
+        for: 30m
+        labels: { severity: warning, slo: data-freshness }
+        annotations: { summary: "SLO độ tươi dữ liệu đốt chậm", description: "Tỉ lệ không-tươi 6h = {{ $value | humanizePercentage }}." }
+      - alert: SloBusLagFastBurn
+        expr: (1 - avg_over_time(slo:bus_ok[1h])) > (14.4 * 0.001) and (1 - avg_over_time(slo:bus_ok[5m])) > (14.4 * 0.001)
+        for: 15m
+        labels: { severity: critical, slo: bus-lag }
+        annotations: { summary: "SLO xử lý bus đốt nhanh: backlog stream >1000 kéo dài", description: "Tỉ lệ thời gian backlog>1000 trong 1h = {{ $value | humanizePercentage }}." }
+
+  - name: tradingsys-data-freshness
+    rules:
+      - alert: DataSourceStaleQuotes
+        expr: ts_data_quotes_age_seconds{source="crypto_ccxt"} > 600
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "Quote crypto cũ hơn 10 phút", description: "Nguồn {{ $labels.source }}: {{ $value | humanizeDuration }} kể từ quote cuối trong DB (đường bus->DB hoặc nguồn)." }
+      - alert: DataSourceStaleBarsM1
+        expr: ts_data_bars_age_seconds{source="crypto_ccxt",tf="M1"} > 900
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "Bar M1 crypto cũ hơn 15 phút", description: "{{ $labels.source }}/{{ $labels.tf }}: {{ $value | humanizeDuration }}." }
+      - alert: NewsIngestStale
+        expr: ts_data_news_age_seconds > 6 * 3600
+        for: 15m
+        labels: { severity: warning }
+        annotations: { summary: "Không có tin mới được nạp vào DB >6 giờ", description: "{{ $value | humanizeDuration }} kể từ tin cuối." }
+      - alert: AlertStorm
+        expr: ts_alerts_backlog_last_hour > 200
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Hơn 200 cảnh báo/giờ ghi vào DB (bão cảnh báo)", description: "{{ $value }} cảnh báo trong 1 giờ; kiểm tra dedupe/luật." }
+
+  - name: tradingsys-infra
+    rules:
+      - alert: PostgresDown
+        expr: pg_up == 0
+        for: 2m
+        labels: { severity: critical }
+        annotations: { summary: "postgres-exporter không kết nối được TimescaleDB", description: "pg_up=0 trong 2 phút." }
+      - alert: PostgresConnectionsHigh
+        expr: sum(pg_stat_activity_count) / max(pg_settings_max_connections) > 0.8
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Kết nối Postgres >80% max_connections", description: "{{ $value | humanizePercentage }}." }
+      - alert: PostgresWalArchiveFailing
+        expr: increase(pg_stat_archiver_failed_count[15m]) > 0
+        labels: { severity: critical }
+        annotations: { summary: "Lưu trữ WAL (PITR) lỗi", description: "pg_stat_archiver_failed_count tăng; kiểm tra /wal-archive và dung lượng đĩa." }
+      - alert: PostgresWalArchiveStale
+        expr: (time() - pg_stat_archiver_last_archive_time > 1800) and on() (rate(pg_stat_database_xact_commit{datname="ts"}[30m]) > 0)
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "WAL chưa được lưu trữ >30 phút", description: "archive_timeout=300s nên không nên quá 10 phút." }
+      - alert: RedisDown
+        expr: redis_up == 0
+        for: 1m
+        labels: { severity: critical }
+        annotations: { summary: "redis-exporter không kết nối được Redis", description: "redis_up=0." }
+      - alert: RedisMemoryHigh
+        expr: (redis_memory_used_bytes / redis_memory_max_bytes > 0.8) and (redis_memory_max_bytes > 0)
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Redis dùng >80% maxmemory (noeviction => ghi sẽ lỗi khi đầy)", description: "{{ $value | humanizePercentage }}." }
+      - alert: DlqNotEmpty
+        expr: redis_stream_length{stream="dlq"} > 100
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "DLQ có >100 sự kiện", description: "{{ $value }} sự kiện trong stream dlq; xem lý do và replay." }
+      - alert: StreamGroupLagHigh
+        expr: max by (stream, group) (redis_stream_group_lag) > 5000
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Consumer group chậm >5000 sự kiện", description: "{{ $labels.stream }}/{{ $labels.group }} lag={{ $value }}." }
+      - alert: BackupTooOld
+        expr: time() - ts_backup_last_success_timestamp > 26 * 3600
+        for: 10m
+        labels: { severity: critical }
+        annotations: { summary: "Backup DB thành công gần nhất cách >26 giờ", description: "{{ $value | humanizeDuration }}. Xem docs/DR_RUNBOOK.md." }
+      - alert: BackupJobFailed
+        expr: (ts_backup_last_run_failed == 1) or (ts_restore_test_last_run_failed == 1)
+        for: 5m
+        labels: { severity: critical }
+        annotations: { summary: "Lần chạy backup/restore-test gần nhất lỗi", description: "Xem /var/lib/tradingsys-backup/*.last_failure." }
+      - alert: RestoreTestTooOld
+        expr: time() - ts_restore_test_last_success_timestamp > 8 * 86400
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Restore-test thành công gần nhất >8 ngày", description: "Backup chưa được kiểm chứng khôi phục được." }
+      - alert: ContainerMemoryNearLimit
+        expr: container_memory_working_set_bytes{container_label_com_docker_compose_project="tradingsys"} / (container_spec_memory_limit_bytes{container_label_com_docker_compose_project="tradingsys"} > 0) > 0.9
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Container dùng >90% giới hạn RAM", description: "{{ $labels.container_label_com_docker_compose_service }}: {{ $value | humanizePercentage }} - nguy cơ OOM-kill." }
+      - alert: ContainerCpuThrottled
+        expr: sum by (container_label_com_docker_compose_service) (rate(container_cpu_cfs_throttled_periods_total{container_label_com_docker_compose_project="tradingsys"}[10m])) / sum by (container_label_com_docker_compose_service) (rate(container_cpu_cfs_periods_total{container_label_com_docker_compose_project="tradingsys"}[10m])) > 0.5
+        for: 15m
+        labels: { severity: warning }
+        annotations: { summary: "Container bị giới hạn CPU >50% thời gian", description: "{{ $labels.container_label_com_docker_compose_service }}: tăng cpus trong compose nếu kéo dài." }
+      - alert: GatusEndpointFailing
+        expr: gatus_results_endpoint_success == 0
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "Gatus: endpoint lỗi", description: "{{ $labels.group }}/{{ $labels.name }}." }
+
+  - name: tradingsys-paper-risk
+    rules:
+      - alert: PaperCycleStale
+        expr: time() - paper_last_success_timestamp > 900
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "paper-trader không chạy chu kỳ thành công >15 phút", description: "{{ $value | humanizeDuration }} kể từ chu kỳ OK cuối (mô phỏng; không ảnh hưởng tiền thật)." }
+      - alert: AnalyticsCyclesStopped
+        expr: (sum(increase(analytics_cycles_total{status="ok"}[30m])) == 0) and on() (time() - max(process_start_time_seconds{service="analytics"}) > 1800)
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "analytics không có chu kỳ thành công trong 30 phút", description: "Kiểm tra docker logs tradingsys-analytics." }
+      - alert: RiskMarginLevelLow
+        expr: (risk_margin_level_pct > 0) and (risk_margin_level_pct < 150)
+        for: 5m
+        labels: { severity: critical }
+        annotations: { summary: "Mức ký quỹ tài khoản MT thấp (<150%)", description: "{{ $labels.account }}: {{ $value }}%." }
+  # Vòng hoàn thiện 2026-10-14: crash-loop container + dự báo đầy đĩa (rẻ, không cần exporter mới).
+  - name: tradingsys-ops-extra
+    rules:
+      - alert: ContainerCrashLoop
+        expr: changes(container_start_time_seconds{container_label_com_docker_compose_project="tradingsys"}[30m]) > 3
+        labels: { severity: warning }
+        annotations: { summary: "Container {{ $labels.container_label_com_docker_compose_service }} khởi động lại >3 lần/30 phút", description: "Kiểm tra docker logs tradingsys-{{ $labels.container_label_com_docker_compose_service }} (OOM? crash?)." }
+      - alert: HostDiskFillingFast
+        expr: predict_linear(node_filesystem_avail_bytes{job="node",mountpoint="/",fstype!~"tmpfs|overlay"}[6h], 72 * 3600) < 0
+        for: 30m
+        labels: { severity: warning }
+        annotations: { summary: "Ổ đĩa host sẽ đầy trong <72 giờ theo xu hướng 6 giờ", description: "Kiểm tra wal-archive/backups/docker (xem docs/DATA_RETENTION.md mục dự báo đĩa)." }

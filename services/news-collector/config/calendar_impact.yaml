@@ -1,0 +1,7 @@
+# Phan loai impact cho lich nguon chinh thuc (BLS ICS) theo tu khoa (substring, khong phan biet hoa/thuong) trong tieu de.
+# Thu tu uu tien: low_override -> high -> med -> low. Doi chieu voi ICS that 2026-10-11 (313 su kien/23 thang):
+#  - 'Employment Situation of Veterans', 'Productivity and Costs by Industry...', 'State Job Openings...' KHONG phai tin high.
+#  - Tieu de that cua BLS: 'U.S. Import and Export Price Indexes', 'Job Openings and Labor Turnover Survey'.
+low_override: ["of Veterans", "by Industry", "State Job Openings"]
+high: ["Employment Situation", "Consumer Price Index", "Producer Price Index", "Employment Cost Index", "Productivity and Costs", "Job Openings and Labor Turnover Survey"]
+med: ["Real Earnings", "Import and Export Price", "Unemployment Insurance", "State Employment", "Metropolitan Area Employment", "Consumer Expenditure", "Business Employment Dynamics"]

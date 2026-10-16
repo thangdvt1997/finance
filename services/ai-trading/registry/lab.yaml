@@ -1,0 +1,10 @@
+# Thí nghiệm thủ công thêm vào Lab (các thí nghiệm backtest KB đã chạy được dựng tự động từ hiện vật summary.json/ledger_info.json).
+experiments:
+  - id: D2-rl-prototype
+    title: "RL prototype (ES + Q-learning) H1 EURUSD/XAUUSD/US500, walk-forward val, 10 seed"
+    date: "2026-10-15"
+    strategy: rl-sim
+    verdict: no_edge
+    summary: "Q-learning ~0/âm; ES chỉ thiên lệch mua, thua mua&giữ (vàng 1,72 vs 2,75); DSR trung vị <= 0,17 với 60 lần thử. TEST khoá không mở."
+    snapshot_sha256: "fb2f71fea4837b3e879533f686907e3be7e1397180f517724acd6e20fe822f21"
+    report: docs/research/RL_PROTOTYPE.md

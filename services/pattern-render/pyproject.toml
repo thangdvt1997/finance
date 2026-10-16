@@ -1,0 +1,20 @@
+[project]
+name = "pattern-render"
+version = "0.1.0"
+requires-python = ">=3.10"
+description = "Render PNG kich ban pattern (nen MT4 + danh so song, bien/nem, hop, mui ten, entry/SL/TP) - doc lap voi engine"
+dependencies = ["matplotlib>=3.8", "numpy>=1.26", "pillow>=10"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

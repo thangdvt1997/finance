@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Ideas</title>
+    <item>
+      <title>EURUSD long: breakout above 1.0900</title>
+      <link>https://example.org/idea/1</link>
+      <guid>idea-1</guid>
+      <pubDate>Mon, 05 Oct 2026 08:00:00 GMT</pubDate>
+      <description>&lt;p&gt;Buy setup, target 1.1050&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Weekly macro outlook</title>
+      <link>https://example.org/idea/2</link>
+      <guid>idea-2</guid>
+      <pubDate>Mon, 05 Oct 2026 09:00:00 GMT</pubDate>
+      <description>No trade idea here.</description>
+    </item>
+    <item>
+      <title>VNM: KHẢ QUAN, giá mục tiêu 78,000</title>
+      <link>https://example.org/report/3</link>
+      <guid>rep-3</guid>
+      <pubDate>Tue, 06 Oct 2026 02:00:00 GMT</pubDate>
+      <description>Báo cáo cập nhật</description>
+    </item>
+    <item>
+      <title>Khuyến nghị BÁN cổ phiếu HPG</title>
+      <link>https://example.org/report/4</link>
+      <guid>rep-4</guid>
+      <pubDate>Tue, 06 Oct 2026 03:00:00 GMT</pubDate>
+      <description>x</description>
+    </item>
+    <item>
+      <title>XAU/USD short idea</title>
+      <link>https://example.org/idea/5</link>
+      <guid>idea-5</guid>
+      <pubDate>Tue, 06 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Sell on rejection</description>
+    </item>
+  </channel>
+</rss>

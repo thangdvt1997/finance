@@ -1,0 +1,53 @@
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request:
+permissions: { contents: read }
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/ruff-action@v3
+        with: { args: "check ." }
+      - uses: gitleaks/gitleaks-action@v2
+        env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: [libs/common, services/storage-writer, services/mt-bridge, services/alert-service, services/api-gateway, services/market-collector, services/news-collector, services/expert-collector, services/analytics, services/paper-trader, services/nlp]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: pytest (fakeredis, không cần DB/Redis thật)
+        run: |
+          pip install -q ./libs/common[test]
+          pip install -q "./${{ matrix.pkg }}[test]"
+          cd "${{ matrix.pkg }}" && python -m pytest -q -p no:cacheprovider
+  static-readonly:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tests/e2e/static_readonly_scan.py   # chứng minh không có mã đặt lệnh
+  image-scan:
+    runs-on: ubuntu-24.04
+    needs: [lint, test]
+    steps:
+      - uses: actions/checkout@v4
+      - name: build các image chính (context = gốc repo)
+        run: |
+          for s in storage-writer mt-bridge alert-service api-gateway market-collector news-collector expert-collector; do
+            docker build -q -f services/$s/Dockerfile -t tradingsys-$s:ci .
+          done
+      - uses: aquasecurity/trivy-action@0.28.0
+        with: { scan-type: fs, scan-ref: ., severity: "HIGH,CRITICAL", ignore-unfixed: true, exit-code: "1" }
+      - name: SBOM (syft, CycloneDX)
+        uses: anchore/sbom-action@v0
+        with: { image: "tradingsys-storage-writer:ci", format: cyclonedx-json, output-file: sbom-storage-writer.cdx.json }
+      - uses: actions/upload-artifact@v4
+        with: { name: sbom, path: "sbom-*.json" }

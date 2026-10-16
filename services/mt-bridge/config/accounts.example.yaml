@@ -1,0 +1,40 @@
+# Mau cau hinh tai khoan. KHONG dat token/mat khau vao file nay: chi ghi TEN bien moi truong.
+# 1 terminal = 1 tai khoan. Doc README.md.
+accounts:
+  # MT4 qua EA agent (Windows VPS): EA day du lieu RA bridge qua HTTPS.
+  - account_id: demo-mt4-01
+    platform: mt4
+    transport: agent
+    token_env: MT_TOKEN_DEMO_MT4_01        # bearer token (>= 32 ky tu ngau nhien)
+    # hmac_secret_env: MT_HMAC_DEMO_MT4_01 # tuy chon: bat buoc them chu ky HMAC (EA mau chua ho tro)
+    symbol_suffix: ".m"
+    symbol_aliases: { GOLD: XAUUSD }       # ten broker -> ten chuan
+    server_tz: Europe/Athens               # mui gio server (xu ly DST); bo trong de suy ra tu EA
+    watch_symbols: [EURUSD, XAUUSD]
+    timeframes: [M1, M5, M15, H1, H4, D1]
+    rules:
+      heartbeat_timeout_s: 90
+      drawdown_pct: 10
+      margin_level_warn: 200
+      margin_level_crit: 100
+      new_position: true
+      expected_magics: []                  # magic duoc coi la "du kien"
+
+  # MT5 qua EA agent (cung giao thuc voi MT4).
+  - account_id: demo-mt5-agent-01
+    platform: mt5
+    transport: agent
+    token_env: MT_TOKEN_DEMO_MT5_01
+    server_utc_offset_hours: 3
+    watch_symbols: [EURUSD]
+
+  # MT5 truc tiep bang package Python (CHI chay tren Windows, cung may voi terminal).
+  - account_id: demo-mt5-direct-01
+    platform: mt5
+    transport: mt5_direct
+    login: 12345678
+    server: Broker-Demo
+    password_env: MT5_INVESTOR_PASSWORD_01 # mat khau INVESTOR (chi doc), KHONG phai mat khau giao dich
+    terminal_path: "C:/Program Files/MetaTrader 5 A/terminal64.exe"
+    require_investor: true
+    watch_symbols: [EURUSD, XAUUSD]

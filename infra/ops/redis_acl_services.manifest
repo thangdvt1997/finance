@@ -1,0 +1,22 @@
+# User Redis RIÊNG cho từng service (HARDENING §7.2, thay dần ts_app dùng chung). infra/ops/redis_acl_render.sh đọc file này -> infra/redis/users.acl.
+# Cú pháp:  <service>: <luật ACL Redis 7 (selector)>        -> user ts_svc_<service> (dấu '-' đổi '_'), mật khẩu REDIS_SVC_<SERVICE>_PASSWORD trong infra/.env
+#           (tự sinh nếu thiếu). Mỗi user nhận thêm phần chung: resetkeys resetchannels -@all +ping +hello +client|setinfo +client|setname.
+# Luật dựa trên đo thực (MONITOR 100s, 2026-10-14) + phân tích mã (bus.py/runner). Stream consumer (XREADGROUP/XACK/XGROUP/XAUTOCLAIM) và XADD là lệnh
+# READ+WRITE theo key-spec -> dùng ~key trong selector với danh sách lệnh hẹp (KHÔNG dùng %R~/%W~). Một selector phải phủ MỌI key của một lệnh
+# (XREADGROUP nhiều stream). Kiểm: `bash infra/ops/redis_acl_render.sh --check` (ACL DRYRUN từng lệnh mong đợi + lệnh bị cấm).
+# Chuyển 1 service: đặt REDIS_URL của service đó trong compose sang ts_svc_<service> + REDIS_SVC_<SERVICE>_PASSWORD, recreate, xem log NOPERM.
+reporter:         (~alerts.out +xadd)
+briefing:         (~briefing.items ~alerts.out +xadd)
+analytics:        (~analytics.signals ~alerts.out +xadd)
+pattern-engine:   (~pattern.signals ~alerts.out +xadd)
+market-collector: (~md.bars ~md.quotes ~alerts.out +xadd)
+paper-trader:     (~paper.events ~alerts.out +xadd) (~paper:chain_anchor:* +get +set)
+risk-monitor:     (~account.snapshots +xrevrange +xrange +xlen) (~alerts.out +xadd) (~risk:* +hget +hset +hgetall +hdel +hkeys)
+alert-rules:      (~md.quotes ~alerts.delivery +xreadgroup +xack +xgroup|create +xautoclaim +xpending +xinfo|groups +xinfo|consumers) (~alerts.out +xadd)
+news-collector:   (~news.items ~calendar.events ~expert.positions ~alerts.out +xadd) (~nc:* +set +get +exists +expire)
+mt-bridge:        (~md.quotes ~md.bars ~account.snapshots ~account.deals ~alerts.out ~mt.account_status +xadd) (~mtb:* +set +get +exists +expire)
+expert-collector: (~expert.signals ~expert.profiles ~expert.positions ~news.items ~alerts.out +xadd) (~expert.positions +xrevrange +xrange) (~ec:* +get +set +del +exists +expire +hget +hset +hgetall +hdel +lpush +ltrim +lrange) (~tr:weights ~tr:weights:ts +hgetall +get)
+nlp:              (~news.items +xreadgroup +xack +xgroup|create +xautoclaim +xpending +xinfo|groups +xinfo|consumers) (~news.enriched ~alerts.out ~dlq +xadd) (~nlp:* +exists +set +get +expire)
+alert-service:    (~alerts.out ~md.bars +xreadgroup +xack +xgroup|create +xgroup|delconsumer +xautoclaim +xpending +xinfo|groups +xinfo|consumers) (~alerts.out ~alerts.delivery ~dlq +xadd) (~alerts:* ~rules:* +get +set +del +exists +incr +incrby +expire +lpush +rpush +ltrim +lrange +hincrby +hget +hgetall +hset)
+storage-writer:   (~md.bars ~md.quotes ~news.items ~news.enriched ~calendar.events ~expert.profiles ~expert.signals ~expert.positions ~account.snapshots ~account.deals ~alerts.out ~alerts.delivery +xreadgroup +xack +xgroup|create +xgroup|delconsumer +xautoclaim +xpending +xinfo|groups +xinfo|consumers +xinfo|stream +xlen) (~dlq +xadd +xlen)
+ai-trading:      (~aitrading:* +get +set +expire +exists)

@@ -1,0 +1,29 @@
+id: KB-2
+name: "KB-2: giảm - hồi ~50% - tích luỹ nêm/tam giác thu hẹp - nhấn chìm phá cạnh dưới"
+side: sell
+summary: >
+  Sóng giảm mạnh (1) -> hồi ≈50% (2) -> tích luỹ hình nêm/tam giác thu hẹp: đỉnh thấp dần, đáy cao dần (3)
+  -> nến nhấn chìm giảm thân dài đóng dưới cạnh dưới (4): báo khi nến ĐÓNG.
+steps:
+  1: "(1) Sóng giảm dẫn hướng mạnh"
+  2: "(2) Hồi ≈50% sóng (1) (25%-75%)"
+  3: "(3a) Đỉnh thấp dần (>= 3 đỉnh kể cả đỉnh hồi)"
+  4: "(3b) Đáy cao dần (>= 2 đáy)"
+  5: "(3c) Nêm thu hẹp (độ rộng hiện tại <= 85% độ rộng ban đầu)"
+  6: "(4) Nến nhấn chìm giảm thân dài phá cạnh dưới (đóng nến)"
+invalidation:
+  - "Giá ĐÓNG CỬA vượt đỉnh hồi (2) + 0.25 ATR"
+  - "Quá max_consol_bars nến kể từ đỉnh hồi (2)"
+  - "Đóng cửa thủng cạnh dưới > 0.75 ATR mà không có nến nhấn chìm"
+params:
+  retr_min: 0.25               # hồi ≈50% với dung sai ±25 điểm % (ảnh mẫu: ~69%)
+  retr_max: 0.75
+  min_highs: 3
+  min_lows: 2
+  min_rise_atr: 0.5
+  envelope_tol_atr: 2.0        # [HIỆU CHỈNH] đỉnh/đáy GIỮA được phép xuyên cạnh nêm (nối điểm đầu-cuối) tới 2 ATR (golden xuyên 1.5 ATR)
+  contraction_max: 0.85
+  max_consol_bars: 220
+levels:
+  sl: "đỉnh thấp dần cuối cùng + sl_buffer_atr × ATR"
+  tp: "entry - m×R; tham chiếu: đáy sóng (1)"

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:admin="http://webns.net/mvcb/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/">
+
+    <channel>
+    
+    <title><![CDATA[ING Think]]></title>
+    <atom:link href="https://think.ing.com/rss/" rel="self" type="application/rss+xml" />
+    <link>https://think.ing.com/</link>
+    <description>From Trump to trade, from Draghi to the dollar, we tell you what's happening - and is likely to happen in global markets.</description>
+		<image>
+			<title>ING Think</title>
+			<link>https://think.ing.com/</link>
+			<url>https://think.ing.com/uploads/general/newsletter_ing_think.gif</url>
+		</image>
+    <dc:language>en</dc:language>
+    <dc:creator>economics@uk.ing.com</dc:creator>
+    <dc:rights>Copyright 2026</dc:rights>
+    <dc:date>2026-10-08T06:20:00+00:00</dc:date>
+    <admin:generatorAgent rdf:resource="https://www.terralemon.com/" />
+
+	 
+<item>
+  <title><![CDATA[Supply chain risks are changing. Shouldn’t financing change too?]]></title>
+  <link>https://think.ing.com/articles/supply-chain-risks-are-changing-shouldnt-financing-change-too/</link>
+  <guid>https://think.ing.com/articles/supply-chain-risks-are-changing-shouldnt-financing-change-too/#When:14:26:00Z</guid>
+  <description><![CDATA[ As climate risks have a larger impact on supply chains, the need to finance resilience-building initiatives is increasing. Banks have an important role to play by expanding their financing toolkit, while companies with proactive resilience strategies can gain greater access to capital]]></description>
+  <dc:subject><![CDATA[Sustainability]]></dc:subject>
+  <dc:date>2026-10-09T14:26:00+00:00</dc:date>
+</item><item>
+  <title><![CDATA[US consumers remain under pressure as sentiment slides]]></title>
+  <link>https://think.ing.com/snaps/us-consumers-remain-under-pressure-as-sentiment-slides/</link>
+  <guid>https://think.ing.com/snaps/us-consumers-remain-under-pressure-as-sentiment-slides/#When:14:24:00Z</guid>
+  <description><![CDATA[NORTH AMERICA: Consumer confidence remains under pressure from weak wage growth, high motor fuel costs and worries about job security. However, spending is holding up, reflecting the growing dominance of high-income households, who are in a much stronger financial position]]></description>
+  <dc:subject><![CDATA[North America, United States]]></dc:subject>
+  <dc:date>2026-10-09T14:24:00+00:00</dc:date>
+</item><item>
+  <title><![CDATA[CEE & CCA week ahead: Czech and Polish inflation data]]></title>
+  <link>https://think.ing.com/articles/cee-cca-week-ahead-inflation-data-from-poland-and-the-czech-republic/</link>
+  <guid>https://think.ing.com/articles/cee-cca-week-ahead-inflation-data-from-poland-and-the-czech-republic/#When:10:30:00Z</guid>
+  <description><![CDATA[CENTRAL AND EASTERN EUROPE: Poland and the Czech Republic will publish final inflation figures next week, alongside current account data]]></description>
+  <dc:subject><![CDATA[Central and Eastern Europe, Czech Republic, Poland]]></dc:subject>
+  <dc:date>2026-10-09T10:30:00+00:00</dc:date>
+</item></channel></rss>

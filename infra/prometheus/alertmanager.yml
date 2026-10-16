@@ -1,0 +1,18 @@
+# Alertmanager -> alert-service (/webhook/alertmanager) -> alerts.out -> dedupe/rate-limit/Telegram + bảng alerts.
+route:
+  receiver: alert-service
+  group_by: [alertname, service]
+  group_wait: 20s
+  group_interval: 5m
+  repeat_interval: 12h
+receivers:
+  - name: alert-service
+    webhook_configs:
+      - url: http://alert-service:8000/webhook/alertmanager
+        send_resolved: false
+        max_alerts: 20
+inhibit_rules:
+  # Service down thì bỏ qua cảnh báo thứ cấp cùng service.
+  - source_matchers: [alertname="ServiceDown"]
+    target_matchers: [severity=~"warning"]
+    equal: [service]

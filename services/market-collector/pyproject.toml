@@ -1,0 +1,22 @@
+[project]
+name = "market-collector"
+version = "0.1.0"
+description = "Thu thap gia/nen (Dukascopy, vnstock, Frankfurter, Twelve Data, crypto qua ccxt) -> Redis Streams md.bars/md.quotes"
+requires-python = ">=3.12"
+dependencies = ["tscommon", "httpx>=0.27", "ccxt>=4.4"]
+
+[project.optional-dependencies]
+# vnstock KHONG cai qua extra (khong co tren PyPI cho py3.12) -> xem README muc vnstock
+yahoo = ["yfinance>=0.2"]
+test = ["pytest>=8", "pytest-asyncio>=0.23", "fakeredis>=2.23"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

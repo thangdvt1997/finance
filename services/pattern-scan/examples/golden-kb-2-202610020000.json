@@ -1,0 +1,61 @@
+{
+ "kind": "golden",
+ "pattern": "KB-2",
+ "title": "KB-2 · XAUUSD M15 (mẫu chuẩn)",
+ "symbol": "XAUUSD",
+ "tf": "M15",
+ "ts": "2026-10-02T00:15:00+00:00",
+ "note": "Ảnh mẫu 1: sóng giảm mạnh - hồi ~50% - nêm thu hẹp - nhấn chìm phá cạnh dưới.",
+ "levels": {
+  "resistance": 4213.3,
+  "support": 4202.27838,
+  "wave_high": 4251.1,
+  "wave_low": 4169.4,
+  "entry": 4199.7,
+  "sl": 4214.8318,
+  "r": 15.1318,
+  "atr": 6.12719,
+  "tp_1r": 4184.5682,
+  "tp_2r": 4169.4364,
+  "tp_3r": 4154.30461,
+  "prev_low": 4169.4
+ },
+ "steps": [
+  {
+   "id": 1,
+   "label": "(1) Sóng giảm dẫn hướng mạnh",
+   "ok": true,
+   "detail": "sóng dẫn 15.2 ATR, 5 nến đỏ dài, xanh 23%"
+  },
+  {
+   "id": 2,
+   "label": "(2) Hồi ≈50% sóng (1) (25%-75%)",
+   "ok": true,
+   "detail": "hồi 65% sóng (1)"
+  },
+  {
+   "id": 3,
+   "label": "(3a) Đỉnh thấp dần (>= 3 đỉnh kể cả đỉnh hồi)",
+   "ok": true,
+   "detail": "5 đỉnh thấp dần"
+  },
+  {
+   "id": 4,
+   "label": "(3b) Đáy cao dần (>= 2 đáy)",
+   "ok": true,
+   "detail": "4 đáy cao dần"
+  },
+  {
+   "id": 5,
+   "label": "(3c) Nêm thu hẹp (độ rộng hiện tại <= 85% độ rộng ban đầu)",
+   "ok": true,
+   "detail": "co hẹp x0.23"
+  },
+  {
+   "id": 6,
+   "label": "(4) Nến nhấn chìm giảm thân dài phá cạnh dưới (đóng nến)",
+   "ok": true,
+   "detail": "nhấn chìm giảm thân 1.91 ATR, đóng dưới cạnh dưới 4202.28"
+  }
+ ]
+}

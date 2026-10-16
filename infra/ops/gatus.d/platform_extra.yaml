@@ -1,0 +1,45 @@
+# Service bổ sung vòng hoàn thiện (2026-10-14): client-ui, track-record, briefing-llm, redis-cache, jaeger, textfile-exporter.
+# Gatus nạp cả thư mục /cfg/gatus.d; cảnh báo -> alert-service như gatus.yaml.
+endpoints:
+  - name: client-ui
+    group: services
+    url: "http://client-ui:8080/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "client-ui (cổng khách) không phản hồi" }
+  - name: track-record
+    group: services
+    url: "http://track-record:8000/healthz"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "track-record không phản hồi" }
+  - name: briefing-llm
+    group: services
+    url: "http://briefing-llm:8080/health"
+    interval: 30s
+    conditions: ["[STATUS] == 200", "[RESPONSE_TIME] < 2000"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "briefing-llm không phản hồi (bản tin rơi về dạng template)" }
+  - name: jaeger
+    group: ops
+    url: "http://jaeger:16686/"
+    interval: 30s
+    conditions: ["[STATUS] == 200"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "jaeger (trace) không phản hồi" }
+  - name: textfile-exporter
+    group: ops
+    url: "http://textfile-exporter:9100/metrics"
+    interval: 30s
+    conditions: ["[STATUS] == 200"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "textfile-exporter chết: mất metric tuổi backup" }
+  - name: redis-cache
+    group: data
+    url: "tcp://redis-cache:6379"
+    interval: 30s
+    conditions: ["[CONNECTED] == true"]
+    alerts:
+      - { type: custom, failure-threshold: 3, success-threshold: 2, send-on-resolved: true, description: "redis-cache không kết nối (api-gateway chạy không cache)" }

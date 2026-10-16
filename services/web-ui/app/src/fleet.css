@@ -1,0 +1,192 @@
+/* Quản trị đội tài khoản (master/support/analyst/auditor). Dùng token màu của index.css (tối/sáng): --up xanh, --accent vàng/hổ phách, --down đỏ.
+   Quy ước: màu LUÔN đi kèm biểu tượng + chữ (không là tín hiệu duy nhất). Tiền tố lớp: fl- */
+.fl-ro { display: inline-flex; align-items: center; gap: .35rem; font-size: 11.5px; color: var(--info); border: 1px solid color-mix(in srgb, var(--info) 40%, transparent); border-radius: 99px; padding: .05rem .55rem; white-space: nowrap; }
+.fl-page { display: grid; gap: .75rem; min-width: 0; }
+.fl-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; }
+.fl-tablewrap, .fl-tbl, .fl-obcard, .fl-card, .fl-secret { position: relative; }
+
+/* ----- Thanh KPI (bấm = lọc) ----- */
+.fl-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.4rem, 1fr)); gap: .55rem; margin: 0; padding: 0; list-style: none; }
+.fl-kpi { --c: var(--faint); all: unset; box-sizing: border-box; cursor: pointer; display: grid; gap: .1rem; padding: .55rem .75rem .6rem; min-width: 0; min-height: 3.9rem;
+  background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: 8px; transition: border-color .12s, background .12s; }
+.fl-kpi:hover { border-color: var(--line2); border-left-color: var(--c); background: var(--panel2); }
+.fl-kpi:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fl-kpi[aria-pressed="true"] { background: color-mix(in srgb, var(--c) 11%, var(--panel)); border-color: color-mix(in srgb, var(--c) 55%, var(--line)); border-left-color: var(--c); }
+.fl-kpi-l { display: flex; align-items: center; gap: .3rem; font-size: 11.5px; color: var(--muted); }
+.fl-kpi-n { font-family: var(--font-mono); font-size: 22px; line-height: 1.1; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -.02em; color: var(--fg); }
+.fl-kpi.t-ok { --c: var(--up); } .fl-kpi.t-warn { --c: var(--accent); } .fl-kpi.t-bad { --c: var(--down); } .fl-kpi.t-info { --c: var(--info); } .fl-kpi.t-mute { --c: var(--faint); }
+.fl-kpi.t-bad .fl-kpi-n { color: var(--down); }
+.fl-kpi[data-zero="1"] .fl-kpi-n { color: var(--faint); }
+
+/* ----- Thanh công cụ / bộ lọc ----- */
+.fl-bar-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.fl-search { position: relative; flex: 1 1 14rem; min-width: 11rem; max-width: 22rem; }
+.fl-search svg { position: absolute; left: .55rem; top: 50%; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
+.fl-search .field { width: 100%; padding-left: 1.85rem; }
+select.field { padding-right: 1.4rem; }
+.fl-count { font-size: 12px; color: var(--muted); }
+.fl-active-filters { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; }
+.fl-fchip { display: inline-flex; align-items: center; gap: .25rem; font-size: 11.5px; padding: .1rem .2rem .1rem .55rem; border-radius: 99px; border: 1px solid var(--line2); background: var(--panel2); color: var(--fg); }
+.fl-fchip button { all: unset; cursor: pointer; display: grid; place-items: center; width: 1.1rem; height: 1.1rem; border-radius: 50%; color: var(--muted); }
+.fl-fchip button:hover { background: var(--line); color: var(--fg); }
+.fl-fchip button:focus-visible { outline: 2px solid var(--accent); }
+
+/* ----- Bảng ----- */
+.fl-tablewrap { overflow: auto; border-radius: 0 0 8px 8px; }
+table.fl-tbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12.5px; }
+.fl-tbl th { position: sticky; top: 0; z-index: 2; background: var(--panel); text-align: left; font-weight: 560; font-size: 11.5px; color: var(--muted); padding: .45rem .6rem; border-bottom: 1px solid var(--line2); white-space: nowrap; }
+.fl-tbl th button { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: .25rem; }
+.fl-tbl th button:hover { color: var(--fg); }
+.fl-tbl th button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fl-tbl td { padding: .42rem .6rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.fl-tbl tbody tr { cursor: pointer; }
+.fl-tbl tbody tr:hover { background: var(--panel2); }
+.fl-tbl tbody tr[aria-selected="true"] { background: color-mix(in srgb, var(--accent) 9%, var(--panel)); }
+.fl-tbl tbody tr:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.fl-tbl .c-chk { width: 2rem; padding-right: 0; }
+.fl-tbl .r { text-align: right; }
+.fl-tbl .c-id { font-family: var(--font-mono); font-size: 12px; white-space: nowrap; }
+.fl-tbl .c-sub { display: block; font-size: 11px; color: var(--muted); font-family: var(--font-sans); max-width: 16rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fl-chk { width: 1rem; height: 1rem; accent-color: var(--accent); cursor: pointer; vertical-align: middle; }
+.fl-cell-chips { display: flex; flex-wrap: wrap; gap: .25rem; max-width: 15rem; }
+
+/* ----- Chip nhóm / tag / trạng thái ----- */
+.fl-gchip { --c: var(--faint); display: inline-flex; align-items: center; gap: .3rem; max-width: 11rem; font-size: 11px; line-height: 1.5; padding: 0 .45rem; border-radius: 99px; color: var(--fg);
+  border: 1px solid color-mix(in srgb, var(--c) 45%, var(--line)); background: color-mix(in srgb, var(--c) 10%, transparent); }
+.fl-gchip i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--c); flex: none; }
+.fl-gchip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fl-tchip { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.6; padding: 0 .4rem; border-radius: 4px; color: var(--muted); border: 1px solid var(--line2); background: var(--panel2); white-space: nowrap; }
+.fl-chip-x { all: unset; cursor: pointer; margin-left: .2rem; display: inline-grid; place-items: center; width: .95rem; height: .95rem; border-radius: 50%; color: var(--muted); }
+.fl-chip-x:hover { background: var(--line); color: var(--fg); }
+.fl-chip-x:focus-visible { outline: 2px solid var(--accent); }
+
+.fl-pill { --c: var(--muted); display: inline-flex; align-items: center; gap: .3rem; font-size: 11.5px; font-weight: 600; line-height: 1.5; padding: 0 .5rem; border-radius: 99px; white-space: nowrap;
+  color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); }
+.fl-pill.t-ok { --c: var(--up); } .fl-pill.t-warn { --c: var(--accent); } .fl-pill.t-bad { --c: var(--down); } .fl-pill.t-info { --c: var(--info); } .fl-pill.t-mute { --c: var(--muted); }
+.fl-pill .fl-pill-sub { font-weight: 450; color: var(--muted); }
+.fl-stale { font-size: 10.5px; font-weight: 650; color: var(--muted); border: 1px dashed var(--line2); border-radius: 4px; padding: 0 .3rem; }
+
+/* ----- Thanh dùng hạn mức ----- */
+.fl-usage { display: grid; gap: .2rem; min-width: 0; }
+.fl-usage-top { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; font-size: 12px; }
+.fl-usage-track { position: relative; height: .55rem; border-radius: 99px; background: var(--panel2); border: 1px solid var(--line); overflow: hidden; }
+.fl-usage-fill { --c: var(--up); position: absolute; inset: 0 auto 0 0; background: var(--c); border-radius: 99px; min-width: 2px; }
+.fl-usage.t-warn .fl-usage-fill { --c: var(--accent); } .fl-usage.t-bad .fl-usage-fill { --c: var(--down); } .fl-usage.t-mute .fl-usage-fill { --c: var(--faint); opacity: .6; }
+.fl-usage-mark { position: absolute; top: -1px; bottom: -1px; width: 1px; background: color-mix(in srgb, var(--fg) 45%, transparent); }
+.fl-usage-sub { display: flex; justify-content: space-between; gap: .5rem; font-size: 11px; color: var(--muted); }
+
+/* ----- Banner / thông báo ----- */
+.fl-banner { --c: var(--info); display: flex; flex-wrap: wrap; align-items: flex-start; gap: .55rem; padding: .55rem .8rem; border-radius: 8px; font-size: 12.5px; color: var(--fg);
+  background: color-mix(in srgb, var(--c) 9%, var(--panel)); border: 1px solid color-mix(in srgb, var(--c) 40%, var(--line)); }
+.fl-banner > svg { color: var(--c); flex: none; margin-top: 2px; }
+.fl-banner.t-warn { --c: var(--accent); } .fl-banner.t-bad { --c: var(--down); } .fl-banner.t-ok { --c: var(--up); } .fl-banner.t-info { --c: var(--info); }
+.fl-banner .fl-banner-b { min-width: 0; flex: 1 1 14rem; }
+.fl-banner .fl-banner-a { display: flex; flex-wrap: wrap; gap: .4rem; margin-left: auto; }
+.fl-sticky-banner { position: sticky; top: 44px; z-index: 29; }
+.fl-va { position: sticky; top: 44px; z-index: 29; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; padding: .55rem .8rem; font-size: 12.5px; font-weight: 500;
+  background: var(--accent); color: var(--accent-fg); border-bottom: 2px solid color-mix(in srgb, var(--accent-fg) 35%, var(--accent)); box-shadow: 0 2px 10px rgba(0,0,0,.25); }
+.fl-va .btn { background: var(--accent-fg); color: var(--accent); border-color: transparent; font-weight: 650; height: 1.8rem; }
+.fl-va .fl-va-cd { font-family: var(--font-mono); font-weight: 700; font-variant-numeric: tabular-nums; border: 1px solid color-mix(in srgb, var(--accent-fg) 45%, transparent); border-radius: 5px; padding: 0 .4rem; }
+.fl-va.urgent .fl-va-cd { animation: fl-blink 1s steps(2, jump-none) infinite; }
+@keyframes fl-blink { 50% { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .fl-va.urgent .fl-va-cd { animation: none; } }
+
+/* ----- Thanh thao tác hàng loạt (nổi) ----- */
+.fl-bulkbar { position: sticky; bottom: calc(var(--nav-h) + 8px); z-index: 25; display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; padding: .5rem .7rem; border-radius: 10px;
+  background: var(--panel); border: 1px solid var(--line2); box-shadow: 0 8px 30px rgba(0,0,0,.4); }
+@media (min-width: 1024px) { .fl-bulkbar { bottom: 12px; } }
+.fl-bulkbar b { font-size: 12.5px; }
+
+/* ----- Tab trong drawer / trang ----- */
+.fl-tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; flex: none; }
+.fl-tabs button, .fl-tabs a { all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; padding: .5rem .8rem; min-height: 2.4rem; font-size: 12.5px; font-weight: 560; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; }
+.fl-tabs button:hover, .fl-tabs a:hover { color: var(--fg); }
+.fl-tabs button[aria-selected="true"], .fl-tabs a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
+.fl-tabs button:focus-visible, .fl-tabs a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.fl-badge { background: var(--down); color: #fff; border-radius: 99px; font-size: 10.5px; font-weight: 700; min-width: 1.15rem; height: 1.15rem; padding: 0 .3rem; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
+.fl-navbadge { margin-left: auto; background: var(--down); color: #fff; border-radius: 99px; font-size: 10.5px; font-weight: 700; min-width: 1.15rem; height: 1.15rem; padding: 0 .3rem; display: inline-flex; align-items: center; justify-content: center; }
+@media (max-width: 1023px) { .fl-navbadge { position: absolute; margin: 0; transform: translate(.95rem, -.95rem); } }
+
+/* ----- Hai khung (Luật | Sự cố) ----- */
+.fl-split { display: grid; gap: .75rem; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 1100px) { .fl-split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+
+/* ----- Form ----- */
+.fl-field { display: grid; gap: .25rem; min-width: 0; }
+.fl-field > label, .fl-field > .fl-lab { font-size: 12px; font-weight: 560; color: var(--fg); display: inline-flex; align-items: center; gap: .3rem; }
+.fl-field .fl-help { font-size: 11.5px; color: var(--muted); }
+.fl-field .fl-err { font-size: 11.5px; color: var(--down); }
+.fl-field .field { width: 100%; }
+textarea.field { height: auto; min-height: 5rem; padding: .45rem .6rem; resize: vertical; font-family: inherit; line-height: 1.45; }
+textarea.fl-mono { font-family: var(--font-mono); font-size: 12px; }
+.fl-formgrid { display: grid; gap: .65rem; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
+.fl-check { display: flex; align-items: flex-start; gap: .5rem; font-size: 12.5px; cursor: pointer; }
+.fl-check input { margin-top: .15rem; accent-color: var(--accent); width: 1rem; height: 1rem; }
+.fl-hint { position: relative; display: inline-grid; place-items: center; width: 1rem; height: 1rem; border-radius: 50%; font-size: 10px; font-weight: 700; color: var(--muted); border: 1px solid var(--line2); cursor: help; flex: none; }
+.fl-hint:hover, .fl-hint:focus-visible { color: var(--fg); border-color: var(--muted); }
+.fl-hint::after { content: attr(data-tip); position: absolute; z-index: 60; left: -.4rem; top: 1.35rem; width: max-content; max-width: min(17rem, 72vw); padding: .4rem .55rem; border-radius: 6px; font-size: 11.5px; font-weight: 450; line-height: 1.4; text-align: left; white-space: normal;
+  color: var(--fg); background: var(--panel); border: 1px solid var(--line2); box-shadow: 0 8px 24px rgba(0,0,0,.4); opacity: 0; pointer-events: none; transform: translateY(-2px); transition: opacity .12s, transform .12s; }
+.fl-hint:hover::after, .fl-hint:focus-visible::after { opacity: 1; transform: none; }
+
+/* ----- Bí mật hiển thị MỘT lần ----- */
+.fl-secret-warn { --c: var(--down); }
+.fl-secret { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .2rem .5rem; align-items: center; padding: .45rem .6rem; border: 1px solid var(--line2); border-radius: 7px; background: var(--panel2); }
+.fl-secret-k { grid-column: 1 / -1; font-size: 11.5px; color: var(--muted); }
+.fl-secret-v { font-family: var(--font-mono); font-size: 12.5px; word-break: break-all; user-select: all; }
+
+/* ----- Danh sách thẻ (sự cố, ghi chú, nhật ký) ----- */
+.fl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+.fl-card { --c: var(--faint); display: grid; gap: .3rem; padding: .55rem .7rem; border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: 8px; background: var(--panel); min-width: 0; }
+.fl-card.t-ok { --c: var(--up); } .fl-card.t-warn { --c: var(--accent); } .fl-card.t-bad { --c: var(--down); } .fl-card.t-info { --c: var(--info); }
+.fl-card[aria-current="true"] { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); background: color-mix(in srgb, var(--accent) 6%, var(--panel)); }
+.fl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .65rem; font-size: 11.5px; color: var(--muted); }
+.fl-kv { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: .5rem; padding: .3rem 0; border-bottom: 1px solid var(--line); font-size: 12.5px; }
+.fl-kv:last-child { border-bottom: 0; }
+.fl-kv dt { color: var(--muted); } .fl-kv dd { margin: 0; min-width: 0; word-break: break-word; }
+.fl-timeline { list-style: none; margin: 0; padding: 0 0 0 .9rem; border-left: 2px solid var(--line); display: grid; gap: .55rem; }
+.fl-timeline li { position: relative; font-size: 12.5px; }
+.fl-timeline li::before { content: ""; position: absolute; left: -1.28rem; top: .35rem; width: .6rem; height: .6rem; border-radius: 50%; background: var(--panel); border: 2px solid var(--line2); }
+.fl-timeline li time { display: block; font-size: 11px; color: var(--muted); }
+
+/* ----- Trạng thái trống/chưa khả dụng ----- */
+.fl-empty { display: grid; justify-items: start; gap: .35rem; padding: 1.1rem; border: 1px dashed var(--line2); border-radius: 8px; color: var(--muted); font-size: 12.5px; }
+.fl-empty b { color: var(--fg); font-size: 13.5px; }
+
+/* ----- Nhập CSV + thẻ onboarding ----- */
+.fl-prevrow-bad { background: color-mix(in srgb, var(--down) 7%, transparent); }
+.fl-prevrow-warn { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.fl-cards { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
+.fl-obcard { display: grid; gap: .45rem; padding: .8rem; border: 1px solid var(--line2); border-radius: 10px; background: var(--panel); break-inside: avoid; }
+.fl-obcard h3 { margin: 0; font-size: 14px; }
+.fl-obcard dl { margin: 0; display: grid; gap: .25rem; }
+.fl-obcard dl > div { display: grid; grid-template-columns: 6.2rem minmax(0, 1fr); gap: .5rem; font-size: 12px; }
+.fl-obcard dt { color: var(--muted); } .fl-obcard dd { margin: 0; font-family: var(--font-mono); font-size: 11.5px; word-break: break-all; }
+.fl-obcard ol { margin: .2rem 0 0; padding-left: 1.1rem; font-size: 12px; color: var(--muted); display: grid; gap: .15rem; }
+
+/* In: chỉ #fl-print (section gắn vào <body> khi in), khổ A4, 2 thẻ/trang, đen trắng. */
+#fl-print { display: none; }
+@page { size: A4; margin: 9mm; }
+@media print {
+  body.fl-printing > #root, body.fl-printing > div:not(#fl-print), body.fl-printing > section:not(#fl-print) { display: none !important; }
+  body.fl-printing { background: #fff !important; color: #000 !important; overflow: visible !important; height: auto !important; }
+  body.fl-printing html, html:has(body.fl-printing) { background: #fff !important; height: auto !important; overflow: visible !important; }
+  body.fl-printing #fl-print { display: block !important; position: static !important; }
+  #fl-print * { color: #000 !important; background: transparent !important; box-shadow: none !important; }
+  #fl-print .fl-pgrid { display: grid; grid-template-columns: 1fr; gap: 6mm; }
+  #fl-print .fl-pcard { height: 129mm; box-sizing: border-box; border: 0.35mm solid #000; border-radius: 3mm; padding: 5mm 6mm; break-inside: avoid; page-break-inside: avoid; display: grid; align-content: start; gap: 2.2mm; font-size: 10pt; }
+  #fl-print .fl-pcard h3 { margin: 0; font-size: 13pt; display: flex; justify-content: space-between; gap: 4mm; }
+  #fl-print .fl-pcard h3 small { font-size: 8pt; font-weight: 400; }
+  #fl-print .fl-pcard dl { margin: 0; display: grid; gap: 1.2mm; }
+  #fl-print .fl-pcard dl > div { display: grid; grid-template-columns: 27mm 1fr; gap: 3mm; align-items: baseline; }
+  #fl-print .fl-pcard dt { font-size: 8.5pt; }
+  #fl-print .fl-pcard dd { margin: 0; font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; font-size: 8.8pt; word-break: break-all; }
+  #fl-print .fl-pcard ol { margin: 1mm 0 0; padding-left: 5mm; font-size: 8.8pt; line-height: 1.35; }
+  #fl-print .fl-pcard .fl-pwarn { border-top: 0.2mm dashed #000; padding-top: 1.5mm; font-size: 8pt; }
+  #fl-print .fl-pcut { border-top: 0.2mm dashed #000; margin: 0; }
+}
+
+/* ----- Màn hẹp ----- */
+@media (max-width: 640px) {
+  .fl-kv { grid-template-columns: 6.5rem minmax(0, 1fr); }
+  .fl-kpi-n { font-size: 20px; }
+}

@@ -1,0 +1,11 @@
+# Lint nhẹ, ưu tiên lỗi thật (pyflakes/bugbear-lite/import). Nới dần khi sạch.
+line-length = 140
+target-version = "py312"
+extend-exclude = ["research", "services/web-ui/app", "mt-agent"]
+
+[lint]
+select = ["E9", "F", "B006", "B008", "B015", "B018", "S102", "S307", "S506", "UP006"]
+ignore = ["F401"]   # import chưa dùng: để hậu kiểm
+[lint.per-file-ignores]
+"**/tests/**" = ["B", "S"]
+"tests/**" = ["B", "S", "F"]

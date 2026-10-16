@@ -1,0 +1,4 @@
+# Mẫu Redis ACL — tạo infra/redis/users.acl thật (KHÔNG commit) bằng infra/ops/gen_*; mỗi user dùng mật khẩu riêng.
+user default off
+user ts_admin on #<SHA256_OF_PASSWORD> ~* &* +@all
+user ts_app on #<SHA256_OF_PASSWORD> ~* &* +@all -@dangerous -@admin -@scripting

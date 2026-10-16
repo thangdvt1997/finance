@@ -1,0 +1,14 @@
+# Cấu hình tài khoản mt-bridge (READ-ONLY). Chỉ ghi TÊN biến môi trường cho token.
+accounts:
+  - account_id: demo-mt4-01
+    platform: mt4
+    transport: agent
+    token_env: MT_TOKEN_DEMO_MT4_01
+    hmac_secret_env: MT_HMAC_DEMO_MT4_01   # HMAC BẬT (EA phải dùng input HmacSecret; xem mt-agent/README)
+    require_hmac: true                     # bắt buộc theo tài khoản (thiếu secret/chữ ký sai -> 401)
+    server_tz: Europe/Athens
+    watch_symbols: [EURUSD, XAUUSD]
+    timeframes: [M1, M5, M15, H1, H4, D1]
+    rules: {heartbeat_timeout_s: 120, drawdown_pct: 10, margin_level_warn: 200, margin_level_crit: 100, new_position: true, expected_magics: []}
+  # demo-mt5-01 (tai khoan lab tinh, token tinh) DA GO 2026-10-14: EA lab MT5 nay dung PairCode -> mt5:100000001 (tai khoan dong trong auth).
+  # Lich su account_snapshots cua demo-mt5-01 van giu trong DB. Bien MT_TOKEN/HMAC_DEMO_MT5_01 khong con duoc dung.

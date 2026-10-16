@@ -1,0 +1,74 @@
+[
+ {
+  "view": "375x812",
+  "theme": "dark",
+  "page": "login",
+  "issues": []
+ },
+ {
+  "view": "375x812",
+  "theme": "dark",
+  "page": "tong-quan",
+  "issues": []
+ },
+ {
+  "view": "375x812",
+  "theme": "dark",
+  "page": "_console",
+  "issues": []
+ },
+ {
+  "view": "414x896",
+  "theme": "dark",
+  "page": "login",
+  "issues": []
+ },
+ {
+  "view": "414x896",
+  "theme": "dark",
+  "page": "tong-quan",
+  "issues": []
+ },
+ {
+  "view": "414x896",
+  "theme": "dark",
+  "page": "_console",
+  "issues": []
+ },
+ {
+  "view": "768x1024",
+  "theme": "dark",
+  "page": "login",
+  "issues": []
+ },
+ {
+  "view": "768x1024",
+  "theme": "dark",
+  "page": "tong-quan",
+  "issues": []
+ },
+ {
+  "view": "768x1024",
+  "theme": "dark",
+  "page": "_console",
+  "issues": []
+ },
+ {
+  "view": "1366x768",
+  "theme": "dark",
+  "page": "login",
+  "issues": []
+ },
+ {
+  "view": "1366x768",
+  "theme": "dark",
+  "page": "tong-quan",
+  "issues": []
+ },
+ {
+  "view": "1366x768",
+  "theme": "dark",
+  "page": "_console",
+  "issues": []
+ }
+]
